@@ -1,0 +1,9 @@
+﻿[Version=0]
+[Element=text1]
+Automatically re-open previously edited documents. 
+[Element=text2]
+Prompt me to re-open previously edited documents. Opens a dialog box on start-up.
+[Element=text3]
+Do <b>not</b> automatically re-open previously edited couments. This is the default option.
+[Element=text4]
+Prd-Code NCC1504

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+<title>Configuring the Microsoft Word Spelling Checker</title>
+
+<para>If you are using the Word Spelling Checker or the Word Spelling Checker 2.0 in TagEditor, you will need to configure the spelling checker options from within Microsoft Word.
+</para>
+
+<para>Note: The Word Spelling Checker is an earlier version of the Word Spelling Checker 2.0.</para>
+<para>To configure the spelling checker:</para>
+<list>
+<item>In Microsoft Word, on the <emphasis>Tools</emphasis> menu, click <emphasis>Options</emphasis> to display the <emphasis>Options</emphasis> dialog box.</item>
+<item>In the <emphasis>Options</emphasis> dialog box, click the <emphasis>Spelling &amp; Grammar</emphasis> tab.</item>
+<item>In the <emphasis>Spelling</emphasis> group box, choose the options that you want for the spelling checker:</item>
+<item>Select the <emphasis>Check Spelling as you type</emphasis> check box for automatic correction of misspellings as you type.</item>
+<item>Select <emphasis>Always suggest corrections</emphasis> to have Microsoft Word suggest corrections to misspellings.</item>
+<item>Select <emphasis>Suggest from main dictionary only</emphasis> if you do not want Word to suggest spellings from any open <emphasis>Custom</emphasis> dictionaries.</item>
+<item>Select <emphasis>Ignore words in UPPERCASE</emphasis> to skip words containing uppercase characters only, for example, acronyms.</item>
+<item>Select <emphasis>Ignore Internet and file addresses</emphasis> if you do not want Word to check Internet addresses, file names or email addresses.</item>
+</list>
+</document>

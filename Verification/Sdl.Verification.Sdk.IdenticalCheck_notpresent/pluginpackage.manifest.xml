@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PluginPackage xmlns="http://www.sdl.com/Plugins/PluginPackage/1.0">
+  <PlugInName>Identical Segment Verifier</PlugInName>
+  <Version>1.0</Version>
+  <Description>Verifies whether segments that are not supposed to be translated have been changed during translation/editing.</Description>
+  <Author></Author>
+  <RequiredProduct name="SDLTradosStudio" minversion="15.0" />
+</PluginPackage>

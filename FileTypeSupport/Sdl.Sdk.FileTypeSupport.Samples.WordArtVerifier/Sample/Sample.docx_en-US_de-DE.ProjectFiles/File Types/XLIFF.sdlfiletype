@@ -1,0 +1,393 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright © 2009 SDL. All rights reserved.
+  
+  Original file name: XLIFF.sdlfiletype
+  Last change:        18 May 2009
+-->
+<objects xmlns="http://www.springframework.net" xmlns:sp="http://www.springframework.net">
+  <!-- file type information -->
+  <object id="FileTypeInformation" type="Sdl.FileTypeSupport.Framework.Integration.FileTypeInformation, Sdl.FileTypeSupport.Framework.Implementation" singleton="true">
+    <property name="FilterDefinitionId">
+      <object type="Sdl.FileTypeSupport.Framework.FilterDefinitionId, Sdl.FileTypeSupport.Framework.Core" singleton="true">
+        <constructor-arg>
+          <value>XLIFF 1.1-1.2 v 1.0.0.0</value>
+        </constructor-arg>
+      </object>
+    </property>
+    <property name="FileTypeName">
+      <object type="Sdl.Core.Globalization.LocalizableString, Sdl.Core.Globalization" singleton="true">
+        <constructor-arg>
+          <value>assembly://Sdl.FileTypeSupport.Bilingual.Xliff/Sdl.FileTypeSupport.Bilingual.Xliff.StringResources/XLIFF_FileTypeName</value>
+        </constructor-arg>
+      </object>
+    </property>
+    <property name="FileTypeDocumentName">
+      <object type="Sdl.Core.Globalization.LocalizableString, Sdl.Core.Globalization" singleton="true">
+        <constructor-arg>
+          <value>assembly://Sdl.FileTypeSupport.Bilingual.Xliff/Sdl.FileTypeSupport.Bilingual.Xliff.StringResources/FileTypeNameSingular</value>
+        </constructor-arg>
+      </object>
+    </property>
+    <property name="FileTypeDocumentsName">
+      <object type="Sdl.Core.Globalization.LocalizableString, Sdl.Core.Globalization" singleton="true">
+        <constructor-arg>
+          <value>assembly://Sdl.FileTypeSupport.Bilingual.Xliff/Sdl.FileTypeSupport.Bilingual.Xliff.StringResources/FileTypeNamePlural</value>
+        </constructor-arg>
+      </object>
+    </property>
+    <property name="FileDialogWildcardExpression">
+      <value>*.xlf</value>
+    </property>
+    <property name="DefaultFileExtension">
+      <value>xlf</value>
+    </property>
+    <property name="Description">
+      <object type="Sdl.Core.Globalization.LocalizableString, Sdl.Core.Globalization" singleton="true">
+        <constructor-arg>
+          <value>assembly://Sdl.FileTypeSupport.Bilingual.Xliff/Sdl.FileTypeSupport.Bilingual.Xliff.StringResources/XliffFilterDescription</value>
+        </constructor-arg>
+      </object>
+    </property>
+    <property name="Icon">
+      <object type="Sdl.FileTypeSupport.Framework.IntegrationApi.IconDescriptor, Sdl.FileTypeSupport.Framework.Core" factory-method="Create" singleton="false">
+        <constructor-arg>
+          <value>assembly://Sdl.FileTypeSupport.Bilingual.Xliff/Sdl.FileTypeSupport.Bilingual.Xliff.FilterDefinition.ico</value>
+        </constructor-arg>
+      </object>
+    </property>
+  </object>
+  <!-- file sniffer -->
+  <object id="FileSniffer" type="Sdl.FileTypeSupport.Bilingual.Xliff.XLIFFFileSniffer, Sdl.FileTypeSupport.Bilingual.Xliff" singleton="true">
+    <property name="ProcessSDLXLIFF">
+      <value>Off</value>
+    </property>
+    <property name="VerifySchema">
+      <value>true</value>
+    </property>
+    <property name="SeverityForSchemaMessages">
+      <value>Error</value>
+    </property>
+  </object>
+  <!-- custom user interface administration -->
+  <object id="FilterDefinitionAdministratorUI" type="Sdl.FileTypeSupport.Framework.AdministrationUI.FilterDefinitionAdministratorUI, Sdl.FileTypeSupport.Framework.AdministrationUi" singleton="false">
+    <property name="SettingsPageReferences">
+      <list>
+        <object type="Sdl.FileTypeSupport.Framework.AdministrationUI.ConfigurableFilterDefinitionSettingsPageReference, Sdl.FileTypeSupport.Framework.AdministrationUi" singleton="false">
+          <constructor-arg>
+            <object type="Sdl.FileTypeSupport.Framework.AdministrationUIHelpers.LegacyFilterDefinitionSettingsPage, Sdl.FileTypeSupport.Framework.AdministrationUi">
+              <constructor-arg>
+                <value>Sdl.FileTypeSupport.Bilingual.Xliff.OtherSettings, Sdl.FileTypeSupport.Bilingual.Xliff</value>
+              </constructor-arg>
+            </object>
+          </constructor-arg>
+          <constructor-arg>
+            <value>XLIFF Settings ID</value>
+          </constructor-arg>
+          <constructor-arg>
+            <object type="Sdl.Core.Globalization.LocalizableString, Sdl.Core.Globalization" singleton="true">
+              <constructor-arg>
+                <value>assembly://Sdl.FileTypeSupport.Bilingual.Xliff/Sdl.FileTypeSupport.Bilingual.Xliff.StringResources/Settings</value>
+              </constructor-arg>
+            </object>
+          </constructor-arg>
+          <constructor-arg>
+            <object type="Sdl.Core.Globalization.LocalizableString, Sdl.Core.Globalization" singleton="true">
+              <constructor-arg>
+                <value>Settings for XLIFF File Type</value>
+              </constructor-arg>
+            </object>
+          </constructor-arg>
+          <property name="HelpTopic">
+            <value>XLIFF_Filter_Settings</value>
+          </property>
+        </object>
+        <object type="Sdl.FileTypeSupport.Framework.AdministrationUI.ConfigurableFilterDefinitionSettingsPageReference, Sdl.FileTypeSupport.Framework.AdministrationUi" singleton="false">
+          <constructor-arg>
+            <value>Sdl.FileTypeSupport.Bilingual.Xliff.CStateMappingUI, Sdl.FileTypeSupport.Bilingual.Xliff</value>
+          </constructor-arg>
+          <constructor-arg>
+            <value>XLIFF State Mapping</value>
+          </constructor-arg>
+          <constructor-arg>
+            <object type="Sdl.Core.Globalization.LocalizableString, Sdl.Core.Globalization">
+              <constructor-arg>
+                <value>assembly://Sdl.FileTypeSupport.Bilingual.Xliff/Sdl.FileTypeSupport.Bilingual.Xliff.StringResources/State_Mapping</value>
+              </constructor-arg>
+            </object>
+          </constructor-arg>
+          <constructor-arg>
+            <object type="Sdl.Core.Globalization.LocalizableString, Sdl.Core.Globalization">
+              <constructor-arg>
+                <value>Settings for XLIFF State Mapping</value>
+              </constructor-arg>
+            </object>
+          </constructor-arg>
+          <property name="HelpTopic">
+            <value>XLIFF_Filter_State_Mapping</value>
+          </property>
+        </object>
+        <object type="Sdl.FileTypeSupport.Framework.AdministrationUI.ConfigurableFilterDefinitionSettingsPageReference, Sdl.FileTypeSupport.Framework.AdministrationUi" singleton="false">
+          <constructor-arg>
+            <value>Sdl.FileTypeSupport.Bilingual.Xliff.CWhiteSpaceHandlingUI, Sdl.FileTypeSupport.Bilingual.Xliff</value>
+          </constructor-arg>
+          <constructor-arg>
+            <value>XLIFF_WhiteSpaceHandling_ID</value>
+          </constructor-arg>
+          <constructor-arg>
+            <object type="Sdl.Core.Globalization.LocalizableString, Sdl.Core.Globalization">
+              <constructor-arg>
+                <value>assembly://Sdl.FileTypeSupport.Bilingual.Xliff/Sdl.FileTypeSupport.Bilingual.Xliff.StringResources/WhiteSpaceHandling</value>
+              </constructor-arg>
+            </object>
+          </constructor-arg>
+          <constructor-arg>
+            <object type="Sdl.Core.Globalization.LocalizableString, Sdl.Core.Globalization">
+              <constructor-arg>
+                <value>assembly://Sdl.FileTypeSupport.Bilingual.Xliff/Sdl.FileTypeSupport.Bilingual.Xliff.StringResources/WhiteSpaceHandlingDescription</value>
+              </constructor-arg>
+            </object>
+          </constructor-arg>
+          <property name="HelpTopic">
+            <value>Generic_XML_Whitespace_Options</value>
+          </property>
+        </object>
+        <object type="Sdl.FileTypeSupport.Framework.AdministrationUI.ConfigurableFilterDefinitionSettingsPageReference, Sdl.FileTypeSupport.Framework.AdministrationUi" singleton="false">
+          <constructor-arg>
+            <value>Sdl.FileTypeSupport.Bilingual.Xliff.CSchemaValidationUI, Sdl.FileTypeSupport.Bilingual.Xliff</value>
+          </constructor-arg>
+          <constructor-arg>
+            <value>XLIFF_SchemaValidation_ID</value>
+          </constructor-arg>
+          <constructor-arg>
+            <object type="Sdl.Core.Globalization.LocalizableString, Sdl.Core.Globalization">
+              <constructor-arg>
+                <value>assembly://Sdl.FileTypeSupport.Bilingual.Xliff/Sdl.FileTypeSupport.Bilingual.Xliff.StringResources/SchemaValidation</value>
+              </constructor-arg>
+            </object>
+          </constructor-arg>
+          <constructor-arg>
+            <object type="Sdl.Core.Globalization.LocalizableString, Sdl.Core.Globalization">
+              <constructor-arg>
+                <value>assembly://Sdl.FileTypeSupport.Bilingual.Xliff/Sdl.FileTypeSupport.Bilingual.Xliff.StringResources/SchemaValidationDescription</value>
+              </constructor-arg>
+            </object>
+          </constructor-arg>
+          <property name="HelpTopic">
+            <value>XLIFF_Schema_validation</value>
+          </property>
+        </object>
+        <object type="Sdl.FileTypeSupport.Framework.AdministrationUI.ConfigurableFilterDefinitionSettingsPageReference, Sdl.FileTypeSupport.Framework.AdministrationUi" singleton="false">
+          <constructor-arg>
+            <value>Sdl.FileTypeSupport.Filters.Verifiers.GenericTagVerifier.SettingsPage, Sdl.FileTypeSupport.Filters.Verifiers.GenericTagVerifier</value>
+          </constructor-arg>
+          <constructor-arg>
+            <value>GenericTagVerifier_Settings_ID</value>
+          </constructor-arg>
+          <constructor-arg>
+            <object type="Sdl.Core.Globalization.LocalizableString, Sdl.Core.Globalization">
+              <constructor-arg>
+                <value>assembly://Sdl.FileTypeSupport.Filters.Verifiers.GenericTagVerifier/Sdl.FileTypeSupport.Filters.Verifiers.GenericTagVerifier.StringResources/VerifierSettingsName</value>
+              </constructor-arg>
+            </object>
+          </constructor-arg>
+          <constructor-arg>
+            <object type="Sdl.Core.Globalization.LocalizableString, Sdl.Core.Globalization">
+              <constructor-arg>
+                <value>
+                  assembly://Sdl.FileTypeSupport.Filters.Verifiers.GenericTagVerifier/Sdl.FileTypeSupport.Filters.Verifiers.GenericTagVerifier.StringResources/VerifierSettingsDescription
+                </value>
+              </constructor-arg>
+            </object>
+          </constructor-arg>
+          <property name="HelpTopic">
+            <value>Generic_Tag_Verifier_Settings</value>
+          </property>
+        </object>
+      </list>
+    </property>
+  </object>
+  <!-- file parser -->
+  <object id="Extractor" type="Sdl.FileTypeSupport.Framework.Integration.FileExtractor, Sdl.FileTypeSupport.Framework.Implementation" init-method="ReconnectComponents" singleton="false">
+    <property name="BilingualParser">
+      <object type="Sdl.FileTypeSupport.Bilingual.Xliff.XLIFFReader, Sdl.FileTypeSupport.Bilingual.Xliff">
+        <!--Display Text For Inline Element.Valid Value for property are ID,EQUITEXT and TEXTCONTENT  -->
+        <property name="DisplayTextForInlineElement">
+          <value>ID</value>
+        </property>
+        <property name="WhiteSpaceHandling">
+          <value>ALWAYSPRESERVE</value>
+        </property>
+        <property name="DisplayLockedContent">
+          <value>ON</value>
+        </property>
+        <property name="ContextAsResourceType">
+          <value>ON</value>
+        </property>
+        <property name="ContextAsResourceName">
+          <value>ON</value>
+        </property>
+        <property name="ContextAsMenu">
+          <value>ON</value>
+        </property>
+        <property name="ContextAsMenuOption">
+          <value>ON</value>
+        </property>
+        <property name="ContextAsMenuName">
+          <value>ON</value>
+        </property>
+        <property name="DisplayGroupStructure">
+          <value>ON</value>
+        </property>
+        <property name="DisplayTransUnitStructure">
+          <value>ON</value>
+        </property>
+        <property name="StateMapping">
+          <object type="Sdl.FileTypeSupport.Bilingual.Xliff.Settings.CStateMapping, Sdl.FileTypeSupport.Bilingual.Xliff">
+            <property name="state_final">
+              <value>ApprovedSignOff</value>
+            </property>
+            <property name="state_needs_adaptation">
+              <value>Draft</value>
+            </property>
+            <property name="state_needs_l10n">
+              <value>Draft</value>
+            </property>
+            <property name="state_needs_review_adaptation">
+              <value>Translated</value>
+            </property>
+            <property name="state_needs_review_l10n">
+              <value>Draft</value>
+            </property>
+            <property name="state_needs_review_translation">
+              <value>Draft</value>
+            </property>
+            <property name="state_needs_translation">
+              <value>Draft</value>
+            </property>
+            <property name="state_new">
+              <value>Unspecified</value>
+            </property>
+            <property name="state_signed_off">
+              <value>ApprovedTranslation</value>
+            </property>
+            <property name="state_translated">
+              <value>Translated</value>
+            </property>
+            <property name="LockedStudioStatus">
+              <list>
+                <value>ApprovedSignOff</value>
+                <value>ApprovedTranslation</value>
+              </list>
+            </property>
+          </object>
+        </property>
+      </object>
+    </property>
+    <property name="BilingualProcessors">
+      <list>
+        <!-- The following component will cause segments to be re-numbered sequentially after segmentation:-->
+        <object type="Sdl.FileTypeSupport.Filters.Processors.SegmentRenumberingTrigger, Sdl.FileTypeSupport.Filters.Processors" singleton="false"></object>
+      </list>
+    </property>
+  </object>
+  <!-- file writer -->
+  <object id="Generator" type="Sdl.FileTypeSupport.Framework.Integration.FileGenerator, Sdl.FileTypeSupport.Framework.Implementation" init-method="ReconnectComponents" singleton="false">
+    <property name="BilingualProcessors">
+      <list></list>
+    </property>
+    <property name="BilingualWriter">
+      <object name="XLIFFWriter" type="Sdl.FileTypeSupport.Bilingual.Xliff.XLIFFWriter, Sdl.FileTypeSupport.Bilingual.Xliff" singleton="false">
+        <property name="VerifySchema">
+          <value>true</value>
+        </property>
+        <property name="SeverityForSchemaMessages">
+          <value>Warning</value>
+        </property>
+        <property name="StateMapping">
+          <object type="Sdl.FileTypeSupport.Bilingual.Xliff.Settings.CStateMapping, Sdl.FileTypeSupport.Bilingual.Xliff">
+            <property name="state_final">
+              <value>ApprovedSignOff</value>
+            </property>
+            <property name="state_needs_adaptation">
+              <value>Draft</value>
+            </property>
+            <property name="state_needs_l10n">
+              <value>Draft</value>
+            </property>
+            <property name="state_needs_review_adaptation">
+              <value>Translated</value>
+            </property>
+            <property name="state_needs_review_l10n">
+              <value>Draft</value>
+            </property>
+            <property name="state_needs_review_translation">
+              <value>Draft</value>
+            </property>
+            <property name="state_needs_translation">
+              <value>Draft</value>
+            </property>
+            <property name="state_new">
+              <value>Unspecified</value>
+            </property>
+            <property name="state_signed_off">
+              <value>ApprovedTranslation</value>
+            </property>
+            <property name="state_translated">
+              <value>Translated</value>
+            </property>
+          </object>
+        </property>
+      </object>
+    </property>
+    <!-- no need for any native writer components -->
+  </object>
+  <!-- internal objects -->
+  <object id="VerifierCollection" type="Sdl.FileTypeSupport.Framework.Integration.VerifierCollection, Sdl.FileTypeSupport.Framework.Implementation" singleton="false">
+    <property name="BilingualVerifiers">
+      <list>
+        <object name="GenericTagVerifier" type="Sdl.FileTypeSupport.Filters.Verifiers.GenericTagVerifier.GenericTagVerifier, Sdl.FileTypeSupport.Filters.Verifiers.GenericTagVerifier ">
+          <property name="Enabled">
+            <value>True</value>
+          </property>
+          <property name="CheckTagOrderChange">
+            <value>True</value>
+          </property>
+          <property name="TagOrderChange">
+            <value>Warning</value>
+          </property>
+          <property name="CheckSpaceAroundTag">
+            <value>True</value>
+          </property>
+          <property name="SpaceAroundTag">
+            <value>Warning</value>
+          </property>
+          <property name="CheckGhostTag">
+            <value>True</value>
+          </property>
+          <property name="GhostTag">
+            <value>Warning</value>
+          </property>
+          <property name="CheckTagDeleted">
+            <value>True</value>
+          </property>
+          <property name="TagDeleted">
+            <value>Warning</value>
+          </property>
+          <property name="CheckTagAdded">
+            <value>True</value>
+          </property>
+          <property name="TagAdded">
+            <value>Warning</value>
+          </property>
+          <property name="IgnoreFormatting">
+            <value>True</value>
+          </property>
+        </object>
+      </list>
+    </property>
+    <property name="NativeVerifiers">
+      <list></list>
+    </property>
+  </object>
+</objects>

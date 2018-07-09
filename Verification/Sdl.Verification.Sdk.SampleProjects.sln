@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sdl.Verification.Sdk.IdenticalCheck", "Sdl.Verification.Sdk.IdenticalCheck_notpresent\Sdl.Verification.Sdk.IdenticalCheck.csproj", "{2FFF9F7F-BA29-473B-A1B4-468C6A0B50DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sdl.Verification.Sdk.IdenticalCheck.Extended", "Sdl.Verification.Sdk.IdenticalCheck.Extended\Sdl.Verification.Sdk.IdenticalCheck.Extended.csproj", "{33CE6B44-6501-421E-A92B-0ACD0E0655A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sdl.Verification.Sdk.EditAndApplyChanges.MessageUI", "Sdl.Verification.Sdk.EditAndApplyChanges.MessageUI\Sdl.Verification.Sdk.EditAndApplyChanges.MessageUI.csproj", "{CA6CAAF6-1219-4B3B-A6F0-2C015DBA9B84}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2FFF9F7F-BA29-473B-A1B4-468C6A0B50DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FFF9F7F-BA29-473B-A1B4-468C6A0B50DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FFF9F7F-BA29-473B-A1B4-468C6A0B50DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FFF9F7F-BA29-473B-A1B4-468C6A0B50DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33CE6B44-6501-421E-A92B-0ACD0E0655A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33CE6B44-6501-421E-A92B-0ACD0E0655A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33CE6B44-6501-421E-A92B-0ACD0E0655A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33CE6B44-6501-421E-A92B-0ACD0E0655A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA6CAAF6-1219-4B3B-A6F0-2C015DBA9B84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA6CAAF6-1219-4B3B-A6F0-2C015DBA9B84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA6CAAF6-1219-4B3B-A6F0-2C015DBA9B84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA6CAAF6-1219-4B3B-A6F0-2C015DBA9B84}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4F75C778-E726-4FE3-9874-4BE9EE3CF98F}
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = Sdl.Verification.Sdk.SampleProjects.vsmdi
+	EndGlobalSection
+EndGlobal
