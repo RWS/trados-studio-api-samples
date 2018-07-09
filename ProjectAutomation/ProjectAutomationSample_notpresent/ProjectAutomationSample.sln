@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sdl.ProjectAutomation.ProjectAutomationSample", "Sdl.ProjectAutomation.ProjectAutomationSample.csproj", "{46F3789C-6A4A-4A75-9E1F-143635CF4CD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sdl.ProjectAutomation.ProjectAutomationGUI", "..\Sdl.ProjectAutomation.ProjectAutomationGUI_notpresent\Sdl.ProjectAutomation.ProjectAutomationGUI.csproj", "{336EF396-5FAC-4000-8607-FED58BC3D141}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46F3789C-6A4A-4A75-9E1F-143635CF4CD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46F3789C-6A4A-4A75-9E1F-143635CF4CD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46F3789C-6A4A-4A75-9E1F-143635CF4CD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46F3789C-6A4A-4A75-9E1F-143635CF4CD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{336EF396-5FAC-4000-8607-FED58BC3D141}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{336EF396-5FAC-4000-8607-FED58BC3D141}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{336EF396-5FAC-4000-8607-FED58BC3D141}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{336EF396-5FAC-4000-8607-FED58BC3D141}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6F298ED1-5F90-4FDA-A2E5-20B5D4BF2715}
+	EndGlobalSection
+EndGlobal

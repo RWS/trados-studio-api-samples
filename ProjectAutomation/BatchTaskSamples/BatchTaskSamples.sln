@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sdl.SDK.BatchTasks.Samples.SimplePseudoTranslate", "PseudoTranslate\Sdl.SDK.BatchTasks.Samples.SimplePseudoTranslate.csproj", "{AE9FF782-821F-4D95-817E-85FC96A4AD23}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AE9FF782-821F-4D95-817E-85FC96A4AD23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE9FF782-821F-4D95-817E-85FC96A4AD23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE9FF782-821F-4D95-817E-85FC96A4AD23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE9FF782-821F-4D95-817E-85FC96A4AD23}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2EE43264-AC5A-4B99-B21D-85263F8CE41A}
+	EndGlobalSection
+EndGlobal

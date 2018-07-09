@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bilingualdocument source-language="en-US" target-language="de-DE">
+  <unit id="1" status="exact">
+    <source>
+      <seg>
+        <b>Features</b>
+      </seg>
+    </source>
+    <target>
+      <seg>
+        <b>Leistungsmerkmale</b>
+      </seg>
+    </target>
+   <comment id="1">This segment was translated using web translator.</comment>
+    <type spec="Heading"/>
+  </unit>
+  <unit id="2" status="fuzzy">
+    <source>
+      <seg>
+        <b>The future of translation technology is here!</b>
+      </seg>
+    </source>
+    <target>
+      <seg>
+        <b>Die Zukunft der Übersetzungstechnologie hat begonnen!</b>
+      </seg>
+    </target>
+    <comment id="1">This segment was translated using web translator.</comment>
+  </unit>
+  <unit id="3" status="new">
+    <source>
+      <seg>
+        <b>The largest translation supply chain in the world</b>
+      </seg>
+    </source>
+    <target></target>
+    <type spec="Heading"/>
+  </unit>
+  <unit id="4" status="new">
+    <source>
+      <seg><i>SDL Trados</i> is the world’s most popular translation software with over 170,000 users.</seg>
+    </source>
+    <target></target>
+<type spec="Box"/>
+  </unit>
+  <unit id="5" status="new">
+    <source>
+      <seg>
+        <b>Dedicated translation environment to handle almost any file type</b>
+      </seg>
+    </source>
+    <target></target>
+    <type spec="Heading"/>
+  </unit>
+  <unit id="6" status="new">
+    <source>
+      <seg><b>Easily open</b> and start working on the widest range of file formats, from the latest Microsoft Office files to XML, from HTML to InDesign.</seg>
+    </source>
+    <target></target>
+	<type spec="Box"/>
+<comment id="1">This is the original comment</comment>
+  </unit>
+</bilingualdocument>

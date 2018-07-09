@@ -1,0 +1,816 @@
+<!--
+  Copyright © 2009 SDL. All rights reserved.
+  
+  Original file name: Excel2003.sdlfiletype
+  Last change:        18 May 2009
+--><!-- filter definition for using excel 2000-2003 document files in filter framework 2.0 via a filter framework 1 adapter --><objects xmlns="http://www.springframework.net" xmlns:sp="http://www.springframework.net">
+
+  <!-- file type information -->
+  <object id="FileTypeInformation" type="Sdl.FileTypeSupport.Framework.Integration.FileTypeInformation, Sdl.FileTypeSupport.Framework.Implementation" singleton="true">
+<property name="Hidden">
+<value>true</value>
+</property>
+    <property name="FilterDefinitionId">
+      <object type="Sdl.FileTypeSupport.Framework.FilterDefinitionId, Sdl.FileTypeSupport.Framework.Core" singleton="true">
+        <constructor-arg>
+          <value>Excel 2000-2003 v 1.0.0.0</value>
+        </constructor-arg>
+      </object>
+    </property>
+    <property name="FileTypeName">
+      <object type="Sdl.Core.Globalization.LocalizableString, Sdl.Core.Globalization">
+        <constructor-arg>
+          <value>assembly://Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings/Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings.StringResources/FileTypeName_Microsoft_Excel_2000_2003</value>
+        </constructor-arg>
+      </object>
+    </property>
+    <property name="FileTypeDocumentName">
+      <object type="Sdl.Core.Globalization.LocalizableString, Sdl.Core.Globalization">
+        <constructor-arg>
+          <value>assembly://Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings/Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings.StringResources/FileTypeNameSingular</value>
+        </constructor-arg>
+      </object>
+    </property>
+    <property name="FileTypeDocumentsName">
+      <object type="Sdl.Core.Globalization.LocalizableString, Sdl.Core.Globalization">
+        <constructor-arg>
+          <value>assembly://Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings/Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings.StringResources/FileTypeNamePlural</value>
+        </constructor-arg>
+      </object>
+    </property>
+    <property name="FileDialogWildcardExpression">
+      <value>*.xls;*.xlt</value>
+    </property>
+    <property name="DefaultFileExtension">
+      <value>xls</value>
+    </property>
+    <property name="Icon">
+      <object type="Sdl.FileTypeSupport.Framework.IntegrationApi.IconDescriptor, Sdl.FileTypeSupport.Framework.Core" factory-method="Create" singleton="false">
+        <constructor-arg>
+          <value>assembly://Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings/Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings.Excel2003Doc.ico</value>
+        </constructor-arg>
+      </object>
+    </property>
+    <property name="Description">
+      <object type="Sdl.Core.Globalization.LocalizableString, Sdl.Core.Globalization">
+        <constructor-arg>
+          <value>assembly://Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings/Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings.StringResources/FileTypeDescription</value>
+        </constructor-arg>
+      </object>
+    </property>
+  </object>
+
+  <!-- filter framework 1 filter definition -->
+  <object id="FilterFramework1FilterDefinitionFile" type="Sdl.FileTypeSupport.Framework.Integration.FilterFramework1FilterDefinitionFile, Sdl.FileTypeSupport.Framework.Implementation" singleton="true">
+    <property name="FilterFramework1FilterDefinitionFilePath" value="Excel_2_0_0_0.xml" />
+    <property name="FilterFramework1FilterDefinitionFileContent">
+      <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;!--
+	
+	Copyright © 2005 SDL International. All rights reserved.
+	
+	"Warning: This filter definition file is protected by copyright law and 
+	international treaties. Unauthorised reproduction or distribution of this file, 
+	or any portion of it, may result in severe civil and criminal penalties, and 
+	will be prosecuted to the maximum extent possible under the law."
+	
+--&gt;
+&lt;!--	
+	
+	This is a filter definition file for the TRADOS Filter PlugIn for 
+	Microsoft Excel(tm) files. It allows the adjustment of the default 
+	settings of the filter. Possible setting values are described later in 
+	the file. Any unauthorised modification of the settings might result in the 
+	filter not working correctly.
+	
+--&gt;
+&lt;!-- 	Original file name: 	Excel_2_0_0_0.xml	--&gt;
+&lt;!-- 	Version: 				2.0.0.0	--&gt;
+&lt;!-- 	Last change: 			18 May 2005	--&gt;
+&lt;FilterDefinition&gt;
+  &lt;Guid&gt;TRADOS Excel Filter 2.0.0.0&lt;/Guid&gt;
+  &lt;FileTypeName&gt;Microsoft Excel 2000-2003&lt;/FileTypeName&gt;
+  &lt;FileFilterRegExp&gt;*.xls;*.xlt&lt;/FileFilterRegExp&gt;
+  &lt;QuickTags&gt;
+    &lt;QuickTag Command="Bold"&gt;
+      &lt;StartTag&gt;&amp;lt;cf bold="on"&amp;gt;&lt;/StartTag&gt;
+      &lt;EndTag&gt;&amp;lt;/cf&amp;gt;&lt;/EndTag&gt;
+    &lt;/QuickTag&gt;
+    &lt;QuickTag Command="Italic"&gt;
+      &lt;StartTag&gt;&amp;lt;cf italic="on"&amp;gt;&lt;/StartTag&gt;
+      &lt;EndTag&gt;&amp;lt;/cf&amp;gt;&lt;/EndTag&gt;
+    &lt;/QuickTag&gt;
+    &lt;QuickTag Command="Underline"&gt;
+      &lt;StartTag&gt;&amp;lt;cf underline="single"&amp;gt;&lt;/StartTag&gt;
+      &lt;EndTag&gt;&amp;lt;/cf&amp;gt;&lt;/EndTag&gt;
+    &lt;/QuickTag&gt;
+    &lt;QuickTag Command="Subscript"&gt;
+      &lt;StartTag&gt;&amp;lt;cf subscript="on"&amp;gt;&lt;/StartTag&gt;
+      &lt;EndTag&gt;&amp;lt;/cf&amp;gt;&lt;/EndTag&gt;
+    &lt;/QuickTag&gt;
+    &lt;QuickTag Command="Superscript"&gt;
+      &lt;StartTag&gt;&amp;lt;cf superscript="on"&amp;gt;&lt;/StartTag&gt;
+      &lt;EndTag&gt;&amp;lt;/cf&amp;gt;&lt;/EndTag&gt;
+    &lt;/QuickTag&gt;
+    &lt;QuickTag Command="Custom1"&gt;
+      &lt;StartTag&gt;&amp;lt;cf strikethrough="on"&amp;gt;&lt;/StartTag&gt;
+      &lt;EndTag&gt;&amp;lt;/cf&amp;gt;&lt;/EndTag&gt;
+    &lt;/QuickTag&gt;
+    &lt;QuickTag Command="Custom2"&gt;
+      &lt;StartTag&gt;&amp;lt;cf underline="double"&amp;gt;&lt;/StartTag&gt;
+      &lt;EndTag&gt;&amp;lt;/cf&amp;gt;&lt;/EndTag&gt;
+    &lt;/QuickTag&gt;
+    &lt;QuickTag Command="Custom3"&gt;
+      &lt;StartTag&gt;&amp;lt;cf bold="off"&amp;gt;&lt;/StartTag&gt;
+      &lt;EndTag&gt;&amp;lt;/cf&amp;gt;&lt;/EndTag&gt;
+    &lt;/QuickTag&gt;
+    &lt;QuickTag Command="Custom4"&gt;
+      &lt;StartTag&gt;&amp;lt;cf italic="off"&amp;gt;&lt;/StartTag&gt;
+      &lt;EndTag&gt;&amp;lt;/cf&amp;gt;&lt;/EndTag&gt;
+    &lt;/QuickTag&gt;
+    &lt;QuickTag Command="Custom5"&gt;
+      &lt;StartTag&gt;&amp;lt;cf underline="off"&amp;gt;&lt;/StartTag&gt;
+      &lt;EndTag&gt;&amp;lt;/cf&amp;gt;&lt;/EndTag&gt;
+    &lt;/QuickTag&gt;
+    &lt;QuickTag Command="Custom6"&gt;
+      &lt;StartTag&gt;&amp;lt;cf subscript="off"&amp;gt;&lt;/StartTag&gt;
+      &lt;EndTag&gt;&amp;lt;/cf&amp;gt;&lt;/EndTag&gt;
+    &lt;/QuickTag&gt;
+    &lt;QuickTag Command="Custom7"&gt;
+      &lt;StartTag&gt;&amp;lt;cf superscript="off"&amp;gt;&lt;/StartTag&gt;
+      &lt;EndTag&gt;&amp;lt;/cf&amp;gt;&lt;/EndTag&gt;
+    &lt;/QuickTag&gt;
+    &lt;QuickTag Command="Custom8"&gt;
+      &lt;StartTag&gt;&amp;lt;cf strikethrough="off"&amp;gt;&lt;/StartTag&gt;
+      &lt;EndTag&gt;&amp;lt;/cf&amp;gt;&lt;/EndTag&gt;
+    &lt;/QuickTag&gt;
+    &lt;QuickTag Command="Custom9"&gt;
+      &lt;StartTag&gt;&amp;lt;br/&amp;gt;&lt;/StartTag&gt;
+      &lt;EndTag&gt;
+      &lt;/EndTag&gt;
+    &lt;/QuickTag&gt;
+  &lt;/QuickTags&gt;
+  &lt;Scanner Instantiation="COM"&gt;
+    &lt;Guid&gt;Trados.ExcelFileScanner2&lt;/Guid&gt;
+    &lt;Settings&gt;
+    &lt;/Settings&gt;
+  &lt;/Scanner&gt;
+  &lt;Parser Instantiation="COM"&gt;
+    &lt;Guid&gt;Trados.ExcelFileParser2&lt;/Guid&gt;
+    &lt;Settings&gt;
+      &lt;SheetsInWorkbookOrder&gt;Default&lt;/SheetsInWorkbookOrder&gt;
+      &lt;!-- SheetsInWorkbookOrder possible values: ByIndex, WorksheetAfterChartsheet, 
+			ChartsheetAfterWorksheet, Default (equal ByIndex) --&gt;
+      &lt;CellsAndShapesOnWorksheetOrder&gt;Default&lt;/CellsAndShapesOnWorksheetOrder&gt;
+      &lt;!-- CellsAndShapesOnWorksheetOrder possible values: TopLeftBottomRightByCol, 
+			TopLeftBottomRightByRow, TopRightBottomLeftByCol, TopRightBottomLeftByRow, 
+			Default (equal TopRightBottomLeftByRow) --&gt;
+      &lt;ShapesInDiagramOrder&gt;Default&lt;/ShapesInDiagramOrder&gt;
+      &lt;!-- ShapesInDiagramOrder possible values: Original, Default (equal Original) --&gt;
+      &lt;ShapesInGroupOrder&gt;Default&lt;/ShapesInGroupOrder&gt;
+      &lt;!-- ShapesInGroupOrder possible values: TopLeftBottomRightByCol, 
+			TopLeftBottomRightByRow, TopRightBottomLeftByCol, TopRightBottomLeftByRow, 
+			Default (equal TopRightBottomLeftByRow) --&gt;
+      &lt;ShapesInChartSheetOrder&gt;Default&lt;/ShapesInChartSheetOrder&gt;
+      &lt;!-- ShapesInChartSheetOrder possible values: TopLeftBottomRightByCol, 
+			TopLeftBottomRightByRow, TopRightBottomLeftByCol, TopRightBottomLeftByRow, 
+			Default (equal TopRightBottomLeftByRow) --&gt;
+      &lt;ShapesInChartShapeOrder&gt;Default&lt;/ShapesInChartShapeOrder&gt;
+      &lt;!-- ShapesInChartShapeOrder possible values: TopLeftBottomRightByCol, 
+			TopLeftBottomRightByRow, TopRightBottomLeftByCol, TopRightBottomLeftByRow, 
+			Default (equal TopRightBottomLeftByRow) --&gt;
+      &lt;CommentProcessing&gt;Default&lt;/CommentProcessing&gt;
+      &lt;!-- CommentProcessing possible values: On, Off, Default (equal Off) --&gt;
+      &lt;HiddenContentProcessing&gt;Default&lt;/HiddenContentProcessing&gt;
+      &lt;!-- HiddenContentProcessing possible values: On, Off, Default (equal Off) --&gt;
+      &lt;HeaderFooterProcessing&gt;Default&lt;/HeaderFooterProcessing&gt;
+      &lt;!-- HeaderFooterProcessing possible values: On, Off, Default (equal On) 
+			NOTE: without printer installed on the machine header or footer may
+			not be processed correctly --&gt;
+      &lt;DiagramProcessing&gt;Default&lt;/DiagramProcessing&gt;
+      &lt;!-- DiagramProcessing possible values: On (on the bacward conversion diagram will 
+			be converted to group), Off, Default (equal On) --&gt;
+      &lt;CharacterFormattingProcessing&gt;Default&lt;/CharacterFormattingProcessing&gt;
+      &lt;!-- CharacterFormattingProcessing possible values: On, Off, Default (equal On) --&gt;
+      &lt;Security&gt;
+        &lt;FileWithMacroProcessing&gt;Default&lt;/FileWithMacroProcessing&gt;
+        &lt;!-- FileWithMacroProcessing possible values: On, Off, 
+				DisableMacroInOpenedFile (XP and newer), UseExcelSecurityLevels (2k only), 
+				Default (depends on Microsoft Excel(tm) version and existence of macros in the file) --&gt;
+      &lt;/Security&gt;
+    &lt;/Settings&gt;
+    &lt;Components&gt;
+      &lt;Component Instantiation="COM"&gt;
+        &lt;Guid&gt;Trados.ExcelTextSegmenter2&lt;/Guid&gt;
+        &lt;Settings&gt;
+          &lt;SegmentationAfterBreakTags&gt;Default&lt;/SegmentationAfterBreakTags&gt;
+          &lt;!-- SegmentationAfterBreakTags possible values: On, Off, Default (equal On) --&gt;
+        &lt;/Settings&gt;
+      &lt;/Component&gt;
+      &lt;Component Instantiation="COM"&gt;
+        &lt;Guid&gt;Trados.ExcelParagraphInserter2&lt;/Guid&gt;
+        &lt;Settings&gt;
+        &lt;/Settings&gt;
+      &lt;/Component&gt;
+      &lt;Component Instantiation="COM"&gt;
+        &lt;Guid&gt;Trados.ExcelTagFormatter2&lt;/Guid&gt;
+        &lt;Settings&gt;
+        &lt;/Settings&gt;
+      &lt;/Component&gt;
+      &lt;Component Instantiation="COM"&gt;
+        &lt;Guid&gt;Trados.ExcelDisplayFormatter2&lt;/Guid&gt;
+        &lt;Settings&gt;
+          &lt;DisplayFormatting&gt;Default&lt;/DisplayFormatting&gt;
+          &lt;!-- DisplayFormatting possible values: On, Off, Default (equal On) --&gt;
+        &lt;/Settings&gt;
+      &lt;/Component&gt;
+      &lt;Component Instantiation="COM"&gt;
+        &lt;Guid&gt;Trados.ExcelDisplayFontMapper2&lt;/Guid&gt;
+        &lt;Settings&gt;
+          &lt;DisplayFontMapping&gt;Default&lt;/DisplayFontMapping&gt;
+          &lt;!-- DisplayFontMapping possible values: On, Off, Default (equal On) --&gt;
+        &lt;/Settings&gt;
+      &lt;/Component&gt;
+      &lt;Component Instantiation="COM"&gt;
+        &lt;Guid&gt;Trados.ExcelMessageFilter2&lt;/Guid&gt;
+        &lt;Settings&gt;
+          &lt;MessageFiltering&gt;Default&lt;/MessageFiltering&gt;
+          &lt;!-- MessageFiltering possible values: On, Off, FilterFontChangeMessages, 
+					FilterColourChangeMessages, Default (equal On) --&gt;
+        &lt;/Settings&gt;
+      &lt;/Component&gt;
+      &lt;Component Instantiation="COM"&gt;
+        &lt;Guid&gt;Trados.ExcelColourAdapter2&lt;/Guid&gt;
+        &lt;Settings&gt;
+          &lt;ColourAdaptation&gt;Default&lt;/ColourAdaptation&gt;
+          &lt;!-- ColourAdaptation possible values: Off, AllToBlack, DarkenedLightColours, 
+					Default (equal DarkenedLightColours) --&gt;
+        &lt;/Settings&gt;
+      &lt;/Component&gt;
+      &lt;Component Instantiation="COM"&gt;
+        &lt;Guid&gt;Trados.ExcelFontAdapter2&lt;/Guid&gt;
+        &lt;Settings&gt;
+          &lt;FontAdaptation&gt;Default&lt;/FontAdaptation&gt;
+          &lt;!-- FontAdaptation possible values: Off, AllToSingleSize, ResizeToVisible, 
+					Default (equal ResizeToVisible) --&gt;
+          &lt;MinFontSize&gt;Default&lt;/MinFontSize&gt;
+          &lt;ReductionTreshold&gt;Default&lt;/ReductionTreshold&gt;
+          &lt;ReductionFactor&gt;Default&lt;/ReductionFactor&gt;
+          &lt;SingleSize&gt;Default&lt;/SingleSize&gt;
+        &lt;/Settings&gt;
+      &lt;/Component&gt;
+    &lt;/Components&gt;
+  &lt;/Parser&gt;
+  &lt;InteractiveParser Instantiation="COM"&gt;
+    &lt;Components&gt;
+      &lt;Component Instantiation="COM"&gt;
+        &lt;Guid&gt;Trados.ExcelTagFormatter2&lt;/Guid&gt;
+        &lt;Settings&gt;
+        &lt;/Settings&gt;
+      &lt;/Component&gt;
+      &lt;Component Instantiation="COM"&gt;
+        &lt;Guid&gt;Trados.ExcelDisplayFormatter2&lt;/Guid&gt;
+        &lt;Settings&gt;
+        &lt;/Settings&gt;
+      &lt;/Component&gt;
+      &lt;Component Instantiation="COM"&gt;
+        &lt;Guid&gt;Trados.ExcelDisplayFontMapper2&lt;/Guid&gt;
+        &lt;Settings&gt;
+          &lt;DisplayFontMapping&gt;Default&lt;/DisplayFontMapping&gt;
+          &lt;!-- DisplayFontMapping possible values: On, Off, Default (equal On) --&gt;
+        &lt;/Settings&gt;
+      &lt;/Component&gt;
+      &lt;Component Instantiation="COM"&gt;
+        &lt;Guid&gt;Trados.ExcelMessageFilter2&lt;/Guid&gt;
+        &lt;Settings&gt;
+          &lt;MessageFiltering&gt;Default&lt;/MessageFiltering&gt;
+          &lt;!-- MessageFiltering possible values: On, Off, FilterFontChangeMessages, 
+					FilterColourChangeMessages, Default (equal On) --&gt;
+        &lt;/Settings&gt;
+      &lt;/Component&gt;
+      &lt;Component Instantiation="COM"&gt;
+        &lt;Guid&gt;Trados.ExcelColourAdapter2&lt;/Guid&gt;
+        &lt;Settings&gt;
+        &lt;/Settings&gt;
+      &lt;/Component&gt;
+      &lt;Component Instantiation="COM"&gt;
+        &lt;Guid&gt;Trados.ExcelFontAdapter2&lt;/Guid&gt;
+        &lt;Settings&gt;
+        &lt;/Settings&gt;
+      &lt;/Component&gt;
+    &lt;/Components&gt;
+  &lt;/InteractiveParser&gt;
+  &lt;PreviewWriter Instantiation="COM"&gt;
+    &lt;Guid&gt;Trados.ExcelPreviewFileWriter2&lt;/Guid&gt;
+    &lt;Settings&gt;
+      &lt;TextExceedingMSExcelLimitsBackwardConversion&gt;Default&lt;/TextExceedingMSExcelLimitsBackwardConversion&gt;
+      &lt;!-- TextExceedingMSExcelLimitsBackwardConversion possible values: 
+			BreakConversion, Skip, MakeShorter, Default (equal BreakConversion) --&gt;
+      &lt;Security&gt;
+        &lt;FilesWithMacrosProcessing&gt;Default&lt;/FilesWithMacrosProcessing&gt;
+        &lt;!-- FileWithMacroProcessing possible values: On, Off, 
+				DisableMacroInOpenedFile (XP and newer), UseExcelSecurityLevels (2k only), 
+				Default (depends on Microsoft Excel(tm) version and existence of macros in the file) --&gt;
+      &lt;/Security&gt;
+    &lt;/Settings&gt;
+    &lt;Components&gt;
+      &lt;Component Instantiation="COM"&gt;
+        &lt;Guid&gt;Trados.ExcelParagraphIdentifier2&lt;/Guid&gt;
+        &lt;Settings&gt;
+        &lt;/Settings&gt;
+      &lt;/Component&gt;
+      &lt;Component Instantiation="COM"&gt;
+        &lt;Guid&gt;Trados.ExcelParagraphRemover2&lt;/Guid&gt;
+        &lt;Settings&gt;
+        &lt;/Settings&gt;
+      &lt;/Component&gt;
+      &lt;Component Instantiation="COM"&gt;
+        &lt;Guid&gt;Trados.ExcelFormattingNormalizer2&lt;/Guid&gt;
+        &lt;Settings&gt;
+        &lt;/Settings&gt;
+      &lt;/Component&gt;
+      &lt;Component Instantiation="COM"&gt;
+        &lt;Guid&gt;Trados.ExcelFontMapper2&lt;/Guid&gt;
+        &lt;Settings&gt;
+          &lt;FontMapping&gt;Default&lt;/FontMapping&gt;
+          &lt;!-- FontMapping possible values: On, Off, Default (equal On) --&gt;
+        &lt;/Settings&gt;
+      &lt;/Component&gt;
+    &lt;/Components&gt;
+  &lt;/PreviewWriter&gt;
+  &lt;Writer Instantiation="COM"&gt;
+    &lt;Guid&gt;Trados.ExcelFileWriter2&lt;/Guid&gt;
+    &lt;Settings&gt;
+      &lt;TextExceedingMSExcelLimitsBackwardConversion&gt;Default&lt;/TextExceedingMSExcelLimitsBackwardConversion&gt;
+      &lt;!-- TextExceedingMSExcelLimitsBackwardConversion possible values: 
+			BreakConversion, Skip, MakeShorter, Default (equal BreakConversion) --&gt;
+      &lt;Security&gt;
+        &lt;FilesWithMacrosProcessing&gt;Default&lt;/FilesWithMacrosProcessing&gt;
+        &lt;!-- FileWithMacroProcessing possible values: On, Off, 
+				DisableMacroInOpenedFile (XP and newer), UseExcelSecurityLevels (2k only), 
+				Default (depends on Microsoft Excel(tm) version and existence of macros in the file) --&gt;
+      &lt;/Security&gt;
+    &lt;/Settings&gt;
+    &lt;Components&gt;
+      &lt;Component Instantiation="COM"&gt;
+        &lt;Guid&gt;Trados.ExcelParagraphIdentifier2&lt;/Guid&gt;
+        &lt;Settings&gt;
+        &lt;/Settings&gt;
+      &lt;/Component&gt;
+      &lt;Component Instantiation="COM"&gt;
+        &lt;Guid&gt;Trados.ExcelParagraphRemover2&lt;/Guid&gt;
+        &lt;Settings&gt;
+        &lt;/Settings&gt;
+      &lt;/Component&gt;
+      &lt;Component Instantiation="COM"&gt;
+        &lt;Guid&gt;Trados.ExcelFormattingNormalizer2&lt;/Guid&gt;
+        &lt;Settings&gt;
+        &lt;/Settings&gt;
+      &lt;/Component&gt;
+      &lt;Component Instantiation="COM"&gt;
+        &lt;Guid&gt;Trados.ExcelFontMapper2&lt;/Guid&gt;
+        &lt;Settings&gt;
+          &lt;FontMapping&gt;Default&lt;/FontMapping&gt;
+          &lt;!-- FontMapping possible values: On, Off, Default (equal On) --&gt;
+                    &lt;FontMappingRules&gt;
+            &lt;FontMappingRule&gt;
+              &lt;LanguageAndRegion&gt;ar-SA&lt;/LanguageAndRegion&gt;
+              &lt;AllFonts /&gt;
+              &lt;ApplyFont&gt;Arial&lt;/ApplyFont&gt;
+            &lt;/FontMappingRule&gt;
+            &lt;FontMappingRule&gt;
+              &lt;LanguageAndRegion&gt;zh-TW&lt;/LanguageAndRegion&gt;
+              &lt;AllFonts /&gt;
+              &lt;ApplyFont&gt;PMingLiU&lt;/ApplyFont&gt;
+            &lt;/FontMappingRule&gt;
+            &lt;FontMappingRule&gt;
+              &lt;LanguageAndRegion&gt;zh-CN&lt;/LanguageAndRegion&gt;
+              &lt;AllFonts /&gt;
+              &lt;ApplyFont&gt;SimSun&lt;/ApplyFont&gt;
+            &lt;/FontMappingRule&gt;
+            &lt;FontMappingRule&gt;
+              &lt;LanguageAndRegion&gt;th-TH&lt;/LanguageAndRegion&gt;
+              &lt;AllFonts /&gt;
+              &lt;ApplyFont&gt;Tahoma&lt;/ApplyFont&gt;
+            &lt;/FontMappingRule&gt;
+            &lt;FontMappingRule&gt;
+              &lt;LanguageAndRegion&gt;he-IL&lt;/LanguageAndRegion&gt;
+              &lt;AllFonts /&gt;
+              &lt;ApplyFont&gt;Arial&lt;/ApplyFont&gt;
+            &lt;/FontMappingRule&gt;
+            &lt;FontMappingRule&gt;
+              &lt;LanguageAndRegion&gt;vi-VN&lt;/LanguageAndRegion&gt;
+              &lt;AllFonts /&gt;
+              &lt;ApplyFont&gt;Arial&lt;/ApplyFont&gt;
+            &lt;/FontMappingRule&gt;
+            &lt;FontMappingRule&gt;
+              &lt;LanguageAndRegion&gt;ja-JP&lt;/LanguageAndRegion&gt;
+              &lt;AllFonts /&gt;
+              &lt;ApplyFont&gt;MS Mincho&lt;/ApplyFont&gt;
+            &lt;/FontMappingRule&gt;
+          &lt;/FontMappingRules&gt;
+        &lt;/Settings&gt;
+      &lt;/Component&gt;
+    &lt;/Components&gt;
+  &lt;/Writer&gt;
+&lt;/FilterDefinition&gt;
+      </value>
+    </property>
+  </object>
+
+  <!-- file sniffer -->
+  <object id="FileSniffer" type="Sdl.FileTypeSupport.Framework.Adapter.Framework1.Framework1FileSniffer, Sdl.FileTypeSupport.Framework.Adapter.Framework1" singleton="true">
+    <property name="FilterFramework1FilterDefinition" ref="FilterFramework1FilterDefinitionFile" />
+  </object>
+
+  <!-- settings page -->
+  <object id="FilterDefinitionAdministratorUI" type="Sdl.FileTypeSupport.Framework.AdministrationUI.FilterDefinitionAdministratorUI, Sdl.FileTypeSupport.Framework.AdministrationUi" singleton="false">
+    <property name="SettingsPageReferences">
+      <list>
+        <object type="Sdl.FileTypeSupport.Framework.AdministrationUI.ConfigurableFilterDefinitionSettingsPageReference, Sdl.FileTypeSupport.Framework.AdministrationUi" singleton="false">
+          <constructor-arg>
+            <value>Sdl.FileTypeSupport.Framework.AdministrationUI.QuickTagsUI.QuickTagsSettingsPage, Sdl.FileTypeSupport.Framework.AdministrationUi</value>
+          </constructor-arg>
+          <constructor-arg>
+            <!-- Fixed id, because this referenced elsewhere -->
+            <value>QuickInsertSettingsPage</value>
+          </constructor-arg>
+          <constructor-arg>
+            <object type="Sdl.Core.Globalization.LocalizableString, Sdl.Core.Globalization">
+              <constructor-arg>
+                <value>assembly://Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings/Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings.StringResources/QuickInsert</value>
+              </constructor-arg>
+            </object>
+          </constructor-arg>
+          <constructor-arg>
+            <object type="Sdl.Core.Globalization.LocalizableString, Sdl.Core.Globalization">
+              <constructor-arg>
+                <value>QuickInsert settings for Windows RC File Type</value>
+              </constructor-arg>
+            </object>
+          </constructor-arg>
+          <property name="HelpTopic">
+            <value>QuickInsert</value>
+          </property>
+        </object>
+        <object type="Sdl.FileTypeSupport.Framework.AdministrationUI.ConfigurableFilterDefinitionSettingsPageReference, Sdl.FileTypeSupport.Framework.AdministrationUi" singleton="false">
+          <constructor-arg>
+            <object type="Sdl.FileTypeSupport.Framework.AdministrationUIHelpers.LegacyFilterDefinitionSettingsPage, Sdl.FileTypeSupport.Framework.AdministrationUi">
+              <constructor-arg>
+                <value>Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings.ContentAndMacroProcessing, Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings</value>
+              </constructor-arg>
+            </object>
+          </constructor-arg>
+          <constructor-arg>
+            <value>Excel 2003 Content and macro processing ID</value>
+          </constructor-arg>
+          <constructor-arg>
+            <object type="Sdl.Core.Globalization.LocalizableString, Sdl.Core.Globalization">
+              <constructor-arg>
+                <value>assembly://Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings/Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings.StringResources/CONTENT_AND_MACRO_PROCESSING</value>
+              </constructor-arg>
+            </object>
+          </constructor-arg>
+          <constructor-arg>
+            <object type="Sdl.Core.Globalization.LocalizableString, Sdl.Core.Globalization">
+              <constructor-arg>
+                <value>Content and macro Settings for Excel 2003 File Type</value>
+              </constructor-arg>
+            </object>
+          </constructor-arg>
+          <property name="HelpTopic">
+            <value>Excel_2003_Optional_Content</value>
+          </property>
+        </object>
+        <object type="Sdl.FileTypeSupport.Framework.AdministrationUI.ConfigurableFilterDefinitionSettingsPageReference, Sdl.FileTypeSupport.Framework.AdministrationUi" singleton="false">
+          <constructor-arg>
+            <object type="Sdl.FileTypeSupport.Framework.AdministrationUIHelpers.LegacyFilterDefinitionSettingsPage, Sdl.FileTypeSupport.Framework.AdministrationUi">
+              <constructor-arg>
+                <value>Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings.TextExceedingLengthLimit, Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings</value>
+              </constructor-arg>
+            </object>
+          </constructor-arg>
+          <constructor-arg>
+            <value>Excel 2003 Text exceeding length limit ID</value>
+          </constructor-arg>
+          <constructor-arg>
+            <object type="Sdl.Core.Globalization.LocalizableString, Sdl.Core.Globalization">
+              <constructor-arg>
+                <value>assembly://Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings/Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings.StringResources/TEXT_EXCEEDING_LENGTH_LIMIT</value>
+              </constructor-arg>
+            </object>
+          </constructor-arg>
+          <constructor-arg>
+            <object type="Sdl.Core.Globalization.LocalizableString, Sdl.Core.Globalization">
+              <constructor-arg>
+                <value>Text exceeding length limit Settings for Excel 2003 File Type</value>
+              </constructor-arg>
+            </object>
+          </constructor-arg>
+          <property name="HelpTopic">
+            <value>Text_exceeding_length</value>
+          </property>
+        </object>
+        <object type="Sdl.FileTypeSupport.Framework.AdministrationUI.ConfigurableFilterDefinitionSettingsPageReference, Sdl.FileTypeSupport.Framework.AdministrationUi" singleton="false">
+          <constructor-arg>
+            <object type="Sdl.FileTypeSupport.Framework.AdministrationUIHelpers.LegacyFilterDefinitionSettingsPage, Sdl.FileTypeSupport.Framework.AdministrationUi">
+              <constructor-arg>
+                <value>Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings.OrderOfSheetsAndShapes, Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings</value>
+              </constructor-arg>
+            </object>
+          </constructor-arg>
+          <constructor-arg>
+            <value>Excel 2003 Order of sheets and shapes ID</value>
+          </constructor-arg>
+          <constructor-arg>
+            <object type="Sdl.Core.Globalization.LocalizableString, Sdl.Core.Globalization">
+              <constructor-arg>
+                <value>assembly://Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings/Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings.StringResources/ORDER_OF_SHEETS_AND_SHAPES</value>
+              </constructor-arg>
+            </object>
+          </constructor-arg>
+          <constructor-arg>
+            <object type="Sdl.Core.Globalization.LocalizableString, Sdl.Core.Globalization">
+              <constructor-arg>
+                <value>Order of sheets and shapes Settings for Excel 2003 File Type</value>
+              </constructor-arg>
+            </object>
+          </constructor-arg>
+          <property name="HelpTopic">
+            <value>Order_of_sheets_and_shapes</value>
+          </property>
+        </object>
+        <object type="Sdl.FileTypeSupport.Framework.AdministrationUI.ConfigurableFilterDefinitionSettingsPageReference, Sdl.FileTypeSupport.Framework.AdministrationUi" singleton="false">
+          <constructor-arg>
+            <object type="Sdl.FileTypeSupport.Framework.AdministrationUIHelpers.LegacyFilterDefinitionSettingsPage, Sdl.FileTypeSupport.Framework.AdministrationUi">
+              <constructor-arg>
+                <value>Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings.FontMapping, Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings</value>
+              </constructor-arg>
+            </object>
+          </constructor-arg>
+          <constructor-arg>
+            <value>Excel 2000-2003 Font mapping ID</value>
+          </constructor-arg>
+          <constructor-arg>
+            <object type="Sdl.Core.Globalization.LocalizableString, Sdl.Core.Globalization">
+              <constructor-arg>
+                <value>assembly://Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings/Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings.StringResources/Font_Mapping</value>
+              </constructor-arg>
+            </object>
+          </constructor-arg>
+          <constructor-arg>
+            <object type="Sdl.Core.Globalization.LocalizableString, Sdl.Core.Globalization">
+              <constructor-arg>
+                <value>Font mapping Settings for Excel 2000-2003</value>
+              </constructor-arg>
+            </object>
+          </constructor-arg>
+          <property name="HelpTopic">
+            <value>Font_Mapping</value>
+          </property>
+        </object>
+        <object type="Sdl.FileTypeSupport.Framework.AdministrationUI.ConfigurableFilterDefinitionSettingsPageReference, Sdl.FileTypeSupport.Framework.AdministrationUi" singleton="false">
+          <constructor-arg>
+            <value>Sdl.FileTypeSupport.Filters.Verifiers.GenericTagVerifier.SettingsPage, Sdl.FileTypeSupport.Filters.Verifiers.GenericTagVerifier</value>
+          </constructor-arg>
+          <constructor-arg>
+            <value>GenericTagVerifier_Settings_ID</value>
+          </constructor-arg>
+          <constructor-arg>
+            <object type="Sdl.Core.Globalization.LocalizableString, Sdl.Core.Globalization">
+              <constructor-arg>
+                <value>assembly://Sdl.FileTypeSupport.Filters.Verifiers.GenericTagVerifier/Sdl.FileTypeSupport.Filters.Verifiers.GenericTagVerifier.StringResources/VerifierSettingsName</value>
+              </constructor-arg>
+            </object>
+          </constructor-arg>
+          <constructor-arg>
+            <object type="Sdl.Core.Globalization.LocalizableString, Sdl.Core.Globalization">
+              <constructor-arg>
+                <value>
+                  assembly://Sdl.FileTypeSupport.Filters.Verifiers.GenericTagVerifier/Sdl.FileTypeSupport.Filters.Verifiers.GenericTagVerifier.StringResources/VerifierSettingsDescription
+                </value>
+              </constructor-arg>
+            </object>
+          </constructor-arg>
+          <property name="HelpTopic">
+            <value>Generic_Tag_Verifier_Settings</value>
+          </property>
+        </object>
+      </list>
+    </property>
+  </object>
+
+  <!-- native file parser -->
+  <object id="Extractor" type="Sdl.FileTypeSupport.Framework.Integration.FileExtractor, Sdl.FileTypeSupport.Framework.Implementation" init-method="ReconnectComponents" singleton="false">
+    <property name="NativeExtractor">
+      <object type="Sdl.FileTypeSupport.Framework.Native.NativeExtractor, Sdl.FileTypeSupport.Framework.Implementation" init-method="ReconnectComponents" singleton="false">
+        <property name="Parser">
+          <object type="Sdl.FileTypeSupport.Framework.Adapter.Framework1.Parser, Sdl.FileTypeSupport.Framework.Adapter.Framework1" singleton="false">
+            <property name="FilterFramework1FilterDefinition" ref="FilterFramework1FilterDefinitionFile" />
+            <property name="ConvertToPairedTags">
+              <value>false</value>
+            </property>
+          </object>
+        </property>
+        <property name="Processors">
+          <list>
+            <object type="Sdl.FileTypeSupport.Framework.NativeApi.Implementation.NativeTextNormalizer, Sdl.FileTypeSupport.Framework.Core" singleton="false" />
+            <object type="Sdl.FileTypeSupport.Framework.Adapter.TagProcessing.TagPairer, Sdl.FileTypeSupport.Framework.Adapter.TagProcessing" singleton="false">
+            </object>
+            <object id="FormattingProcessor" type="Sdl.FileTypeSupport.Framework.Adapter.TagProcessing.Framework1FormattingProcessor, Sdl.FileTypeSupport.Framework.Adapter.TagProcessing" singleton="false">
+              <property name="DisplayFormatting">
+                <value>Default</value>
+              </property>
+            </object>
+            <object type="Sdl.FileTypeSupport.Framework.Adapter.TagProcessing.ExcelFilterContext, Sdl.FileTypeSupport.Framework.Adapter.TagProcessing" singleton="false">
+            </object>
+            <object type="Sdl.FileTypeSupport.Framework.Adapter.TagProcessing.ExcelWorksheetNameLengthContext, Sdl.FileTypeSupport.Framework.Adapter.TagProcessing" singleton="false" />
+
+          </list>
+        </property>
+      </object>
+    </property>
+
+    <property name="FileTweakers">
+      <list>
+        <object type="Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings.Excel2003PreTweaker, Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings" singleton="false">
+          <property name="RequireValidEncoding">
+            <value>False</value>
+          </property>
+        </object>
+      </list>
+    </property>
+
+    <property name="BilingualProcessors">
+      <list>
+      </list>
+    </property>
+
+  </object>
+
+  <!-- writer -->
+  <object id="Generator" type="Sdl.FileTypeSupport.Framework.Integration.FileGenerator, Sdl.FileTypeSupport.Framework.Implementation" init-method="ReconnectComponents" singleton="false">
+    <property name="NativeGenerator">
+      <object type="Sdl.FileTypeSupport.Framework.Native.NativeGenerator, Sdl.FileTypeSupport.Framework.Implementation" singleton="false">
+        <property name="Writer">
+          <object type="Sdl.FileTypeSupport.Framework.Adapter.Framework1.Writer, Sdl.FileTypeSupport.Framework.Adapter.Framework1" singleton="false">
+          </object>
+        </property>
+      </object>
+    </property>
+  </object>
+
+  <!-- preview types -->
+  <object id="PreviewSets" type="Sdl.FileTypeSupport.Framework.Integration.PreviewSets, Sdl.FileTypeSupport.Framework.Implementation" lazy-init="true" singleton="true">
+    <constructor-arg>
+      <list>
+
+        <!-- external preview -->
+        <object type="Sdl.FileTypeSupport.Framework.Integration.PreviewSet, Sdl.FileTypeSupport.Framework.Implementation" singleton="true">
+          <property name="Id">
+            <object type="Sdl.FileTypeSupport.Framework.IntegrationApi.PreviewSetId, Sdl.FileTypeSupport.Framework.Core" singleton="true">
+              <constructor-arg>
+                <value>ExternalXlsPreview</value>
+              </constructor-arg>
+            </object>
+          </property>
+          <property name="Name">
+            <object type="Sdl.Core.Globalization.LocalizableString, Sdl.Core.Globalization" singleton="true">
+              <constructor-arg>
+                <value>assembly://Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings/Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings.StringResources/ExternalPreview_Name</value>
+              </constructor-arg>
+            </object>
+          </property>
+          <property name="Description">
+            <object type="Sdl.Core.Globalization.LocalizableString, Sdl.Core.Globalization" singleton="true">
+              <constructor-arg>
+                <value>assembly://Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings/Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings.StringResources/ExternalPreview_Description</value>
+              </constructor-arg>
+            </object>
+          </property>
+          <property name="Source">
+            <object type="Sdl.FileTypeSupport.Framework.Integration.ApplicationPreviewType, Sdl.FileTypeSupport.Framework.Implementation" singleton="true">
+              <property name="TargetGeneratorId">
+                <object type="Sdl.FileTypeSupport.Framework.IntegrationApi.GeneratorId, Sdl.FileTypeSupport.Framework.Core">
+                  <constructor-arg>
+                    <value>DefaultPreview</value>
+                  </constructor-arg>
+                </object>
+              </property>
+              <property name="SingleFilePreviewApplicationId">
+                <object type="Sdl.FileTypeSupport.Framework.IntegrationApi.PreviewApplicationId, Sdl.FileTypeSupport.Framework.Core">
+                  <constructor-arg>
+                    <value>ExternalPreview</value>
+                  </constructor-arg>
+                </object>
+              </property>
+            </object>
+          </property>
+          <property name="Target">
+            <object type="Sdl.FileTypeSupport.Framework.Integration.ApplicationPreviewType, Sdl.FileTypeSupport.Framework.Implementation" singleton="true">
+              <property name="TargetGeneratorId">
+                <object type="Sdl.FileTypeSupport.Framework.IntegrationApi.GeneratorId, Sdl.FileTypeSupport.Framework.Core">
+                  <constructor-arg>
+                    <value>DefaultPreview</value>
+                  </constructor-arg>
+                </object>
+              </property>
+              <property name="SingleFilePreviewApplicationId">
+                <object type="Sdl.FileTypeSupport.Framework.IntegrationApi.PreviewApplicationId, Sdl.FileTypeSupport.Framework.Core">
+                  <constructor-arg>
+                    <value>ExternalPreview</value>
+                  </constructor-arg>
+                </object>
+              </property>
+            </object>
+          </property>
+        </object>
+
+      </list>
+    </constructor-arg>
+    <!-- default preview -->
+    <property name="DefaultApplicationPreview">
+      <object type="Sdl.FileTypeSupport.Framework.IntegrationApi.PreviewSetId, Sdl.FileTypeSupport.Framework.Core" singleton="true">
+        <constructor-arg>
+          <value>ExternalXlsPreview</value>
+        </constructor-arg>
+      </object>
+    </property>
+  </object>
+
+  <!-- preview generators -->
+  <object id="Generator_DefaultPreview" type="Sdl.FileTypeSupport.Framework.Integration.FileGenerator, Sdl.FileTypeSupport.Framework.Implementation" init-method="ReconnectComponents" singleton="false">
+    <property name="NativeGenerator">
+      <object type="Sdl.FileTypeSupport.Framework.Native.NativeGenerator, Sdl.FileTypeSupport.Framework.Implementation" singleton="false">
+        <property name="Writer">
+          <object type="Sdl.FileTypeSupport.Framework.Adapter.Framework1.Writer, Sdl.FileTypeSupport.Framework.Adapter.Framework1" singleton="false" />
+        </property>
+      </object>
+    </property>
+  </object>
+
+  <!-- preview controls -->
+  <object id="PreviewApplication_ExternalPreview" type="Sdl.FileTypeSupport.Framework.PreviewControls.GenericExteralPreviewApplication, Sdl.FileTypeSupport.Framework.PreviewControls" singleton="false">
+    <property name="ApplicationPath">
+      <value />
+    </property>
+  </object>
+
+  <!-- quick inserts -->
+  <object id="QuickTags" type="Sdl.FileTypeSupport.Framework.Integration.QuickTags, Sdl.FileTypeSupport.Framework.Implementation" singleton="true">
+    <property name="StandardQuickTags">
+      <object type="Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings.QuickTagBuilder, Sdl.FileTypeSupport.Framework.Adapter.Excel2003FilterSettings" factory-method="BuildStandardQuickTags" singleton="false" />
+    </property>
+  </object>
+
+  <!-- verifiers -->
+  <object id="VerifierCollection" type="Sdl.FileTypeSupport.Framework.Integration.VerifierCollection, Sdl.FileTypeSupport.Framework.Implementation" singleton="false">
+    <property name="BilingualVerifiers">
+      <list>
+        <object name="GenericTagVerifier" type="Sdl.FileTypeSupport.Filters.Verifiers.GenericTagVerifier.GenericTagVerifier, Sdl.FileTypeSupport.Filters.Verifiers.GenericTagVerifier" singleton="false">
+          <property name="Enabled">
+            <value>True</value>
+          </property>
+          <property name="CheckTagOrderChange">
+            <value>True</value>
+          </property>
+          <property name="TagOrderChange">
+            <value>Warning</value>
+          </property>
+          <property name="CheckSpaceAroundTag">
+            <value>True</value>
+          </property>
+          <property name="SpaceAroundTag">
+            <value>Warning</value>
+          </property>
+          <property name="CheckGhostTag">
+            <value>True</value>
+          </property>
+          <property name="GhostTag">
+            <value>Warning</value>
+          </property>
+          <property name="CheckTagDeleted">
+            <value>True</value>
+          </property>
+          <property name="TagDeleted">
+            <value>Warning</value>
+          </property>
+          <property name="CheckTagAdded">
+            <value>True</value>
+          </property>
+          <property name="TagAdded">
+            <value>Warning</value>
+          </property>
+          <property name="IgnoreFormatting">
+            <value>True</value>
+          </property>
+        </object>
+      </list>
+    </property>
+    <property name="NativeVerifiers">
+      <list>
+      </list>
+    </property>
+  </object>
+
+</objects>
