@@ -4,16 +4,14 @@ using System.Collections.Generic;
 
 namespace Sdl.Notifications.Sample
 {
-    class StudioTestNotification : IStudioNotification
+    internal class StudioTestNotification : IStudioNotification
     {
-        private Guid guid;
-
         public StudioTestNotification(Guid guid)
         {
-            this.guid = guid;
+            Id = guid;
         }
 
-        public Guid Id => new Guid();
+        public Guid Id { get; }
 
         public string Title { get; set; }
 

@@ -13,6 +13,7 @@ namespace Sdl.Notifications.Sample
     public class AddNotificationsAction : AbstractAction
     {
         private const string NOTIFICATION_GROUP_ID = "6c46719f-a179-4cd6-952f-3ac56c29f521";
+
         protected override void Execute()
         {
             IStudioEventAggregator ea = SdlTradosStudio.Application.GetService<IStudioEventAggregator>();
@@ -20,13 +21,12 @@ namespace Sdl.Notifications.Sample
             var notification1 = new StudioTestNotification(new Guid()) { Title = "Dog title", AlwaysVisibleDetails = new List<string> { "AAA", "BBB", "CCC" } };
             var addTestGroup1 = new AddStudioNotificationToGroupEvent(NOTIFICATION_GROUP_ID, notification1);
 
-            ea.Publish<AddStudioNotificationToGroupEvent>(addTestGroup1);
+            ea.Publish(addTestGroup1);
 
-
-            var notification2 = new StudioTestNotification(new Guid()) { Title = "Cat title", AlwaysVisibleDetails = new List<string> { "111"} };
+            var notification2 = new StudioTestNotification(new Guid()) { Title = "Cat title", AlwaysVisibleDetails = new List<string> { "111" } };
             var addTestGroup2 = new AddStudioNotificationToGroupEvent(NOTIFICATION_GROUP_ID, notification2);
 
-            ea.Publish<AddStudioNotificationToGroupEvent>(addTestGroup2);
+            ea.Publish(addTestGroup2);
         }
     }
 }

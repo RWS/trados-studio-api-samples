@@ -6,7 +6,6 @@ using Sdl.TranslationStudioAutomation.IntegrationApi;
 using System;
 using System.Collections.Generic;
 
-
 namespace Sdl.Notifications.Sample
 {
     [Action("MyAddGroupNotificationAction", Icon = "MyAction_Icon")]
@@ -20,7 +19,7 @@ namespace Sdl.Notifications.Sample
         {
             IStudioEventAggregator ea = SdlTradosStudio.Application.GetService<IStudioEventAggregator>();
 
-            var notificationGroup = new StudioTestNotificationsGroup(new Guid(NOTIFICATION_GROUP_ID), NOTIFICATION_GROUP_ID)
+            var notificationGroup = new StudioTestNotificationsGroup(NOTIFICATION_GROUP_ID)
             {
                 Title = NOTIFICATION_GROUP_TITLE
             };
@@ -30,9 +29,7 @@ namespace Sdl.Notifications.Sample
 
             var addTestGroup = new AddStudioGroupNotificationEvent(notificationGroup);
 
-            ea.Publish<AddStudioGroupNotificationEvent>(addTestGroup);
-
-          
+            ea.Publish(addTestGroup);
         }
     }
 }

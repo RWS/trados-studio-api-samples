@@ -3,7 +3,6 @@ using Sdl.Desktop.IntegrationApi.Extensions;
 using Sdl.Desktop.IntegrationApi.Interfaces;
 using Sdl.Desktop.IntegrationApi.Notifications.Events;
 using Sdl.TranslationStudioAutomation.IntegrationApi;
-using System;
 
 namespace Sdl.Notifications.Sample
 {
@@ -17,7 +16,7 @@ namespace Sdl.Notifications.Sample
 
             var showNotification = new ShowStudioNotificationsViewEvent(true, true);
 
-            ea.Publish<ShowStudioNotificationsViewEvent>(showNotification);
+            ea.Publish(showNotification);
         }
     }
 }

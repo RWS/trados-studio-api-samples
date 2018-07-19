@@ -1,19 +1,15 @@
 ﻿using Sdl.Desktop.IntegrationApi.Interfaces;
-using System;
 using System.Collections.ObjectModel;
 
 namespace Sdl.Notifications.Sample
 {
     internal class StudioTestNotificationsGroup : IStudioGroupNotification
     {
-        private Guid guid;
-        private string _key;
+        private readonly ObservableCollection<IStudioNotification> _notifications;
 
-        ObservableCollection<IStudioNotification> _notifications;
-        public StudioTestNotificationsGroup(Guid guid, string key)
+        public StudioTestNotificationsGroup(string key)
         {
-            this.guid = guid;
-            _key = key;
+            Key = key;
             _notifications = new ObservableCollection<IStudioNotification>();
         }
 
@@ -23,7 +19,7 @@ namespace Sdl.Notifications.Sample
 
         public bool IsActionVisible { get => false; set { } }
 
-        public string Key => _key;
+        public string Key { get; }
 
         public ObservableCollection<IStudioNotification> Notifications { get => _notifications; set { } }
     }
