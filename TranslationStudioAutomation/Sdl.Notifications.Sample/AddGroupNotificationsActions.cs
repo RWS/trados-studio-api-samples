@@ -6,6 +6,7 @@ using Sdl.TranslationStudioAutomation.IntegrationApi;
 using System;
 using System.Collections.Generic;
 
+
 namespace Sdl.Notifications.Sample
 {
     [Action("MyAddGroupNotificationAction", Icon = "MyAction_Icon")]

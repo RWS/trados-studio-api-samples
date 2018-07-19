@@ -92,6 +92,7 @@
     <Compile Include="AddGroupNotificationsActions.cs" />
     <Compile Include="AddNotificationsAction.cs" />
     <Compile Include="BasicCommand.cs" />
+    <Compile Include="CompleteNotificationFlowAction.cs" />
     <Compile Include="CreatingRibbonGroups.cs" />
     <Compile Include="DisableButtonCommand.cs" />
     <Compile Include="Properties\PluginProperties.cs" />
