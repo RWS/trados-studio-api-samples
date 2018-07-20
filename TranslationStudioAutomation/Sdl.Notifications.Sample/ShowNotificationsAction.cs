@@ -6,13 +6,13 @@ using Sdl.TranslationStudioAutomation.IntegrationApi;
 
 namespace Sdl.Notifications.Sample
 {
-    [Action("MyShowNotificationAction", Icon = "MyAction_Icon")]
+    [Action("MyShowNotificationAction", Icon = "MyAction_Icon", Name = "MyShowNotificationAction_Name", Description = "MyShowNotificationAction_Description")]
     [ActionLayout(typeof(MySampleRibbonGroup), 10, DisplayType.Large)]
     public class ShowNotificationsAction : AbstractAction
     {
         protected override void Execute()
         {
-            IStudioEventAggregator ea = SdlTradosStudio.Application.GetService<IStudioEventAggregator>();
+            var ea = SdlTradosStudio.Application.GetService<IStudioEventAggregator>();
 
             var showNotification = new ShowStudioNotificationsViewEvent(true, true);
 

@@ -4,7 +4,7 @@ using Sdl.TranslationStudioAutomation.IntegrationApi.Presentation.DefaultLocatio
 
 namespace Sdl.Notifications.Sample
 {
-    [RibbonGroup("MyNotificationsSampleRibbonGroup")]
+    [RibbonGroup("MyNotificationsSampleRibbonGroup", Icon = "MyAction_Icon", Name= "MyNotificationsSampleRibbonGroup_Name", Description = "MyNotificationsSampleRibbonGroup_Description")]
     [RibbonGroupLayout(LocationByType = typeof(TranslationStudioDefaultRibbonTabs.HomeRibbonTabLocation))]
     internal class MySampleRibbonGroup : AbstractRibbonGroup
     {

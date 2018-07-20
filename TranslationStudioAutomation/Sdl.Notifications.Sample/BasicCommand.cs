@@ -5,11 +5,11 @@ namespace Sdl.Notifications.Sample
 {
     internal class BasicCommand : ICommand
     {
-        private readonly Action action;
+        private readonly Action _action;
 
         public BasicCommand(Action action)
         {
-            this.action = action;
+            _action = action;
         }
 
         public event EventHandler CanExecuteChanged;
@@ -21,7 +21,7 @@ namespace Sdl.Notifications.Sample
 
         public void Execute(object parameter)
         {
-            action();
+            _action();
         }
     }
 }
