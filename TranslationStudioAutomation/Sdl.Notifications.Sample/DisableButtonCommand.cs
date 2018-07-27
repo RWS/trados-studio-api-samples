@@ -5,18 +5,18 @@ namespace Sdl.Notifications.Sample
 {
     internal class DisableButtonCommand : ICommand
     {
-        private bool canExecute = true;
+        private bool _canExecute = true;
 
         public event EventHandler CanExecuteChanged;
 
         public bool CanExecute(object parameter)
         {
-            return canExecute;
+            return _canExecute;
         }
 
         public void Execute(object parameter)
         {
-            canExecute = false;
+            _canExecute = false;
             CanExecuteChanged?.Invoke(this, null);
         }
     }

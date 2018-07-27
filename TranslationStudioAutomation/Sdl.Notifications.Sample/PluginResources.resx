@@ -121,31 +121,43 @@
   <data name="MyAction_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\MyAction.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="MyMainIconAction_Description" xml:space="preserve">
-    <value>This is my first action defined using the SDL Trados Studio Integration API</value>
+  <data name="MyAddGroupNotificationAction_Description" xml:space="preserve">
+    <value>Add Group Notification Description Sample</value>
   </data>
-  <data name="MyMainIconAction_Name" xml:space="preserve">
-    <value>My icon action</value>
+  <data name="MyAddGroupNotificationAction_Name" xml:space="preserve">
+    <value>Add Group Notification Sample</value>
   </data>
-  <data name="MyNormalSizeAction_Description" xml:space="preserve">
-    <value>This is a simple normal size action sample</value>
+  <data name="MyAddNotificationAction_Description" xml:space="preserve">
+    <value>Add Notification Description Sample</value>
   </data>
-  <data name="MyNormalSizeAction_Name" xml:space="preserve">
-    <value>My normal action</value>
+  <data name="MyAddNotificationAction_Name" xml:space="preserve">
+    <value>Add Notification Sample</value>
   </data>
-  <data name="MySampleRibbonGroup_Description" xml:space="preserve">
-    <value>This is my first ribbon group defined using the SDL Trados Studio Integration API</value>
+  <data name="MyCompleteNotificationAction_Description" xml:space="preserve">
+    <value>Add Complete Notification Description Sample</value>
   </data>
-  <data name="MySampleRibbonGroup_Name" xml:space="preserve">
-    <value>My Ribbon Group</value>
+  <data name="MyCompleteNotificationAction_Name" xml:space="preserve">
+    <value>Add Complete Notification Sample</value>
   </data>
-  <data name="MyTopNormalSizeAction_Description" xml:space="preserve">
-    <value>This is a simple normal size top position action</value>
+  <data name="MyNotificationsSampleRibbonGroup_Description" xml:space="preserve">
+    <value>Group Notification Samples</value>
   </data>
-  <data name="MyTopNormalSizeAction_Name" xml:space="preserve">
-    <value>My top normal action</value>
+  <data name="MyNotificationsSampleRibbonGroup_Name" xml:space="preserve">
+    <value>Group Notification Samples</value>
+  </data>
+  <data name="MyRemoveGroupNotificationAction_Description" xml:space="preserve">
+    <value>Remove Group Notification Description Sample</value>
+  </data>
+  <data name="MyRemoveGroupNotificationAction_Name" xml:space="preserve">
+    <value>Remove Group Notification Sample</value>
+  </data>
+  <data name="MyShowNotificationAction_Description" xml:space="preserve">
+    <value>Show Notifications Description Sample</value>
+  </data>
+  <data name="MyShowNotificationAction_Name" xml:space="preserve">
+    <value>Show Notifications Sample</value>
   </data>
   <data name="Plugin_Name" xml:space="preserve">
-    <value>Sdl Trados Studio Notification Integration Samples</value>
+    <value>Sdl Trados Studio Notification Integration Sample</value>
   </data>
 </root>
