@@ -76,7 +76,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ProjectAutomationSample_notpresent\Sdl.ProjectAutomation.ProjectAutomationSample.csproj">
+    <ProjectReference Include="..\ProjectAutomationSample\Sdl.ProjectAutomation.ProjectAutomationSample.csproj">
       <Project>{46f3789c-6a4a-4a75-9e1f-143635cf4cd9}</Project>
       <Name>Sdl.ProjectAutomation.ProjectAutomationSample</Name>
     </ProjectReference>
