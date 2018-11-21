@@ -1,14 +1,18 @@
 ﻿namespace Sdl.ProjectAutomation.ProjectAutomationGUI
 {
+    using Sdl.ProjectAutomation.ProjectAutomationSample;
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.IO;
+    using System.Linq;
     using System.Windows.Forms;
-    using Sdl.ProjectAutomation.ProjectAutomationSample;
 
     public partial class Form1 : Form
     {
         private ProjectHelperMain _ProjectHelper;
+
+        private Dictionary<string, List<string>> _projectFiles;
 
         public ProjectHelperMain ProjectHelper
         {
@@ -30,6 +34,7 @@
 
         public Form1()
         {
+            _projectFiles = new Dictionary<string, List<string>>();
             this.InitializeComponent();
         }
 
@@ -72,7 +77,30 @@
                 this.Refresh();
             }
 
-            this.ProjectHelper.CreateProject(this.GetSettings());
+            var newProject = this.ProjectHelper.CreateProject(this.GetSettings());
+            if (newProject != null)
+            {
+                var address = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments).ToString() +
+                              Path.DirectorySeparatorChar + @"Studio 2011\Projects\" + this.tb_ProjectName.Text + @"\" + this.tb_ProjectName.Text + ".sdlproj";
+                cb_ExistingProjects.Items.Add(new ComboboxItem
+                {
+                    Text = this.tb_ProjectName.Text,
+                    Value = address
+                });
+
+                var files = newProject.GetSourceLanguageFiles().ToList();
+                var fileNames = new List<string>();
+                foreach (var file in files)
+                {
+                    fileNames.Add(file.Name);
+                }
+
+                fileNames = fileNames.Where(f => f.EndsWith(".sdlxliff")).Distinct().ToList();
+                if (!_projectFiles.ContainsKey(this.tb_ProjectName.Text))
+                {
+                    _projectFiles.Add(this.tb_ProjectName.Text, fileNames);
+                }
+            }
 
             MessageBox.Show("Finished");
         }
@@ -88,7 +116,7 @@
             settings.TermbasePath = tb_Termbase.Text;
             settings.PackageOutputPath = tb_PackagePath.Text;
             settings.PreviousVersionPath = tb_PreviousPath.Text;
-       
+
             return settings;
         }
 
@@ -110,9 +138,6 @@
 
             this.cb_SourceLangs.SelectedIndex = 0;
             this.cb_TargetLang.SelectedIndex = 0;
-
-
-            
         }
 
         private void b_BrowseTM_Click(object sender, EventArgs e)
@@ -143,7 +168,7 @@
             }
         }
 
-       
+
         private void b_BrowsePreviousPath_Click(object sender, EventArgs e)
         {
             this.saveFileDialog1.Title = "Select Directory Containing Previous Translated Documents";
@@ -151,6 +176,106 @@
             if (this.folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 this.tb_PreviousPath.Text = this.folderBrowserDialog1.SelectedPath;
+            }
+        }
+
+        private void b_Delete_Click(object sender, EventArgs e)
+        {
+            string projectPath = null;
+            if (cb_ExistingProjects.SelectedItem is ComboboxItem)
+            {
+                projectPath = ((ComboboxItem)cb_ExistingProjects.SelectedItem).Value;
+            }
+
+            if (string.IsNullOrEmpty(projectPath))
+            {
+                MessageBox.Show("Please select a project to delete.", "Error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
+
+            this.ProjectHelper.DeleteProject(projectPath);
+
+            cb_ExistingProjects.Items.RemoveAt(cb_ExistingProjects.SelectedIndex);
+            cb_ExistingProjectFiles.Items.Clear();
+            b_DeleteFiles.Enabled = false;
+
+            MessageBox.Show("Successfully deleted project.");
+        }
+
+        private void b_DeleteFiles_Click(object sender, EventArgs e)
+        {
+            // get project name
+            string projectPath = null;
+            string projectName = null;
+            if (cb_ExistingProjects.SelectedItem is ComboboxItem)
+            {
+                projectPath = ((ComboboxItem)cb_ExistingProjects.SelectedItem).Value;
+                projectName = ((ComboboxItem)cb_ExistingProjects.SelectedItem).Text;
+            }
+
+            if (string.IsNullOrEmpty(projectPath))
+            {
+                return;
+            }
+
+            // get file name
+            string fileName = null;
+            if (cb_ExistingProjectFiles.SelectedItem is ComboboxItem)
+            {
+                fileName = ((ComboboxItem)cb_ExistingProjectFiles.SelectedItem).Value;
+            }
+
+            if (string.IsNullOrEmpty(fileName))
+            {
+                MessageBox.Show("Please select a file to delete.", "Error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
+
+            this.ProjectHelper.DeleteFilesAndDependencies(projectPath, fileName);
+            cb_ExistingProjectFiles.Items.Clear();
+
+            if (_projectFiles.ContainsKey(projectName))
+            {
+                var tempList = _projectFiles[projectName];
+                tempList.Remove(fileName);
+                _projectFiles[projectName] = tempList;
+            }
+
+            MessageBox.Show("Successfully deleted project.");
+        }
+
+        private void cb_ExistingProjects_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string projectPath = null;
+            string projectName = null;
+            if (cb_ExistingProjects.SelectedItem is ComboboxItem)
+            {
+                projectPath = ((ComboboxItem)cb_ExistingProjects.SelectedItem).Value;
+                projectName = ((ComboboxItem)cb_ExistingProjects.SelectedItem).Text;
+            }
+
+            if (string.IsNullOrEmpty(projectPath))
+            {
+                return;
+            }
+
+            cb_ExistingProjectFiles.Items.Clear();
+            var files = (_projectFiles.ContainsKey(projectName)) ? _projectFiles[projectName] : new List<string>();
+            foreach (var file in files)
+            {
+                cb_ExistingProjectFiles.Items.Add(
+                    (new ComboboxItem
+                    {
+                        Text = file,
+                        Value = file
+                    }));
+            }
+
+            if (cb_ExistingProjectFiles.Items.Count > 0)
+            {
+                b_DeleteFiles.Enabled = true;
             }
         }
     }

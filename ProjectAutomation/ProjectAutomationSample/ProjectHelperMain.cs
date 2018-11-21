@@ -14,8 +14,10 @@
         /// <summary>
         /// Create basic project from scratch, not using templates
         /// </summary>
-        public void CreateProject(LocalProjectSettings settings)
+        public FileBasedProject CreateProject(LocalProjectSettings settings)
         {
+            FileBasedProject result;
+
             try
             {
                 ////Create new project object
@@ -46,11 +48,48 @@
 
                 ////missing - getting translated files.
                 createdProject.Save();
+
+                result = createdProject;
                 ////project is saved but not listed in Studio, this is by design.
             }
             catch (Exception ex)
             {
+                result = null;
                 throw new Exception("Problem during project creation", ex);
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Delete project by path
+        /// </summary>
+        public void DeleteProject(string projectPath)
+        {
+            try
+            {
+                var createdProject = new FileBasedProject(projectPath);
+                createdProject.Delete();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Problem during project deletion.", ex);
+            }
+        }
+
+        /// <summary>
+        /// Delete project file 
+        /// </summary>
+        public void DeleteFilesAndDependencies(string projectPath, string fileName)
+        {
+            try
+            {
+                var createdProject = new FileBasedProject(projectPath);
+                createdProject.DeleteFilesAndDependencies(fileName);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Problem during deletion of project file.", ex);
             }
         }
 

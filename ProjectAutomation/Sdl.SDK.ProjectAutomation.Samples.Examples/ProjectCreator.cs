@@ -14,7 +14,7 @@
 
     internal class ProjectCreator
     {
-        public void CreateProject()
+        public string CreateProject()
         {
             #region "ProjectSetupInformation"
             ProjectInfo info = this.GetProjectInfo();
@@ -25,7 +25,7 @@
             #endregion
 
             #region "AddFiles"
-            ProjectFile[] files=newProject.AddFiles(this.AddProjectFiles(@"c:\ProjectFiles\Documents\"));
+            ProjectFile[] files = newProject.AddFiles(this.AddProjectFiles(@"c:\ProjectFiles\Documents\"));
             #endregion            
 
             #region "SetUpPerfectMatch"
@@ -71,6 +71,8 @@
             newProject.Save();
 
             this.GetProjectStatistics(newProject);
+
+            return newProject.FilePath;
         }
 
         #region "CompleteProject"
@@ -107,7 +109,7 @@
             #endregion
 
             #region "TargetLanguages"
-            Language[] trgLangs = new Language[] { new Language(CultureInfo.GetCultureInfo("de-DE")), new Language(CultureInfo.GetCultureInfo("fr-FR")) };
+            Language[] trgLangs = new Language[] { new Language(CultureInfo.GetCultureInfo("de-DE")), new Language(CultureInfo.GetCultureInfo("fr-FR")), new Language(CultureInfo.GetCultureInfo("en-US")) };
             info.TargetLanguages = trgLangs;
             #endregion
 
@@ -120,11 +122,11 @@
         #region "AddProjectFiles"
         public string[] AddProjectFiles(string path)
         {
-            string[] projectFiles = 
-            { 
-                path + "brochure.pdf", 
-                path + "Configuration.doc",   
-                path + "New_Features.ppt", 
+            string[] projectFiles =
+            {
+                path + "brochure.pdf",
+                path + "Configuration.doc",
+                path + "New_Features.ppt",
                 path + "options.jpg"
             };
 
@@ -136,37 +138,37 @@
         public void SetUpPerfectMatch(FileBasedProject project)
         {
             #region "ScanPreviousProject"
-           
+
             ProjectInfo info = this.GetProjectInfo();
             ProjectFile[] files = project.AddFiles(this.AddProjectFiles(@"c:\ProjectFiles\Documents\"));
-            
-            
-           //Using a helper function to return an array of BilingualFileMappings which are added to the project 
-           project.AddBilingualReferenceFiles(GetBilingualFileMappings(info.TargetLanguages, files, @"c:\ProjectFiles\PreviousProjectFiles"));
-           
-           //Assigning one or more reference files manually
-           project.AddBilingualReferenceFiles(
-                 new BilingualFileMapping[] {
+
+
+            //Using a helper function to return an array of BilingualFileMappings which are added to the project 
+            project.AddBilingualReferenceFiles(GetBilingualFileMappings(info.TargetLanguages, files, @"c:\ProjectFiles\PreviousProjectFiles"));
+
+            //Assigning one or more reference files manually
+            project.AddBilingualReferenceFiles(
+                  new BilingualFileMapping[] {
                      new BilingualFileMapping(files[0].Id, new Language("fr-FE"), @"c:\ProjectFiles\PreviousProjectFiles\fr-FR\mydocument.docx.sdlxliff"),
                      new BilingualFileMapping(files[0].Id, new Language("de-DE"), @"c:\ProjectFiles\PreviousProjectFiles\de-DE\mydocument.docx.sdlxliff"),
                      new BilingualFileMapping(files[1].Id, new Language("fr-FE"), @"c:\ProjectFiles\PreviousProjectFiles\fr-FR\myotherdocument.docx.sdlxliff"),
-                 });
-                        
-            
+                  });
+
+
             #endregion
-            
-            Guid FileIdFromOriginalSourceFile  = files[0].Id ;
-            Guid FileIdOfTargetFile  = files[0].Id ;
+
+            Guid FileIdFromOriginalSourceFile = files[0].Id;
+            Guid FileIdOfTargetFile = files[0].Id;
 
             #region "AddBilingualReferenceFile"
-           
+
             //Add a single reference file using a BilingualFileMapping Object
             project.AddBilingualReferenceFile(new BilingualFileMapping(FileIdFromOriginalSourceFile, new Language("fr-FR"), @"c:\ProjectFiles\PreviousProjectFiles\fr-FR\mydocument.docx.sdlxliff"));
-            
+
             #endregion
         }
-        
-        
+
+
         #endregion
 
 
@@ -198,15 +200,15 @@
             #endregion
 
             #region "ConfigureTms"
-            TranslationProviderCascadeEntry[] tmEntriesEnDe = 
+            TranslationProviderCascadeEntry[] tmEntriesEnDe =
             {
-                new TranslationProviderCascadeEntry(path + "Software En-De.sdltm", true, true, true, 0),  
+                new TranslationProviderCascadeEntry(path + "Software En-De.sdltm", true, true, true, 0),
                 new TranslationProviderCascadeEntry(path + "General En-De.sdltm", true, true, true, 2),
             };
 
-            TranslationProviderCascadeEntry[] tmEntriesEnFr = 
+            TranslationProviderCascadeEntry[] tmEntriesEnFr =
             {
-                new TranslationProviderCascadeEntry(path + "Software En-Fr.sdltm", true, true, true, 0),  
+                new TranslationProviderCascadeEntry(path + "Software En-Fr.sdltm", true, true, true, 0),
                 new TranslationProviderCascadeEntry(path + "General En-Fr.sdltm", true, true, true, 2)
             };
             #endregion
@@ -229,17 +231,17 @@
         #endregion
 
         #region "AddFileBasedTMWithPassword"
-        
+
         public void AddFileBasedTMWithPassword(FileBasedProject project, string pathIncludingFileName, string password)
         {
             Uri uri = new Uri(String.Concat("sdltm.file://", pathIncludingFileName));
-          
+
             TranslationProviderConfiguration tmConfig = project.GetTranslationProviderConfiguration();
             tmConfig.Entries.Add
             (
                 new TranslationProviderCascadeEntry
                 (
-                    new TranslationProviderReference(uri),true, true, true, 0
+                    new TranslationProviderReference(uri), true, true, true, 0
                 )
             );
 
@@ -257,10 +259,10 @@
             (
                 new TranslationProviderCascadeEntry
                 (
-                    new TranslationProviderReference(new Uri(String.Format("{0}{1}/{2}", uri, path, tmname))), 
-                    true, 
-                    true, 
-                    true, 
+                    new TranslationProviderReference(new Uri(String.Format("{0}{1}/{2}", uri, path, tmname))),
+                    true,
+                    true,
+                    true,
                     0
                 )
             );
@@ -436,14 +438,14 @@
 
         #region "ProcessTargetLanguageFiles"
         public void ProcessTargetLanguageFiles(FileBasedProject project, string locale)
-        { 
+        {
             #region "PerfectMatchSetupAndTask"
             Language targetLanguage = new Language(CultureInfo.GetCultureInfo(locale));
 
             ProjectFile[] targetFiles = project.GetTargetLanguageFiles(targetLanguage);
 
             project.AddBilingualReferenceFiles(GetBilingualFileMappings(new Language[] { targetLanguage }, targetFiles, @"c:\ProjectFiles\PreviousProjectFiles"));
-           
+
             AutomaticTask perfectMatchTask = project.RunAutomaticTask(
             targetFiles.GetIds(),
             AutomaticTaskTemplateIds.PerfectMatch);
@@ -556,7 +558,7 @@
             info.DueDate = DateTime.Now.AddDays(3);
 
             string localProjectFolder = string.Format(
-                CultureInfo.CurrentCulture, 
+                CultureInfo.CurrentCulture,
                 "{0){1}Studio 2011{1}Projects{1}{2}",
                 Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments).ToString(),
                 Path.DirectorySeparatorChar,
@@ -604,6 +606,44 @@
         }
         #endregion
 
+        #region Delete 
+        public bool DeleteProject(string projectPath)
+        {
+            bool deletedSuccesfully;
+            try
+            {
+                var project = new FileBasedProject(projectPath);
+                project.Delete();
+                deletedSuccesfully = true;
+            }
+            catch (Exception)
+            {
+                deletedSuccesfully = false;
+            }
+
+            return deletedSuccesfully;
+        }
+
+        public bool DeleteFileAndDependencies(string projectPath, string filePath)
+        {
+            bool deletedSuccesfully;
+            try
+            {
+                var project = new FileBasedProject(projectPath);
+                project.DeleteFilesAndDependencies(filePath);
+                deletedSuccesfully = true;
+            }
+            catch (Exception)
+            {
+                deletedSuccesfully = false;
+            }
+
+            return deletedSuccesfully;
+        }
+
+        
+        #endregion
+
         #region "MergeFiles"
         private void MergeFiles(FileBasedProject project)
         {
@@ -633,7 +673,7 @@
             {
                 ConfirmationStatistics confirmationStats = targetStats[i].ConfirmationStatistics;
 
-                Language trgLang = new Language(CultureInfo.GetCultureInfo("de-DE"));
+                Language trgLang = new Language(CultureInfo.GetCultureInfo("en-US"));
                 Guid[] ids = project.GetTargetLanguageFiles(trgLang).GetIds();
                 project.RunAutomaticTask(ids, AutomaticTaskTemplateIds.TranslationCount);
 
@@ -732,21 +772,21 @@
         #region "RunPrepareWithPerfectMatch
         public void RunPrepareWithPerfectMatch()
         {
- 
+
             ProjectInfo info = this.GetProjectInfo();
-            
+
             //Create the project
             FileBasedProject newProject = new FileBasedProject(info);
-         
+
             //Add project files
-            ProjectFile[] files=newProject.AddFiles(this.AddProjectFiles(@"c:\ProjectFiles\Documents\"));
-            
+            ProjectFile[] files = newProject.AddFiles(this.AddProjectFiles(@"c:\ProjectFiles\Documents\"));
+
             //Perfect Match Setup - Use the helper function to look for files in a previous project that match files in this project
             newProject.AddBilingualReferenceFiles(GetBilingualFileMappings(info.TargetLanguages, files, @"c:\ProjectFiles\PreviousProjectFiles"));
 
             //Add Translation memory
             this.AddMasterTMs(newProject, @"c:\ProjectFiles\TMs\");
-          
+
             //Run the prepare task sequence (Scan, ConvertToTranslatableFormat, WordCount, CopyToTargetLanguages, PerfectMatch, AnalyzeFiles, PreTranslateFiles, PopulateProjectTranslationMemories)
             TaskSequence taskSequence = newProject.RunAutomaticTasks(files.GetIds(), TaskSequences.Prepare);
         }
@@ -755,23 +795,23 @@
         void SetUpGroupShareCredentialsWithCustomLogin(FileBasedProject project)
         {
             #region "SetUpGroupShareCredentialsWithCustomLogin"
-        
+
             Uri projectServer = new Uri("http://myServerAddress:80");
             project.Credentials.AddCredential(projectServer, "user=myUser;password=myPassword;type=CustomUser");
             #endregion
 
         }
-        
+
         void SetUpGroupShareCredentialsWithWindowsLogin(FileBasedProject project)
         {
             #region "SetUpGroupShareCredentialsWithWindowsLogin"
 
             Uri projectServer = new Uri("http://myServerAddress:80");
             project.Credentials.AddCredential(projectServer, "type=WindowsUser");
-           #endregion
+            #endregion
         }
 
-         void PublishToGroupShare(FileBasedProject project, bool cancelledByUser)
+        void PublishToGroupShare(FileBasedProject project, bool cancelledByUser)
         {
             #region "PublishToGroupShare"
             project.PublishProject(
@@ -793,17 +833,17 @@
 
         }
 
-         void OpenFromExistingWorkspace()
-         {
-             #region "OpenFromExistingWorkspace"
+        void OpenFromExistingWorkspace()
+        {
+            #region "OpenFromExistingWorkspace"
 
-             FileBasedProject project = new FileBasedProject(@"c:\MyProjectDirectory\MyProjectFile.sdlproj", false, "MyUserName", "MyPassword");
+            FileBasedProject project = new FileBasedProject(@"c:\MyProjectDirectory\MyProjectFile.sdlproj", false, "MyUserName", "MyPassword");
 
-             #endregion
-         }
+            #endregion
+        }
 
-         ServerProjectInfo[] ViewProjectsOnServer()
-         {
+        ServerProjectInfo[] ViewProjectsOnServer()
+        {
 
             #region "ViewProjectsOnServer"
             Uri serverAddress = new Uri("http://myServerAddress:80");
@@ -814,81 +854,81 @@
 
             #endregion
 
-             return projects;
-         }
+            return projects;
+        }
 
-         ServerProjectInfo ViewProjectByQualifiedName()
-         {
+        ServerProjectInfo ViewProjectByQualifiedName()
+        {
 
-             #region "ViewProjectByQualifiedName"
-             Uri serverAddress = new Uri("http://myServerAddress:80");
-             
-             ProjectServer server = new ProjectServer(serverAddress, false, "MyUser", "MyPassword");
-             ServerProjectInfo project = server.GetServerProject("/MyOrganization/MyProject");
+            #region "ViewProjectByQualifiedName"
+            Uri serverAddress = new Uri("http://myServerAddress:80");
 
-             #endregion
+            ProjectServer server = new ProjectServer(serverAddress, false, "MyUser", "MyPassword");
+            ServerProjectInfo project = server.GetServerProject("/MyOrganization/MyProject");
 
-             return project;
-         }
+            #endregion
 
-
-         #region "SetupServerProjectWorkspace"
-         FileBasedProject SetupServerProjectLocalCopy(Guid projectId, string locationOfLocalCopy)
-         {
-             Uri serverAddress = new Uri("http://myServerAddress:80");
-            
-             ProjectServer server = new ProjectServer(serverAddress, false, "MyUser", "MyPassword");
-             FileBasedProject project = server.OpenProject(projectId, locationOfLocalCopy);
-             return project;
-         }
-         #endregion
+            return project;
+        }
 
 
-         void LookForAProjectAndCreateWorkSpace()
-         {
+        #region "SetupServerProjectWorkspace"
+        FileBasedProject SetupServerProjectLocalCopy(Guid projectId, string locationOfLocalCopy)
+        {
+            Uri serverAddress = new Uri("http://myServerAddress:80");
 
-             #region "LookForAProjectAndCreateWorkSpace"
+            ProjectServer server = new ProjectServer(serverAddress, false, "MyUser", "MyPassword");
+            FileBasedProject project = server.OpenProject(projectId, locationOfLocalCopy);
+            return project;
+        }
+        #endregion
+
+
+        void LookForAProjectAndCreateWorkSpace()
+        {
+
+            #region "LookForAProjectAndCreateWorkSpace"
 
             string rootLocalProjectLocation = @"C:\Projects\";
 
-             Uri serverAddress = new Uri("http://myServerAddress:80");
-             
-             ProjectServer server = new ProjectServer(serverAddress, false, "MyUser", "MyPassword");
-             ServerProjectInfo projectInfo = server.GetServerProject("/MyOrganizationName/MyProjectName");
-             
-             FileBasedProject project;
-             
-             if (projectInfo!=null)
-             {
-                 project = server.OpenProject(projectInfo.ProjectId, rootLocalProjectLocation + projectInfo.Name);
-             }
+            Uri serverAddress = new Uri("http://myServerAddress:80");
 
-             #endregion
-         }
+            ProjectServer server = new ProjectServer(serverAddress, false, "MyUser", "MyPassword");
+            ServerProjectInfo projectInfo = server.GetServerProject("/MyOrganizationName/MyProjectName");
+
+            FileBasedProject project;
+
+            if (projectInfo != null)
+            {
+                project = server.OpenProject(projectInfo.ProjectId, rootLocalProjectLocation + projectInfo.Name);
+            }
+
+            #endregion
+        }
 
 
-       
 
-         void DownloadFileVersion(FileBasedProject project, Guid fileId, bool cancelledByUser)
-         {
-             #region "DownloadLatestFileVersion"
-             project.DownloadLatestServerVersion(fileId, (obj, evt) =>
-                 {
-                     Console.WriteLine("{0}, {1} of {2} bytes transfered",evt.Filename, evt.FileBytesTransferred, evt.FileTotalBytes );
 
-                     if (cancelledByUser)
-                     {
-                         evt.Cancel = true;
-                     }
-                 }, 
-                 false);
-             
-             #endregion
-         }
+        void DownloadFileVersion(FileBasedProject project, Guid fileId, bool cancelledByUser)
+        {
+            #region "DownloadLatestFileVersion"
+            project.DownloadLatestServerVersion(fileId, (obj, evt) =>
+                {
+                    Console.WriteLine("{0}, {1} of {2} bytes transfered", evt.Filename, evt.FileBytesTransferred, evt.FileTotalBytes);
 
-         void DownloadSpecificServerVersion(FileBasedProject project, Guid fileId, bool cancelledByUser)
-         {
-             #region "DownloadSpecificServerVersion"
+                    if (cancelledByUser)
+                    {
+                        evt.Cancel = true;
+                    }
+                },
+                false);
+
+            #endregion
+        }
+
+        void DownloadSpecificServerVersion(FileBasedProject project, Guid fileId, bool cancelledByUser)
+        {
+            #region "DownloadSpecificServerVersion"
 
             project.DownloadSpecificServerVersion(fileId, 1, @"c:\files", (obj, evt) =>
              {
@@ -900,8 +940,8 @@
                  }
              });
 
-             #endregion
-         }
+            #endregion
+        }
 
         #region "ShowServerFileHistory"
         private void ShowServerFileHistory(FileBasedProject project, Guid fileId)
@@ -910,9 +950,9 @@
 
             foreach (ProjectFileVersion fileVersion in fileVersions)
             {
-                Console.WriteLine("Version {0}: {1}, Created By: {2}, Created At: {3}", 
-                                  fileVersion.VersionNumber, 
-                                  fileVersion.FileName , 
+                Console.WriteLine("Version {0}: {1}, Created By: {2}, Created At: {3}",
+                                  fileVersion.VersionNumber,
+                                  fileVersion.FileName,
                                   fileVersion.CreatedBy,
                                   fileVersion.CreatedAt
                     );
@@ -923,7 +963,7 @@
         void CheckOutFiles(FileBasedProject project, Guid[] fileIds, bool cancelledByUser)
         {
             #region "CheckOutFiles"
-            project.CheckoutFiles(fileIds, false, 
+            project.CheckoutFiles(fileIds, false,
                 (obj, evt) =>
             {
                 Console.WriteLine(evt.StatusMessage + " " + evt.PercentComplete + "% complete");
@@ -936,15 +976,15 @@
             #endregion
 
         }
-       
-        void CheckInFiles(FileBasedProject project, Guid[] fileIds)
-         {
-             #region "CheckInFiles"
 
-             project.CheckinFiles(fileIds, "Checkout overridden to auto-translate file", null );
-          
-             #endregion
-         }
+        void CheckInFiles(FileBasedProject project, Guid[] fileIds)
+        {
+            #region "CheckInFiles"
+
+            project.CheckinFiles(fileIds, "Checkout overridden to auto-translate file", null);
+
+            #endregion
+        }
 
         void UnCheckoutFiles(FileBasedProject project, Guid[] fileIds)
         {
@@ -954,21 +994,21 @@
 
             #endregion
         }
-       
+
 
         void UploadAndCheckInFiles(FileBasedProject project, Guid[] fileIds, bool cancelledByUser)
-         {
+        {
             #region "UploadAndCheckInFilesWithEventHandler"
-             project.CheckinFiles(fileIds, "This is where you add a check in comment", 
-                 (obj, evt) => Console.WriteLine(evt.StatusMessage + " " + evt.PercentComplete + "% complete")); 
-             #endregion
+            project.CheckinFiles(fileIds, "This is where you add a check in comment",
+                (obj, evt) => Console.WriteLine(evt.StatusMessage + " " + evt.PercentComplete + "% complete"));
+            #endregion
 
-             #region "UploadAndCheckInFilesWithNullEventHandler"
-             project.CheckinFiles(fileIds, "This is where you add a check in comment",
-                 (obj, evt) => Console.WriteLine(evt.StatusMessage + " " + evt.PercentComplete + "% complete"));
-             #endregion 
+            #region "UploadAndCheckInFilesWithNullEventHandler"
+            project.CheckinFiles(fileIds, "This is where you add a check in comment",
+                (obj, evt) => Console.WriteLine(evt.StatusMessage + " " + evt.PercentComplete + "% complete"));
+            #endregion
 
-             #region "UploadAndCheckInFilesWithEventHandlerAndCancelation"
+            #region "UploadAndCheckInFilesWithEventHandlerAndCancelation"
             project.CheckinFiles(fileIds, "This is where you add a check in comment",
                  (obj, evt) =>
                  {
@@ -979,7 +1019,7 @@
                          evt.Cancel = true;
                      }
                  });
-             #endregion
+            #endregion
 
             #region "UploadAndCheckInNewSourceFiles"
 
@@ -1016,25 +1056,25 @@
                      }
                  });
             #endregion
-           
+
         }
 
         void DeleteProjectFromServer(Guid projectId)
-         {
+        {
             #region "DeleteProjectFromServer"
             Uri serverAddress = new Uri("http://myServerAddress:80");
 
             ProjectServer server = new ProjectServer(serverAddress, false, "MyUser", "MyPassword");
             server.DeleteProject(projectId);
-            
+
             #endregion
-         }
+        }
 
         #region "ServerPuttingItAllTogether"
         void ServerPuttingItAllTogether()
         {
-            const string tmServerPrefix ="sdltm.";
-            
+            const string tmServerPrefix = "sdltm.";
+
             string localcopylocation = @"C:\Projects\";
             string serverName = "http://myServerAddress:80";
             Uri serverAddress = new Uri(serverName);
@@ -1042,7 +1082,7 @@
 
             ProjectServer server = new ProjectServer(serverAddress, false, "MyUser", "MyPassword");
             ServerProjectInfo projectInfo = server.GetServerProject("/MyOrganization/MyProject");
-             
+
             FileBasedProject project;
 
             if (projectInfo != null)
@@ -1131,7 +1171,7 @@
         }
         #endregion
 
-         #region "DownloadAllLatest"
+        #region "DownloadAllLatest"
         void DownloadAllLatest(FileBasedProject project, Guid[] fileIds, bool overrideWorkspaceVersion)
         {
             //Make sure we are syncronized with the server

@@ -54,16 +54,24 @@
             this.b_BrowsePreviousPath = new System.Windows.Forms.Button();
             this.tb_PreviousPath = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cb_ExistingProjects = new System.Windows.Forms.ComboBox();
+            this.b_Delete = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cb_ExistingProjectFiles = new System.Windows.Forms.ComboBox();
+            this.b_DeleteFiles = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(350, 236);
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button1.Location = new System.Drawing.Point(276, 224);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
             this.button1.Text = "Start";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // tb_ProjectName
@@ -250,11 +258,81 @@
             this.label8.TabIndex = 19;
             this.label8.Text = "Previous Path";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(15, 276);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(84, 13);
+            this.label9.TabIndex = 22;
+            this.label9.Text = "Project to delete";
+            // 
+            // cb_ExistingProjects
+            // 
+            this.cb_ExistingProjects.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_ExistingProjects.FormattingEnabled = true;
+            this.cb_ExistingProjects.Location = new System.Drawing.Point(116, 268);
+            this.cb_ExistingProjects.Name = "cb_ExistingProjects";
+            this.cb_ExistingProjects.Size = new System.Drawing.Size(192, 21);
+            this.cb_ExistingProjects.Sorted = true;
+            this.cb_ExistingProjects.TabIndex = 23;
+            this.cb_ExistingProjects.SelectedIndexChanged += new System.EventHandler(this.cb_ExistingProjects_SelectedIndexChanged);
+            // 
+            // b_Delete
+            // 
+            this.b_Delete.BackColor = System.Drawing.Color.Red;
+            this.b_Delete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.b_Delete.Location = new System.Drawing.Point(314, 267);
+            this.b_Delete.Name = "b_Delete";
+            this.b_Delete.Size = new System.Drawing.Size(121, 22);
+            this.b_Delete.TabIndex = 24;
+            this.b_Delete.Text = "Delete Project\r\n";
+            this.b_Delete.UseVisualStyleBackColor = false;
+            this.b_Delete.Click += new System.EventHandler(this.b_Delete_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(15, 314);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(67, 13);
+            this.label10.TabIndex = 25;
+            this.label10.Text = "File to delete";
+            // 
+            // cb_ExistingProjectFiles
+            // 
+            this.cb_ExistingProjectFiles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_ExistingProjectFiles.FormattingEnabled = true;
+            this.cb_ExistingProjectFiles.Location = new System.Drawing.Point(116, 311);
+            this.cb_ExistingProjectFiles.Name = "cb_ExistingProjectFiles";
+            this.cb_ExistingProjectFiles.Size = new System.Drawing.Size(192, 21);
+            this.cb_ExistingProjectFiles.Sorted = true;
+            this.cb_ExistingProjectFiles.TabIndex = 26;
+            // 
+            // b_DeleteFiles
+            // 
+            this.b_DeleteFiles.BackColor = System.Drawing.Color.Red;
+            this.b_DeleteFiles.Enabled = false;
+            this.b_DeleteFiles.ForeColor = System.Drawing.SystemColors.Control;
+            this.b_DeleteFiles.Location = new System.Drawing.Point(317, 311);
+            this.b_DeleteFiles.Name = "b_DeleteFiles";
+            this.b_DeleteFiles.Size = new System.Drawing.Size(118, 21);
+            this.b_DeleteFiles.TabIndex = 27;
+            this.b_DeleteFiles.Text = "Delete Project File";
+            this.b_DeleteFiles.UseVisualStyleBackColor = false;
+            this.b_DeleteFiles.Click += new System.EventHandler(this.b_DeleteFiles_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(437, 271);
+            this.ClientSize = new System.Drawing.Size(447, 387);
+            this.Controls.Add(this.b_DeleteFiles);
+            this.Controls.Add(this.cb_ExistingProjectFiles);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.b_Delete);
+            this.Controls.Add(this.cb_ExistingProjects);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.b_BrowsePreviousPath);
             this.Controls.Add(this.tb_PreviousPath);
             this.Controls.Add(this.label8);
@@ -312,6 +390,12 @@
         private System.Windows.Forms.Button b_BrowsePreviousPath;
         private System.Windows.Forms.TextBox tb_PreviousPath;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox cb_ExistingProjects;
+        private System.Windows.Forms.Button b_Delete;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox cb_ExistingProjectFiles;
+        private System.Windows.Forms.Button b_DeleteFiles;
     }
 }
 
