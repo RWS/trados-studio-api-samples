@@ -71,7 +71,7 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.Bil
                 }
 
                 XmlAttribute target = doc.DocumentElement.Attributes[_TargetLanguage];
-                if (source != null)
+                if (target != null)
                 {
                     info.DetectedTargetLanguage =
                         new Sdl.FileTypeSupport.Framework.Pair<Language, DetectionLevel>(new Language(target.Value),
