@@ -19,7 +19,7 @@
             #endregion
 
             #region "importer"
-            ScheduledTranslationMemoryImportOperation importer = new ScheduledTranslationMemoryImportOperation(
+            ScheduledServerTranslationMemoryImport importer = new ScheduledServerTranslationMemoryImport(
                 this.GetLanguageDirection(tm, CultureInfo.GetCultureInfo("en-US"), CultureInfo.GetCultureInfo("de-DE")));
             #endregion
 
@@ -31,8 +31,7 @@
             #endregion
 
             #region "upload"
-            importer.Create();
-            importer.Upload(this.importer_Uploaded);
+            
             importer.Queue();
             #endregion
 

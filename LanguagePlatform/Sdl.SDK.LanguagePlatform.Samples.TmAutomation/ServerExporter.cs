@@ -18,7 +18,7 @@
             #endregion
 
             #region "exporter"
-            ScheduledTranslationMemoryExportOperation exporter = new ScheduledTranslationMemoryExportOperation(
+            ScheduledServerTranslationMemoryExport exporter = new ScheduledServerTranslationMemoryExport(
                 this.GetLanguageDirection(tm, CultureInfo.GetCultureInfo("en-US"), CultureInfo.GetCultureInfo("de-DE")));
             #endregion
 
@@ -67,9 +67,13 @@
             {
                 using (Stream outputStream  = new FileStream(exportFilePath, FileMode.Create))
                 {
-                    exporter.DownloadExport(outputStream, exporter_Downloaded);
+                  var result = exporter.DownloadExport(outputStream);
+                    if(result)
+                    {
+                        MessageBox.Show("Export successfuly finished.");
+                    }
                 }
-                MessageBox.Show("Export successfuly finished.");
+                
             }
             else if (exporter.Status == ScheduledOperationStatus.Error)
             {

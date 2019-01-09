@@ -1,12 +1,4 @@
-﻿// ---------------------------------
-// <copyright file="ServerConnector.cs" company="SDL International">
-// Copyright  2010 All Right Reserved
-// </copyright>
-// <author>Patrik Mazanek</author>
-// <email>pmazanek@sdl.com</email>
-// <date>2010-09-27</date>
-// ---------------------------------
-namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
+﻿namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
 {
     using System;
     using Sdl.LanguagePlatform.TranslationMemoryApi;
