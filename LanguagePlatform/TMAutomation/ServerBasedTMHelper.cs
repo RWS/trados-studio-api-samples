@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Sdl.LanguagePlatform.TranslationMemoryApi;
-using Sdl.Enterprise2.Platform.Client.IdentityModel;
+using Sdl.Enterprise2.Studio.Platform.Client.IdentityModel;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.IO;
@@ -81,18 +81,14 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
         public void ImportTMX(string importFilePath)
         {
             ServerBasedTranslationMemory tm = TMServer.GetTranslationMemory(ParentOrganizationPath + "/APISampleTest", TranslationMemoryProperties.All);
-            ScheduledTranslationMemoryImportOperation importer =
-                new ScheduledTranslationMemoryImportOperation(
+            ScheduledServerTranslationMemoryImport importer =
+                new ScheduledServerTranslationMemoryImport(
                     GetLanguageDirection(tm, CultureInfo.GetCultureInfo("en-US"), CultureInfo.GetCultureInfo("de-DE")));
             importer.ChunkSize = 25; //25 is minimum
             importer.ContinueOnError = true;
             importer.Source = new FileInfo(importFilePath);
             AdaptImportSettigns(importer.ImportSettings);
             
-            //create import placeholder in the TM server
-            importer.Create();
-            //Uploads the source file
-            importer.Upload(importer_Uploaded);
             //add the import into the queue
             importer.Queue();
             
@@ -153,18 +149,6 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
             }
             importSettings.CheckMatchingSublanguages = true;
         }
-
-        /// <summary>
-        /// Import event handler
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void importer_Uploaded(object sender, FileTransferEventArgs e)
-        {
-            WriteResult("Transferred - " + e.BytesTransferred.ToString() + " out of " + e.TotalBytes.ToString() + " bytes\r\n");
-            e.Cancel = false;
-        }
-
 
         private ServerBasedTranslationMemoryLanguageDirection GetLanguageDirection(ServerBasedTranslationMemory tm, CultureInfo source, CultureInfo target)
         {
