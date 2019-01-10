@@ -45,7 +45,7 @@
       <HintPath>$(ProgramFiles)\SDL\SDL Trados Studio\Studio15\Sdl.Enterprise2.Platform.Contracts.dll</HintPath>
     </Reference>
     <Reference Include="Sdl.Enterprise2.Studio.Platform.Client">
-      <HintPath>$(ProgramFiles)\SDL\SDL Trados Studio\Studio5\Sdl.Enterprise2.Studio.Platform.Client.dll</HintPath>
+      <HintPath>$(ProgramFiles)\SDL\SDL Trados Studio\Studio15\Sdl.Enterprise2.Studio.Platform.Client.dll</HintPath>
     </Reference>
     <Reference Include="Sdl.FileTypeSupport.Framework.Core">
       <SpecificVersion>False</SpecificVersion>
