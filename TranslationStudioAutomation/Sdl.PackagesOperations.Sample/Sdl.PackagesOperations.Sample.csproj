@@ -86,7 +86,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PublishJob.cs" />
+    <Compile Include="SampleJob.cs" />
     <Compile Include="PackagesOperationsViewPart.cs" />
     <Compile Include="PackagesControl.cs">
       <SubType>UserControl</SubType>
@@ -113,6 +113,7 @@
   </ItemGroup>
   <PropertyGroup>
     <CreatePluginPackage>true</CreatePluginPackage>
+    <DeployPluginPackage>true</DeployPluginPackage>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
