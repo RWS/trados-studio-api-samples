@@ -1,16 +1,15 @@
-﻿using System;
-using System.Windows.Input;
+﻿using Sdl.Desktop.IntegrationApi.Interfaces;
+using System;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace Sdl.Notifications.Sample
 {
-    internal class BasicCommand : ICommand
+    internal class BasicCommand : IStudioNotificationCommand
     {
-        private readonly Action _action;
-
-        public BasicCommand(Action action)
-        {
-            _action = action;
-        }
+        public string CommandText { get; set; }
+        public string CommandToolTip { get; set; }
+        public Icon CommandIcon { get; set; }
 
         public event EventHandler CanExecuteChanged;
 
@@ -21,7 +20,7 @@ namespace Sdl.Notifications.Sample
 
         public void Execute(object parameter)
         {
-            _action();
+            MessageBox.Show("I was clicked");
         }
     }
 }
