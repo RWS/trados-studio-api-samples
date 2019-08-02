@@ -15,9 +15,9 @@ namespace Sdl.Notifications.Sample
 
         public string Title { get; set; }
 
-        public IStudioNotificationCommand Action { get => null; set { } }
+        public IStudioNotificationCommand Action { get; set; }
 
-        public bool IsActionVisible { get => false; set { } }
+        public bool IsActionVisible { get; set; }
 
         public string Key { get; }
 

@@ -1,4 +1,9 @@
-﻿using System;
+﻿using Sdl.Desktop.IntegrationApi;
+using Sdl.Desktop.IntegrationApi.Interfaces;
+using Sdl.TranslationStudioAutomation.IntegrationApi;
+using Sdl.TranslationStudioAutomation.IntegrationApi.Actions;
+using Sdl.TranslationStudioAutomation.IntegrationApi.Events;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
