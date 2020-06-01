@@ -1,10 +1,9 @@
-﻿using System;
-using System.Windows.Forms;
-
-using Sdl.DesktopEditor.BasicControls;
+﻿using Sdl.DesktopEditor.BasicControls;
 using Sdl.FileTypeSupport.Framework.BilingualApi;
 using Sdl.FileTypeSupport.Framework.IntegrationApi;
 using Sdl.Verification.Api;
+using System;
+using System.Windows.Forms;
 
 namespace Sdl.Verification.Sdk.IdenticalCheck.Extended.MessageUI
 {
@@ -16,10 +15,6 @@ namespace Sdl.Verification.Sdk.IdenticalCheck.Extended.MessageUI
         /// </summary>
         private readonly BasicSegmentEditControl _originalSegment = new BasicSegmentEditControl();
 
-        /// <summary>
-        /// Target segment edit control
-        /// </summary>
-        private readonly BasicSegmentEditControl _suggestedSegment = new BasicSegmentEditControl();
         #endregion
 
         private Suggestion _suggestion;
@@ -31,8 +26,8 @@ namespace Sdl.Verification.Sdk.IdenticalCheck.Extended.MessageUI
 
             #region Get ExtendedMessage Data
             IdenticalVerifierMessageData messageData = (IdenticalVerifierMessageData)messageEventArgs.ExtendedData;
-            this.tb_ErrorDetails.Text = messageData.ErrorDetails;
-            _suggestion = new Suggestion(messageEventArgs.FromLocation, messageEventArgs.UptoLocation, 
+            tb_ErrorDetails.Text = messageData.ErrorDetails;
+            _suggestion = new Suggestion(messageEventArgs.FromLocation, messageEventArgs.UptoLocation,
                 messageData.ReplacementSuggestion.Clone() as IAbstractMarkupData);
             #endregion
 

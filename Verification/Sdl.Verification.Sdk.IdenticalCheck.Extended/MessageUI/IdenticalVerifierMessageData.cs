@@ -7,11 +7,11 @@ namespace Sdl.Verification.Sdk.IdenticalCheck.Extended.MessageUI
     {
         public IdenticalVerifierMessageData(string errorDetails, ISegment replacementSuggestion)
         {
-            this.ErrorDetails = errorDetails;
-            this.ReplacementSuggestion = replacementSuggestion;
+            ErrorDetails = errorDetails;
+            ReplacementSuggestion = replacementSuggestion;
             
             //Identifier for this custom message type
-            this.MessageType = "Sdl.Verification.Sdk.IdenticalCheck.MessageUI, Error_NotIdentical";
+            MessageType = "Sdl.Verification.Sdk.IdenticalCheck.MessageUI, Error_NotIdentical";
         }
 
         /// <summary>

@@ -1,12 +1,11 @@
-﻿using System;
-using System.Windows.Forms;
-using Sdl.DesktopEditor.BasicControls;
+﻿using Sdl.DesktopEditor.BasicControls;
 using Sdl.DesktopEditor.EditorApi;
-using Sdl.FileTypeSupport.Framework.NativeApi;
-using Sdl.Verification.Api;
 using Sdl.FileTypeSupport.Framework.BilingualApi;
 using Sdl.FileTypeSupport.Framework.IntegrationApi;
-using System.Collections.Generic;
+using Sdl.FileTypeSupport.Framework.NativeApi;
+using Sdl.Verification.Api;
+using System;
+using System.Windows.Forms;
 
 namespace Sdl.Verification.Sdk.EditAndApplyChanges.MessageUI
 {
@@ -44,7 +43,7 @@ namespace Sdl.Verification.Sdk.EditAndApplyChanges.MessageUI
             SourceSegment = sourceSegment;
             TargetSegment = targetSegment;
             InitializeComponent();
-            
+
             _sourceSegmentControl.Dock = DockStyle.Fill;
             _sourceSegmentPanel.Controls.Add(_sourceSegmentControl);
 
@@ -130,7 +129,7 @@ namespace Sdl.Verification.Sdk.EditAndApplyChanges.MessageUI
         /// </summary>
         public SegmentId? TargetSegmentId
         {
-            get { return MessageEventArgs.FromLocation.SegmentId;  } 
+            get { return MessageEventArgs.FromLocation.SegmentId; }
         }
 
         /// <summary>
@@ -210,7 +209,7 @@ namespace Sdl.Verification.Sdk.EditAndApplyChanges.MessageUI
         /// <param name="messageEventArgs">message event arguments</param>
         private void UpdateProblemDescription(MessageEventArgs messageEventArgs)
         {
-            CustomMessageData qaCheckerMessageData = (CustomMessageData) messageEventArgs.ExtendedData;
+            CustomMessageData qaCheckerMessageData = (CustomMessageData)messageEventArgs.ExtendedData;
             _problemDescriptionTextBox.Text = qaCheckerMessageData.DetailedDescription;
         }
 
@@ -255,10 +254,7 @@ namespace Sdl.Verification.Sdk.EditAndApplyChanges.MessageUI
         /// <param name="eventArgs">event arguments</param>
         private void _suggestionsList_SelectedIndexChanged(object sender, EventArgs eventArgs)
         {
-            if (SuggestionChanged != null)
-            {
-                SuggestionChanged(this, EventArgs.Empty);
-            }
+            SuggestionChanged?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -272,10 +268,7 @@ namespace Sdl.Verification.Sdk.EditAndApplyChanges.MessageUI
             // user starts to modify target segment manually
             _suggestionsList.Enabled = false;
             _hasSegmentChanged = true;
-            if (SegmentChanged != null)
-            {
-                SegmentChanged(this, null);
-            }
+            SegmentChanged?.Invoke(this, null);
         }
 
         #endregion
@@ -283,7 +276,7 @@ namespace Sdl.Verification.Sdk.EditAndApplyChanges.MessageUI
         #region ISuggestionProvider Members
 
         public event EventHandler SuggestionChanged;
-        
+
         public bool HasSuggestion()
         {
             return _suggestionsList.Items.Count != 0;

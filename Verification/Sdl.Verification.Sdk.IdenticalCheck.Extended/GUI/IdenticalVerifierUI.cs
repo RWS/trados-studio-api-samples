@@ -36,7 +36,6 @@ namespace Sdl.Verification.Sdk.IdenticalCheck.Extended
         }
         #endregion
 
-
         public IdenticalVerifierUI()
         {
             InitializeComponent();
