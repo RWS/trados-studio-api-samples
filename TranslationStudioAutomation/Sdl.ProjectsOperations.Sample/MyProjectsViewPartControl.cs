@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
-using Sdl.FileTypeSupport.Framework.BilingualApi;
+﻿using Sdl.Desktop.IntegrationApi.Interfaces;
 using Sdl.ProjectAutomation.Core;
 using Sdl.ProjectAutomation.FileBased;
 using Sdl.TranslationStudioAutomation.IntegrationApi;
 using Sdl.TranslationStudioAutomation.IntegrationApi.Actions;
-using Sdl.Desktop.IntegrationApi;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Sdl.ProjectsOperations.Sample
 {
-    public partial class MyProjectsViewPartControl : UserControl
+    public partial class MyProjectsViewPartControl : UserControl, IUIControl
     {
         public MyProjectsViewPartControl()
         {
@@ -33,22 +32,22 @@ namespace Sdl.ProjectsOperations.Sample
         private void RepopulateProjectsList()
         {
             preventSelectionChanged = true;
-            ProjectsController projectsController = GetProjectsController();            
-            ProjectsListView.Items.Clear();            
+            ProjectsController projectsController = GetProjectsController();
+            ProjectsListView.Items.Clear();
             foreach (var project in projectsController.GetProjects())
             {
                 var item = new ListViewItem(project.GetProjectInfo().Name)
-                               {
-                                   Tag = project,
-                                   Selected = projectsController.SelectedProjects.Contains(project),                                   
-                                   Font = (project == currentProject ? new System.Drawing.Font(Font.FontFamily, Font.Size, System.Drawing.FontStyle.Bold): new System.Drawing.Font(Font.FontFamily, Font.Size))
-                               };
+                {
+                    Tag = project,
+                    Selected = projectsController.SelectedProjects.Contains(project),
+                    Font = (project == currentProject ? new System.Drawing.Font(Font.FontFamily, Font.Size, System.Drawing.FontStyle.Bold) : new System.Drawing.Font(Font.FontFamily, Font.Size))
+                };
 
                 item.SubItems.Add(project.GetTargetLanguageFiles().Count().ToString());
                 ProjectsListView.Items.Add(item);
             }
             preventSelectionChanged = false;
-        }       
+        }
 
         private void ProjectsListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
@@ -56,7 +55,7 @@ namespace Sdl.ProjectsOperations.Sample
                 return;
 
             var selectedProjects = new List<FileBasedProject>();
-            for (int i=0; i < ProjectsListView.SelectedItems.Count; i++)
+            for (int i = 0; i < ProjectsListView.SelectedItems.Count; i++)
             {
                 selectedProjects.Add(ProjectsListView.SelectedItems[i].Tag as FileBasedProject);
             }
@@ -87,7 +86,7 @@ namespace Sdl.ProjectsOperations.Sample
 
             ListViewItem projectItem = FindItem(eventArgs.NewCurrentProject);
             if (projectItem != null)
-            {                
+            {
                 currentProject = eventArgs.NewCurrentProject;
             }
 
@@ -98,7 +97,7 @@ namespace Sdl.ProjectsOperations.Sample
         {
             var selectedItem = ProjectsListView.SelectedItems[0];
             GetProjectsController().Open(selectedItem.Tag as FileBasedProject);
-        }     
+        }
 
         private void AddProjectButton_Click(object sender, EventArgs e)
         {
@@ -107,14 +106,14 @@ namespace Sdl.ProjectsOperations.Sample
 
         private void SetDueDateButton_Click(object sender, EventArgs e)
         {
-            SetDueDateForSelectedProjects(dueDateCalendar.SelectionRange.Start);            
+            SetDueDateForSelectedProjects(dueDateCalendar.SelectionRange.Start);
         }
 
         private void ClearDueDateButton_Click(object sender, EventArgs e)
         {
             SetDueDateForSelectedProjects(null);
         }
-        
+
         private void SetDueDateForSelectedProjects(DateTime? dueDate)
         {
             bool hasChangedProjects = false;
@@ -124,14 +123,14 @@ namespace Sdl.ProjectsOperations.Sample
                 ProjectInfo projectInfo = project.GetProjectInfo();
                 projectInfo.DueDate = dueDate;
                 project.UpdateProject(projectInfo);
-                project.Save();                
+                project.Save();
                 hasChangedProjects = true;
             }
 
             if (hasChangedProjects)
             {
                 GetProjectsController().RefreshProjects();
-            }                        
+            }
         }
 
         private ListViewItem FindItem(FileBasedProject project)

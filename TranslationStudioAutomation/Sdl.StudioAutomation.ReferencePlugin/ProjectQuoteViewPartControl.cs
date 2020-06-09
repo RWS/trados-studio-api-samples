@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
+﻿using Sdl.Desktop.IntegrationApi.Interfaces;
 using System.Windows.Forms;
 
 namespace StudioIntegrationApiSample
 {
-    public partial class ProjectQuoteViewPartControl : UserControl
+    public partial class ProjectQuoteViewPartControl : UserControl, IUIControl
     {
         private ProjectQuoteViewPartController _controller;
 
@@ -39,7 +33,7 @@ namespace StudioIntegrationApiSample
             if (e.ColumnIndex > 0)
             {
                 double price = (double)_controller.QuoteItems.Rows[e.RowIndex][e.ColumnIndex];
-                e.Value = String.Format("£{0:N1}", price);
+                e.Value = string.Format("£{0:N1}", price);
             }
         }
     }

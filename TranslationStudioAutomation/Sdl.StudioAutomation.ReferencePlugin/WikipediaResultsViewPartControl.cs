@@ -1,23 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
+﻿using Sdl.Desktop.IntegrationApi.Interfaces;
 using System.Windows.Forms;
 
 namespace StudioIntegrationApiSample
 {
-    public partial class WikipediaResultsViewPartControl : UserControl
+    public partial class WikipediaResultsViewPartControl : UserControl, IUIControl
     {
 
         public WikipediaResultsViewPartControl()
         {
             InitializeComponent();
         }
-
-
 
         public void Navigate(string url)
         {

@@ -9,10 +9,11 @@ using System.Windows.Forms;
 
 namespace Sdl.PackagesOperations.Sample
 {
-    public partial class PackagesControl : UserControl
+    public partial class PackagesControl : UserControl, IUIControl
     {
-        private AbstractApplication _app;
+        private readonly AbstractApplication _app;
         private readonly IStudioEventAggregator _eventAggregator;
+
         public PackagesControl()
         {
             InitializeComponent();
@@ -62,7 +63,7 @@ namespace Sdl.PackagesOperations.Sample
             }
         }
 
-        private void buttonBrowseIcon_Click(object sender, EventArgs e)
+        private void ButtonBrowseIcon_Click(object sender, EventArgs e)
         {
             var fileDialog = new OpenFileDialog
             {
@@ -77,7 +78,7 @@ namespace Sdl.PackagesOperations.Sample
 
         }
 
-        private void buttonBrowsePackagePath_Click(object sender, EventArgs e)
+        private void ButtonBrowsePackagePath_Click(object sender, EventArgs e)
         {
             var fileDialog = new OpenFileDialog
             {
@@ -91,14 +92,14 @@ namespace Sdl.PackagesOperations.Sample
             }
         }
 
-        private void buttonClear_Click(object sender, EventArgs e)
+        private void ButtonClear_Click(object sender, EventArgs e)
         {
             textBoxPackagePath.Clear();
             textBoxIconPath.Clear();
             textBoxProjectType.Clear();
         }
 
-        private void buttonOpenProjectWizard_Click(object sender, EventArgs e)
+        private void ButtonOpenProjectWizard_Click(object sender, EventArgs e)
         {
             ProjectWizardData wizardData = null;
             if (!string.IsNullOrWhiteSpace(textBoxProjectName.Text) || !string.IsNullOrWhiteSpace(textBoxFile.Text))
@@ -126,7 +127,7 @@ namespace Sdl.PackagesOperations.Sample
             }
         }
 
-        private void buttonClearProjectData_Click(object sender, EventArgs e)
+        private void ButtonClearProjectData_Click(object sender, EventArgs e)
         {
             textBoxFile.Clear();
             textBoxProjectName.Clear();

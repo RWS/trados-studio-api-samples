@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using System.IO;
+﻿using Sdl.Desktop.IntegrationApi.Interfaces;
 using Sdl.ProjectAutomation.Core;
-using Sdl.ProjectAutomation.FileBased;
+using System;
+using System.IO;
+using System.Windows.Forms;
 
 namespace StudioIntegrationApiSample
 {
-    public partial class ContentConnectorViewControl : UserControl
+    public partial class ContentConnectorViewControl : UserControl, IUIControl
     {
         ContentConnectorViewController _controller;
 
@@ -39,7 +33,7 @@ namespace StudioIntegrationApiSample
                 }
 
                 _progressBar.DataBindings.Add("Value", _controller, "PercentComplete");
-                
+
                 LoadProjectTemplates();
                 LoadProjectRequests();
             }
@@ -47,10 +41,10 @@ namespace StudioIntegrationApiSample
 
         public void ClearMessages()
         {
-            _resultsTextBox.Text = "";
+            _resultsTextBox.Text = string.Empty;
         }
 
-        public void ReportMessage(FileBasedProject fileBasedProject, string message)
+        public void ReportMessage(string message)
         {
 
             _resultsTextBox.AppendText("\r\n" + message);
@@ -73,8 +67,6 @@ namespace StudioIntegrationApiSample
                 }
             }
         }
-        
-        
 
         private void LoadProjectRequests()
         {
@@ -121,13 +113,9 @@ namespace StudioIntegrationApiSample
             LoadFileList();
         }
 
-        
-
         private void _projectTemplatesComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             _controller.SelectedProjectTemplate = _projectTemplatesComboBox.SelectedItem as ProjectTemplateInfo;
         }
-
-        
     }
 }

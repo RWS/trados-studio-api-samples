@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO;
+﻿using System.Collections.Generic;
 
 namespace StudioIntegrationApiSample
 {
@@ -14,7 +10,7 @@ namespace StudioIntegrationApiSample
             set;
         }
 
-        public string[] Files
+        public List<string> Files
         {
             get; set;
         }

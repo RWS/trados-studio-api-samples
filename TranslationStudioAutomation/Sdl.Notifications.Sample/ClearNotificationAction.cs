@@ -16,7 +16,7 @@ namespace Sdl.Notifications.Sample
             _groupNotification = groupNotificationKey;
             _notificationId = notificationId;
         }
-              
+
         public void Execute(object parameter)
         {
             var ea = SdlTradosStudio.Application.GetService<IStudioEventAggregator>();

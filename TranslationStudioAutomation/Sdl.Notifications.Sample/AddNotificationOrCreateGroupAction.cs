@@ -30,8 +30,8 @@ namespace Sdl.Notifications.Sample
                 IsLinkVisible = true,
                 LinkAction = new OpenLinkCommand("https://appstore.sdl.com/language/developers/sdk.html")
                 {
-                    CommandText = "Learn more on the Studio 2019 SDK",
-                    CommandToolTip = "Learn more on the Studio 2019 SDK"
+                    CommandText = "Learn more on the Studio 2021 SDK",
+                    CommandToolTip = "Learn more on the Studio 2021 SDK"
                 },
                 IsActionVisible = false
             };

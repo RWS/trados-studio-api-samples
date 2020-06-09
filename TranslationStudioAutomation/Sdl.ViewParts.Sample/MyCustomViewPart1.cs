@@ -1,5 +1,6 @@
 ﻿using Sdl.Desktop.IntegrationApi;
 using Sdl.Desktop.IntegrationApi.Extensions;
+using Sdl.Desktop.IntegrationApi.Interfaces;
 using System;
 
 namespace Sdl.ViewParts.Sample
@@ -11,7 +12,7 @@ namespace Sdl.ViewParts.Sample
     [ViewPartLayout(LocationByType = typeof(MyViewWithParts), ZIndex = 2, Dock = DockType.Bottom)]
     public class MyCustomViewPart1 : AbstractViewPartController
     {
-        protected override System.Windows.Forms.Control GetContentControl()
+        protected override IUIControl GetContentControl()
         {
             return _control.Value;
         }

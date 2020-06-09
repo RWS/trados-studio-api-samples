@@ -1,9 +1,9 @@
 ﻿using Sdl.Desktop.IntegrationApi;
 using Sdl.Desktop.IntegrationApi.Extensions;
+using Sdl.Desktop.IntegrationApi.Interfaces;
 using Sdl.TranslationStudioAutomation.IntegrationApi;
 using System;
 using System.Linq;
-using System.Windows.Forms;
 
 namespace Sdl.ViewParts.Sample
 {
@@ -14,7 +14,7 @@ namespace Sdl.ViewParts.Sample
     [ViewPartLayout(Dock = DockType.Bottom, LocationByType = typeof(ProjectsController))]
     class MyProjectViewPart : AbstractViewPartController
     {
-        protected override Control GetContentControl()
+        protected override IUIControl GetContentControl()
         {
             return _control.Value;
         }
