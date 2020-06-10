@@ -24,7 +24,7 @@ namespace Sdl.Verification.Sdk.IdenticalCheck.Extended
         public Setting<bool> ConsiderTags
         {
             get { return GetSetting<bool>(ConsiderTags_Setting); }
-        }        
+        }
         #endregion
 
         /// <summary>
@@ -38,10 +38,10 @@ namespace Sdl.Verification.Sdk.IdenticalCheck.Extended
         {
             switch (settingId)
             {
-                case "CheckContext":
-                    return (string)"H";
-                case "ConsiderTags":
-                    return (bool)true;
+                case CheckContext_Setting:
+                    return "H";
+                case ConsiderTags_Setting:
+                    return true;
                 default:
                     return base.GetDefaultValue(settingId);
             }

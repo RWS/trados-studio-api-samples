@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+﻿using Sdl.Desktop.IntegrationApi.Interfaces;
+using System;
 using System.Windows.Forms;
 
 namespace Sdl.ViewParts.Sample
 {
-    public partial class MyProjectViewPartControl : UserControl
+    public partial class MyProjectViewPartControl : UserControl, IUIControl
     {
         public MyProjectViewPartControl()
         {
@@ -16,7 +12,7 @@ namespace Sdl.ViewParts.Sample
         }
 
         private void MyProjectViewPartControl_Load(object sender, EventArgs e)
-        {            
+        {
         }
 
         public int SelectedProjectsCount
@@ -32,13 +28,13 @@ namespace Sdl.ViewParts.Sample
         public string CurrentProject
         {
             get { return _currentProject; }
-            set { 
+            set
+            {
                 _currentProject = value;
                 CurrentProjectLabel.Text = string.IsNullOrEmpty(value) ? "none" : value;
             }
         }
 
-        private int _projectCount;
         private int _selectedProjectsCount;
         private string _currentProject;
     }

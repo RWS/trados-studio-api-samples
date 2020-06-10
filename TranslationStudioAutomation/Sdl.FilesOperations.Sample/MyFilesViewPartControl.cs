@@ -1,19 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
+﻿using Sdl.Desktop.IntegrationApi.Interfaces;
 using Sdl.ProjectAutomation.Core;
 using Sdl.TranslationStudioAutomation.IntegrationApi;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Sdl.FilesOperations.Sample
 {
-    public partial class MyFilesViewPartControl : UserControl
+    public partial class MyFilesViewPartControl : UserControl, IUIControl
     {
         public MyFilesViewPartControl()
         {
             InitializeComponent();
             GetFilesController().SelectedFilesChanged += OnSelectedFilesChanged;
-        }    
-        
+        }
+
         private FilesController GetFilesController()
         {
             return SdlTradosStudio.Application.GetController<FilesController>();
@@ -28,17 +29,17 @@ namespace Sdl.FilesOperations.Sample
         private void RepopulateFilesList()
         {
             FilesListView.Items.Clear();
-            FilesController filesController = GetFilesController();   
+            FilesController filesController = GetFilesController();
             foreach (ProjectFile file in filesController.SelectedFiles)
             {
                 var item = new ListViewItem(file.Name)
-                               {
-                                   Tag = file
-                               };
+                {
+                    Tag = file
+                };
                 item.SubItems.Add(file.AnalysisStatistics.Total.Words.ToString());
-                
+
                 FilesListView.Items.Add(item);
-            }            
+            }
         }
 
         private void FilesListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
@@ -83,6 +84,6 @@ namespace Sdl.FilesOperations.Sample
         private void AddFileButton_Click(object sender, EventArgs e)
         {
             GetFilesController().AddFiles();
-        }        
+        }
     }
 }

@@ -123,6 +123,5 @@ namespace Sdl.AutoSuggest.Sample
 				System.Diagnostics.Debug.WriteLine("{0}", _segmentWordSuggestCandidates == null);
 			}
 		}
-
 	}
 }

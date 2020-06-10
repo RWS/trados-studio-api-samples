@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using Sdl.Desktop.IntegrationApi;
+﻿using Sdl.Desktop.IntegrationApi.Interfaces;
 using Sdl.TranslationStudioAutomation.IntegrationApi;
-using Sdl.TranslationStudioAutomation.IntegrationApi.Actions;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Sdl.ViewParts.Sample
 {
-    public partial class MyCustomViewPartContentControl : UserControl
+    public partial class MyCustomViewPartContentControl : UserControl, IUIControl
     {
         public MyCustomViewPartContentControl()
         {
@@ -54,7 +49,7 @@ namespace Sdl.ViewParts.Sample
                                                      MyCustomViewPart3Button.Visible = e.Active;
                                                  };
             controller3.VisibilityChanged += (s, e) => MyCustomViewPart3Visibility.Text = _visibleStateText[e.Visible];
-        }       
+        }
 
         private void MyCustomViewPart1Button_Click(object sender, EventArgs e)
         {
@@ -86,6 +81,6 @@ namespace Sdl.ViewParts.Sample
                                 {
                                     {true, "is active"},
                                     {false, "is inactive"}
-                                };        
+                                };
     }
 }

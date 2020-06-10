@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Sdl.Desktop.IntegrationApi;
+﻿using Sdl.Desktop.IntegrationApi;
 using Sdl.Desktop.IntegrationApi.Extensions;
-using Sdl.TranslationStudioAutomation.IntegrationApi;
-using System.ComponentModel;
-using Sdl.ProjectAutomation.FileBased;
+using Sdl.Desktop.IntegrationApi.Interfaces;
 using Sdl.ProjectAutomation.Core;
+using Sdl.ProjectAutomation.FileBased;
+using Sdl.TranslationStudioAutomation.IntegrationApi;
+using System;
 using System.Data;
-using Sdl.Core.Globalization;
-using Sdl.Core.Settings;
+using System.Linq;
 
 namespace StudioIntegrationApiSample
 {
@@ -18,11 +14,11 @@ namespace StudioIntegrationApiSample
        Id = "ProjectQuoteViewPart",
        Name = "Project Quote",
        Description = "Project Quote",
-       Icon="ProjectQuote_Icon")]
+       Icon = "ProjectQuote_Icon")]
     [ViewPartLayout(Dock = DockType.Bottom, LocationByType = typeof(ProjectsController))]
     public class ProjectQuoteViewPartController : AbstractViewPartController
     {
-        protected override System.Windows.Forms.Control GetContentControl()
+        protected override IUIControl GetContentControl()
         {
             return _control.Value;
         }
@@ -50,8 +46,7 @@ namespace StudioIntegrationApiSample
 
         private readonly Lazy<ProjectQuoteViewPartControl> _control = new Lazy<ProjectQuoteViewPartControl>(() => new ProjectQuoteViewPartControl());
 
-
-        public DataTable QuoteItems 
+        public DataTable QuoteItems
         {
             get; private set;
         }
@@ -60,12 +55,11 @@ namespace StudioIntegrationApiSample
         {
             QuoteItems.Clear();
 
-            FileBasedProject project =  ProjectsController.SelectedProjects.FirstOrDefault();
+            FileBasedProject project = ProjectsController.SelectedProjects.FirstOrDefault();
             if (project != null)
             {
                 ProjectStatistics stats = project.GetProjectStatistics();
-                ProjectInfo projectInfo = project.GetProjectInfo();
-                
+
                 QuoteItems.Clear();
                 QuoteItems.Columns.Clear();
 
@@ -92,7 +86,7 @@ namespace StudioIntegrationApiSample
 
         private string GetBandName(AnalysisBand band)
         {
-            return String.Format("{0}%-{1}%", band.MinimumMatchValue, band.MaximumMatchValue);
+            return string.Format("{0}%-{1}%", band.MinimumMatchValue, band.MaximumMatchValue);
         }
 
         private void AddItemRows(ProjectStatistics projectStats)
@@ -100,7 +94,7 @@ namespace StudioIntegrationApiSample
             foreach (TargetLanguageStatistics languageStats in projectStats.TargetLanguageStatistics)
             {
                 AnalysisStatistics stats = languageStats.AnalysisStatistics;
-                
+
                 string name = languageStats.TargetLanguage.DisplayName;
 
                 DataRow row = CreateRow(stats, name);
@@ -123,14 +117,13 @@ namespace StudioIntegrationApiSample
             int columnIndex = 5;
             for (int k = fuzzy.Length - 1; k >= 0; k--)
             {
-                AnalysisBand band = fuzzy[k].Band;
                 row[columnIndex] = GetPrice(fuzzy[k]);
                 columnIndex++;
             }
 
             row["New"] = GetPrice("New", stats.New);
-
             row["Total"] = CalculateRowTotal(row);
+
             return row;
         }
 
@@ -164,7 +157,7 @@ namespace StudioIntegrationApiSample
             return totalsRow;
         }
 
-        
+
         private double GetPrice(FuzzyCountData fuzzyCountData)
         {
             return GetPricePerWord(fuzzyCountData.Band) * fuzzyCountData.Words;
@@ -190,7 +183,7 @@ namespace StudioIntegrationApiSample
                 case "New":
                     return 0.3;
                 default:
-                    throw new ArgumentException("Unexpected category: " + category, "category");
+                    throw new ArgumentException("Unexpected category: " + category, nameof(category));
             }
         }
 

@@ -137,7 +137,7 @@
             this.buttonOpenProjectWizard.TabIndex = 11;
             this.buttonOpenProjectWizard.Text = "Open Project Wizard";
             this.buttonOpenProjectWizard.UseVisualStyleBackColor = true;
-            this.buttonOpenProjectWizard.Click += new System.EventHandler(this.buttonOpenProjectWizard_Click);
+            this.buttonOpenProjectWizard.Click += new System.EventHandler(this.ButtonOpenProjectWizard_Click);
             // 
             // groupBox3
             // 
@@ -190,7 +190,7 @@
             this.buttonClear.TabIndex = 10;
             this.buttonClear.Text = "Clear";
             this.buttonClear.UseVisualStyleBackColor = true;
-            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
+            this.buttonClear.Click += new System.EventHandler(this.ButtonClear_Click);
             // 
             // labelIconPath
             // 
@@ -239,7 +239,7 @@
             this.buttonBrowseIcon.TabIndex = 8;
             this.buttonBrowseIcon.Text = "...";
             this.buttonBrowseIcon.UseVisualStyleBackColor = true;
-            this.buttonBrowseIcon.Click += new System.EventHandler(this.buttonBrowseIcon_Click);
+            this.buttonBrowseIcon.Click += new System.EventHandler(this.ButtonBrowseIcon_Click);
             // 
             // buttonBrowsePackagePath
             // 
@@ -250,7 +250,7 @@
             this.buttonBrowsePackagePath.TabIndex = 9;
             this.buttonBrowsePackagePath.Text = "...";
             this.buttonBrowsePackagePath.UseVisualStyleBackColor = true;
-            this.buttonBrowsePackagePath.Click += new System.EventHandler(this.buttonBrowsePackagePath_Click);
+            this.buttonBrowsePackagePath.Click += new System.EventHandler(this.ButtonBrowsePackagePath_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -347,7 +347,7 @@
             this.buttonClearProjectData.TabIndex = 15;
             this.buttonClearProjectData.Text = "Clear";
             this.buttonClearProjectData.UseVisualStyleBackColor = true;
-            this.buttonClearProjectData.Click += new System.EventHandler(this.buttonClearProjectData_Click);
+            this.buttonClearProjectData.Click += new System.EventHandler(this.ButtonClearProjectData_Click);
             // 
             // PackagesControl
             // 

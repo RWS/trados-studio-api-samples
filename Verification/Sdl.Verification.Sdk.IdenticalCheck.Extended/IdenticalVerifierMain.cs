@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using Sdl.Core.Settings;
 using Sdl.FileTypeSupport.Framework.BilingualApi;
 using Sdl.FileTypeSupport.Framework.NativeApi;
@@ -112,7 +111,7 @@ namespace Sdl.Verification.Sdk.IdenticalCheck.Extended
 
         public string HelpTopic
         {
-            get { return String.Empty; }
+            get { return string.Empty; }
         }
 
         public Type SettingsType
@@ -142,8 +141,6 @@ namespace Sdl.Verification.Sdk.IdenticalCheck.Extended
         }
         #endregion
         #endregion
-
-
 
         #region IBilingualContentHandler Members
         public void Complete()
@@ -242,7 +239,5 @@ namespace Sdl.Verification.Sdk.IdenticalCheck.Extended
             }
         }
         #endregion
-
-
     }
 }

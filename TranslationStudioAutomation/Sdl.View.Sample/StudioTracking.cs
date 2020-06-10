@@ -1,7 +1,7 @@
+using Sdl.Desktop.IntegrationApi;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Sdl.Desktop.IntegrationApi;
 
 namespace Sdl.View.Sample
 {
@@ -21,12 +21,12 @@ namespace Sdl.View.Sample
         private static readonly Lazy<StudioTracking> _lazyInstance = new Lazy<StudioTracking>(() => new StudioTracking());
 
         #endregion
-        
+
         public Stopwatch GetViewWatch<T>()
-            where T: AbstractViewController
+            where T : AbstractViewController
         {
             Stopwatch watch;
-            if (!_viewsTrakingDictionary.TryGetValue(typeof (T), out watch))
+            if (!_viewsTrakingDictionary.TryGetValue(typeof(T), out watch))
             {
                 watch = Stopwatch.StartNew();
                 _viewsTrakingDictionary.Add(typeof(T), watch);

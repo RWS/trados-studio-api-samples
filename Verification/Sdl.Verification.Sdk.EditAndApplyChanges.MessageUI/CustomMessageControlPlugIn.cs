@@ -1,11 +1,9 @@
-﻿using System;
-using System.Windows.Forms;
-using System.Linq;
-using Sdl.DesktopEditor.EditorApi;
-using Sdl.Verification.Api;
+﻿using Sdl.DesktopEditor.EditorApi;
 using Sdl.FileTypeSupport.Framework.BilingualApi;
 using Sdl.FileTypeSupport.Framework.IntegrationApi;
-using System.Collections.Generic;
+using Sdl.Verification.Api;
+using System;
+using System.Windows.Forms;
 
 namespace Sdl.Verification.Sdk.EditAndApplyChanges.MessageUI
 {
@@ -40,7 +38,7 @@ namespace Sdl.Verification.Sdk.EditAndApplyChanges.MessageUI
         {
             if (!SupportsMessage(messageEventArgs))
             {
-                throw new ArgumentException("messageEventArgs is not supported by this message control plug-in", "messageEventArgs");
+                throw new ArgumentException("messageEventArgs is not supported by this message control plug-in", nameof(messageEventArgs));
             }
 
             return new CustomMessageControl(messageEventArgs, bilingualDocument, sourceSegment, targetSegment);

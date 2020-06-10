@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-
 using Sdl.DesktopEditor.EditorApi;
 using Sdl.FileTypeSupport.Framework.BilingualApi;
 using Sdl.FileTypeSupport.Framework.IntegrationApi;
@@ -25,7 +24,7 @@ namespace Sdl.Verification.Sdk.IdenticalCheck.Extended.MessageUI
         {
             if (!SupportsMessage(messageEventArgs))
             {
-                throw new ArgumentException("messageEventArgs is not supported by this message control plug-in", "messageEventArgs");
+                throw new ArgumentException("messageEventArgs is not supported by this message control plug-in", nameof(messageEventArgs));
             }
 
             return new IdenticalVerifierMessageUI(messageEventArgs, targetSegment);

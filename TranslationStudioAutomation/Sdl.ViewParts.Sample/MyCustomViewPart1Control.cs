@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+﻿using Sdl.Desktop.IntegrationApi.Interfaces;
 using System.Windows.Forms;
 
 namespace Sdl.ViewParts.Sample
 {
-    public partial class MyCustomViewPart1Control : UserControl
+    public partial class MyCustomViewPart1Control : UserControl, IUIControl
     {
         public MyCustomViewPart1Control()
         {

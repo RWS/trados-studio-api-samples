@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Sdl.TranslationStudioAutomation.IntegrationApi;
+﻿using Sdl.ProjectAutomation.Core;
 using Sdl.ProjectAutomation.FileBased;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
-using Sdl.ProjectAutomation.Core;
 using System.IO;
 
 namespace StudioIntegrationApiSample
@@ -61,11 +58,11 @@ namespace StudioIntegrationApiSample
                 LocalProjectFolder = GetProjectFolderPath(request.Name)
             };
             FileBasedProject project = new FileBasedProject(projectInfo, new ProjectTemplateReference(ProjectTemplate.Uri));
-            
-            OnMessageReported(project, String.Format("Creating project {0}", request.Name));
-            
-            ProjectFile[] projectFiles = project.AddFiles(request.Files);
-            project.RunAutomaticTask(projectFiles.GetIds(), AutomaticTaskTemplateIds.Scan); 
+
+            OnMessageReported(project, string.Format("Creating project {0}", request.Name));
+
+            ProjectFile[] projectFiles = project.AddFiles(request.Files.ToArray());
+            project.RunAutomaticTask(projectFiles.GetIds(), AutomaticTaskTemplateIds.Scan);
             TaskSequence taskSequence = project.RunDefaultTaskSequence(projectFiles.GetIds(),
                 (sender, e)
                     =>
@@ -74,8 +71,8 @@ namespace StudioIntegrationApiSample
                 }
                 , (sender, e)
                 =>
-                { 
-                   OnMessageReported(project, e.Message);
+                {
+                    OnMessageReported(project, e.Message);
                 });
 
             project.Save();
@@ -83,22 +80,22 @@ namespace StudioIntegrationApiSample
             if (taskSequence.Status == TaskStatus.Completed)
             {
                 SuccessfulRequests.Add(Tuple.Create(request, project));
-                OnMessageReported(project, String.Format("Project {0} created successfully.", request.Name));
+                OnMessageReported(project, string.Format("Project {0} created successfully.", request.Name));
                 return project;
             }
             else
             {
-                OnMessageReported(project, String.Format("Project {0} creation failed.", request.Name));
+                OnMessageReported(project, string.Format("Project {0} creation failed.", request.Name));
                 return null;
             }
         }
-        
+
         private string GetProjectFolderPath(string name)
         {
-            string rootFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Studio 2015\\Projects");
+            string rootFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Studio 2021\\Projects");
             string folder;
             int num = 1;
-            do 
+            do
             {
                 num++;
             }
@@ -106,30 +103,21 @@ namespace StudioIntegrationApiSample
             return folder;
         }
 
-       
+
 
         private void OnProgressChanged(double progress)
         {
-            if (ProgressChanged != null)
-            {
-                ProgressChanged(this, new ProgressChangedEventArgs((int)progress, null));
-            }
+            ProgressChanged?.Invoke(this, new ProgressChangedEventArgs((int)progress, null));
         }
 
         private void OnMessageReported(FileBasedProject project, string message)
         {
-            if (MessageReported != null)
-            {
-                MessageReported(this, new ProjectMessageEventArgs { Project = project, Message = message });
-            }
+            MessageReported?.Invoke(this, new ProjectMessageEventArgs { Project = project, Message = message });
         }
 
-        private void OnMessageReported(FileBasedProject project,ExecutionMessage executionMessage)
+        private void OnMessageReported(FileBasedProject project, ExecutionMessage executionMessage)
         {
- 	        if (MessageReported != null)
-            {
-                MessageReported(this, new ProjectMessageEventArgs {Project = project, Message = executionMessage.Level + ": " + executionMessage.Message});
-            }
+            MessageReported?.Invoke(this, new ProjectMessageEventArgs { Project = project, Message = executionMessage.Level + ": " + executionMessage.Message });
         }
     }
 
@@ -137,7 +125,7 @@ namespace StudioIntegrationApiSample
     {
         public FileBasedProject Project { get; set; }
 
-        public string Message {get; set;}
+        public string Message { get; set; }
     }
 
 }

@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Sdl.Desktop.IntegrationApi;
 using Sdl.Desktop.IntegrationApi.Extensions;
-using Sdl.Desktop.IntegrationApi;
-using Sdl.TranslationStudioAutomation.IntegrationApi.Presentation;
 using Sdl.TranslationStudioAutomation.IntegrationApi;
-using System.Windows.Forms;
 using Sdl.TranslationStudioAutomation.IntegrationApi.Presentation.DefaultLocations;
+using System;
+using System.Windows.Forms;
 
 namespace StudioIntegrationApiSample
 {
@@ -32,19 +28,19 @@ namespace StudioIntegrationApiSample
             EditorController editorController = SdlTradosStudio.Application.GetController<EditorController>();
             WikipediaResultsViewPartController wikiPediaController = SdlTradosStudio.Application.GetController<WikipediaResultsViewPartController>();
 
-            Document doc = editorController.ActiveDocument;
+            var doc = editorController.ActiveDocument;
 
             if (doc == null)
             {
                 return;
             }
 
-            string selectedText = 
+            string selectedText =
                 doc.FocusedDocumentContent == FocusedDocumentContent.Source
-                    ? doc.Selection.Source.ToString() 
+                    ? doc.Selection.Source.ToString()
                     : doc.Selection.Target.ToString();
 
-            if (!String.IsNullOrEmpty(selectedText))
+            if (!string.IsNullOrEmpty(selectedText))
             {
                 wikiPediaController.Lookup(selectedText);
                 wikiPediaController.Show();

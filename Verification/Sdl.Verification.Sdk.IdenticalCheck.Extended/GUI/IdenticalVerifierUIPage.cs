@@ -1,5 +1,4 @@
 ﻿using Sdl.Core.Settings;
-
 using Sdl.Verification.Api;
 
 namespace Sdl.Verification.Sdk.IdenticalCheck.Extended

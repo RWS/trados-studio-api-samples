@@ -8,7 +8,6 @@ namespace Sdl.PackagesOperations.Sample
     /// </summary>
     public class SampleJob : IExternalJobWithProgress
     {
-        private object _jobData;
 
         /// <summary>
         /// 
@@ -21,11 +20,7 @@ namespace Sdl.PackagesOperations.Sample
         /// <summary>
         /// 
         /// </summary>
-        public object JobData
-        {
-            get => _jobData;
-            set => _jobData = value;
-        }
+        public object JobData { get; set; }
 
         public string JobName { get; set; }
 

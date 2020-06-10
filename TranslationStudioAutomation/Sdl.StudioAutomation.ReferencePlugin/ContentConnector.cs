@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
+using System.Linq;
 
 namespace StudioIntegrationApiSample
 {
@@ -31,19 +30,19 @@ namespace StudioIntegrationApiSample
                 ProjectRequests.Add(new ProjectRequest
                 {
                     Name = dirInfo.Name,
-                    Files = Directory.GetFiles(directory)
+                    Files = Directory.GetFiles(directory).ToList()
                 });
             }
         }
 
         private static string GetIncomingRequestsFolder()
         {
-            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Studio 2015\\IncomingRequests");
+            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Studio 2021\\IncomingRequests");
         }
 
         private static string GetAcceptedRequestsFolder()
         {
-            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Studio 2015\\AcceptedRequests");
+            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Studio 2021\\AcceptedRequests");
         }
 
         internal void RequestAccepted(ProjectRequest request)

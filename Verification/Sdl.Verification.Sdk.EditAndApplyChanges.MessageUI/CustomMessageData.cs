@@ -1,6 +1,5 @@
 ﻿using Sdl.FileTypeSupport.Framework.IntegrationApi;
 using System.Collections.Generic;
-using System;
 
 namespace Sdl.Verification.Sdk.EditAndApplyChanges.MessageUI
 {
