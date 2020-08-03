@@ -5,15 +5,8 @@ namespace Sdl.SDK.BatchTasks.Samples.PseudoTranslation
 {
     class SimplePsedoTranslateProcessor : AbstractBilingualContentHandler
     {
-        private int _lcid;
-        private ISegment _processedSegment;
-        private bool _isFirstWord = false;
-        volatile bool _cancelRequested = false;
-        private int _maximumSegmentLength;
-
         public SimplePsedoTranslateProcessor()
         {
-
         }
 
         public SimplePseudoTranslateSettings Settings { get; set; }
@@ -54,7 +47,6 @@ namespace Sdl.SDK.BatchTasks.Samples.PseudoTranslation
                             PropertiesFactory.CreateTextProperties(Settings.AppendEnd.Value)));
                     }
                 }
-
             }
             base.ProcessParagraphUnit(paragraphUnit);
         }
@@ -71,7 +63,5 @@ namespace Sdl.SDK.BatchTasks.Samples.PseudoTranslation
                 segmentPair.Properties.ConfirmationLevel = ConfirmationLevel.Draft;
             }
         }
-
-
     }
 }

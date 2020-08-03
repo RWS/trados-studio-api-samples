@@ -25,7 +25,7 @@
                 newTask.Id,
                 "Sample Package",
                 "Please hurry up, this is job is urgent!", 
-                this.GetPackageOptions());
+                GetPackageOptions());
             #endregion
 
             #region "PackageStatus"
@@ -91,10 +91,6 @@
             return options;
             #endregion
         }
-        #endregion
-
-        #region "CheckEvents"
-
         #endregion
     }
 }

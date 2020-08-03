@@ -26,7 +26,7 @@ namespace Sdl.SDK.BatchTasks.Samples.PseudoTranslation.Implementation
                 segmentPair.Properties.TranslationOrigin = itemFactory.CreateTranslationOrigin();
                 segmentPair.Properties.TranslationOrigin.OriginType = DefaultTranslationOrigin.Source;
             }
-            catch (Exception ex)
+            catch
             {
                 throw;
             }
@@ -37,7 +37,7 @@ namespace Sdl.SDK.BatchTasks.Samples.PseudoTranslation.Implementation
         /// </summary>
         public RandomTargetGenerator()
         {
-            this.revisionTypeToIgnore = RevisionType.Delete;
+            revisionTypeToIgnore = RevisionType.Delete;
         }
 
         public RandomTargetGenerator(RevisionType revisionTypeToIgnore)
@@ -80,8 +80,6 @@ namespace Sdl.SDK.BatchTasks.Samples.PseudoTranslation.Implementation
             }
         }
 
-
-
         /// <summary>
         /// Visit the children of this container
         /// </summary>
@@ -93,7 +91,6 @@ namespace Sdl.SDK.BatchTasks.Samples.PseudoTranslation.Implementation
                 item.AcceptVisitor(this);
             }
         }
-
 
         #region IMarkupDataVisitor Members
 
@@ -202,6 +199,5 @@ namespace Sdl.SDK.BatchTasks.Samples.PseudoTranslation.Implementation
             }
             return sb.ToString();
         }
-
     }
 }

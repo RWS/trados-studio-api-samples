@@ -14,7 +14,6 @@ namespace Sdl.SDK.BatchTasks.Samples.PseudoTranslation
     public class SimplePseudoTranslateTask : AbstractFileContentProcessingAutomaticTask
     {
         private SimplePsedoTranslateProcessor _processor;
-        private SimplePseudoTranslateSettings _settings;
 
         protected override void ConfigureConverter(ProjectFile projectFile, IMultiFileConverter multiFileConverter)
         {
@@ -31,7 +30,6 @@ namespace Sdl.SDK.BatchTasks.Samples.PseudoTranslation
         {
             return true;
         }
-
     }
 }
 

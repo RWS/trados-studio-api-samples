@@ -1,11 +1,10 @@
 ﻿namespace Sdl.SDK.ProjectAutomation.Samples.Examples
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Globalization;
     using Sdl.Core.Globalization;
     using Sdl.ProjectAutomation.Core;
     using Sdl.ProjectAutomation.FileBased;
+    using System;
+    using System.Globalization;
 
     internal class ReturnPackage
     {
@@ -60,11 +59,6 @@
         #region "OpenPackage"
         public void OpenPackage(string projectFile, string returnPackageFile)
         {
-            #region "EventArgs"
-            List<TaskStatusEventArgs> taskStatusEventArgsList = new List<TaskStatusEventArgs>();
-            List<MessageEventArgs> messageEventArgsList = new List<MessageEventArgs>();
-            #endregion
-
             #region "OpenProject"
             FileBasedProject project = new FileBasedProject(projectFile);
             #endregion

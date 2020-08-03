@@ -1,6 +1,5 @@
 ﻿using Sdl.FileTypeSupport.Framework.BilingualApi;
 using Sdl.FileTypeSupport.Framework.Core.Utilities.NativeApi;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,10 +7,8 @@ namespace Sdl.SDK.BatchTasks.Samples.PseudoTranslation.Implementation
 {
     class SourceToTargetCopy : IMarkupDataVisitor
     {
-
         List<IAbstractMarkupData> nodesToDelete;
-        RevisionType revisionTypeToIgnore;
-
+        readonly RevisionType revisionTypeToIgnore;
 
         public static void Copy(ISegmentPair segmentPair, IDocumentItemFactory itemFactory)
         {
@@ -24,7 +21,7 @@ namespace Sdl.SDK.BatchTasks.Samples.PseudoTranslation.Implementation
                 segmentPair.Properties.TranslationOrigin = itemFactory.CreateTranslationOrigin();
                 segmentPair.Properties.TranslationOrigin.OriginType = DefaultTranslationOrigin.Source;
             }
-            catch (Exception ex)
+            catch
             {
                 throw;
             }
@@ -35,7 +32,7 @@ namespace Sdl.SDK.BatchTasks.Samples.PseudoTranslation.Implementation
         /// </summary>
         public SourceToTargetCopy()
         {
-            this.revisionTypeToIgnore = RevisionType.Delete;
+            revisionTypeToIgnore = RevisionType.Delete;
         }
 
         public SourceToTargetCopy(RevisionType revisionTypeToIgnore)
@@ -77,8 +74,6 @@ namespace Sdl.SDK.BatchTasks.Samples.PseudoTranslation.Implementation
             }
         }
 
-
-
         /// <summary>
         /// Visit the children of this container
         /// </summary>
@@ -90,7 +85,6 @@ namespace Sdl.SDK.BatchTasks.Samples.PseudoTranslation.Implementation
                 item.AcceptVisitor(this);
             }
         }
-
 
         #region IMarkupDataVisitor Members
 
