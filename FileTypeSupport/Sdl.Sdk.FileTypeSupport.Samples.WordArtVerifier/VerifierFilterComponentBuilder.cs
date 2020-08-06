@@ -1,8 +1,5 @@
-﻿using System.Collections.Generic;
-using Sdl.FileTypeSupport.Filters.Word;
-using Sdl.FileTypeSupport.Framework;
-using Sdl.FileTypeSupport.Framework.IntegrationApi;
-using Sdl.Core.Globalization;
+﻿using Sdl.FileTypeSupport.Framework.IntegrationApi;
+using System.Collections.Generic;
 
 namespace Sdl.Sdk.FileTypeSupport.Samples.WordArtVerifier
 {
@@ -11,7 +8,7 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.WordArtVerifier
         Id = "Word2007_FilterComponentBuilderExtension_WordArtVerifier_Id",
         Name = "Word2007_FilterComponentBuilderExtension_WordArtVerifier_Name",
         Description = "Word2007_FilterComponentBuilderExtension_WordArtVerifier_Description",
-        OriginalFileType = "Word 2000-2003 v 1.0.0.0")]
+        OriginalFileType = "WordprocessingML v. 2")]
     #endregion
     public class VerifierFilterComponentBuilder : IFileTypeComponentBuilderAdapter
     {
@@ -20,8 +17,10 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.WordArtVerifier
         {
             var fileTypeInformation = Original.BuildFileTypeInformation(name);
             // add "WordArtVerifier_Settings" to existing WinFormSettingsPageIds
-            var winFormSettingsPageIds = new List<string>(fileTypeInformation.WinFormSettingsPageIds);
-            winFormSettingsPageIds.Add("WordArtVerifier_Settings");
+            var winFormSettingsPageIds = new List<string>(fileTypeInformation.WinFormSettingsPageIds)
+            {
+                "WordArtVerifier_Settings"
+            };
             fileTypeInformation.WinFormSettingsPageIds = winFormSettingsPageIds.ToArray();
 
             return fileTypeInformation;

@@ -11,7 +11,7 @@
         {
             TranslationMemoryContainer container = new TranslationMemoryContainer(tmServer);
 
-            DatabaseServer dbServ = tmServer.GetDatabaseServer("DB01", this.GetDbServProperties());
+            DatabaseServer dbServ = tmServer.GetDatabaseServer("DB01", GetDbServProperties());
             container.DatabaseServer = dbServ;
             container.DatabaseName = "DbName";
             container.Name = "NiceName";

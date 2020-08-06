@@ -7,7 +7,7 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.Bil
     class BilTextExtractor : IMarkupDataVisitor
     {
         #region "comment list"
-        private List<string> _Comments = new List<string>();
+        private readonly List<string> _Comments = new List<string>();
 
         public List<string> GetSegmentComment(ISegment segment)
         {
@@ -60,7 +60,6 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.Bil
             PlainText.Append("</" + tagPair.EndTagProperties.TagContent + ">");
         }
         #endregion
-
 
         #region "comments"
         public void VisitCommentMarker(ICommentMarker commentMarker)

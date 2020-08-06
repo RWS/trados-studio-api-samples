@@ -24,7 +24,7 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
             #endregion
 
             #region "FireEvent"
-            exporter.BatchExported += new EventHandler<BatchExportedEventArgs>(this.exporter_BatchExported);
+            exporter.BatchExported += new EventHandler<BatchExportedEventArgs>(Exporter_BatchExported);
             #endregion
 
             #region "execute"
@@ -34,7 +34,7 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
         #endregion
 
         #region "event"
-        private void exporter_BatchExported(object sender, BatchExportedEventArgs e)
+        private void Exporter_BatchExported(object sender, BatchExportedEventArgs e)
         {
             string info;
             info = "Total TUs processed: " + e.TotalProcessed + "\n";
@@ -54,11 +54,11 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
             #endregion
 
             #region "FilterDefinition"
-            exporter.FilterExpression = this.GetFilterSimple();
+            exporter.FilterExpression = GetFilterSimple();
             #endregion
 
             #region "DoFilteredExport"
-            exporter.BatchExported += new EventHandler<BatchExportedEventArgs>(this.exporter_BatchExported);
+            exporter.BatchExported += new EventHandler<BatchExportedEventArgs>(Exporter_BatchExported);
             exporter.Export(exportFilePath, true);
             #endregion
         }

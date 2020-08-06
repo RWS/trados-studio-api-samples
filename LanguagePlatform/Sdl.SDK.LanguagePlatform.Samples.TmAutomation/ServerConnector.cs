@@ -1,7 +1,7 @@
 ﻿namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
 {
-    using System;
     using Sdl.LanguagePlatform.TranslationMemoryApi;
+    using System;
 
     /// <summary>
     /// Functionality to provide server connection operations.
@@ -25,7 +25,7 @@
         /// </summary>
         public TranslationProviderServer Connect()
         {
-            return new TranslationProviderServer(this.GetUri(), false, _userName, _password);
+            return new TranslationProviderServer(GetUri(), false, _userName, _password);
         }
         #endregion
 
@@ -88,6 +88,5 @@
             import.ImportTmx(tmServer, _organizationPath, _existingTranslationMemory, _importFileName);
             #endregion
         }
-
     }
 }

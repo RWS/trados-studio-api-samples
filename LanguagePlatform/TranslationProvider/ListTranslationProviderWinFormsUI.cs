@@ -121,15 +121,13 @@ namespace Sdl.Sdk.LanguagePlatform.Samples.ListProvider
         }
         #endregion
 
-
-
         public bool SupportsTranslationProviderUri(Uri translationProviderUri)
         {
             if (translationProviderUri == null)
             {
                 throw new ArgumentNullException("URI not supported by the plug-in.");
             }
-            return String.Equals(translationProviderUri.Scheme, ListTranslationProvider.ListTranslationProviderScheme, StringComparison.CurrentCultureIgnoreCase);
+            return string.Equals(translationProviderUri.Scheme, ListTranslationProvider.ListTranslationProviderScheme, StringComparison.CurrentCultureIgnoreCase);
         }
 
         public string TypeDescription

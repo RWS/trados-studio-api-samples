@@ -2,7 +2,6 @@
 using Sdl.FileTypeSupport.Framework.BilingualApi;
 using Sdl.FileTypeSupport.Framework.IntegrationApi;
 using Sdl.FileTypeSupport.Framework.NativeApi;
-using System;
 
 
 namespace Sdl.Sdk.FileTypeSupport.Samples.WordArtVerifier
@@ -135,7 +134,7 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.WordArtVerifier
                 if (paragraphUnit.Properties.Contexts.Contexts.Count > 0 &&
                     paragraphUnit.Properties.Contexts.Contexts[0].DisplayCode == "TAG" &&
                     paragraphUnit.Properties.Contexts.Contexts[0].Description.Contains("wordart") &&
-                    segmentPair.Target.ToString() != "")
+                    string.IsNullOrWhiteSpace(segmentPair.Target.ToString()) == false)
                 {
                     {
                         CheckWordCount(segmentPair.Target);
@@ -168,7 +167,7 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.WordArtVerifier
             if (count > MaxWordCount)
             {
                 MessageReporter.ReportMessage(this, Resources.Plugin_Name, ErrorLevel.Warning,
-                    String.Format(Resources.MsgWordCountExceeded, count, MaxWordCount),
+                    string.Format(Resources.MsgWordCountExceeded, count, MaxWordCount),
                     new TextLocation(new Location(targetSegment, true), 0),
                     new TextLocation(new Location(targetSegment, false), targetSegment.ToString().Length - 1));
             }

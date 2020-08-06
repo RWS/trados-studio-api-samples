@@ -17,7 +17,7 @@
             tm.SetReadOnlyPassword("guest");
             tm.Save();
 
-            this.OpenProtectedTm(tmPath, "super");
+            OpenProtectedTm(tmPath, "super");
         }
         #endregion
 

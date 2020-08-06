@@ -11,17 +11,21 @@
             #region "listField"
             FileBasedTranslationMemory tm = new FileBasedTranslationMemory(tmPath);
 
-            FieldDefinition listField = new FieldDefinition();
-            listField.Name = "Customer";
-            listField.ValueType = FieldValueType.MultiplePicklist;
+            FieldDefinition listField = new FieldDefinition
+            {
+                Name = "Customer",
+                ValueType = FieldValueType.MultiplePicklist
+            };
             listField.PicklistItems.Add("SDL");
             listField.PicklistItems.Add("Microsoft");
             #endregion
 
             #region "textField"
-            FieldDefinition textField = new FieldDefinition();
-            textField.Name = "Project id";
-            textField.ValueType = FieldValueType.MultipleString;
+            FieldDefinition textField = new FieldDefinition
+            {
+                Name = "Project id",
+                ValueType = FieldValueType.MultipleString
+            };
             #endregion
 
             #region "add"

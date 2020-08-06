@@ -1,6 +1,6 @@
 ﻿// ---------------------------------
 // <copyright file="TMExporter.cs" company="SDL International">
-// Copyright  2010 All Right Reserved
+// Copyright  2020 All Right Reserved
 // </copyright>
 // <author>Kostiantyn Lukianets</author>
 // <email>klukianets@sdl.com</email>
@@ -31,12 +31,12 @@ namespace Sdl.SDK.LanguagePlatform.Samples.BatchExport
         /// <param name="translationMemoryPath">FileBasedTranslationMemory to export into.</param>
         public void Export(string translationMemoryPath)
         {
-            this.exportProgress = 0;
+            exportProgress = 0;
             FileBasedTranslationMemory tm = new FileBasedTranslationMemory(translationMemoryPath);
             TranslationMemoryExporter exporter = new TranslationMemoryExporter(tm.LanguageDirection);
 
             // set event handler
-            exporter.BatchExported += new EventHandler<BatchExportedEventArgs>(this.Exporter_BatchExported);
+            exporter.BatchExported += new EventHandler<BatchExportedEventArgs>(Exporter_BatchExported);
 
             // The *.tmx export files have the same name as the original
             // *.sdltm files, including the language direction retrieved
@@ -49,7 +49,7 @@ namespace Sdl.SDK.LanguagePlatform.Samples.BatchExport
                 tm.LanguageDirection.TargetLanguage);
             exporter.Export(exportString, true);
 
-            Console.Write("Translation Units exported: {0} \n", this.exportProgress);
+            Console.Write("Translation Units exported: {0} \n", exportProgress);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Sdl.SDK.LanguagePlatform.Samples.BatchExport
         /// <param name="e">Object containing current progress value and related info.</param>
         private void Exporter_BatchExported(object sender, BatchExportedEventArgs e)
         {
-            this.exportProgress = e.TotalExported;
+            exportProgress = e.TotalExported;
         }
 
         #endregion

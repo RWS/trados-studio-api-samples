@@ -1,8 +1,8 @@
 ﻿namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleTextExtension
 {
-    using System.IO;
     using Sdl.FileTypeSupport.Framework.Core.Utilities.NativeApi;
     using Sdl.FileTypeSupport.Framework.NativeApi;
+    using System.IO;
 
     public class SimpleTextExtensionPreTweaker : AbstractFilePreTweaker
     {
@@ -13,7 +13,5 @@
             PreTweakerCallsCount += 1;
             File.Copy(properties.OriginalFilePath, properties.InputFilePath);
         }
-
-
     }
 }

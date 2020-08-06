@@ -31,7 +31,7 @@
         /// <returns>an SimpleText file type information object</returns>
         public IFileTypeInformation BuildFileTypeInformation(string name)
         {
-            var info = this.FileTypeManager.BuildFileTypeInformation();
+            var info = FileTypeManager.BuildFileTypeInformation();
 
             info.FileTypeDefinitionId = new FileTypeDefinitionId("BIL File Type 1.0.0.0");
             info.FileTypeName = new LocalizableString("Bilingual Sample File");
@@ -64,7 +64,7 @@
         public IFileExtractor BuildFileExtractor(string name)
         {
             var parser = new BilParser();
-            var extractor = this.FileTypeManager.BuildFileExtractor(parser, this);
+            var extractor = FileTypeManager.BuildFileExtractor(parser, this);
             return extractor;
         }
 
@@ -75,7 +75,7 @@
         /// <returns><c>Null</c> if no file generator is defined</returns>
         public IFileGenerator BuildFileGenerator(string name)
         {
-            return this.FileTypeManager.BuildFileGenerator(new BilWriter());
+            return FileTypeManager.BuildFileGenerator(new BilWriter());
         }
 
         /// <summary>

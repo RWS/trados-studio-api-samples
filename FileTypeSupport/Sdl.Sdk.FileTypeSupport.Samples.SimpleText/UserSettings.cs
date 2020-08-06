@@ -20,7 +20,7 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText
             set
             {
                 _lockPrdCodes = value;
-                OnPropertyChanged("LockPrdCodes");
+                OnPropertyChanged(nameof(LockPrdCodes));
             }
         }
         #endregion

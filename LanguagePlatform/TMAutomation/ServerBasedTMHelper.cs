@@ -1,33 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using Sdl.LanguagePlatform.TranslationMemory;
 using Sdl.LanguagePlatform.TranslationMemoryApi;
-using Sdl.Enterprise2.Studio.Platform.Client.IdentityModel;
+using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.IO;
-using Sdl.LanguagePlatform.TranslationMemory;
+using System.Windows.Forms;
 
 namespace Sdl.SDK.LanguagePlatform.TMAutomation
 {
     class ServerBasedTMHelper
     {
-        private TextBox _output;
+        private readonly TextBox _output;
         private TranslationProviderServer _server;
-        private UserManagerClient _userManager;
-        private string _parentOrganizationPath;
 
-        public string ParentOrganizationPath
-        {
-            get { return _parentOrganizationPath; }
-            set { _parentOrganizationPath = value; }
-        }
+        public string ParentOrganizationPath { get; set; }
 
         private TranslationProviderServer TMServer
         {
-            get 
+            get
             {
                 if (_server == null)
                 {
@@ -40,7 +30,7 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
                 _server = value;
             }
         }
-        
+
         public ServerBasedTMHelper(TextBox tb)
         {
             _output = tb;
@@ -50,7 +40,7 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
         {
             ServerBasedLanguageResourcesTemplate template =
                 TMServer.GetLanguageResourcesTemplate(ParentOrganizationPath + "/APISampleTemplate", LanguageResourcesTemplateProperties.None);
-            
+
             if (template != null)
             {
                 template.Delete();
@@ -88,10 +78,10 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
             importer.ContinueOnError = true;
             importer.Source = new FileInfo(importFilePath);
             AdaptImportSettigns(importer.ImportSettings);
-            
+
             //add the import into the queue
             importer.Queue();
-            
+
             //Wait until the import is finished
             bool continueWaiting = true;
             while (continueWaiting)
@@ -141,7 +131,7 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
         /// Change the default import settigns
         /// </summary>
         /// <param name="importSettings"></param>
-        private void AdaptImportSettigns(Sdl.LanguagePlatform.TranslationMemory.ImportSettings importSettings)
+        private void AdaptImportSettigns(ImportSettings importSettings)
         {
             if (importSettings == null)
             {
@@ -164,7 +154,7 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
         }
 
         public void CreateNewTM()
-        { 
+        {
             //Create a new testing container first
             TranslationMemoryContainer container = CreateContainer("APITest");
 
@@ -190,7 +180,7 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
         {
             foreach (ServerBasedTranslationMemory item in TMServer.GetTranslationMemories(TranslationMemoryProperties.None))
             {
-                if(item.Name == tmName)
+                if (item.Name == tmName)
                 {
                     return true;
                 }
@@ -208,7 +198,7 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
                     return item;
                 }
             }
-            
+
             //our template doesn't work so create new one
             ServerBasedLanguageResourcesTemplate template = new ServerBasedLanguageResourcesTemplate(TMServer);
             template.Name = "APISampleTemplate";
@@ -248,7 +238,7 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
             {
                 throw new Exception("No DB server registered.");
             }
-            
+
             //pick first DB server and check if the new container name already exists
             foreach (var cnt in dbs[0].Containers)
             {
@@ -274,9 +264,9 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
             {
                 throw new Exception("Container wasn't created.");
             }
-            
+
             WriteResult("Container " + newContainerName + " was created successfully.\r\n");
-            
+
             return container;
         }
 
@@ -287,8 +277,8 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
         {
             foreach (DatabaseServer item in TMServer.GetDatabaseServers(DatabaseServerProperties.None))
             {
-                WriteResult(item.Name + "\r\n");      
-            } 
+                WriteResult(item.Name + "\r\n");
+            }
         }
 
 
@@ -300,7 +290,7 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
             foreach (TranslationMemoryContainer item in TMServer.GetContainers(ContainerProperties.None))
             {
                 WriteResult(item.Name + " in DB " + item.DatabaseName + "\r\n");
-            } 
+            }
         }
 
         /// <summary>
@@ -312,7 +302,7 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
             {
                 //now I will access a contain property of the TM - as I specified TranslationMemoryProperties.None the sever will be called again
                 //this can be avoided by calling TranslationMemoryProperties.Container directly
-                WriteResult(item.Name+ " in container " + item.Container.Name + "\r\n");
+                WriteResult(item.Name + " in container " + item.Container.Name + "\r\n");
             }
         }
 
@@ -338,7 +328,7 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
         /// </summary>
         private void ConnectToServer()
         {
-            _server = new TranslationProviderServer(GetUri(),false,"sa","sa");
+            _server = new TranslationProviderServer(GetUri(), false, "sa", "sa");
         }
 
         private Uri GetUri()

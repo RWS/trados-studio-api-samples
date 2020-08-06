@@ -1,8 +1,8 @@
 ﻿namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
 {
+    using Sdl.LanguagePlatform.TranslationMemoryApi;
     using System.Globalization;
     using System.Windows.Forms;
-    using Sdl.LanguagePlatform.TranslationMemoryApi;
 
     public class ServerLanguageResourceTemplates
     {
@@ -58,8 +58,8 @@
 
             #region "variables"
             LanguageResourceBundle variables = new LanguageResourceBundle(CultureInfo.GetCultureInfo("en-US"));
-            variables.Variables.Add("SDL Trados Studio 2009");
-            variables.Variables.Add("SDL MultiTerm 2009");
+            variables.Variables.Add("SDL Trados Studio 2021");
+            variables.Variables.Add("SDL MultiTerm 2021");
             #endregion
 
             #region "abbreviations"

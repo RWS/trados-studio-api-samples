@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
+﻿using Sdl.FileTypeSupport.Framework.Core.Settings;
+using System;
 using System.Windows.Forms;
-using Sdl.FileTypeSupport.Framework.Core.Settings;
 
 
 namespace Sdl.Sdk.FileTypeSupport.Samples.WordArtVerifier
@@ -55,7 +49,7 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.WordArtVerifier
         /// <param name="sender"></param>
         /// <param name="e"></param>
         #region "SaveSettingEnabled"
-        private void cb_CheckWordArt_CheckedChanged(object sender, EventArgs e)
+        private void Cb_CheckWordArt_CheckedChanged(object sender, EventArgs e)
         {
             _settings.CheckWordArt = cb_CheckWordArt.Checked;
         }
@@ -70,10 +64,10 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.WordArtVerifier
         /// <param name="sender"></param>
         /// <param name="e"></param>
         #region "SaveSettingMaxCount"
-        private void txt_MaxWordCount_TextChanged(object sender, EventArgs e)
+        private void Txt_MaxWordCount_TextChanged(object sender, EventArgs e)
         {
             int tempvalue = 0;
-            Int32.TryParse(txt_MaxWordCount.Text, out tempvalue);
+            int.TryParse(txt_MaxWordCount.Text, out tempvalue);
             if (tempvalue > 0)
             {
                 _settings.MaxWordCount = tempvalue;

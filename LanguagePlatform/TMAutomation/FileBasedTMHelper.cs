@@ -7,6 +7,7 @@ using System;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
+using static Sdl.LanguagePlatform.TranslationMemory.ImportSettings;
 
 namespace Sdl.SDK.LanguagePlatform.TMAutomation
 {
@@ -79,7 +80,7 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
             PersistentObjectToken tuID = null;
             RegularIterator tmIterator = new RegularIterator(1);
             TranslationUnit[] returnedTMs = tm.LanguageDirection.GetTranslationUnits(ref tmIterator);
-            while (returnedTMs.Count<TranslationUnit>() > 0)
+            while (returnedTMs.Count() > 0)
             {
                 foreach (TranslationUnit item in returnedTMs)
                 {
@@ -94,8 +95,6 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
 
             return tuID;
         }
-
-
 
         /// <summary>
         /// Change target segment content of existing TU
@@ -131,7 +130,6 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
             }
         }
 
-
         /// <summary>
         /// Add a new TU into the specified TM
         /// </summary>
@@ -145,20 +143,20 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
             WriteResult("New TU added.\r\n");
         }
 
-
         /// <summary>
         /// Create a new import settigns object
         /// </summary>
         /// <returns></returns>
         private ImportSettings GetImportSettings()
         {
-            ImportSettings settings = new ImportSettings();
-            settings.CheckMatchingSublanguages = true;
-            settings.ExistingFieldsUpdateMode = ImportSettings.FieldUpdateMode.Merge;
+            ImportSettings settings = new ImportSettings
+            {
+                CheckMatchingSublanguages = true,
+                ExistingFieldsUpdateMode = FieldUpdateMode.Merge
+            };
 
             return settings;
         }
-
 
         /// <summary>
         /// Create a new TranslationUnit object
@@ -170,10 +168,11 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
         /// <returns></returns>
         private TranslationUnit GetNewTU(string source, string target, CultureInfo sourceCulture, CultureInfo targetCulture)
         {
-            TranslationUnit tu = new TranslationUnit();
-
-            tu.SourceSegment = new Segment(sourceCulture);
-            tu.TargetSegment = new Segment(targetCulture);
+            TranslationUnit tu = new TranslationUnit
+            {
+                SourceSegment = new Segment(sourceCulture),
+                TargetSegment = new Segment(targetCulture)
+            };
 
             tu.SourceSegment.Add(source);
             tu.TargetSegment.Add(target);
@@ -215,11 +214,12 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
         /// <returns></returns>
         private SearchSettings GetSearchSettings()
         {
-            SearchSettings settings = new SearchSettings();
-            settings.MinScore = 70;
+            SearchSettings settings = new SearchSettings
+            {
+                MinScore = 70
+            };
             return settings;
         }
-
 
         /// <summary>
         /// Export specified TM into the tmx file
@@ -234,21 +234,19 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
 
             exporter.FilterExpression = GetExportFilter();
 
-            exporter.BatchExported += new EventHandler<BatchExportedEventArgs>(exporter_BatchExported);
+            exporter.BatchExported += new EventHandler<BatchExportedEventArgs>(Exporter_BatchExported);
 
             exporter.ChunkSize = 1; //sets the import size after which the BatchExported event is launched
 
             exporter.Export(exportFilePath, true);
         }
 
-
-
         /// <summary>
         /// Export event handler
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void exporter_BatchExported(object sender, BatchExportedEventArgs e)
+        void Exporter_BatchExported(object sender, BatchExportedEventArgs e)
         {
             WriteResult(e.TotalProcessed + " TU(s) exported.\r\n");
             e.Cancel = false;
@@ -265,7 +263,7 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
 
             TranslationMemoryImporter importer = new TranslationMemoryImporter(tm.LanguageDirection);
 
-            importer.BatchImported += new EventHandler<BatchImportedEventArgs>(importer_BatchImported);
+            importer.BatchImported += new EventHandler<BatchImportedEventArgs>(Importer_BatchImported);
 
             importer.ChunkSize = 1; //sets the import size after which the BatchImported event is launched
 
@@ -285,7 +283,7 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
             TranslationMemoryImporter importer = new TranslationMemoryImporter(tm.LanguageDirection);
             //Set up the Poco Filter Manager with default list of filters
             importer.FileTypeManager = new PocoFilterManager(true);
-            importer.BatchImported += new EventHandler<BatchImportedEventArgs>(importer_BatchImported);
+            importer.BatchImported += new EventHandler<BatchImportedEventArgs>(Importer_BatchImported);
             importer.ChunkSize = 1; //sets the import size after which the BatchImported event is launched
             AdaptImportSettigns(importer.ImportSettings);
             importer.Import(sdlxliffFile);
@@ -297,7 +295,7 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void importer_BatchImported(object sender, BatchImportedEventArgs e)
+        void Importer_BatchImported(object sender, BatchImportedEventArgs e)
         {
             WriteResult(e.Statistics.AddedTranslationUnits + " TU(s) were imported.\r\n");
             e.Cancel = false;
@@ -310,13 +308,12 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
         private void AdaptImportSettigns(ImportSettings importSettings)
         {
             importSettings.CheckMatchingSublanguages = true;
-            importSettings.OverwriteExistingTUs = true;
+            importSettings.ExistingTUsUpdateMode = TUUpdateMode.Overwrite;
             //set behavior of existing field values during import
             importSettings.ExistingFieldsUpdateMode = ImportSettings.FieldUpdateMode.Merge;
             //set behavior of new fields during import
             importSettings.NewFields = ImportSettings.NewFieldsOption.AddToSetup;
-            //create a field (now using field already existing in the TM setup)
-            Field cru = new Field("Sample text field", FieldValueType.MultipleString);
+            //create a field (now using field already existing in the TM setup)            
             //set the field value object
             MultipleStringFieldValue cruVal = new MultipleStringFieldValue("Sample text field");
             //add new value (this time we use multiple string field value
@@ -360,8 +357,8 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
                 CultureInfo.GetCultureInfo("de-DE"),
                 GetFuzzyIndexes(),
                 GetRecognizers(),
-                TokenizerFlags.AllFlags,
-                WordCountFlags.AllFlags);
+                TokenizerFlags.BreakOnHyphen | TokenizerFlags.BreakOnDash,
+                WordCountFlags.BreakOnHyphen | WordCountFlags.BreakOnDash | WordCountFlags.BreakOnTag);
 
             WriteResult("TM " + tmPath + " created.\r\n");
 
@@ -451,11 +448,7 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
         /// <returns></returns>
         private BuiltinRecognizers GetRecognizers()
         {
-            return BuiltinRecognizers.RecognizeDates
-             | BuiltinRecognizers.RecognizeAcronyms
-             | BuiltinRecognizers.RecognizeMeasurements
-             | BuiltinRecognizers.RecognizeNumbers
-             | BuiltinRecognizers.RecognizeTimes;
+            return BuiltinRecognizers.RecognizeAll;
         }
     }
 }

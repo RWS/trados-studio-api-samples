@@ -2,7 +2,6 @@
 
 namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText
 {
-    using System;
     using Sdl.Core.Globalization;
     using Sdl.FileTypeSupport.Framework;
     using Sdl.FileTypeSupport.Framework.IntegrationApi;
@@ -35,7 +34,7 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText
         /// <returns>an SimpleText file type information object</returns>
         public virtual IFileTypeInformation BuildFileTypeInformation(string name)
         {
-            var info = this.FileTypeManager.BuildFileTypeInformation();
+            var info = FileTypeManager.BuildFileTypeInformation();
 
             info.FileTypeDefinitionId = new FileTypeDefinitionId("Simple Text Filter 1.0.0.0");
             info.FileTypeName = new LocalizableString("Simple text files");
@@ -45,7 +44,7 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText
             info.FileDialogWildcardExpression = "*.text";
             info.DefaultFileExtension = "text";
             info.Icon = new IconDescriptor(PluginResources.SimpleTextIcon);
-            
+
             info.WinFormSettingsPageIds = new string[]
             {
                 "SimpleText_Settings",
@@ -76,10 +75,12 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText
         /// <returns>a FileExtractor containing an Simple Text Parser</returns>
         public virtual IFileExtractor BuildFileExtractor(string name)
         {
-            var parser = new SimpleTextParser();
-            parser.LockPrdCodes = true;
-            var extractor = this.FileTypeManager.BuildFileExtractor(this.FileTypeManager.BuildNativeExtractor(parser), this);
-            extractor.AddFileTweaker(new SimpleFilePreTweaker {RequireValidEncoding = false});
+            var parser = new SimpleTextParser
+            {
+                LockPrdCodes = true
+            };
+            var extractor = FileTypeManager.BuildFileExtractor(FileTypeManager.BuildNativeExtractor(parser), this);
+            extractor.AddFileTweaker(new SimpleFilePreTweaker { RequireValidEncoding = false });
             return extractor;
         }
         #endregion
@@ -179,9 +180,7 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText
             }
             previewFactory.GetPreviewSets(null).Add(internalRealPreviewSet);
             #endregion
-
-
-
+            
             return previewFactory;
         }
 

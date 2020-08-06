@@ -1,14 +1,13 @@
-﻿using System;
-using System.IO;
-using Sdl.FileTypeSupport.Framework.BilingualApi;
+﻿using Sdl.FileTypeSupport.Framework.BilingualApi;
 using Sdl.FileTypeSupport.Framework.NativeApi;
+using System.IO;
 
 namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText.Preview
 {
     class InternalPreviewWriter : AbstractNativeFileWriter, INativeContentCycleAware
     {
         StreamWriter _preview = null;
-        string _paragraphUnitId = String.Empty;
+        string _paragraphUnitId = string.Empty;
 
         public void SetFileProperties(IFileProperties properties)
         {
@@ -27,7 +26,7 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText.Preview
         #region "text"
         // output the translatable strings
         public override void Text(ITextProperties textInfo)
-        {            
+        {
             _preview.Write(textInfo.Text);
         }
         #endregion
@@ -50,12 +49,11 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText.Preview
         }
         #endregion
 
-
         #region "segment"
         // enclose each segment in a SPAN tag pair
         public override void SegmentStart(ISegmentPairProperties properties)
         {
-                _preview.Write("<span id=\"" + properties.Id.Id + "\" onClick=\"window.external.SelectSegment('" + _paragraphUnitId + "','" + properties.Id.Id + "')\" >");
+            _preview.Write("<span id=\"" + properties.Id.Id + "\" onClick=\"window.external.SelectSegment('" + _paragraphUnitId + "','" + properties.Id.Id + "')\" >");
         }
         #endregion
 
@@ -63,7 +61,6 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText.Preview
         {
             _preview.Write("</span>");
         }
-
 
         #region "inline tags"
         // output any inline tags,
@@ -78,8 +75,6 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText.Preview
             _preview.Write(tagInfo.TagContent);
         }
         #endregion
-
-
 
         #region "end output"
         // end the preview output

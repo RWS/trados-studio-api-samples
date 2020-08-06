@@ -14,7 +14,7 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
         {
             #region "ExecuteSearch"
             FileBasedTranslationMemory tm = new FileBasedTranslationMemory(tmPath);
-            SearchResults results = tm.LanguageDirection.SearchText(this.GetSearchSettings(mode), searchText);
+            SearchResults results = tm.LanguageDirection.SearchText(GetSearchSettings(mode), searchText);
             #endregion
 
             #region "histlist"
@@ -37,11 +37,12 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
         #region "settings"
         private SearchSettings GetSearchSettings(SearchMode mode)
         {
-            SearchSettings settings = new SearchSettings();
-
-            settings.MaxResults = 5;
-            settings.MinScore = 70;
-            settings.Mode = mode;
+            SearchSettings settings = new SearchSettings
+            {
+                MaxResults = 5,
+                MinScore = 70,
+                Mode = mode
+            };
             settings.FindPenalty(PenaltyType.FilterPenalty);
 
             return settings;
@@ -51,14 +52,15 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
         #region "SettingsWithFilter"
         private SearchSettings GetSearchSettingsWithFilter(SearchMode mode)
         {
-            SearchSettings settings = new SearchSettings();
-
-            settings.MaxResults = 5;
-            settings.MinScore = 70;
-            settings.Mode = mode;
+            SearchSettings settings = new SearchSettings
+            {
+                MaxResults = 5,
+                MinScore = 70,
+                Mode = mode
+            };
 
             #region "SettingFilter"
-            Filter filter = new Filter(this.GetFilter(), "Microsoft", 1);
+            Filter filter = new Filter(GetFilter(), "Microsoft", 1);
             settings.AddFilter(filter);
             #endregion
 
@@ -86,8 +88,10 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
         public void SearchForSegment(string tmPath)
         {
             FileBasedTranslationMemory tm = new FileBasedTranslationMemory(tmPath);
-            SearchSettings settings = new SearchSettings();
-            settings.MaxResults = 5;
+            SearchSettings settings = new SearchSettings
+            {
+                MaxResults = 5
+            };
 
             Segment srcSegment = new Segment(tm.LanguageDirection.SourceLanguage);
             srcSegment.Add("Configure the spelling checker as shown below:");
@@ -104,12 +108,16 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
         public void SearchForTu(string tmPath)
         {
             FileBasedTranslationMemory tm = new FileBasedTranslationMemory(tmPath);
-            SearchSettings settings = new SearchSettings();
-            settings.MaxResults = 5;
+            SearchSettings settings = new SearchSettings
+            {
+                MaxResults = 5
+            };
 
-            TranslationUnit tu = new TranslationUnit();
-            tu.SourceSegment = new Segment(tm.LanguageDirection.SourceLanguage);
-            tu.TargetSegment = new Segment(tm.LanguageDirection.TargetLanguage);
+            TranslationUnit tu = new TranslationUnit
+            {
+                SourceSegment = new Segment(tm.LanguageDirection.SourceLanguage),
+                TargetSegment = new Segment(tm.LanguageDirection.TargetLanguage)
+            };
 
             tu.SourceSegment.Add("Configure the spelling checker as shown below:");
             tu.TargetSegment.Add("Konfigurieren Sie die Rechtschreibprüfung wie unten gezeigt:");

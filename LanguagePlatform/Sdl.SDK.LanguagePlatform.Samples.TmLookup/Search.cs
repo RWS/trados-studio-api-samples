@@ -87,15 +87,12 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmLookup
         /// </summary>
         private SearchSettings GetSearchSettings(bool target)
         {
-            SearchSettings settings = new SearchSettings();
-
-            settings.MaxResults = frmSettings.MaxHits;
-            settings.MinScore = frmSettings.MinFuzzy;
-
-            if (target)
-                settings.Mode = SearchMode.TargetConcordanceSearch;
-            else
-                settings.Mode = SearchMode.ConcordanceSearch;
+            SearchSettings settings = new SearchSettings
+            {
+                MaxResults = frmSettings.MaxHits,
+                MinScore = frmSettings.MinFuzzy,
+                Mode = target ? SearchMode.TargetConcordanceSearch : SearchMode.ConcordanceSearch
+            };
 
             return settings;
         }

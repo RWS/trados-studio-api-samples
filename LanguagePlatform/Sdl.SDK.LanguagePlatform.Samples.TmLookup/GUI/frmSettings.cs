@@ -32,43 +32,38 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmLookup
 
 
         #region "fuzziness"
-        private void trackFuzzy_Scroll(object sender, EventArgs e)
+        private void TrackFuzzy_Scroll(object sender, EventArgs e)
         {
-            this.lblFuzzyValue.Text = this.trackFuzzy.Value.ToString();
+            lblFuzzyValue.Text = trackFuzzy.Value.ToString();
         }
         #endregion
 
         #region "cancel"
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void BtnCancel_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            Hide();
         }
         #endregion
 
         #region "ok"
         // Apply the setting values from the form.
-        private void btnOK_Click(object sender, EventArgs e)
+        private void BtnOK_Click(object sender, EventArgs e)
         {
-            MaxHits = Convert.ToInt32(this.txtMaxHits.Text.ToString());
-            MinFuzzy = this.trackFuzzy.Value;
+            MaxHits = Convert.ToInt32(txtMaxHits.Text.ToString());
+            MinFuzzy = trackFuzzy.Value;
 
-            this.Hide();
+            Hide();
         }
         #endregion
 
         #region "default"
         // Reset the control elements to the corresponding default values.
-        private void btnDefaults_Click(object sender, EventArgs e)
+        private void BtnDefaults_Click(object sender, EventArgs e)
         {
-            this.trackFuzzy.Value = 70;
-            this.lblFuzzyValue.Text = "70";
-            this.txtMaxHits.Text = "30";
+            trackFuzzy.Value = 70;
+            lblFuzzyValue.Text = "70";
+            txtMaxHits.Text = "30";
         }
         #endregion
-
-        private void frmSettings_Load(object sender, EventArgs e)
-        {
-        }
-
     }
 }

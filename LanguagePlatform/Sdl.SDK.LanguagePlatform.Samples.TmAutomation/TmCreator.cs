@@ -1,9 +1,9 @@
 ﻿namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
 {
-    using System.Globalization;
     using Sdl.LanguagePlatform.Core.Tokenization;
     using Sdl.LanguagePlatform.TranslationMemory;
     using Sdl.LanguagePlatform.TranslationMemoryApi;
+    using System.Globalization;
 
     public class TMCreator
     {
@@ -15,10 +15,10 @@
                 "This is a sample TM",
                 CultureInfo.GetCultureInfo("en-US"),
                 CultureInfo.GetCultureInfo("de-DE"),
-                this.GetFuzzyIndexes(),
-                this.GetRecognizers(),
-                TokenizerFlags.AllFlags,
-                WordCountFlags.AllFlags
+                GetFuzzyIndexes(),
+                GetRecognizers(),
+                TokenizerFlags.BreakOnHyphen | TokenizerFlags.BreakOnDash,
+                WordCountFlags.BreakOnHyphen | WordCountFlags.BreakOnDash | WordCountFlags.BreakOnTag
                 );
 
             tm.LanguageResourceBundles.Clear();

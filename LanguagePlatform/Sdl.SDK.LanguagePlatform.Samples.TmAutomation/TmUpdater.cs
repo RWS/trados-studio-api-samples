@@ -48,7 +48,7 @@
             #endregion
 
             #region "AddTu"
-            tm.LanguageDirection.AddTranslationUnit(tu, this.GetImportSettings());
+            tm.LanguageDirection.AddTranslationUnit(tu, GetImportSettings());
             tm.Save();
             MessageBox.Show("TU has been added successfully.");
             #endregion
@@ -69,14 +69,14 @@
             #endregion
 
             #region "elements"
-            SegmentElement srcElement = this.GetSourceElement();
-            SegmentElement trgElement = this.GetTargetElement();
+            SegmentElement srcElement = GetSourceElement();
+            SegmentElement trgElement = GetTargetElement();
             tu.SourceSegment.Add(srcElement);
             tu.TargetSegment.Add(trgElement);
             #endregion
 
             #region "AddTuExtended"
-            tm.LanguageDirection.AddTranslationUnit(tu, this.GetImportSettings());
+            tm.LanguageDirection.AddTranslationUnit(tu, GetImportSettings());
             tm.Save();
             MessageBox.Show("TU has been added successfully.");
             #endregion
@@ -117,7 +117,7 @@
         {
             FileBasedTranslationMemory tm = new FileBasedTranslationMemory(tmPath);
 
-            SearchResults results = tm.LanguageDirection.SearchText(this.GetSearchSettings(), "A dialog box will open.");
+            SearchResults results = tm.LanguageDirection.SearchText(GetSearchSettings(), "A dialog box will open.");
             foreach (SearchResult item in results)
             {
                 if (item.ScoringResult.Match == 100)
@@ -136,8 +136,10 @@
         #region "SearchSettings"
         private SearchSettings GetSearchSettings()
         {
-            SearchSettings settings = new SearchSettings();
-            settings.MinScore = 100;
+            SearchSettings settings = new SearchSettings
+            {
+                MinScore = 100
+            };
             return settings;
         }
         #endregion
@@ -147,7 +149,7 @@
             #region "delete"
             FileBasedTranslationMemory tm = new FileBasedTranslationMemory(tmPath);
 
-            SearchResults results = tm.LanguageDirection.SearchText(this.GetSearchSettings(), "A dialog box will open.");
+            SearchResults results = tm.LanguageDirection.SearchText(GetSearchSettings(), "A dialog box will open.");
             foreach (SearchResult item in results)
             {
                 if (item.ScoringResult.Match == 100)

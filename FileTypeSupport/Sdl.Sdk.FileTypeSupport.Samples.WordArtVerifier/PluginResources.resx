@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Plugin_Name" xml:space="preserve">
     <value>Word Art Verifier Settings</value>
@@ -124,7 +124,7 @@
     <value>Settings for Word Art Verifier</value>
   </data>
   <data name="Settings_Name" xml:space="preserve">
-    <value>Settings</value>
+    <value>Word Art Verifier</value>
   </data>
   <data name="Word2007_FilterComponentBuilderExtension_WordArtVerifier_Description" xml:space="preserve">
     <value>Word 2007 Filter Component Builder WordArt Verifier</value>

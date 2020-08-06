@@ -1,6 +1,6 @@
 ﻿// ---------------------------------
 // <copyright file="TMIterator.cs" company="SDL International">
-// Copyright  2010 All Right Reserved
+// Copyright  2020 All Right Reserved
 // </copyright>
 // <author>Kostiantyn Lukianets</author>
 // <email>klukianets@sdl.com</email>
@@ -50,17 +50,13 @@ namespace Sdl.SDK.LanguagePlatform.Samples.BatchExport
             {
                 #region "ProcessFiles"
 
-                // Retrieve the names of the files found in the given folder.
-                string[] fileEntries = Directory.GetFiles(sourceDirectory);
+                // Retrieve the TMX import file names found in the given folder.
+                string[] fileEntries = Directory.GetFiles(sourceDirectory, "*.sdltm");
                 foreach (string fileName in fileEntries)
                 {
-                    if (fileName.ToLower().EndsWith(".sdltm"))
-                    {
-                        // Only process file if it is a TMX import file.
-                        Console.WriteLine("Exporting " + fileName);
-                        TMExporter exportTm = new TMExporter();
-                        exportTm.Export(fileName);
-                    }
+                    Console.WriteLine("Exporting " + fileName);
+                    TMExporter exportTm = new TMExporter();
+                    exportTm.Export(fileName);
                 }
 
                 #endregion
@@ -76,7 +72,7 @@ namespace Sdl.SDK.LanguagePlatform.Samples.BatchExport
                     {
                         if ((File.GetAttributes(subdir) & FileAttributes.ReparsePoint) != FileAttributes.ReparsePoint)
                         {
-                            this.ProcessDirectory(subdir, processSubFolders);
+                            ProcessDirectory(subdir, processSubFolders);
                         }
                     }
                 }

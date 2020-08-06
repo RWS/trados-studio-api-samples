@@ -35,7 +35,7 @@ namespace Sdl.Sdk.LanguagePlatform.Samples.ListProvider
             {
                 throw new ArgumentNullException("Translation provider URI not supported.");
             }
-            return String.Equals(translationProviderUri.Scheme, ListTranslationProvider.ListTranslationProviderScheme, StringComparison.OrdinalIgnoreCase);
+            return string.Equals(translationProviderUri.Scheme, ListTranslationProvider.ListTranslationProviderScheme, StringComparison.OrdinalIgnoreCase);
         }
         #endregion
 

@@ -8,7 +8,7 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.XMLChecker
         Id = "XML_FilterComponentBuilderExtension_Verifier_Id",
         Name = "XML_FilterComponentBuilderExtension_Verifier_Name",
         Description = "XML_FilterComponentBuilderExtension_Verifier_Description",
-        OriginalFileType = "XML: Any v 1.2.0.0")]
+        OriginalFileType = "XML: Any v 2.0.0.0")]
     #endregion
     public class VerifierFilterComponentBuilder : IFileTypeComponentBuilderAdapter
     {
@@ -17,8 +17,10 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.XMLChecker
         {
             var fileTypeInformation = Original.BuildFileTypeInformation(name);
             // add "XMLVerifier_Settings" to existing WinFormSettingsPageIds
-            var winFormSettingsPageIds = new List<string>(fileTypeInformation.WinFormSettingsPageIds);
-            winFormSettingsPageIds.Add("XMLVerifier_Settings");
+            var winFormSettingsPageIds = new List<string>(fileTypeInformation.WinFormSettingsPageIds)
+            {
+                "XMLVerifier_Settings"
+            };
             fileTypeInformation.WinFormSettingsPageIds = winFormSettingsPageIds.ToArray();
             return fileTypeInformation;
         }

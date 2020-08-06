@@ -1,6 +1,6 @@
 ﻿// ---------------------------------
 // <copyright file="TMImporter.cs" company="SDL International">
-// Copyright  2010 All Right Reserved
+// Copyright  2020 All Right Reserved
 // </copyright>
 // <author>Patrik Mazanek</author>
 // <email>pmazanek@sdl.com</email>
@@ -73,7 +73,7 @@ namespace Sdl.SDK.LanguagePlatform.Samples.BatchImporter
             // Open the appropriate master TM and do the import.
             FileBasedTranslationMemory tm = new FileBasedTranslationMemory(translationMemoryPath);
             TranslationMemoryImporter importer = new TranslationMemoryImporter(tm.LanguageDirection);
-            this.GetImportSettings(importer.ImportSettings);
+            GetImportSettings(importer.ImportSettings);
             importer.Import(tmxPath);
             #endregion
         }

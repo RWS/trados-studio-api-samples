@@ -59,12 +59,12 @@
             // 
             // txt_MaxWordCount
             // 
-            this.txt_MaxWordCount.Location = new System.Drawing.Point(237, 69);
+            this.txt_MaxWordCount.Location = new System.Drawing.Point(265, 62);
             this.txt_MaxWordCount.Name = "txt_MaxWordCount";
             this.txt_MaxWordCount.Size = new System.Drawing.Size(42, 20);
             this.txt_MaxWordCount.TabIndex = 1;
             this.txt_MaxWordCount.Text = "3";
-            this.txt_MaxWordCount.TextChanged += new System.EventHandler(this.txt_MaxWordCount_TextChanged);
+            this.txt_MaxWordCount.TextChanged += new System.EventHandler(this.Txt_MaxWordCount_TextChanged);
             // 
             // cb_CheckWordArt
             // 
@@ -77,7 +77,7 @@
             this.cb_CheckWordArt.TabIndex = 0;
             this.cb_CheckWordArt.Text = "Enable WordArt verification";
             this.cb_CheckWordArt.UseVisualStyleBackColor = true;
-            this.cb_CheckWordArt.CheckedChanged += new System.EventHandler(this.cb_CheckWordArt_CheckedChanged);
+            this.cb_CheckWordArt.CheckedChanged += new System.EventHandler(this.Cb_CheckWordArt_CheckedChanged);
             // 
             // SettingsUI
             // 

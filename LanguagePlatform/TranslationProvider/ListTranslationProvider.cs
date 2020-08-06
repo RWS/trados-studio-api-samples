@@ -195,7 +195,6 @@ namespace Sdl.Sdk.LanguagePlatform.Samples.ListProvider
         }
         #endregion
 
-
         public bool SupportsTranslation
         {
             get { return true; }

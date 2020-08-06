@@ -1,6 +1,6 @@
 ﻿// ---------------------------------
 // <copyright file="Program.cs" company="SDL International">
-// Copyright  2010 All Right Reserved
+// Copyright  2020 All Right Reserved
 // </copyright>
 // <author>Patrik Mazanek</author>
 // <email>pmazanek@sdl.com</email>

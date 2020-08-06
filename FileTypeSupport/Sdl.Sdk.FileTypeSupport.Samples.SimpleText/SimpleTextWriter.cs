@@ -6,7 +6,7 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText
 {
     class SimpleTextWriter : AbstractNativeFileWriter, INativeContentCycleAware
     {
-        IPersistentFileConversionProperties _conversionProperties;
+        private IPersistentFileConversionProperties _conversionProperties;
         StreamWriter _targetFile = null;
 
         #region "members of INativecontentCycleAware member"

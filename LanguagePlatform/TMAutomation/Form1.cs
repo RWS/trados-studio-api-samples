@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using Sdl.LanguagePlatform.TranslationMemoryApi;
-using Sdl.LanguagePlatform.TranslationMemory;
-using System.Globalization;
-using Sdl.LanguagePlatform.Core.Tokenization;
 using System.IO;
-using Sdl.LanguagePlatform.Core;
+using System.Windows.Forms;
 
 namespace Sdl.SDK.LanguagePlatform.TMAutomation
 {
@@ -22,12 +12,12 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
             InitializeComponent();
         }
 
-        private void b_Start_Click(object sender, EventArgs e)
+        private void B_Start_Click(object sender, EventArgs e)
         {
             tb_Results.Text = "";
             BackgroundWorker worker = new BackgroundWorker();
 
-            worker.DoWork += delegate(object source, DoWorkEventArgs workArgs)
+            worker.DoWork += delegate (object source, DoWorkEventArgs workArgs)
             {
                 if (rb_file.Checked)
                 {
@@ -37,15 +27,14 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
                 {
                     RoundtripServerBased();
                 }
-                
+
             };
 
             worker.RunWorkerAsync();
-            worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(worker_RunWorkerCompleted);
+            worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(Worker_RunWorkerCompleted);
         }
 
-        
-        void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             MessageBox.Show("Roundtrip finished.");
         }
@@ -65,7 +54,7 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
 
             UpdateResult("Scheduled TM import: \r\n");
             serverBasedHelper.ImportTMX("WorkbenchFlavor.tmx");
-            
+
             UpdateResult("Delete the TM: \r\n");
             serverBasedHelper.DeleteTM();
             UpdateResult("Delete the container: \r\n");
@@ -76,11 +65,11 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
 
         private void RoundtripFileBased()
         {
-            if (tb_output.Text == "" || !Directory.Exists(tb_output.Text))
+            if (string.IsNullOrWhiteSpace(tb_output.Text) || !Directory.Exists(tb_output.Text))
             {
                 return;
             }
-            
+
             FileBasedTMHelper fileBasedHelper = new FileBasedTMHelper(tb_Results);
 
             string tmPath = tb_output.Text + @"SDKTest.sdltm";
@@ -133,7 +122,7 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
             };
         }
 
-        private void rb_file_CheckedChanged(object sender, EventArgs e)
+        private void Rb_file_CheckedChanged(object sender, EventArgs e)
         {
             if (rb_file.Checked)
             {
@@ -147,7 +136,7 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
             }
         }
 
-        private void b_Browse_Click(object sender, EventArgs e)
+        private void B_Browse_Click(object sender, EventArgs e)
         {
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {

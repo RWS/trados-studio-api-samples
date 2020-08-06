@@ -63,7 +63,7 @@
             this.btnSearch.TabIndex = 0;
             this.btnSearch.Text = "Go";
             this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            this.btnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
             // 
             // txtSearch
             // 
@@ -108,7 +108,7 @@
             this.searchOptionsToolStripMenuItem.Name = "searchOptionsToolStripMenuItem";
             this.searchOptionsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.searchOptionsToolStripMenuItem.Text = "Search Options";
-            this.searchOptionsToolStripMenuItem.Click += new System.EventHandler(this.searchOptionsToolStripMenuItem_Click);
+            this.searchOptionsToolStripMenuItem.Click += new System.EventHandler(this.SearchOptionsToolStripMenuItem_Click);
             // 
             // btnClose
             // 
@@ -118,7 +118,7 @@
             this.btnClose.TabIndex = 5;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
             // lblHitCount
             // 
@@ -179,7 +179,6 @@
             this.groupBoxTm.TabIndex = 13;
             this.groupBoxTm.TabStop = false;
             this.groupBoxTm.Text = "Select Translation Memory";
-            this.groupBoxTm.Enter += new System.EventHandler(this.groupBoxTm_Enter);
             // 
             // btnSelectTm
             // 
@@ -190,7 +189,7 @@
             this.btnSelectTm.TabIndex = 1;
             this.btnSelectTm.Text = "Select TM >";
             this.btnSelectTm.UseVisualStyleBackColor = true;
-            this.btnSelectTm.Click += new System.EventHandler(this.btnSelectTm_Click);
+            this.btnSelectTm.Click += new System.EventHandler(this.BtnSelectTm_Click);
             // 
             // contextMenuTm
             // 
@@ -205,14 +204,14 @@
             this.selectFileTMToolStripMenuItem.Name = "selectFileTMToolStripMenuItem";
             this.selectFileTMToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.selectFileTMToolStripMenuItem.Text = "Select File TM";
-            this.selectFileTMToolStripMenuItem.Click += new System.EventHandler(this.selectFileTMToolStripMenuItem_Click);
+            this.selectFileTMToolStripMenuItem.Click += new System.EventHandler(this.SelectFileTMToolStripMenuItem_Click);
             // 
             // selectServerTMToolStripMenuItem
             // 
             this.selectServerTMToolStripMenuItem.Name = "selectServerTMToolStripMenuItem";
             this.selectServerTMToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.selectServerTMToolStripMenuItem.Text = "Select Server TM";
-            this.selectServerTMToolStripMenuItem.Click += new System.EventHandler(this.selectServerTMToolStripMenuItem_Click);
+            this.selectServerTMToolStripMenuItem.Click += new System.EventHandler(this.SelectServerTMToolStripMenuItem_Click);
             // 
             // txtTmPath
             // 
@@ -241,7 +240,6 @@
             this.MainMenuStrip = this.menuStrip;
             this.Name = "frmLookup";
             this.Text = "TM Lookup";
-            this.Load += new System.EventHandler(this.frmLookup_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.groupBoxSearch.ResumeLayout(false);
