@@ -216,7 +216,7 @@
         #endregion
         {
             #region "TranslationProviderConfiguration"
-            Uri tmAddress = new Uri(String.Format("sdltm.{1}{2}/{3}", serverAddress, organizationPath, tmName));
+            Uri tmAddress = new Uri(string.Format("sdltm.{1}{2}/{3}", serverAddress, organizationPath, tmName));
             TranslationProviderConfiguration config = project.GetTranslationProviderConfiguration();
             #endregion
 
@@ -233,7 +233,7 @@
             #endregion
 
             #region "CredentialsForServerTm"
-            project.Credentials.AddCredential(new Uri(serverAddress), String.Format("user={0};password={1};type=CustomUser", username, password, useWindowsSecurity ? "WindowsUser" : "CustomUser"));
+            project.Credentials.AddCredential(new Uri(serverAddress), string.Format("user={0};password={1};type=CustomUser", username, password, useWindowsSecurity ? "WindowsUser" : "CustomUser"));
             project.UpdateTranslationProviderConfiguration(config);
             #endregion
         }

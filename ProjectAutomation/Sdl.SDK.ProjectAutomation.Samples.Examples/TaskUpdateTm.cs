@@ -15,7 +15,7 @@
             #endregion
 
             #region "NewTranslations"
-            updateTmSettings.AlwaysAddNewTranslation.Value = true;
+            updateTmSettings.TmImportOptions.Value = TmImportOption.AlwaysAddNewTranslation;
             #endregion
 
             #region "Status"

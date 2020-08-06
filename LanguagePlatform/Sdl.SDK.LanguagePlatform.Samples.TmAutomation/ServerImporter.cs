@@ -20,14 +20,14 @@
 
             #region "importer"
             ScheduledServerTranslationMemoryImport importer = new ScheduledServerTranslationMemoryImport(
-                this.GetLanguageDirection(tm, CultureInfo.GetCultureInfo("en-US"), CultureInfo.GetCultureInfo("de-DE")));
+                GetLanguageDirection(tm, CultureInfo.GetCultureInfo("en-US"), CultureInfo.GetCultureInfo("de-DE")));
             #endregion
 
             #region "params"
             importer.ChunkSize = 25;
             importer.ContinueOnError = true;
             importer.Source = new FileInfo(importFilePath);
-            this.GetImportSettings(importer.ImportSettings);
+            GetImportSettings(importer.ImportSettings);
             #endregion
 
             #region "upload"

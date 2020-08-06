@@ -55,7 +55,7 @@
             this.cb_Enable.TabIndex = 0;
             this.cb_Enable.Text = "&Enable verification";
             this.cb_Enable.UseVisualStyleBackColor = true;
-            this.cb_Enable.CheckedChanged += new System.EventHandler(this.cb_Enable_CheckedChanged);
+            this.cb_Enable.CheckedChanged += new System.EventHandler(this.Cb_Enable_CheckedChanged);
             // 
             // SettingsUI
             // 

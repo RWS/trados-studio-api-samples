@@ -1,23 +1,22 @@
 ﻿namespace Sdl.SDK.ProjectAutomation.Samples.Examples
 {
+    using Sdl.Core.Globalization;
+    using Sdl.ProjectAutomation.Core;
+    using Sdl.ProjectAutomation.FileBased;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.IO;
+    using System.Linq;
     using System.Text;
     using System.Windows.Forms;
-    using Sdl.Core.Globalization;
-    using Sdl.ProjectAutomation.Core;
-    using Sdl.ProjectAutomation.FileBased;
-    using Sdl.LanguagePlatform.TranslationMemoryApi;
-    using System.Linq;
 
     internal class ProjectCreator
     {
         public string CreateProject()
         {
             #region "ProjectSetupInformation"
-            ProjectInfo info = this.GetProjectInfo();
+            ProjectInfo info = GetProjectInfo();
             #endregion
 
             #region "newProject"
@@ -25,7 +24,7 @@
             #endregion
 
             #region "AddFiles"
-            ProjectFile[] files = newProject.AddFiles(this.AddProjectFiles(@"c:\ProjectFiles\Documents\"));
+            ProjectFile[] files = newProject.AddFiles(AddProjectFiles(@"c:\ProjectFiles\Documents\"));
             #endregion            
 
             #region "SetUpPerfectMatch"
@@ -39,25 +38,22 @@
             #endregion
 
             #region "CallSetFileRole"
-            this.SetFileRole(newProject, "brochure.pdf", FileRole.Reference);
-            this.SetFileRole(newProject, "options.jpg", FileRole.Localizable);
+            SetFileRole(newProject, "brochure.pdf", FileRole.Reference);
+            SetFileRole(newProject, "options.jpg", FileRole.Localizable);
             #endregion
 
             #region "Tms"
-            this.AddMasterTMs(newProject, @"c:\ProjectFiles\TMs\");
+            AddMasterTMs(newProject, @"c:\ProjectFiles\TMs\");
             #endregion
 
             #region "Termbase"
-            this.AddTermbase(newProject, @"c:\ProjectFiles\Termbase\Software.sdltb");
+            AddTermbase(newProject, @"c:\ProjectFiles\Termbase\Software.sdltb");
             #endregion
 
             #region "PrepareProject"
-            this.PrepareFiles(newProject);
+            PrepareFiles(newProject);
             #endregion
-
-            ////ProjectFile[] files = newProject.GetSourceLanguageFiles();
-            ////UpdateFile(newProject, files[0].Id, @"c:\update\sample01.doc");
-
+                      
             #region "SaveProject"
             newProject.Save();
             #endregion
@@ -70,7 +66,7 @@
 
             newProject.Save();
 
-            this.GetProjectStatistics(newProject);
+            GetProjectStatistics(newProject);
 
             return newProject.FilePath;
         }
@@ -98,7 +94,7 @@
 
             #region "ProjectFolder"
             string localProjectFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments).ToString() +
-                Path.DirectorySeparatorChar + @"Studio 2011\Projects\" + info.Name;
+                Path.DirectorySeparatorChar + @"Studio 2021\Projects\" + info.Name;
 
             info.LocalProjectFolder = localProjectFolder;
             #endregion
@@ -139,8 +135,8 @@
         {
             #region "ScanPreviousProject"
 
-            ProjectInfo info = this.GetProjectInfo();
-            ProjectFile[] files = project.AddFiles(this.AddProjectFiles(@"c:\ProjectFiles\Documents\"));
+            ProjectInfo info = GetProjectInfo();
+            ProjectFile[] files = project.AddFiles(AddProjectFiles(@"c:\ProjectFiles\Documents\"));
 
 
             //Using a helper function to return an array of BilingualFileMappings which are added to the project 
@@ -157,8 +153,7 @@
 
             #endregion
 
-            Guid FileIdFromOriginalSourceFile = files[0].Id;
-            Guid FileIdOfTargetFile = files[0].Id;
+            Guid FileIdFromOriginalSourceFile = files[0].Id;       
 
             #region "AddBilingualReferenceFile"
 
@@ -168,9 +163,7 @@
             #endregion
         }
 
-
         #endregion
-
 
         #region "SetFileRole"
         private void SetFileRole(FileBasedProject project, string fileName, FileRole role)
@@ -291,30 +284,7 @@
             project.UpdateTranslationProviderConfiguration(tmConfig);
 
         }
-        #endregion
-
-        #region "AddGoogleMT"
-        public void AddGoogleMT(FileBasedProject project, string apiKey)
-        {
-            Uri GoogleUri = new Uri("googlemt://");
-
-            TranslationProviderConfiguration tmConfig = project.GetTranslationProviderConfiguration();
-
-            tmConfig.Entries.Add
-            (
-                new TranslationProviderCascadeEntry
-                (
-                    new TranslationProviderReference(GoogleUri), false, true, true, 0
-                )
-            );
-
-            //Add the Google Api key. To get an Api Key you will need to sign up with Google for the 
-            //Google Translate API V2 service.
-            project.Credentials.AddCredential(GoogleUri, apiKey);
-
-            project.UpdateTranslationProviderConfiguration(tmConfig);
-        }
-        #endregion
+        #endregion        
 
         #region "AddBeglobalEnterpriseMT"
         public void AddBeglobalEnterpriseMT(FileBasedProject project, string host, string port, string accountid, string apiKey, string touchpointId, string userId)
@@ -399,8 +369,8 @@
             #endregion
 
             #region "ProcessTargetFiles"
-            this.ProcessTargetLanguageFiles(project, "de-DE");
-            this.ProcessTargetLanguageFiles(project, "fr-FR");
+            ProcessTargetLanguageFiles(project, "de-DE");
+            ProcessTargetLanguageFiles(project, "fr-FR");
             #endregion
         }
 
@@ -422,17 +392,17 @@
                     AutomaticTask convertTask = project.RunAutomaticTask(
                         fileId,
                         AutomaticTaskTemplateIds.ConvertToTranslatableFormat);
-                    this.CheckEvents(taskStatusEventArgsList, messageEventArgsList);
+                    CheckEvents(taskStatusEventArgsList, messageEventArgsList);
 
                     AutomaticTask copyTask = project.RunAutomaticTask(
                         fileId,
                         AutomaticTaskTemplateIds.CopyToTargetLanguages);
-                    this.CheckEvents(taskStatusEventArgsList, messageEventArgsList);
+                    CheckEvents(taskStatusEventArgsList, messageEventArgsList);
                 }
             }
 
-            this.ProcessTargetLanguageFilesExtended(project, "de-DE");
-            this.ProcessTargetLanguageFilesExtended(project, "fr-FR");
+            ProcessTargetLanguageFilesExtended(project, "de-DE");
+            ProcessTargetLanguageFilesExtended(project, "fr-FR");
         }
         #endregion
 
@@ -476,7 +446,7 @@
             AutomaticTask analyzeTask = project.RunAutomaticTask(
                 targetFiles.GetIds(),
                 AutomaticTaskTemplateIds.AnalyzeFiles);
-            this.CheckEvents(taskStatusEventArgsList, messageEventArgsList);
+            CheckEvents(taskStatusEventArgsList, messageEventArgsList);
 
             #region "SaveAnalysisReport"
             Guid reportId = analyzeTask.Reports[0].Id;
@@ -486,12 +456,12 @@
             AutomaticTask translateTask = project.RunAutomaticTask(
                 targetFiles.GetIds(),
                 AutomaticTaskTemplateIds.PreTranslateFiles);
-            this.CheckEvents(taskStatusEventArgsList, messageEventArgsList);
+            CheckEvents(taskStatusEventArgsList, messageEventArgsList);
 
             AutomaticTask projectTmTask = project.RunAutomaticTask(
                 targetFiles.GetIds(),
                 AutomaticTaskTemplateIds.PopulateProjectTranslationMemories);
-            this.CheckEvents(taskStatusEventArgsList, messageEventArgsList);
+            CheckEvents(taskStatusEventArgsList, messageEventArgsList);
         }
         #endregion
 
@@ -541,7 +511,7 @@
             #endregion
 
             #region "UpdateProject"
-            FileBasedProject updateProject = new FileBasedProject(this.GetUpdateProjectInfo(), refProject);
+            FileBasedProject updateProject = new FileBasedProject(GetUpdateProjectInfo(), refProject);
 
             updateProject.Save();
             #endregion
@@ -559,7 +529,7 @@
 
             string localProjectFolder = string.Format(
                 CultureInfo.CurrentCulture,
-                "{0){1}Studio 2011{1}Projects{1}{2}",
+                "{0){1}Studio 2021{1}Projects{1}{2}",
                 Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments).ToString(),
                 Path.DirectorySeparatorChar,
                 info.Name);
@@ -579,7 +549,7 @@
             #endregion
 
             #region "TemplateBasedProject"
-            FileBasedProject newProject = new FileBasedProject(this.GetInfoForTemplateProject(), template);
+            FileBasedProject newProject = new FileBasedProject(GetInfoForTemplateProject(), template);
             newProject.Save();
             #endregion
         }
@@ -641,7 +611,7 @@
             return deletedSuccesfully;
         }
 
-        
+
         #endregion
 
         #region "MergeFiles"
@@ -773,19 +743,19 @@
         public void RunPrepareWithPerfectMatch()
         {
 
-            ProjectInfo info = this.GetProjectInfo();
+            ProjectInfo info = GetProjectInfo();
 
             //Create the project
             FileBasedProject newProject = new FileBasedProject(info);
 
             //Add project files
-            ProjectFile[] files = newProject.AddFiles(this.AddProjectFiles(@"c:\ProjectFiles\Documents\"));
+            ProjectFile[] files = newProject.AddFiles(AddProjectFiles(@"c:\ProjectFiles\Documents\"));
 
             //Perfect Match Setup - Use the helper function to look for files in a previous project that match files in this project
             newProject.AddBilingualReferenceFiles(GetBilingualFileMappings(info.TargetLanguages, files, @"c:\ProjectFiles\PreviousProjectFiles"));
 
             //Add Translation memory
-            this.AddMasterTMs(newProject, @"c:\ProjectFiles\TMs\");
+            AddMasterTMs(newProject, @"c:\ProjectFiles\TMs\");
 
             //Run the prepare task sequence (Scan, ConvertToTranslatableFormat, WordCount, CopyToTargetLanguages, PerfectMatch, AnalyzeFiles, PreTranslateFiles, PopulateProjectTranslationMemories)
             TaskSequence taskSequence = newProject.RunAutomaticTasks(files.GetIds(), TaskSequences.Prepare);
@@ -830,7 +800,6 @@
                      }
                  });
             #endregion
-
         }
 
         void OpenFromExistingWorkspace()
@@ -844,7 +813,6 @@
 
         ServerProjectInfo[] ViewProjectsOnServer()
         {
-
             #region "ViewProjectsOnServer"
             Uri serverAddress = new Uri("http://myServerAddress:80");
             string organizationPath = "/LocationOnServerToStartListFrom";
@@ -859,7 +827,6 @@
 
         ServerProjectInfo ViewProjectByQualifiedName()
         {
-
             #region "ViewProjectByQualifiedName"
             Uri serverAddress = new Uri("http://myServerAddress:80");
 
@@ -870,7 +837,6 @@
 
             return project;
         }
-
 
         #region "SetupServerProjectWorkspace"
         FileBasedProject SetupServerProjectLocalCopy(Guid projectId, string locationOfLocalCopy)
@@ -886,7 +852,6 @@
 
         void LookForAProjectAndCreateWorkSpace()
         {
-
             #region "LookForAProjectAndCreateWorkSpace"
 
             string rootLocalProjectLocation = @"C:\Projects\";
@@ -905,9 +870,6 @@
 
             #endregion
         }
-
-
-
 
         void DownloadFileVersion(FileBasedProject project, Guid fileId, bool cancelledByUser)
         {
@@ -994,7 +956,6 @@
 
             #endregion
         }
-
 
         void UploadAndCheckInFiles(FileBasedProject project, Guid[] fileIds, bool cancelledByUser)
         {
@@ -1210,5 +1171,4 @@
 
         }
     }
-
 }

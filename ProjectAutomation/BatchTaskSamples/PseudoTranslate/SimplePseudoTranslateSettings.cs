@@ -33,7 +33,6 @@ namespace Sdl.SDK.BatchTasks.Samples.PseudoTranslation
             get { return GetSetting<bool>(SettingsIdChangeToDraft); }
         }
 
-
         protected override object GetDefaultValue(string settingId)
         {
             switch (settingId)

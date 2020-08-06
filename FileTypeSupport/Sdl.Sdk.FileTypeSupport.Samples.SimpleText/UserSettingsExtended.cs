@@ -25,7 +25,7 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText
             set
             {
                 _lockPrdCodes = value;
-                OnPropertyChanged("LockPrdCodes");
+                OnPropertyChanged(nameof(LockPrdCodes));
             }
         }
 
@@ -35,7 +35,7 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText
             set
             {
                 _prdCodesPrefix = value;
-                OnPropertyChanged("PrdCodesPrefix");
+                OnPropertyChanged(nameof(PrdCodesPrefix));
             }
         }
         #endregion

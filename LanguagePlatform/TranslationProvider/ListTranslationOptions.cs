@@ -14,7 +14,7 @@ namespace Sdl.Sdk.LanguagePlatform.Samples.ListProvider
         #endregion
 
         #region "TranslationProviderUriBuilder"
-        TranslationProviderUriBuilder _uriBuilder;
+        readonly TranslationProviderUriBuilder _uriBuilder;
 
         public ListTranslationOptions()
         {
@@ -63,7 +63,6 @@ namespace Sdl.Sdk.LanguagePlatform.Samples.ListProvider
             return paramString;
         }
         #endregion
-
 
         #region "Uri"
         public Uri Uri

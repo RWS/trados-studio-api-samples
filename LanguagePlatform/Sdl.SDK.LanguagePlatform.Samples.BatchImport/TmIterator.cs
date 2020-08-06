@@ -1,6 +1,6 @@
 ﻿// ---------------------------------
 // <copyright file="TMIterator.cs" company="SDL International">
-// Copyright  2010 All Right Reserved
+// Copyright  2020 All Right Reserved
 // </copyright>
 // <author>Patrik Mazanek</author>
 // <email>pmazanek@sdl.com</email>
@@ -17,7 +17,7 @@ namespace Sdl.SDK.LanguagePlatform.Samples.BatchImporter
     public class TMIterator
     {
         #region "constants"
-        
+
         /// <summary>
         /// Determines how deep in the sub-folder structure the application should go.
         /// </summary>
@@ -46,17 +46,13 @@ namespace Sdl.SDK.LanguagePlatform.Samples.BatchImporter
             #endregion
             {
                 #region "ProcessFiles"
-                // Retrieve the names of the files found in the given folder.
-                string[] fileEntries = Directory.GetFiles(sourceDirectory);
+                // Retrieve the TMX import file names found in the given folder.
+                string[] fileEntries = Directory.GetFiles(sourceDirectory, "*.tmx");
                 foreach (string fileName in fileEntries)
                 {
-                    // Only process file if it is a TMX import file.
-                    if (fileName.ToLower().EndsWith(".tmx"))
-                    {
-                        Console.WriteLine("Importing " + fileName);
-                        TMImporter importTmx = new TMImporter();
-                        importTmx.Import(fileName);
-                    }
+                    Console.WriteLine("Importing " + fileName);
+                    TMImporter importTmx = new TMImporter();
+                    importTmx.Import(fileName);
                 }
                 #endregion
 
@@ -70,7 +66,7 @@ namespace Sdl.SDK.LanguagePlatform.Samples.BatchImporter
                     {
                         if ((File.GetAttributes(subdir) & FileAttributes.ReparsePoint) != FileAttributes.ReparsePoint)
                         {
-                            this.ProcessDir(subdir, processSubFolders);
+                            ProcessDir(subdir, processSubFolders);
                         }
                     }
                 }

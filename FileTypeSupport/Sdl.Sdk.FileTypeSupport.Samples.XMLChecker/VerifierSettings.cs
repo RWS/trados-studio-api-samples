@@ -18,7 +18,7 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.XMLChecker
             set
             {
                 _enable = value;
-                OnPropertyChanged("Enable");
+                OnPropertyChanged(nameof(Enable));
             }
         }
         #endregion "Properties"

@@ -109,8 +109,10 @@ namespace Sdl.Sdk.LanguagePlatform.Samples.ListProvider
             #endregion
 
             #region "SearchResultsObject"
-            SearchResults results = new SearchResults();
-            results.SourceSegment = segment.Duplicate();
+            SearchResults results = new SearchResults
+            {
+                SourceSegment = segment.Duplicate()
+            };
             #endregion
 
 
@@ -197,8 +199,10 @@ namespace Sdl.Sdk.LanguagePlatform.Samples.ListProvider
             tu.Origin = TranslationUnitOrigin.TM;
 
 
-            SearchResult searchResult = new SearchResult(tu);
-            searchResult.ScoringResult = new ScoringResult();
+            SearchResult searchResult = new SearchResult(tu)
+            {
+                ScoringResult = new ScoringResult()
+            };
             searchResult.ScoringResult.BaseScore = score;
 
             if (formattingPenalty)
@@ -308,8 +312,6 @@ namespace Sdl.Sdk.LanguagePlatform.Samples.ListProvider
 
             return results.ToArray();
         }
-
-
 
         #region "NotForThisImplementation"
         /// <summary>

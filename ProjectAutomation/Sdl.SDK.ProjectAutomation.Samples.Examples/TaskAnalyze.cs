@@ -36,15 +36,6 @@
             project.UpdateSettings(settings);
             #endregion
         }
-        #endregion
-
-        #region "GetAnalyzeStats"
-
-        public void GetAnalyzeStats(FileBasedProject project)
-        {
-            return;
-        }
-
-        #endregion
+        #endregion        
     }
 }

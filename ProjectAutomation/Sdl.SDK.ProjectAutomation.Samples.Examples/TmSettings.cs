@@ -86,8 +86,7 @@
         private void GetTmSetup()
         {
             FileBasedTranslationMemory tm = new FileBasedTranslationMemory(@"c:\ProjectFiles\Tms\General En-De.sdltm");
-
-            FieldDefinition def = new FieldDefinition();
+                        
             foreach (FieldDefinition tmField in tm.FieldDefinitions)
             {
                 string tmSetup = string.Empty;

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Sdl.Core.Settings;
-using Sdl.FileTypeSupport.Framework.Core.Settings;
+﻿using Sdl.FileTypeSupport.Framework.Core.Settings;
 
 namespace Sdl.Sdk.FileTypeSupport.Samples.WordArtVerifier
 {
@@ -14,8 +9,8 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.WordArtVerifier
     /// this reference in the SDLFILETPYE file, the plug-in user interface would not be available
     /// to the end user.
     /// </summary>
-    [FileTypeSettingsPage(Id="WordArtVerifier_Settings", Name="Settings_Name",
-        Description="Settings_Description")]
+    [FileTypeSettingsPage(Id = "WordArtVerifier_Settings", Name = "Settings_Name",
+        Description = "Settings_Description")]
     class SettingsPage : AbstractFileTypeSettingsPage<SettingsUI, VerifierSettings>
     {
         /// <summary>

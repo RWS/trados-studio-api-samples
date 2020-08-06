@@ -12,7 +12,7 @@
             #region "open"
             FileBasedTranslationMemory tm = new FileBasedTranslationMemory(tmPath);
 
-            SearchResults results = tm.LanguageDirection.SearchText(this.GetSearchSettings(), "A dialog box will open.");
+            SearchResults results = tm.LanguageDirection.SearchText(GetSearchSettings(), "A dialog box will open.");
             #endregion
 
             #region "output"
@@ -43,8 +43,10 @@
         #region "settings"
         private SearchSettings GetSearchSettings()
         {
-            SearchSettings settings = new SearchSettings();
-            settings.MinScore = 100;
+            SearchSettings settings = new SearchSettings
+            {
+                MinScore = 100
+            };
             return settings;
         }
         #endregion

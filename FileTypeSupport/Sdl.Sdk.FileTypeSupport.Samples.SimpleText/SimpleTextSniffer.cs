@@ -1,7 +1,7 @@
-﻿using System.IO;
-using Sdl.FileTypeSupport.Framework.NativeApi;
-using Sdl.Core.Globalization;
+﻿using Sdl.Core.Globalization;
 using Sdl.Core.Settings;
+using Sdl.FileTypeSupport.Framework.NativeApi;
+using System.IO;
 
 namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText
 {
@@ -9,7 +9,7 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText
     // can be processed by the filter or not
     public class SimpleTextSniffer : INativeFileSniffer
     {
-        public SniffInfo Sniff(string nativeFilePath, Language suggestedSourceLanguage, Codepage suggestedCodepage, 
+        public SniffInfo Sniff(string nativeFilePath, Language suggestedSourceLanguage, Codepage suggestedCodepage,
             INativeTextLocationMessageReporter messageReporter, ISettingsGroup settingsGroup)
         {
             SniffInfo fileInfo = new SniffInfo();
@@ -31,10 +31,5 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText
 
             return fileInfo;
         }
-
-        #region INativeFileSniffer Members
-
-
-        #endregion
     }
 }

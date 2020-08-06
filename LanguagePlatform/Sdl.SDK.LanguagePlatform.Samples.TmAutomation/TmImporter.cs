@@ -29,11 +29,11 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
             #endregion
 
             #region "GetSettings"
-            this.GetImportSettings(importer.ImportSettings);
+            GetImportSettings(importer.ImportSettings);
             #endregion
 
             #region "FireEvent"
-            importer.BatchImported += new EventHandler<BatchImportedEventArgs>(this.importer_BatchImported);
+            importer.BatchImported += new EventHandler<BatchImportedEventArgs>(Importer_BatchImported);
             #endregion
 
             #region "execute"
@@ -43,7 +43,7 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
         #endregion
 
         #region "event"
-        private void importer_BatchImported(object sender, BatchImportedEventArgs e)
+        private void Importer_BatchImported(object sender, BatchImportedEventArgs e)
         {
             string info;
             ImportStatistics stats = e.Statistics;

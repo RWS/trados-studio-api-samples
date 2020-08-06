@@ -34,8 +34,8 @@
             #endregion
 
             #region "CheckPath"
-            if (!String.IsNullOrEmpty(args[0]) && !Directory.Exists(args[0])
-                && !String.IsNullOrEmpty(args[1]))
+            if (!string.IsNullOrEmpty(args[0]) && !Directory.Exists(args[0])
+                && !string.IsNullOrEmpty(args[1]))
             {
                 Console.WriteLine("Please specify a valid input directory and a valid TM. Press ENTER to exit.");
                 return;

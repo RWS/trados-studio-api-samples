@@ -1,9 +1,8 @@
 ﻿using Sdl.Core.Settings;
 using Sdl.FileTypeSupport.Framework.IntegrationApi;
 using Sdl.FileTypeSupport.Framework.NativeApi;
-using System;
+using System.Diagnostics;
 using System.Xml;
-
 
 namespace Sdl.Sdk.FileTypeSupport.Samples.XMLChecker
 {
@@ -42,8 +41,6 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.XMLChecker
         }
         #endregion
 
-
-
         #region "message reporter"
         public INativeTextLocationMessageReporter MessageReporter
         {
@@ -51,7 +48,6 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.XMLChecker
             set;
         }
         #endregion
-
 
         /// <summary>
         /// This method implements the main verification logic.
@@ -71,7 +67,7 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.XMLChecker
             {
                 return;
             }
-
+            Debugger.Launch();
             XmlDocument doc = new XmlDocument();
             doc.Load(_outputFileProperties.OutputFilePath);
             foreach (XmlNode item in doc.SelectNodes("//displaytext"))
@@ -86,22 +82,19 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.XMLChecker
                     {
                         // report problem
                         MessageReporter.ReportMessage(this, StringResources.VerifierName, ErrorLevel.Error,
-                            String.Format(StringResources.ErrorText, item.InnerText.Length.ToString(), lengthLimit.ToString()),
-                            String.Format(StringResources.LocationDescription, item.InnerText));
+                            string.Format(StringResources.ErrorText, item.InnerText.Length.ToString(), lengthLimit.ToString()),
+                            string.Format(StringResources.LocationDescription, item.InnerText));
                     }
                 }
             }
         }
         #endregion
 
-
-
         #region "INativeOutputSettingsAware Members"
         public void GetProposedOutputFileInfo(IPersistentFileConversionProperties fileProperties, IOutputFileInfo proposedFileInfo)
         {
             // Not required for this implementation
         }
-
 
         /// <summary>
         /// Provides information on output file.

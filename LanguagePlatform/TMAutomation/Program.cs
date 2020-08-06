@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Sdl.SDK.LanguagePlatform.TMAutomation
 {
@@ -16,7 +14,7 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
         {
             try
             {
-                AppDomain.CurrentDomain.UnhandledException +=new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+                AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
@@ -28,14 +26,14 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
             }
         }
 
-        static void  CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
- 	        ShowException(e.ExceptionObject as Exception);
+            ShowException(e.ExceptionObject as Exception);
         }
 
         private static void ShowException(Exception ex)
         {
-            if(ex != null)
+            if (ex != null)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.AppendLine(ex.Message);

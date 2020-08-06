@@ -50,7 +50,7 @@
             this.btnOK.TabIndex = 0;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            this.btnOK.Click += new System.EventHandler(this.BtnOK_Click);
             // 
             // btnCancel
             // 
@@ -60,7 +60,7 @@
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
             // trackFuzzy
             // 
@@ -71,7 +71,7 @@
             this.trackFuzzy.Size = new System.Drawing.Size(302, 50);
             this.trackFuzzy.TabIndex = 2;
             this.trackFuzzy.Value = 70;
-            this.trackFuzzy.Scroll += new System.EventHandler(this.trackFuzzy_Scroll);
+            this.trackFuzzy.Scroll += new System.EventHandler(this.TrackFuzzy_Scroll);
             // 
             // label1
             // 
@@ -117,7 +117,7 @@
             this.btnDefaults.TabIndex = 7;
             this.btnDefaults.Text = "Reset to defaults";
             this.btnDefaults.UseVisualStyleBackColor = true;
-            this.btnDefaults.Click += new System.EventHandler(this.btnDefaults_Click);
+            this.btnDefaults.Click += new System.EventHandler(this.BtnDefaults_Click);
             // 
             // groupBox1
             // 
@@ -146,7 +146,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmSettings";
             this.Text = "Search Settings";
-            this.Load += new System.EventHandler(this.frmSettings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.trackFuzzy)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

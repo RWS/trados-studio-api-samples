@@ -60,10 +60,7 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.Bil
         #region "progress"
         protected virtual void OnProgress(byte percent)
         {
-            if (Progress != null)
-            {
-                Progress(this, new ProgressEventArgs(percent));
-            }
+            Progress?.Invoke(this, new ProgressEventArgs(percent));
         }
         #endregion
 
@@ -152,8 +149,7 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.Bil
         #region "confirmation level"
         private ConfirmationLevel CreateConfirmationLevel(string BilStatus)
         {
-            ConfirmationLevel sdlxliffLevel = ConfirmationLevel.Unspecified;
-
+            ConfirmationLevel sdlxliffLevel;
             switch (BilStatus)
             {
                 case "new":

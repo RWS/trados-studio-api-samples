@@ -8,7 +8,7 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText.Preview
     class InternalPreviewController : ISingleFilePreviewControl, INavigablePreview, IPreviewUpdatedViaRefresh, IDisposable
     {
         #region "global"
-        InternalPreviewControl _control; // the actual control object
+        readonly InternalPreviewControl _control; // the actual control object
         private bool disposed = false; // used for properly disposing of the control        
         FileId _fileId; // the actual file ID
 
@@ -34,7 +34,6 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText.Preview
             Dispose(false);
         }
         #endregion
-
 
         #region "IAbstractPreviewControl Members"
         /// <summary>
@@ -93,7 +92,6 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText.Preview
 
         #endregion
 
-
         #region "INavigablePreview Members"
         /// <summary>
         /// reference to the current segment
@@ -124,10 +122,7 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText.Preview
         /// <param name="args"></param>
         public virtual void OnSegmentSelected(object sender, SegmentSelectedEventArgs args)
         {
-            if (SegmentSelected != null)
-            {
-                SegmentSelected(sender, args);
-            }
+            SegmentSelected?.Invoke(sender, args);
         }
         #endregion
 
@@ -149,7 +144,7 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText.Preview
         /// <param name="disposing">true if this method is called from IDisposable.Dispose() and false if called from Finalizer</param>
         protected virtual void Dispose(bool disposing)
         {
-            if (!this.disposed)
+            if (!disposed)
             {
                 try
                 {
@@ -160,7 +155,7 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText.Preview
                     // release the native unmanaged resources you added
                     // in this derived class here.
 
-                    this.disposed = true;
+                    disposed = true;
                 }
                 finally
                 {

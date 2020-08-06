@@ -1,6 +1,6 @@
 ﻿// ---------------------------------
 // <copyright file="Program.cs" company="SDL International">
-// Copyright  2010 All Right Reserved
+// Copyright  2020 All Right Reserved
 // </copyright>
 // <author>Patrik Mazanek</author>
 // <email>pmazanek@sdl.com</email>
@@ -24,7 +24,6 @@ namespace Sdl.SDK.LanguagePlatform.Samples.BatchImporter
         /// <param name="args">String arguments passed via command line.</param>
         public static void Main(string[] args)
         {
-            string mainPath = string.Empty;
             bool processSubFolders = false;
 
             if (args.Length != 2)
@@ -38,15 +37,15 @@ namespace Sdl.SDK.LanguagePlatform.Samples.BatchImporter
                 return;
             }
 
-            if (!String.IsNullOrEmpty(args[0]) && !Directory.Exists(args[0]))
+            if (!string.IsNullOrEmpty(args[0]) && !Directory.Exists(args[0]))
             {
                 Console.WriteLine("Specify a valid input directory. Press ENTER to exit.");
                 return;
             }
 
-            mainPath = args[0];
+            string mainPath = args[0];
 
-            if (!String.IsNullOrEmpty(args[1]) && args[1] == "/ps")
+            if (!string.IsNullOrEmpty(args[1]) && args[1] == "/ps")
             {
                 processSubFolders = true;
             }

@@ -19,7 +19,7 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.WordArtVerifier
             set
             {
                 _checkWordArt = value;
-                OnPropertyChanged("CheckWordArt");
+                OnPropertyChanged(nameof(CheckWordArt));
             }
         }
 
@@ -29,11 +29,10 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.WordArtVerifier
             set
             {
                 _maxWordCount = value;
-                OnPropertyChanged("MaxWordCount");
+                OnPropertyChanged(nameof(MaxWordCount));
             }
         }
         #endregion
-
 
         #region "Constructor"
         public VerifierSettings()
@@ -68,8 +67,8 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.WordArtVerifier
         {
             ISettingsGroup settingsGroup = settingsBundle.GetSettingsGroup(configurationId);
             ResetToDefaults();
-            CheckWordArt = GetSettingFromSettingsGroup(settingsGroup, "CheckWordArt", CheckWordArt);
-            MaxWordCount = GetSettingFromSettingsGroup(settingsGroup, "MaxWordCount", MaxWordCount);
+            CheckWordArt = GetSettingFromSettingsGroup(settingsGroup, nameof(CheckWordArt), CheckWordArt);
+            MaxWordCount = GetSettingFromSettingsGroup(settingsGroup, nameof(MaxWordCount), MaxWordCount);
         }
         #endregion
 
@@ -86,8 +85,8 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.WordArtVerifier
         {
             ISettingsGroup settingsGroup = settingsBundle.GetSettingsGroup(configurationId);
             var defaults = new VerifierSettings();
-            UpdateSettingInSettingsGroup(settingsGroup, "CheckWordArt", CheckWordArt, defaults.CheckWordArt);
-            UpdateSettingInSettingsGroup(settingsGroup, "MaxWordCount", MaxWordCount, defaults.MaxWordCount);
+            UpdateSettingInSettingsGroup(settingsGroup, nameof(CheckWordArt), CheckWordArt, defaults.CheckWordArt);
+            UpdateSettingInSettingsGroup(settingsGroup, nameof(MaxWordCount), MaxWordCount, defaults.MaxWordCount);
         }
         #endregion
 

@@ -1,13 +1,12 @@
 ﻿// ---------------------------------
 // <copyright file="AssemblyInfo.cs" company="SDL International">
-// Copyright  2017 All Right Reserved
+// Copyright  2020 All Right Reserved
 // </copyright>
 // <author></author>
 // <email>@sdl.com</email>
 // <date>2010-09-27</date>
 // ---------------------------------
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
@@ -18,7 +17,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Sdl.SDK.LanguagePlatform.Samples.BatchExport")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
+[assembly: AssemblyCopyright("Copyright © 2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

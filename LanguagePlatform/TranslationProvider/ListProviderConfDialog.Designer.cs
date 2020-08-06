@@ -55,7 +55,7 @@
             this.btn_Browse.TabIndex = 1;
             this.btn_Browse.Text = "...";
             this.btn_Browse.UseVisualStyleBackColor = true;
-            this.btn_Browse.Click += new System.EventHandler(this.btn_Browse_Click);
+            this.btn_Browse.Click += new System.EventHandler(this.Btn_Browse_Click);
             // 
             // dlg_OpenFile
             // 
@@ -70,7 +70,7 @@
             this.bnt_OK.TabIndex = 3;
             this.bnt_OK.Text = "&OK";
             this.bnt_OK.UseVisualStyleBackColor = true;
-            this.bnt_OK.Click += new System.EventHandler(this.bnt_OK_Click);
+            this.bnt_OK.Click += new System.EventHandler(this.Bnt_OK_Click);
             // 
             // btn_Cancel
             // 
@@ -132,12 +132,10 @@
             this.Name = "ListProviderConfDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Delimited List Provider Options";
-            this.Load += new System.EventHandler(this.ListProviderConfDialog_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion

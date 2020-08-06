@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Sdl.Sdk.LanguagePlatform.Samples.ListProvider
@@ -26,7 +20,6 @@ namespace Sdl.Sdk.LanguagePlatform.Samples.ListProvider
         }
         #endregion
 
-
         #region "UpdateDialog"
         private void UpdateDialog()
         {
@@ -35,15 +28,8 @@ namespace Sdl.Sdk.LanguagePlatform.Samples.ListProvider
         }
         #endregion
 
-        
-        private void ListProviderConfDialog_Load(object sender, EventArgs e)
-        {
-
-        }        
-
-
         #region "Browse"
-        private void btn_Browse_Click(object sender, EventArgs e)
+        private void Btn_Browse_Click(object sender, EventArgs e)
         {
             this.dlg_OpenFile.ShowDialog();
             string fileName = dlg_OpenFile.FileName;
@@ -56,7 +42,7 @@ namespace Sdl.Sdk.LanguagePlatform.Samples.ListProvider
         #endregion
 
         #region "OK"
-        private void bnt_OK_Click(object sender, EventArgs e)
+        private void Bnt_OK_Click(object sender, EventArgs e)
         {
             Options.Delimiter = this.combo_delimiter.Text;
             Options.ListFileName = this.txt_ListFile.Text;
@@ -65,11 +51,6 @@ namespace Sdl.Sdk.LanguagePlatform.Samples.ListProvider
 
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
-
         }
-
-
-
-
     }
 }

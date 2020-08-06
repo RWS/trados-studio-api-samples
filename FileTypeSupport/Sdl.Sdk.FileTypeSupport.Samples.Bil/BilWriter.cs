@@ -29,7 +29,6 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.Bil
 
         #region "IBilingualWriter members"
 
-
         #region "load file"
         public void SetFileProperties(IFileProperties fileInfo)
         {
@@ -82,8 +81,7 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.Bil
         #region "confirmation level"
         private string UpdateStatus(ConfirmationLevel unitLevel)
         {
-            string status = "";
-
+            string status;
             switch (unitLevel)
             {
                 case ConfirmationLevel.Translated:

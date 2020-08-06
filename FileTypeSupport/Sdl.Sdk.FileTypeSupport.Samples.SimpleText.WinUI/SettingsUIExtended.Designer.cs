@@ -53,7 +53,7 @@
             this.txt_PrdCodePrefix.Name = "txt_PrdCodePrefix";
             this.txt_PrdCodePrefix.Size = new System.Drawing.Size(174, 20);
             this.txt_PrdCodePrefix.TabIndex = 2;
-            this.txt_PrdCodePrefix.TextChanged += new System.EventHandler(this.txt_PrdCodePrefix_TextChanged);
+            this.txt_PrdCodePrefix.TextChanged += new System.EventHandler(this.Txt_PrdCodePrefix_TextChanged);
             // 
             // label1
             // 
@@ -75,7 +75,7 @@
             this.cb_LockPrdCodes.TabIndex = 0;
             this.cb_LockPrdCodes.Text = "Lock product codes";
             this.cb_LockPrdCodes.UseVisualStyleBackColor = true;
-            this.cb_LockPrdCodes.CheckedChanged += new System.EventHandler(this.cb_LockPrdCodes_CheckedChanged);
+            this.cb_LockPrdCodes.CheckedChanged += new System.EventHandler(this.Cb_LockPrdCodes_CheckedChanged);
             // 
             // SettingsUIExtended
             // 

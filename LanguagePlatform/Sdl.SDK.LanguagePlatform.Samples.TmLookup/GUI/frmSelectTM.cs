@@ -11,9 +11,9 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmLookup
         }
 
         #region "cancel"
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void BtnCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
         #endregion
 
@@ -22,13 +22,13 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmLookup
         // Server. This will fill populate the dropdown list with the names of the
         // server TMs and enable the list, which is by default disabled.
         // Moreover, the OK button gets enabled.
-        private void btnConnect_Click(object sender, EventArgs e)
+        private void BtnConnect_Click(object sender, EventArgs e)
         {
             Connector connection = new Connector();
-            connection.Connect(this.txtServerUri.Text, this.txtUserName.Text,
-                this.txtPassword.Text, this.comboServerTMs);
+            connection.Connect(txtServerUri.Text, txtUserName.Text,
+                txtPassword.Text, comboServerTMs);
 
-            this.btnOK.Enabled = true;
+            btnOK.Enabled = true;
         }
         #endregion
 
@@ -36,13 +36,13 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmLookup
         // By clicking OK the user connects the server-based TM
         // through the Connector class.
         // The TM language directions are propagated into the corresponding list of the frmLookup form.
-        private void btnOK_Click(object sender, EventArgs e)
+        private void BtnOK_Click(object sender, EventArgs e)
         {
             // Establish a connection to the TM Server.
             Connector connect = new Connector();
 
-            connect.SelectServerTm(this.comboServerTMs.Text, this.txtServerUri.Text,
-                    this.txtUserName.Text, this.txtPassword.Text);
+            connect.SelectServerTm(comboServerTMs.Text, txtServerUri.Text,
+                    txtUserName.Text, txtPassword.Text);
 
             // Enter the TM URI and TM name into the main application form.
             frmLookup lookupFrm = new frmLookup();
@@ -64,12 +64,8 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmLookup
             lookupFrm.comboLanguagePairs.Text = currentSrcLang + " -> " + currentTrgLang;
 
             lookupFrm.Show();
-            this.Close();
+            Close();
         }
-        #endregion 
-
-        private void frmSelectTM_Load(object sender, EventArgs e)
-        {
-        }
+        #endregion         
     }
 }

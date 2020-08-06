@@ -1,0 +1,3 @@
+Demonstrates the following use-cases:
+- Create project from package
+- Create project + run batch tasks + save project

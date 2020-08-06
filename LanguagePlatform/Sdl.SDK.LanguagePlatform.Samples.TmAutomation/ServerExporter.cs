@@ -1,10 +1,10 @@
 ﻿namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
 {
-    using System;
-    using System.IO;
-    using System.Globalization;
-    using System.Windows.Forms;
     using Sdl.LanguagePlatform.TranslationMemoryApi;
+    using System;
+    using System.Globalization;
+    using System.IO;
+    using System.Windows.Forms;
 
     public class ServerExporter
     {
@@ -19,7 +19,7 @@
 
             #region "exporter"
             ScheduledServerTranslationMemoryExport exporter = new ScheduledServerTranslationMemoryExport(
-                this.GetLanguageDirection(tm, CultureInfo.GetCultureInfo("en-US"), CultureInfo.GetCultureInfo("de-DE")));
+                GetLanguageDirection(tm, CultureInfo.GetCultureInfo("en-US"), CultureInfo.GetCultureInfo("de-DE")));
             #endregion
 
             #region "settings"
@@ -65,15 +65,15 @@
             #region "completed"
             if (exporter.Status == ScheduledOperationStatus.Completed)
             {
-                using (Stream outputStream  = new FileStream(exportFilePath, FileMode.Create))
+                using (Stream outputStream = new FileStream(exportFilePath, FileMode.Create))
                 {
-                  var result = exporter.DownloadExport(outputStream);
-                    if(result)
+                    var result = exporter.DownloadExport(outputStream);
+                    if (result)
                     {
                         MessageBox.Show("Export successfuly finished.");
                     }
                 }
-                
+
             }
             else if (exporter.Status == ScheduledOperationStatus.Error)
             {
@@ -99,13 +99,6 @@
 
             throw new Exception("Requested direction doesn't exist.");
         }
-        #endregion
-
-        private void exporter_Downloaded(object sender, FileTransferEventArgs e)
-        {
-            MessageBox.Show("Transferred - " + e.BytesTransferred.ToString() + " out of " + e.TotalBytes.ToString() + " bytes\r\n");
-            e.Cancel = false;
-        }
-
+        #endregion      
     }
 }

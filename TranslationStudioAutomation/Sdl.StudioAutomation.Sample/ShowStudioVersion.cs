@@ -12,19 +12,11 @@ namespace Sdl.SDK.TranslationStudioAutomation
 
 			#region "ShowEdition"
 
-			switch (LicenseChecker.CurrentEdition)
-			{
-				case StudioEdition.WorkGroup:
-					this.editionTextBox.Text = "WorkGroup";
-					break;
-				case StudioEdition.Professional:
-					this.editionTextBox.Text = "Professional";
-					break;
-				case StudioEdition.Freelance:
-					this.editionTextBox.Text = "Freelance";
-					break;
-			}
+			editionTextBox.Text = LicenseChecker.CurrentEdition.ToString();
+			
 			#endregion
 		}
 	}
 }
+
+    

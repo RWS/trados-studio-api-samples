@@ -20,7 +20,6 @@
             perfectMatchSettings.MarkAsPerfectMatchAndLock.Value = true;
             #endregion
 
-
             #region "UpdateTaskSettings"
             project.UpdateSettings(settings);
             #endregion

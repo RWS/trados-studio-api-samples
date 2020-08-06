@@ -1,0 +1,10 @@
+Demonstrates the following use-cases:
+- Create project, including:
+	- Add TM+TB at project creation 
+	- Set project settings 
+	- Run batch tasks
+	- Add manual task
+	- Create package from project
+	- Save package as file
+- Delete project
+- Delete project file

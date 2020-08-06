@@ -28,8 +28,6 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmLookup
         }
         #endregion
 
-
-
         #region "SelectFileTm"
         /// <summary>
         /// Select the file TM using the file name and path chosen by the user through the GUI.
@@ -84,7 +82,6 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmLookup
         }
         #endregion
 
-
         #region "Uri"
         /// <summary>
         /// Returns the address of the TM Server.
@@ -94,7 +91,6 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmLookup
             return new Uri(uri);
         }
         #endregion
-
 
         #region "SelectServerTm"
         /// <summary>

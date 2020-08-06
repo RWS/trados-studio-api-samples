@@ -11,7 +11,7 @@
         {
             #region "TaskSettings"
             ISettingsBundle settings = project.GetSettings();
-            ProjectTranslationMemoryTaskSettings projectTmSettings = settings.GetSettingsGroup<ProjectTranslationMemoryTaskSettings>();            
+            ProjectTranslationMemoryTaskSettings projectTmSettings = settings.GetSettingsGroup<ProjectTranslationMemoryTaskSettings>();
             #endregion
 
             #region "ProjectTmSettings"

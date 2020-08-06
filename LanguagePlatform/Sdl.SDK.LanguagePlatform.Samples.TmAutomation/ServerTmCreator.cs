@@ -32,12 +32,12 @@
 
             #region "container"
             containerPath += containerName;
-            TranslationMemoryContainer container = tmServer.GetContainer(containerPath, this.GetContainerProperties());
+            TranslationMemoryContainer container = tmServer.GetContainer(containerPath, GetContainerProperties());
             newTM.Container = container;
             #endregion
 
             #region "LanguageDirection"
-            this.CreateLanguageDirections(newTM.LanguageDirections);
+            CreateLanguageDirections(newTM.LanguageDirections);
             #endregion
 
             #region "org"

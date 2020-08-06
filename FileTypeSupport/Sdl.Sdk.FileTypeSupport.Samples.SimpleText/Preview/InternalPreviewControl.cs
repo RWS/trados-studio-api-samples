@@ -1,8 +1,7 @@
-﻿using System;
-using System.Windows.Forms;
-using System.Security.Permissions;
-using Sdl.FileTypeSupport.Framework.IntegrationApi;
+﻿using Sdl.FileTypeSupport.Framework.IntegrationApi;
 using Sdl.FileTypeSupport.Framework.NativeApi;
+using System.Security.Permissions;
+using System.Windows.Forms;
 
 namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText.Preview
 {
@@ -10,9 +9,9 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText.Preview
     [System.Runtime.InteropServices.ComVisibleAttribute(true)]
     public partial class InternalPreviewControl : UserControl
     {
-        string _activeSegId = String.Empty;
-        string _jumpparagraphID = String.Empty;
-        string _jumpsegmentID = String.Empty;
+        string _activeSegId = string.Empty;
+        string _jumpparagraphID = string.Empty;
+        string _jumpsegmentID = string.Empty;
         bool _segmentSelectedFromBrowser = false;
 
 
@@ -36,15 +35,12 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText.Preview
             ScrollToElement(_activeSegId);
 
             //set the CSS style for the curently selected segment
-            webBrowserControl.Document.InvokeScript("setActiveStyle", new String[] { _activeSegId });
+            webBrowserControl.Document.InvokeScript("setActiveStyle", new string[] { _activeSegId });
         }
 
         protected void FireWindowSelectionChanged()
         {
-            if (WindowSelectionChanged != null)
-            {
-                WindowSelectionChanged(null);
-            }
+            WindowSelectionChanged?.Invoke(null);
         }
 
         /// <summary>
@@ -53,9 +49,9 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText.Preview
         /// <param name="fileName"></param>
         public void OpenTarget(string fileName)
         {
-            if (this.InvokeRequired)
+            if (InvokeRequired)
             {
-                this.Invoke(new System.Action<string>(OpenTarget), fileName);
+                Invoke(new System.Action<string>(OpenTarget), fileName);
             }
             else
             {
@@ -76,7 +72,7 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText.Preview
         /// <returns></returns>
         public SegmentReference GetSelectedSegment()
         {
-            if (_jumpsegmentID != null && _jumpsegmentID != String.Empty)
+            if (_jumpsegmentID != null && _jumpsegmentID != string.Empty)
             {
                 SegmentReference segRef = new SegmentReference(default(FileId), new ParagraphUnitId(_jumpparagraphID), new SegmentId(_jumpsegmentID));
                 return segRef;
@@ -103,7 +99,7 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText.Preview
         /// scroll to the active segment inside the control
         /// </summary>
         /// <param name="elemName"></param>
-        private void ScrollToElement(String elemName)
+        private void ScrollToElement(string elemName)
         {
             if (webBrowserControl.Document != null)
             {
@@ -124,9 +120,9 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText.Preview
         /// </summary>
         public void JumpToActiveElement()
         {
-            if (this.InvokeRequired)
+            if (InvokeRequired)
             {
-                this.Invoke(new MethodInvoker(JumpToActiveElement));
+                Invoke(new MethodInvoker(JumpToActiveElement));
             }
         }
 
@@ -137,9 +133,9 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText.Preview
         /// <param name="segment"></param>
         public void ScrollToSegment(SegmentReference segment)
         {
-            if (this.InvokeRequired)
+            if (InvokeRequired)
             {
-                this.Invoke(new System.Action<SegmentReference>(ScrollToSegment), segment);
+                Invoke(new System.Action<SegmentReference>(ScrollToSegment), segment);
             }
             else
             {
@@ -153,7 +149,7 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText.Preview
                     {
                         _activeSegId = segment.SegmentId.Id;
                         // select the CSS style for the curently selected segment
-                        webBrowserControl.Document.InvokeScript("setActiveStyle", new String[] { segment.SegmentId.Id });
+                        webBrowserControl.Document.InvokeScript("setActiveStyle", new string[] { segment.SegmentId.Id });
                     }
                 }
 
@@ -162,10 +158,10 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText.Preview
                     // reset the CSS style back from active to normal for the previously selected segment
                     if (_activeSegId != null || _activeSegId == "")
                     {
-                        webBrowserControl.Document.InvokeScript("setNormalStyle", new String[] { _activeSegId });
+                        webBrowserControl.Document.InvokeScript("setNormalStyle", new string[] { _activeSegId });
                     }
                     // set the CSS style for the curently selected segment
-                    webBrowserControl.Document.InvokeScript("setActiveStyle", new String[] { segment.SegmentId.Id });
+                    webBrowserControl.Document.InvokeScript("setActiveStyle", new string[] { segment.SegmentId.Id });
                 }
 
                 // set the active segment id
@@ -176,7 +172,6 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText.Preview
                     _segmentSelectedFromBrowser = false;
                 }
             }
-
         }
     }
 }

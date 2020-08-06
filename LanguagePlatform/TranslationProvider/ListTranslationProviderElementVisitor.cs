@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Sdl.LanguagePlatform.Core;
+﻿using Sdl.LanguagePlatform.Core;
 
 namespace Sdl.Sdk.LanguagePlatform.Samples.ListProvider
 {
@@ -10,18 +6,18 @@ namespace Sdl.Sdk.LanguagePlatform.Samples.ListProvider
     {
         private ListTranslationOptions _options;
         private string _plainText;
-        
+
         public string PlainText
         {
-            get 
+            get
             {
                 if (_plainText == null)
                 {
-                    _plainText = "";
+                    _plainText = string.Empty;
                 }
                 return _plainText;
             }
-            set 
+            set
             {
                 _plainText = value;
             }
@@ -29,7 +25,7 @@ namespace Sdl.Sdk.LanguagePlatform.Samples.ListProvider
 
         public void Reset()
         {
-            _plainText = "";
+            _plainText = string.Empty;
         }
 
         public ListTranslationProviderElementVisitor(ListTranslationOptions options)

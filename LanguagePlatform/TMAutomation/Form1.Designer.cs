@@ -46,7 +46,7 @@
             this.b_Start.TabIndex = 0;
             this.b_Start.Text = "Start";
             this.b_Start.UseVisualStyleBackColor = true;
-            this.b_Start.Click += new System.EventHandler(this.b_Start_Click);
+            this.b_Start.Click += new System.EventHandler(this.B_Start_Click);
             // 
             // tb_Results
             // 
@@ -78,7 +78,7 @@
             this.rb_file.TabIndex = 3;
             this.rb_file.Text = "Run file based TM test";
             this.rb_file.UseVisualStyleBackColor = true;
-            this.rb_file.CheckedChanged += new System.EventHandler(this.rb_file_CheckedChanged);
+            this.rb_file.CheckedChanged += new System.EventHandler(this.Rb_file_CheckedChanged);
             // 
             // label1
             // 
@@ -106,7 +106,7 @@
             this.b_Browse.TabIndex = 6;
             this.b_Browse.Text = "Browse...";
             this.b_Browse.UseVisualStyleBackColor = true;
-            this.b_Browse.Click += new System.EventHandler(this.b_Browse_Click);
+            this.b_Browse.Click += new System.EventHandler(this.B_Browse_Click);
             // 
             // Form1
             // 

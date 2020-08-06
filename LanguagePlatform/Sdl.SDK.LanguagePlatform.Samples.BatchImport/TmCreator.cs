@@ -1,6 +1,6 @@
 ﻿// ---------------------------------
 // <copyright file="TMCreator.cs" company="SDL International">
-// Copyright  2010 All Right Reserved
+// Copyright  2020 All Right Reserved
 // </copyright>
 // <author>Patrik Mazanek</author>
 // <email>pmazanek@sdl.com</email>
@@ -8,10 +8,10 @@
 // ---------------------------------
 namespace Sdl.SDK.LanguagePlatform.Samples.BatchImporter
 {
-    using System.Globalization;
     using Sdl.LanguagePlatform.Core.Tokenization;
     using Sdl.LanguagePlatform.TranslationMemory;
     using Sdl.LanguagePlatform.TranslationMemoryApi;
+    using System.Globalization;
 
     /// <summary>
     /// Represents functionality for creating Translation Memories.
@@ -41,10 +41,10 @@ namespace Sdl.SDK.LanguagePlatform.Samples.BatchImporter
                 "Master TM",
                 CultureInfo.GetCultureInfo(sourceLanguage),
                 CultureInfo.GetCultureInfo(targetLanguage),
-                this.GetFuzzyIndexes(),
-                this.GetRecognizers(),
-                TokenizerFlags.AllFlags,
-                WordCountFlags.AllFlags
+                GetFuzzyIndexes(),
+                GetRecognizers(),
+                TokenizerFlags.BreakOnHyphen | TokenizerFlags.BreakOnDash,
+                WordCountFlags.BreakOnHyphen | WordCountFlags.BreakOnDash | WordCountFlags.BreakOnTag | WordCountFlags.BreakOnApostrophe
                 );
 
             #endregion

@@ -2,6 +2,6 @@
 <root>
 	<item>
 		<text>XML (Extensible Markup Language) is a general-purpose specification for creating custom markup languages.</text>
-		<displaytext maxlength="35">XML (Extensible Markup Language)</displaytext>
+		<displaytext maxlength="5">XML (Extensible Markup Language)</displaytext>
 	</item>
 </root>

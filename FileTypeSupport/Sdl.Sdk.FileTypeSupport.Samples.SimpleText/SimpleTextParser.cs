@@ -28,13 +28,10 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText
 
         public void StartOfInput()
         {
-
         }
         
-
         public void EndOfInput()
         {
-
         }
         #endregion
 
@@ -209,7 +206,6 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText
             }
         }
         #endregion
-
 
         #region "filter settings"
         public bool LockPrdCodes

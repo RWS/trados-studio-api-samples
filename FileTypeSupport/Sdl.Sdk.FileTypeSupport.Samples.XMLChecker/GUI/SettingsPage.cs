@@ -1,6 +1,5 @@
 ﻿using Sdl.FileTypeSupport.Framework.Core.Settings;
 
-
 namespace Sdl.Sdk.FileTypeSupport.Samples.XMLChecker
 {
     /// <summary>

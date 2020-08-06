@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
+﻿using Sdl.FileTypeSupport.Framework.Core.Settings;
+using System;
 using System.Windows.Forms;
-using Sdl.FileTypeSupport.Framework.Core.Settings;
 
 namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText.WinUI
 {
@@ -57,7 +51,7 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText.WinUI
         /// <param name="sender"></param>
         /// <param name="e"></param>
         #region "SaveSetting"
-        private void cb_LockPrdCodes_CheckedChanged(object sender, EventArgs e)
+        private void Cb_LockPrdCodes_CheckedChanged(object sender, EventArgs e)
         {
             _userSettings.LockPrdCodes = cb_LockPrdCodes.Checked;
 
@@ -69,7 +63,7 @@ namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText.WinUI
         #endregion
 
         #region "SaveTextBox"
-        private void txt_PrdCodePrefix_TextChanged(object sender, EventArgs e)
+        private void Txt_PrdCodePrefix_TextChanged(object sender, EventArgs e)
         {
             _userSettings.PrdCodesPrefix = txt_PrdCodePrefix.Text;
         }
