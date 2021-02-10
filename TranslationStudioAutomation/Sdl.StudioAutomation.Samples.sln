@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2035
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sdl.StudioInitializer.Sample", "Sdl.StudioInitializer.Sample\Sdl.StudioInitializer.Sample.csproj", "{56FC07EC-A894-472B-9EE9-159744235DF4}"
 EndProject
@@ -24,6 +24,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sdl.Notifications.Samples", "Sdl.Notifications.Sample\Sdl.Notifications.Samples.csproj", "{B2DC3872-D61F-434B-B081-CCA998E2DD75}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sdl.PackagesOperations.Sample", "Sdl.PackagesOperations.Sample\Sdl.PackagesOperations.Sample.csproj", "{DA01E145-5877-43DC-A8AA-23A37FA2600C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sdl.Logging.Samples", "Sdl.Logging.Sample\Sdl.Logging.Samples.csproj", "{C9FE2B7D-66B4-4E74-AD6F-B7B23D122C9F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{DA01E145-5877-43DC-A8AA-23A37FA2600C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA01E145-5877-43DC-A8AA-23A37FA2600C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA01E145-5877-43DC-A8AA-23A37FA2600C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9FE2B7D-66B4-4E74-AD6F-B7B23D122C9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9FE2B7D-66B4-4E74-AD6F-B7B23D122C9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9FE2B7D-66B4-4E74-AD6F-B7B23D122C9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9FE2B7D-66B4-4E74-AD6F-B7B23D122C9F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
