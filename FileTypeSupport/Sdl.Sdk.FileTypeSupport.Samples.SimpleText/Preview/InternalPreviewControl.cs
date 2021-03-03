@@ -6,7 +6,7 @@ using System.Windows.Forms;
 namespace Sdl.Sdk.FileTypeSupport.Samples.SimpleText.Preview
 {
     [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-    [System.Runtime.InteropServices.ComVisibleAttribute(true)]
+    [System.Runtime.InteropServices.ComVisible(true)]
     public partial class InternalPreviewControl : UserControl
     {
         string _activeSegId = string.Empty;
