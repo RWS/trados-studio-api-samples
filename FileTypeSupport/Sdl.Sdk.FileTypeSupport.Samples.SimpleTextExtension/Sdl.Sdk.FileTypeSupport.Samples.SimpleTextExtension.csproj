@@ -110,9 +110,9 @@
       <Version>16.0.1</Version>
     </PackageReference>
   </ItemGroup>
-<PropertyGroup>
-	<CreatePluginPackage>true</CreatePluginPackage>
-	<PluginDeploymentPath>$(AppData)\SDL\SDL Trados Studio\16\Plugins</PluginDeploymentPath>
-</PropertyGroup>
+  <PropertyGroup>
+    <CreatePluginPackage>true</CreatePluginPackage>
+    <PluginDeploymentPath>$(AppData)\SDL\SDL Trados Studio\16\Plugins</PluginDeploymentPath>
+  </PropertyGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
