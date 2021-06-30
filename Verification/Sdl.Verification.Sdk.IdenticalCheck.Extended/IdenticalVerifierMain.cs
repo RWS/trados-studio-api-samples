@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Sdl.Core.Settings;
 using Sdl.FileTypeSupport.Framework.BilingualApi;
 using Sdl.FileTypeSupport.Framework.NativeApi;
@@ -33,7 +34,7 @@ namespace Sdl.Verification.Sdk.IdenticalCheck.Extended
             {
                 if (_verificationSettings == null && _sharedObjects != null)
                 {
-                    ISettingsBundle bundle = _sharedObjects.GetSharedObject<ISettingsBundle>("SettingsBundle");
+                    var bundle = _sharedObjects.GetSharedObject<ISettingsBundle>("SettingsBundle");
                     if (bundle != null)
                     {
                         _verificationSettings = bundle.GetSettingsGroup<IdenticalVerifierSettings>();
@@ -184,57 +185,58 @@ namespace Sdl.Verification.Sdk.IdenticalCheck.Extended
         #region "verify"
         private void CheckParagraphUnit(IParagraphUnit paragraphUnit)
         {
+	        if (paragraphUnit.Properties.Contexts is null) return;
             // Declare and reset target segment text.
-            string completeTextTarget = "";
+            var completeTextTarget = string.Empty;
 
             // loop through the whole paragraph unit
-            foreach (ISegmentPair segmentPair in paragraphUnit.SegmentPairs)
+            foreach (var segmentPair in paragraphUnit.SegmentPairs)
             {
-                // Determine if context information is available,
-                // and if the context equals the one specified in the user interface.
-                if (paragraphUnit.Properties.Contexts.Contexts.Count > 0 &&
-                    paragraphUnit.Properties.Contexts.Contexts[0].DisplayCode == VerificationSettings.CheckContext.Value)
+	            var paragraphContexts = paragraphUnit.Properties.Contexts.Contexts;
+	            if (paragraphContexts is null) return;
+
+	            // Determine if context information is available,
+	            // and if the context contains the one specified in the user interface.
+	            var paragraphContainsCheckContext =
+		            paragraphContexts.Any(c => c.DisplayCode != null && c.DisplayCode.Contains(VerificationSettings.CheckContext.Value));
+
+	            if (!paragraphContainsCheckContext) continue;
+                if (segmentPair.Source.ToString() != segmentPair.Target.ToString())
                 {
-                    // Check whether target differs from source.
-                    // If this is the case, then output a warning message
-                    if (segmentPair.Source.ToString() != segmentPair.Target.ToString())
+                    // Generate the plain text information if ConsiderTags is not true.
+                    #region "GetPlainText"
+                    completeTextTarget += TextGeneratorProcessor.GetPlainText(segmentPair.Target, VerificationSettings.ConsiderTags.Value);
+                    #endregion
+
+                    #region ReportingMessage
+                    if (MessageReporter is IBilingualContentMessageReporterWithExtendedData)
                     {
-                        // Generate the plain text information if ConsiderTags is not true.
-                        #region "GetPlainText"
-                        completeTextTarget += TextGeneratorProcessor.GetPlainText(segmentPair.Target, VerificationSettings.ConsiderTags.Value);
+                        #region CreateExtendedData
+                        var context = paragraphUnit.Properties.Contexts.Contexts[0].DisplayCode;
+                        var extendedData = new IdenticalVerifierMessageData(completeTextTarget +
+                            " - must be identical to source because the paragraph has context " + context + ".", segmentPair.Source);
                         #endregion
 
-                        #region ReportingMessage
-                        if (MessageReporter is IBilingualContentMessageReporterWithExtendedData)
-                        {
-                            #region CreateExtendedData
-                            string context = paragraphUnit.Properties.Contexts.Contexts[0].DisplayCode;
-                            IdenticalVerifierMessageData extendedData = new IdenticalVerifierMessageData(completeTextTarget +
-                                " - must be identical to source because the paragraph has context " + context + ".", segmentPair.Source);
-                            #endregion
+                        #region ReportingMessageWithExtendedData
+                        var extendedMessageReporter = (IBilingualContentMessageReporterWithExtendedData)MessageReporter;
+                        extendedMessageReporter.ReportMessage(this, PluginResources.Plugin_Name,
+                            ErrorLevel.Warning, PluginResources.Error_NotIdentical,
+                            new TextLocation(new Location(segmentPair.Target, true), 0),
+                            new TextLocation(new Location(segmentPair.Target, false), segmentPair.Target.ToString().Length - 1),
+                            extendedData);
+                        #endregion
 
-                            #region ReportingMessageWithExtendedData
-                            IBilingualContentMessageReporterWithExtendedData extendedMessageReporter = (IBilingualContentMessageReporterWithExtendedData)MessageReporter;
-                            extendedMessageReporter.ReportMessage(this, PluginResources.Plugin_Name,
-                                ErrorLevel.Warning, PluginResources.Error_NotIdentical,
-                                new TextLocation(new Location(segmentPair.Target, true), 0),
-                                new TextLocation(new Location(segmentPair.Target, false), segmentPair.Target.ToString().Length - 1),
-                                extendedData);
-                            #endregion
-
-                        }
-                        else
-                        {
-                            #region ReportingMessageWithoutExtendedData
-                            MessageReporter.ReportMessage(this, PluginResources.Plugin_Name,
-                                ErrorLevel.Warning, PluginResources.Error_NotIdentical,
-                                new TextLocation(new Location(segmentPair.Target, true), 0),
-                                new TextLocation(new Location(segmentPair.Target, false), segmentPair.Target.ToString().Length - 1));
-                            #endregion
-                        }
+                    }
+                    else
+                    {
+                        #region ReportingMessageWithoutExtendedData
+                        MessageReporter.ReportMessage(this, PluginResources.Plugin_Name,
+                            ErrorLevel.Warning, PluginResources.Error_NotIdentical,
+                            new TextLocation(new Location(segmentPair.Target, true), 0),
+                            new TextLocation(new Location(segmentPair.Target, false), segmentPair.Target.ToString().Length - 1));
                         #endregion
                     }
-
+                    #endregion
                 }
             }
         }
