@@ -4,6 +4,7 @@ using Sdl.FileTypeSupport.Framework.NativeApi;
 using Sdl.Verification.Api;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Sdl.Verification.Sdk.IdenticalCheck
 {
@@ -159,29 +160,31 @@ namespace Sdl.Verification.Sdk.IdenticalCheck
         #region "verify"
         private void CheckParagraphUnit(IParagraphUnit paragraphUnit)
         {
+	        if (paragraphUnit.Properties.Contexts is null) return;
             // loop through the whole paragraph unit
-            foreach (ISegmentPair segmentPair in paragraphUnit.SegmentPairs)
+            foreach (var segmentPair in paragraphUnit.SegmentPairs)
             {
-                // Determine if context information is available,
-                // and if the context equals the one specified in the user interface.
-                if (paragraphUnit.Properties.Contexts.Contexts.Count > 0 &&
-                    paragraphUnit.Properties.Contexts.Contexts[0].DisplayCode == VerificationSettings.CheckContext.Value)
-                {
+	            var paragraphContexts = paragraphUnit.Properties.Contexts.Contexts;
+	            if (paragraphContexts is null) return;
 
-                    // Check whether target differs from source.
-                    // If this is the case, then output a warning message
-                    if (segmentPair.Source.ToString() != segmentPair.Target.ToString())
-                    {
-                        MessageReporter.ReportMessage(this, PluginResources.Plugin_Name,
-                            ErrorLevel.Warning, PluginResources.Error_NotIdentical,
-                            new TextLocation(new Location(segmentPair.Target, true), 0),
-                            new TextLocation(new Location(segmentPair.Target, false), segmentPair.Target.ToString().Length - 1));
-                    }
+	            // Determine if context information is available,
+	            // and if the context contains the one specified in the user interface.
+                var paragraphContainsCheckContext =
+		            paragraphContexts.Any(c => c.DisplayCode !=null && c.DisplayCode.Contains(VerificationSettings.CheckContext.Value));
+
+                if (!paragraphContainsCheckContext) continue;
+
+                // Check whether target differs from source.
+                // If this is the case, then output a warning message
+                if (segmentPair.Source.ToString() != segmentPair.Target.ToString())
+                {
+	                MessageReporter.ReportMessage(this, PluginResources.Plugin_Name,
+		                ErrorLevel.Warning, PluginResources.Error_NotIdentical,
+		                new TextLocation(new Location(segmentPair.Target, true), 0),
+		                new TextLocation(new Location(segmentPair.Target, false), segmentPair.Target.ToString().Length - 1));
                 }
             }
         }
         #endregion
-
-
     }
 }
