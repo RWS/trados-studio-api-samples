@@ -30,6 +30,7 @@ namespace Sdl.FilesOperations.Sample
         {
             FilesListView.Items.Clear();
             FilesController filesController = GetFilesController();
+            
             foreach (ProjectFile file in filesController.SelectedFiles)
             {
                 var item = new ListViewItem(file.Name)
@@ -60,6 +61,16 @@ namespace Sdl.FilesOperations.Sample
         private void OpenFileButton_Click(object sender, EventArgs e)
         {
             var selectedProjectFiles = new List<ProjectFile>();
+            FilesController filesController = GetFilesController();
+            if (!filesController.AreAllSelectedTaskFilesAssignedToCurrentUser)
+            {
+                DialogResult dialogResult = MessageBox.Show("Warning", "Not all selected files are assigned to the current user. Would you like to continue?", MessageBoxButtons.YesNo);
+                if(dialogResult == DialogResult.No)
+                {
+                    return;
+                }
+            }
+
             for (int i = 0; i < FilesListView.SelectedItems.Count; i++)
             {
                 selectedProjectFiles.Add((ProjectFile)FilesListView.SelectedItems[i].Tag);
