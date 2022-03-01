@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sdl.PackagesOperations.Samp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sdl.Logging.Samples", "Sdl.Logging.Sample\Sdl.Logging.Samples.csproj", "{C9FE2B7D-66B4-4E74-AD6F-B7B23D122C9F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sdl.CustomWizardSteps.Sample", "Sdl.CustomWizardSteps.Sample\Sdl.CustomWizardSteps.Sample.csproj", "{60B5D593-08A9-4640-BE8F-C7B751D9BA4D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{C9FE2B7D-66B4-4E74-AD6F-B7B23D122C9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9FE2B7D-66B4-4E74-AD6F-B7B23D122C9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9FE2B7D-66B4-4E74-AD6F-B7B23D122C9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60B5D593-08A9-4640-BE8F-C7B751D9BA4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60B5D593-08A9-4640-BE8F-C7B751D9BA4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60B5D593-08A9-4640-BE8F-C7B751D9BA4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60B5D593-08A9-4640-BE8F-C7B751D9BA4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
