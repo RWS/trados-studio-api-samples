@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31005.135
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32002.185
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sdl.StudioInitializer.Sample", "Sdl.StudioInitializer.Sample\Sdl.StudioInitializer.Sample.csproj", "{56FC07EC-A894-472B-9EE9-159744235DF4}"
 EndProject
@@ -26,6 +26,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sdl.PackagesOperations.Sample", "Sdl.PackagesOperations.Sample\Sdl.PackagesOperations.Sample.csproj", "{DA01E145-5877-43DC-A8AA-23A37FA2600C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sdl.Logging.Samples", "Sdl.Logging.Sample\Sdl.Logging.Samples.csproj", "{C9FE2B7D-66B4-4E74-AD6F-B7B23D122C9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sdl.CustomWizardSteps.Sample", "Sdl.CustomWizardSteps.Sample\Sdl.CustomWizardSteps.Sample.csproj", "{60B5D593-08A9-4640-BE8F-C7B751D9BA4D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{C9FE2B7D-66B4-4E74-AD6F-B7B23D122C9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9FE2B7D-66B4-4E74-AD6F-B7B23D122C9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9FE2B7D-66B4-4E74-AD6F-B7B23D122C9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60B5D593-08A9-4640-BE8F-C7B751D9BA4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60B5D593-08A9-4640-BE8F-C7B751D9BA4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60B5D593-08A9-4640-BE8F-C7B751D9BA4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60B5D593-08A9-4640-BE8F-C7B751D9BA4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
