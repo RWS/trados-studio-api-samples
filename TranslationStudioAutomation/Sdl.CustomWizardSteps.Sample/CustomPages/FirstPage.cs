@@ -23,7 +23,7 @@ namespace Sdl.CustomWizardSteps.Sample.CustomPages
         public override string Description => "First page description";
 
         public override Icon Icon => PluginResources.FirstIcon;
-
+       
         public override Type ViewType => typeof(FirstPageView);
 
         public override INotifyPropertyChanged ViewModel => _viewModel;

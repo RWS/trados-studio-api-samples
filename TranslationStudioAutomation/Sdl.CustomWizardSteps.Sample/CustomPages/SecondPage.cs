@@ -23,7 +23,7 @@ namespace Sdl.CustomWizardSteps.Sample.CustomPages
         public override string Description => "Second page description";
 
         public override Icon Icon => PluginResources.SecondIcon;
-
+       
         public override Type ViewType => typeof(SecondPageView);
 
         public override INotifyPropertyChanged ViewModel => _viewModel;
