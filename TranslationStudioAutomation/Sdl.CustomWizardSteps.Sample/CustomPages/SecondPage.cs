@@ -8,10 +8,12 @@ namespace Sdl.CustomWizardSteps.Sample.CustomPages
     internal class SecondPage : StudioWizardPage
     {
         private readonly SecondPageViewModel _viewModel;
+        private readonly Browser _browser;
 
-        public SecondPage()
+        public SecondPage(Browser browser)
         {
             _viewModel = new SecondPageViewModel();
+            _browser = browser;
         }
 
         public override string Id => "SecondPage";
@@ -22,8 +24,6 @@ namespace Sdl.CustomWizardSteps.Sample.CustomPages
 
         public override Icon Icon => PluginResources.SecondIcon;
 
-        public override string HelpId => null;
-
         public override Type ViewType => typeof(SecondPageView);
 
         public override INotifyPropertyChanged ViewModel => _viewModel;
@@ -33,6 +33,11 @@ namespace Sdl.CustomWizardSteps.Sample.CustomPages
             base.OnShow();
 
             _viewModel.SelectedDate = (DateTime)Data[CustomDataKeys.SelectedDate];
+        }
+
+        public override void ShowHelp()
+        {
+            _browser.OpenUrl("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
         }
     }
 }
