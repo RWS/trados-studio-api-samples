@@ -4,5 +4,5 @@
   <Version>1.0</Version>
   <Description>Sdl.Sdk.FileTypeSupport.Samples.Bil</Description>
   <Author></Author>
-  <RequiredProduct name="SDLTradosStudio" minversion="16.0" />
+  <RequiredProduct name="TradosStudio" minversion="17.0" maxversion="17.9" />
 </PluginPackage>
