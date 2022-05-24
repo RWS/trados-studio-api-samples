@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using Sdl.CustomWizardSteps.Sample;
 using Sdl.CustomWizardSteps.Sample.CustomPages;
 using Sdl.Desktop.IntegrationApi;
 using Sdl.Desktop.IntegrationApi.Extensions;
@@ -42,10 +43,12 @@ namespace Sdl.PackagesOperations.Sample
                 }
                 var filePath = fileDialog.FileName;
 
+                var browser = new Browser();
+
                 var initialWizardSteps = new List<StudioWizardPage>
                 {
-                    new FirstPage(),
-                    new SecondPage()
+                    new FirstPage(browser),
+                    new SecondPage(browser)
                 };
 
                 _eventAggregator.Publish(
