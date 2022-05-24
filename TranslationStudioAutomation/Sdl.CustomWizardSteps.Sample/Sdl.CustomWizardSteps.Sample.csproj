@@ -84,6 +84,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Browser.cs" />
     <Compile Include="CustomPages\CustomDataKeys.cs" />
     <Compile Include="CustomPages\FirstPage.cs" />
     <Compile Include="CustomPages\SecondPage.cs" />
