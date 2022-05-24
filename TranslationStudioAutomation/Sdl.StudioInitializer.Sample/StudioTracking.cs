@@ -12,14 +12,14 @@ namespace Sdl.StudioInitializer.Sample
             _tracker = Stopwatch.StartNew();
         }
 
-        public static TimeSpan Elapsed
+        public static TimeSpan? Elapsed
         {
-            get { return _tracker.Elapsed; }
+            get { return _tracker?.Elapsed; }
         }
 
         public static void Stop()
         {
-            _tracker.Stop();
+            _tracker?.Stop();
             _tracker = null;
         }
     }

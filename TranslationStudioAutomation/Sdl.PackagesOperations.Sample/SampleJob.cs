@@ -1,5 +1,6 @@
 ﻿using Sdl.Desktop.IntegrationApi.Jobs;
 using System;
+using System.Collections.Generic;
 
 namespace Sdl.PackagesOperations.Sample
 {
@@ -23,6 +24,7 @@ namespace Sdl.PackagesOperations.Sample
         public object JobData { get; set; }
 
         public string JobName { get; set; }
+        IDictionary<string, object> IExternalJob.JobData { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public event EventHandler<JobProgressArgs> ProgressReported;
 
@@ -31,7 +33,7 @@ namespace Sdl.PackagesOperations.Sample
             JobData = "Job was canceled";
         }
 
-        public void Execute()
+        public void Execute(IExternalJobExecutionContext externalExecutionContext)
         {
             ProgressReported?.Invoke(this, new JobProgressArgs()
             {

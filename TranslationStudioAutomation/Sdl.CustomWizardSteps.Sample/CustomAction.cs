@@ -54,7 +54,7 @@ namespace Sdl.PackagesOperations.Sample
                 _eventAggregator.Publish(
                     new OpenProjectPackageEvent(
                         packageFilePath: filePath, job: null, iconPath: null, projectOrigin: null,
-                        firstPages: initialWizardSteps));
+                        firstPages: initialWizardSteps, initialWizardSteps));
             }
             catch (Exception exception)
             {

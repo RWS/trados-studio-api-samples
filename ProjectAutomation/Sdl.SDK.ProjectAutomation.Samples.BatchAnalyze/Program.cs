@@ -7,7 +7,7 @@
     {
         public static void Main(string[] args)
         {
-            #region "DeclareVariables"
+
             string mainPath = string.Empty;
             string tmFile = string.Empty;
             bool processSubFolders = false;
@@ -15,9 +15,7 @@
             bool reportInternalFuzzyMatchLeverage = false;
             bool keepProjectFiles = false;
             bool publishToServer = false;
-            #endregion
 
-            #region "Usage"
             if (args.Length < 2)
             {
                 Console.WriteLine("Usage:");
@@ -31,18 +29,14 @@
                 Console.WriteLine("/p   publish to a server");
                 return;
             }
-            #endregion
 
-            #region "CheckPath"
             if (!string.IsNullOrEmpty(args[0]) && !Directory.Exists(args[0])
                 && !string.IsNullOrEmpty(args[1]))
             {
                 Console.WriteLine("Please specify a valid input directory and a valid TM. Press ENTER to exit.");
                 return;
             }
-            #endregion
 
-            #region "SetVariables"
             mainPath = args[0];
             tmFile = args[1];
 
@@ -68,18 +62,12 @@
                 }
             }
 
-            #endregion
-
-            #region "CheckTMPathIfFileTM"
-
             if (!publishToServer && !File.Exists(args[1]))
             {
                 Console.WriteLine("Please specify a valid file TM. Press ENTER to exit.");
                 return;
             }
-            #endregion
 
-            #region "ProcessTask"
             try
             {
                 ProjectCreator process = new ProjectCreator();
@@ -100,7 +88,7 @@
                 Console.WriteLine(ex.Message);
                 Console.ReadLine();
             }
-            #endregion
+
         }
     }
 }

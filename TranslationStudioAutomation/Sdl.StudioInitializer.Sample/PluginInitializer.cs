@@ -26,13 +26,13 @@ namespace Sdl.StudioInitializer.Sample
             // request a confirmation from the user for the application closure otherwise just exit.
             SdlTradosStudio.Application.Closing += (s, e) =>
                 {
-                    TimeSpan elapsedTime = StudioTracking.Elapsed;
-                    if (elapsedTime.Hours < MinimumWorkTime)
+                    TimeSpan? elapsedTime = StudioTracking.Elapsed;
+                    if (elapsedTime?.Hours < MinimumWorkTime)
                     {
                         DialogResult dialogResult =
                             MessageBox.Show(
                                 string.Format("You have been working for {0:dd\\.hh\\:mm\\:ss} and spending less than {1} hours. Are you sure you want to quit Trados Studio?", StudioTracking.Elapsed, MinimumWorkTime)
-                                , string.Format("Total work time is {0} minutes", elapsedTime.Minutes)
+                                , string.Format("Total work time is {0} minutes", elapsedTime?.Minutes)
                                 , MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (dialogResult == DialogResult.No)
                         {
