@@ -14,12 +14,12 @@ namespace Sdl.Verification.Sdk.IdenticalCheck.Extended.MessageUI
         public bool SupportsMessage(MessageEventArgs messageEventArgs)
         {
             return messageEventArgs.ExtendedData != null &&
-                   messageEventArgs.ExtendedData.GetType().Equals(typeof(IdenticalVerifierMessageData));
+                   messageEventArgs.ExtendedData is IdenticalVerifierMessageData;
         }
         #endregion
 
         #region CreateMessageControl
-        public UserControl CreateMessageControl(IMessageControlContainer messageControlContainer, MessageEventArgs messageEventArgs, 
+        public UserControl CreateMessageControl(IMessageControlContainer messageControlContainer, MessageEventArgs messageEventArgs,
             IBilingualDocument bilingualDocument, ISegment sourceSegment, ISegment targetSegment)
         {
             if (!SupportsMessage(messageEventArgs))
