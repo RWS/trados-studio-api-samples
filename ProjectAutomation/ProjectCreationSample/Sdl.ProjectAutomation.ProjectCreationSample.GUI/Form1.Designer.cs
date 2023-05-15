@@ -59,7 +59,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Create";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // tb_ProjectName
             // 
@@ -101,7 +101,7 @@
             this.b_Browse.TabIndex = 5;
             this.b_Browse.Text = "Browse...";
             this.b_Browse.UseVisualStyleBackColor = true;
-            this.b_Browse.Click += new System.EventHandler(this.b_Browse_Click);
+            this.b_Browse.Click += new System.EventHandler(this.B_Browse_Click);
             // 
             // label3
             // 
@@ -149,7 +149,7 @@
             this.b_BrowsePackage.TabIndex = 8;
             this.b_BrowsePackage.Text = "Browse...";
             this.b_BrowsePackage.UseVisualStyleBackColor = true;
-            this.b_BrowsePackage.Click += new System.EventHandler(this.b_BrowsePackage_Click);
+            this.b_BrowsePackage.Click += new System.EventHandler(this.B_BrowsePackage_Click);
             // 
             // tb_PackagePath
             // 
@@ -175,7 +175,7 @@
             this.b_BrowseOutputPath.TabIndex = 15;
             this.b_BrowseOutputPath.Text = "Browse...";
             this.b_BrowseOutputPath.UseVisualStyleBackColor = true;
-            this.b_BrowseOutputPath.Click += new System.EventHandler(this.b_BrowseOutputPath_Click);
+            this.b_BrowseOutputPath.Click += new System.EventHandler(this.B_BrowseOutputPath_Click);
             // 
             // tb_PreviousPath
             // 
@@ -201,7 +201,7 @@
             this.button2.TabIndex = 16;
             this.button2.Text = "Create from package";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // Form1
             // 

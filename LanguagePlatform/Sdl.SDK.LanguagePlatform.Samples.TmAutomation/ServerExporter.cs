@@ -1,104 +1,112 @@
-﻿namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
+﻿using System;
+using System.IO;
+using System.Windows.Forms;
+using Sdl.Core.Globalization;
+using Sdl.LanguagePlatform.TranslationMemoryApi;
+
+namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
 {
-    using Sdl.LanguagePlatform.TranslationMemoryApi;
-    using System;
-    using System.Globalization;
-    using System.IO;
-    using System.Windows.Forms;
+	public class ServerExporter
+	{
+		public void ExportToTmx(TranslationProviderServer tmServer, string orgName, string tmName, string exportFilePath)
+		{
+			#region "OpenTm"
+			if (!orgName.StartsWith("/"))
+			{
+				orgName = "/" + orgName;
+			}
 
-    public class ServerExporter
-    {
-        public void ExportToTmx(TranslationProviderServer tmServer, string orgName, string tmName, string exportFilePath)
-        {
-            #region "OpenTm"
-            if (!orgName.StartsWith("/")) orgName = "/" + orgName;
-            if (!orgName.EndsWith("/")) orgName += "/";
-            ServerBasedTranslationMemory tm = tmServer.GetTranslationMemory(
-                orgName + tmName, TranslationMemoryProperties.All);
-            #endregion
+			if (!orgName.EndsWith("/"))
+			{
+				orgName += "/";
+			}
 
-            #region "exporter"
-            ScheduledServerTranslationMemoryExport exporter = new ScheduledServerTranslationMemoryExport(
-                GetLanguageDirection(tm, CultureInfo.GetCultureInfo("en-US"), CultureInfo.GetCultureInfo("de-DE")));
-            #endregion
+			ServerBasedTranslationMemory tm = tmServer.GetTranslationMemory(
+				orgName + tmName, TranslationMemoryProperties.All);
+			#endregion
 
-            #region "settings"
-            exporter.ChunkSize = 25;
-            exporter.ContinueOnError = true;
-            #endregion
+			#region "exporter"
+			ScheduledServerTranslationMemoryExport exporter = new ScheduledServerTranslationMemoryExport(
+				GetLanguageDirection(tm, new CultureCode("en-US"), new CultureCode("de-DE")));
+			#endregion
 
-            #region "wait"
-            exporter.Queue();
-            exporter.Refresh();
+			#region "settings"
+			exporter.ChunkSize = 25;
+			exporter.ContinueOnError = true;
+			#endregion
 
-            bool continueWaiting = true;
-            while (continueWaiting)
-            {
-                switch (exporter.Status)
-                {
-                    case ScheduledOperationStatus.Abort:
-                    case ScheduledOperationStatus.Aborted:
-                    case ScheduledOperationStatus.Cancel:
-                    case ScheduledOperationStatus.Cancelled:
-                    case ScheduledOperationStatus.Completed:
-                    case ScheduledOperationStatus.Error:
-                        continueWaiting = false;
-                        break;
-                    case ScheduledOperationStatus.Aborting:
-                    case ScheduledOperationStatus.Allocated:
-                    case ScheduledOperationStatus.Cancelling:
-                    case ScheduledOperationStatus.NotSet:
-                    case ScheduledOperationStatus.Queued:
-                    case ScheduledOperationStatus.Recovered:
-                    case ScheduledOperationStatus.Recovering:
-                    case ScheduledOperationStatus.Recovery:
-                        continueWaiting = true;
-                        exporter.Refresh();
-                        break;
-                    default:
-                        continueWaiting = false;
-                        break;
-                }
-            }
-            #endregion
+			#region "wait"
+			exporter.Queue();
+			exporter.Refresh();
 
-            #region "completed"
-            if (exporter.Status == ScheduledOperationStatus.Completed)
-            {
-                using (Stream outputStream = new FileStream(exportFilePath, FileMode.Create))
-                {
-                    var result = exporter.DownloadExport(outputStream);
-                    if (result)
-                    {
-                        MessageBox.Show("Export successfuly finished.");
-                    }
-                }
+			bool continueWaiting = true;
+			while (continueWaiting)
+			{
+				switch (exporter.Status)
+				{
+					case ScheduledOperationStatus.Abort:
+					case ScheduledOperationStatus.Aborted:
+					case ScheduledOperationStatus.Cancel:
+					case ScheduledOperationStatus.Cancelled:
+					case ScheduledOperationStatus.Completed:
+					case ScheduledOperationStatus.Error:
+						continueWaiting = false;
+						break;
+					case ScheduledOperationStatus.Aborting:
+					case ScheduledOperationStatus.Allocated:
+					case ScheduledOperationStatus.Cancelling:
+					case ScheduledOperationStatus.NotSet:
+					case ScheduledOperationStatus.Queued:
+					case ScheduledOperationStatus.Recovered:
+					case ScheduledOperationStatus.Recovering:
+					case ScheduledOperationStatus.Recovery:
+						continueWaiting = true;
+						exporter.Refresh();
+						break;
+					default:
+						continueWaiting = false;
+						break;
+				}
+			}
+			#endregion
 
-            }
-            else if (exporter.Status == ScheduledOperationStatus.Error)
-            {
-                MessageBox.Show(exporter.ErrorMessage);
-            }
-            else
-            {
-                MessageBox.Show("Export did not finish.");
-            }
-            #endregion
-        }
+			#region "completed"
+			if (exporter.Status == ScheduledOperationStatus.Completed)
+			{
+				using (Stream outputStream = new FileStream(exportFilePath, FileMode.Create))
+				{
+					var result = exporter.DownloadExport(outputStream);
+					if (result)
+					{
+						MessageBox.Show("Export successfuly finished.");
+					}
+				}
 
-        #region "LanguageDirection"
-        private ServerBasedTranslationMemoryLanguageDirection GetLanguageDirection(ServerBasedTranslationMemory tm, CultureInfo source, CultureInfo target)
-        {
-            foreach (ServerBasedTranslationMemoryLanguageDirection item in tm.LanguageDirections)
-            {
-                if (item.SourceLanguage == source && item.TargetLanguage == target)
-                {
-                    return item;
-                }
-            }
+			}
+			else if (exporter.Status == ScheduledOperationStatus.Error)
+			{
+				MessageBox.Show(exporter.ErrorMessage);
+			}
+			else
+			{
+				MessageBox.Show("Export did not finish.");
+			}
+			#endregion
+		}
 
-            throw new Exception("Requested direction doesn't exist.");
-        }
-        #endregion      
-    }
+		#region "LanguageDirection"
+		private ServerBasedTranslationMemoryLanguageDirection GetLanguageDirection(ServerBasedTranslationMemory tm, CultureCode source, CultureCode target)
+		{
+			foreach (ServerBasedTranslationMemoryLanguageDirection item in tm.LanguageDirections)
+			{
+				if (item.SourceLanguage == source && item.TargetLanguage == target)
+				{
+					return item;
+				}
+			}
+
+			throw new Exception("Requested direction doesn't exist.");
+		}
+		#endregion
+	}
 }

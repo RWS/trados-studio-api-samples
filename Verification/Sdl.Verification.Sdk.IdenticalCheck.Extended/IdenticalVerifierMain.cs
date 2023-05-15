@@ -214,7 +214,10 @@ namespace Sdl.Verification.Sdk.IdenticalCheck.Extended
                         #region CreateExtendedData
                         var context = paragraphUnit.Properties.Contexts.Contexts[0].DisplayCode;
                         var extendedData = new IdenticalVerifierMessageData(completeTextTarget +
-                            " - must be identical to source because the paragraph has context " + context + ".", segmentPair.Source);
+                            " - must be identical to source because the paragraph has context " + context + ".",
+                            segmentPair.Source,
+                            segmentPair.Source.ToString(),
+                            segmentPair.Target.ToString());
                         #endregion
 
                         #region ReportingMessageWithExtendedData

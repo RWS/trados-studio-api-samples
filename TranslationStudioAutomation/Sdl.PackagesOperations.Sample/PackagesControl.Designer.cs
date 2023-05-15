@@ -68,7 +68,7 @@
             this.buttonOpenPackage.TabIndex = 0;
             this.buttonOpenPackage.Text = "Open Package";
             this.buttonOpenPackage.UseVisualStyleBackColor = true;
-            this.buttonOpenPackage.Click += new System.EventHandler(this.openPackage);
+            this.buttonOpenPackage.Click += new System.EventHandler(this.OpenPackage);
             // 
             // labelPackagePath
             // 
@@ -98,7 +98,7 @@
             this.createReturnPackageBtn.TabIndex = 3;
             this.createReturnPackageBtn.Text = "Create Return Package";
             this.createReturnPackageBtn.UseVisualStyleBackColor = true;
-            this.createReturnPackageBtn.Click += new System.EventHandler(this.createReturnPackageBtn_Click);
+            this.createReturnPackageBtn.Click += new System.EventHandler(this.CreateReturnPackageBtn_Click);
             // 
             // labelReturnData
             // 
@@ -336,7 +336,7 @@
             this.buttonBrowseProjectFile.TabIndex = 14;
             this.buttonBrowseProjectFile.Text = "...";
             this.buttonBrowseProjectFile.UseVisualStyleBackColor = true;
-            this.buttonBrowseProjectFile.Click += new System.EventHandler(this.buttonBrowseProjectFile_Click);
+            this.buttonBrowseProjectFile.Click += new System.EventHandler(this.ButtonBrowseProjectFile_Click);
             // 
             // buttonClearProjectData
             // 

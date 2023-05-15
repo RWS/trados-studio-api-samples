@@ -37,12 +37,12 @@ namespace StudioIntegrationApiSample
 
         private static string GetIncomingRequestsFolder()
         {
-            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Studio 2021\\IncomingRequests");
+            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Studio 2022\\IncomingRequests");
         }
 
         private static string GetAcceptedRequestsFolder()
         {
-            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Studio 2021\\AcceptedRequests");
+            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Studio 2022\\AcceptedRequests");
         }
 
         internal void RequestAccepted(ProjectRequest request)

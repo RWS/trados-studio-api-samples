@@ -6,17 +6,17 @@ using Sdl.TranslationStudioAutomation.IntegrationApi;
 
 namespace Sdl.Notifications.Sample
 {
-    [Action("MyShowNotificationAction", Icon = "MyAction_Icon", Name = "MyShowNotificationAction_Name", Description = "MyShowNotificationAction_Description")]
-    [ActionLayout(typeof(MySampleRibbonGroup), 10, DisplayType.Large)]
-    public class ShowNotificationsAction : AbstractAction
-    {
-        protected override void Execute()
-        {
-            var ea = SdlTradosStudio.Application.GetService<IStudioEventAggregator>();
+	[Action("MyShowNotificationAction", Icon = "MyAction_Icon", Name = "MyShowNotificationAction_Name", Description = "MyShowNotificationAction_Description")]
+	[ActionLayout(typeof(MySampleRibbonGroup), 10, DisplayType.Large)]
+	public class ShowNotificationsAction : AbstractAction
+	{
+		protected override void Execute()
+		{
+			var ea = SdlTradosStudio.Application.GetService<IStudioEventAggregator>();
 
-            var showNotification = new ShowStudioNotificationsViewEvent(true, true);
+			var showNotification = new ShowStudioNotificationsViewEvent(true, true);
 
-            ea.Publish(showNotification);
-        }
-    }
+			ea.Publish(showNotification);
+		}
+	}
 }
