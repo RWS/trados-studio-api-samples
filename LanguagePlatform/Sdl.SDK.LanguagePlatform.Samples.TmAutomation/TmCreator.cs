@@ -1,4 +1,5 @@
 ﻿using Sdl.Core.Globalization;
+using Sdl.Core.Globalization.LanguageRegistry;
 using Sdl.LanguagePlatform.Core.Tokenization;
 using Sdl.LanguagePlatform.TranslationMemory;
 using Sdl.LanguagePlatform.TranslationMemoryApi;
@@ -7,14 +8,13 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
 {
 	public class TMCreator
 	{
-		#region "create TM"
 		public void CreateFileBasedTM(string tmPath)
 		{
 			FileBasedTranslationMemory tm = new FileBasedTranslationMemory(
 				tmPath,
 				"This is a sample TM",
-				new CultureCode("en-US"),
-				new CultureCode("de-DE"),
+				GetCultureCode("en-US"),
+				GetCultureCode("de-DE"),
 				GetFuzzyIndexes(),
 				GetRecognizers(),
 				TokenizerFlags.BreakOnHyphen | TokenizerFlags.BreakOnDash,
@@ -25,9 +25,23 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
 
 			tm.Save();
 		}
-		#endregion
 
-		#region "get fuzzy indexes"
+		// Studio has it's internal language registry to ensure that our application is OS independent 
+		private CultureCode GetCultureCode(string cultureIsoCode)
+		{
+			try
+			{
+				// Language registry contains all the languages that are supported in Studio				
+				var language = LanguageRegistryApi.Instance.GetLanguage(cultureIsoCode);
+				return new CultureCode(language.CultureInfo);
+			}
+			catch (UnsupportedLanguageException)
+			{
+				// In case the language is not supported an exception is thrown
+				return null;
+			}
+		}
+
 		private FuzzyIndexes GetFuzzyIndexes()
 		{
 			return FuzzyIndexes.SourceCharacterBased |
@@ -35,9 +49,7 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
 				FuzzyIndexes.TargetCharacterBased |
 				FuzzyIndexes.TargetWordBased;
 		}
-		#endregion
 
-		#region "get recognizers"
 		private BuiltinRecognizers GetRecognizers()
 		{
 			return BuiltinRecognizers.RecognizeAcronyms |
@@ -47,6 +59,5 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
 				BuiltinRecognizers.RecognizeVariables |
 				BuiltinRecognizers.RecognizeMeasurements;
 		}
-		#endregion
 	}
 }

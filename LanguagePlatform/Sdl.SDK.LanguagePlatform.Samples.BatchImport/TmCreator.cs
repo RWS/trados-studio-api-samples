@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using Sdl.Core.Globalization;
+using Sdl.Core.Globalization.LanguageRegistry;
 using Sdl.LanguagePlatform.Core.Tokenization;
 using Sdl.LanguagePlatform.TranslationMemory;
 using Sdl.LanguagePlatform.TranslationMemoryApi;
@@ -32,8 +33,8 @@ namespace Sdl.SDK.LanguagePlatform.Samples.BatchImporter
 			FileBasedTranslationMemory translationMemory = new FileBasedTranslationMemory(
 				path,
 				"Master TM",
-				new CultureCode(sourceLanguage),
-				new CultureCode(targetLanguage),
+				GetCultureCode(sourceLanguage),
+				GetCultureCode(targetLanguage),
 				GetFuzzyIndexes(),
 				GetRecognizers(),
 				TokenizerFlags.BreakOnHyphen | TokenizerFlags.BreakOnDash,
@@ -48,6 +49,22 @@ namespace Sdl.SDK.LanguagePlatform.Samples.BatchImporter
 			translationMemory.Save();
 
 			#endregion
+		}
+
+		// Studio has it's internal language registry to ensure that our application is OS independent 
+		private CultureCode GetCultureCode(string cultureIsoCode)
+		{
+			try
+			{
+				// Language registry contains all the languages that are supported in Studio				
+				var language = LanguageRegistryApi.Instance.GetLanguage(cultureIsoCode);
+				return new CultureCode(language.CultureInfo);
+			}
+			catch (UnsupportedLanguageException)
+			{
+				// In case the language is not supported an exception is thrown
+				return null;
+			}
 		}
 		#endregion
 

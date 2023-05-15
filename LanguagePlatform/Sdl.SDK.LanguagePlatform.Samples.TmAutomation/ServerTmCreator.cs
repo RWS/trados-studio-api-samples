@@ -1,5 +1,6 @@
 ﻿using System;
 using Sdl.Core.Globalization;
+using Sdl.Core.Globalization.LanguageRegistry;
 using Sdl.LanguagePlatform.TranslationMemoryApi;
 
 namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
@@ -39,7 +40,7 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
 			#endregion
 
 			#region "LanguageDirection"
-			CreateLanguageDirections(newTM.LanguageDirections);
+			CreateLanguageDirections(newTM.LanguageDirections, "en-US", "de-DE");
 			#endregion
 
 			#region "org"
@@ -81,13 +82,29 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
 		#endregion
 
 		#region "languages"
-		private void CreateLanguageDirections(ServerBasedTranslationMemoryLanguageDirectionCollection directionsCollection)
+		private void CreateLanguageDirections(ServerBasedTranslationMemoryLanguageDirectionCollection directionsCollection, string sourceLanguage, string targetLanguage)
 		{
 			ServerBasedTranslationMemoryLanguageDirection direction = new ServerBasedTranslationMemoryLanguageDirection();
-			direction.SourceLanguage = new CultureCode("en-US");
-			direction.TargetLanguage = new CultureCode("de-DE");
+			direction.SourceLanguage = GetCultureCode(sourceLanguage);
+			direction.TargetLanguage = GetCultureCode(targetLanguage);
 
 			directionsCollection.Add(direction);
+		}
+
+		// Studio has it's internal language registry to ensure that our application is OS independent 
+		private CultureCode GetCultureCode(string cultureIsoCode)
+		{
+			try
+			{
+				// Language registry contains all the languages that are supported in Studio				
+				var language = LanguageRegistryApi.Instance.GetLanguage(cultureIsoCode);
+				return new CultureCode(language.CultureInfo);
+			}
+			catch (UnsupportedLanguageException)
+			{
+				// In case the language is not supported an exception is thrown
+				return null;
+			}
 		}
 		#endregion
 
