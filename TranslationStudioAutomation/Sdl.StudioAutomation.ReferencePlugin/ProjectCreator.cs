@@ -50,7 +50,7 @@ namespace StudioIntegrationApiSample
             OnProgressChanged(100);
         }
 
-        private FileBasedProject CreateProject(ProjectRequest request)
+        private void CreateProject(ProjectRequest request)
         {
             ProjectInfo projectInfo = new ProjectInfo
             {
@@ -80,19 +80,17 @@ namespace StudioIntegrationApiSample
             if (taskSequence.Status == TaskStatus.Completed)
             {
                 SuccessfulRequests.Add(Tuple.Create(request, project));
-                OnMessageReported(project, string.Format("Project {0} created successfully.", request.Name));
-                return project;
+                OnMessageReported(project, string.Format("Project {0} created successfully.", request.Name));                
             }
             else
             {
-                OnMessageReported(project, string.Format("Project {0} creation failed.", request.Name));
-                return null;
+                OnMessageReported(project, string.Format("Project {0} creation failed.", request.Name));                
             }
         }
 
         private string GetProjectFolderPath(string name)
         {
-            string rootFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Studio 2021\\Projects");
+            string rootFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Studio 2022\\Projects");
             string folder;
             int num = 1;
             do
@@ -102,8 +100,6 @@ namespace StudioIntegrationApiSample
             while (Directory.Exists(folder = Path.Combine(rootFolder, name + "-" + num)));
             return folder;
         }
-
-
 
         private void OnProgressChanged(double progress)
         {
