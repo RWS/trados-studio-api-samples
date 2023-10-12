@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Studio Integration API Sample")]
-[assembly: AssemblyCopyright("Copyright SDL ©  2020")]
+[assembly: AssemblyCopyright("Copyright © 2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -9,7 +9,7 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
 		{
 			string dbInfo = string.Empty;
 
-			foreach (TranslationMemoryContainer container in tmServer.GetContainers(ContainerProperties.None))
+			foreach (TranslationMemoryContainer container in tmServer.GetContainers())
 			{
 				dbInfo += "DB Name: " + container.DatabaseName + "\n";
 				dbInfo += "Friendly name: " + container.Name + "\n";

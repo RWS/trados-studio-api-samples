@@ -36,7 +36,7 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
 		public void DeleteLanguageTemplate()
 		{
 			ServerBasedLanguageResourcesTemplate template =
-				TMServer.GetLanguageResourcesTemplate(ParentOrganizationPath + "/APISampleTemplate", LanguageResourcesTemplateProperties.None);
+				TMServer.GetLanguageResourcesTemplate(ParentOrganizationPath + "/APISampleTemplate");
 
 			if (template != null)
 			{
@@ -47,10 +47,10 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
 
 		public void DeleteContainer()
 		{
-			TranslationMemoryContainer container = TMServer.GetContainer(ParentOrganizationPath + "/APITest", ContainerProperties.None);
+			TranslationMemoryContainer container = TMServer.GetContainer(ParentOrganizationPath + "/APITest");
 			if (container != null)
 			{
-				container.Delete(true);
+				container.Delete();
 				WriteResult("Container deleted\r\n");
 			}
 		}
@@ -175,7 +175,7 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
 
 		private bool TMAlreadyExists(string tmName)
 		{
-			foreach (ServerBasedTranslationMemory item in TMServer.GetTranslationMemories(TranslationMemoryProperties.None))
+			foreach (ServerBasedTranslationMemory item in TMServer.GetTranslationMemories())
 			{
 				if (item.Name == tmName)
 				{
@@ -188,7 +188,7 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
 		private ServerBasedLanguageResourcesTemplate CreateLanguageResouceTemplate()
 		{
 			//check if the template already exists
-			foreach (var item in TMServer.GetLanguageResourcesTemplates(LanguageResourcesTemplateProperties.None))
+			foreach (var item in TMServer.GetLanguageResourcesTemplates())
 			{
 				if (item.Name == "APISampleTemplate")
 				{
@@ -230,7 +230,7 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
 		private TranslationMemoryContainer CreateContainer(string newContainerName)
 		{
 
-			ReadOnlyCollection<DatabaseServer> dbs = TMServer.GetDatabaseServers(DatabaseServerProperties.Containers);
+			ReadOnlyCollection<DatabaseServer> dbs = TMServer.GetDatabaseServers();
 			if (dbs.Count == 0)
 			{
 				throw new Exception("No DB server registered.");
@@ -257,7 +257,7 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
 			container.Save();
 
 			//now verify that the container was created sucessfully
-			if (TMServer.GetContainer(ParentOrganizationPath + "/" + container.Name, ContainerProperties.None) == null)
+			if (TMServer.GetContainer(ParentOrganizationPath + "/" + container.Name) == null)
 			{
 				throw new Exception("Container wasn't created.");
 			}
@@ -272,7 +272,7 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
 		/// </summary>
 		public void GetAllDBServers()
 		{
-			foreach (DatabaseServer item in TMServer.GetDatabaseServers(DatabaseServerProperties.None))
+			foreach (DatabaseServer item in TMServer.GetDatabaseServers())
 			{
 				WriteResult(item.Name + "\r\n");
 			}
@@ -284,7 +284,7 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
 		/// </summary>
 		public void GetAllContainers()
 		{
-			foreach (TranslationMemoryContainer item in TMServer.GetContainers(ContainerProperties.None))
+			foreach (TranslationMemoryContainer item in TMServer.GetContainers())
 			{
 				WriteResult(item.Name + " in DB " + item.DatabaseName + "\r\n");
 			}
@@ -295,7 +295,7 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
 		/// </summary>
 		public void GetAllTMs()
 		{
-			foreach (ServerBasedTranslationMemory item in TMServer.GetTranslationMemories(TranslationMemoryProperties.None))
+			foreach (ServerBasedTranslationMemory item in TMServer.GetTranslationMemories())
 			{
 				//now I will access a contain property of the TM - as I specified TranslationMemoryProperties.None the sever will be called again
 				//this can be avoided by calling TranslationMemoryProperties.Container directly

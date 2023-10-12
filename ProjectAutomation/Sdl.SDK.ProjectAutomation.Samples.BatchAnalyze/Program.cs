@@ -1,6 +1,7 @@
 ﻿namespace Sdl.SDK.ProjectAutomation.Samples.BatchAnaylze
 {
-	using System;
+    using Sdl.TranslationStudioAutomation.Licensing;
+    using System;
 	using System.IO;
 
 	public class Program
@@ -85,6 +86,10 @@
 				Console.WriteLine(ex.Message);
 				Console.ReadLine();
 			}
+			finally 
+			{
+                LicenseManager.ReleaseLicense();
+            }
 		}
 	}
 }

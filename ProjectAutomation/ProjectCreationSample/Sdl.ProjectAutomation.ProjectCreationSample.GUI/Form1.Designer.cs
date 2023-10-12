@@ -61,6 +61,16 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(230, 176);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(120, 23);
+            this.button2.TabIndex = 16;
+            this.button2.Text = "Create from package";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
+            // 
             // tb_ProjectName
             // 
             this.tb_ProjectName.Location = new System.Drawing.Point(113, 6);
@@ -167,7 +177,7 @@
             this.label7.TabIndex = 6;
             this.label7.Text = "Package path:";
             // 
-            // b_BrowsePreviousPath
+            // b_BrowseOutputPath
             // 
             this.b_BrowseOutputPath.Location = new System.Drawing.Point(357, 135);
             this.b_BrowseOutputPath.Name = "b_BrowseOutputPath";
@@ -177,7 +187,7 @@
             this.b_BrowseOutputPath.UseVisualStyleBackColor = true;
             this.b_BrowseOutputPath.Click += new System.EventHandler(this.B_BrowseOutputPath_Click);
             // 
-            // tb_PreviousPath
+            // tb_OutputPath
             // 
             this.tb_OutputPath.Location = new System.Drawing.Point(113, 137);
             this.tb_OutputPath.Name = "tb_OutputPath";
@@ -189,19 +199,9 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(12, 140);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(73, 13);
+            this.label8.Size = new System.Drawing.Size(71, 13);
             this.label8.TabIndex = 13;
             this.label8.Text = "Output Folder";
-            //
-            // button2
-            //
-            this.button2.Location = new System.Drawing.Point(230, 176);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(120, 23);
-            this.button2.TabIndex = 16;
-            this.button2.Text = "Create from package";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // Form1
             // 
@@ -227,6 +227,7 @@
             this.Controls.Add(this.button2);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -1,0 +1,8 @@
+
+<PluginPackage xmlns="http://www.sdl.com/Plugins/PluginPackage/1.0">
+  <PlugInName>Sdl.StudioAutomation.License.Sample</PlugInName>
+  <Version>1.0</Version>
+  <Description>Shows how to access license info</Description>
+  <Author>RWS</Author>
+  <RequiredProduct name="TradosStudio" minversion="17.0" maxversion="17.9" />
+</PluginPackage>
