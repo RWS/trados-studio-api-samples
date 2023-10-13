@@ -6,8 +6,21 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
 {
 	public class ServerContainer
 	{
-		#region "CreateAdvanced"
-		public void CreateAdvanced(TranslationProviderServer tmServer, string organization, string newContainerName)
+        #region "CreateSimple"
+        public void Create(TranslationProviderServer tmServer)
+        {
+            TranslationMemoryContainer container = new TranslationMemoryContainer(tmServer);
+
+            DatabaseServer dbServ = tmServer.GetDatabaseServer("DB01");
+            container.DatabaseServer = dbServ;
+            container.DatabaseName = "DbName";
+            container.Name = "NiceName";
+            container.Save();
+        }
+        #endregion
+
+        #region "CreateAdvanced"
+        public void CreateAdvanced(TranslationProviderServer tmServer, string organization, string newContainerName)
 		{
 			#region "count"
 			ReadOnlyCollection<DatabaseServer> dbs = tmServer.GetDatabaseServers();
