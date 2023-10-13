@@ -93,8 +93,10 @@
             #endregion
 
             #region "ProjectFolder"
-            string localProjectFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments).ToString() +
-                Path.DirectorySeparatorChar + @"Studio 2021\Projects\" + info.Name;
+            string localProjectFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                "Studio 2022",
+                "Projects",
+                info.Name);
 
             info.LocalProjectFolder = localProjectFolder;
             #endregion
@@ -118,6 +120,7 @@
         #region "AddProjectFiles"
         public string[] AddProjectFiles(string path)
         {
+            
             string[] projectFiles =
             {
                 path + "brochure.pdf",
@@ -610,7 +613,6 @@
 
             return deletedSuccesfully;
         }
-
 
         #endregion
 

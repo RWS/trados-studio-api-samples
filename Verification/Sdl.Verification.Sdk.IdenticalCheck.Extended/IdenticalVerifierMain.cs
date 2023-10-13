@@ -24,7 +24,7 @@ namespace Sdl.Verification.Sdk.IdenticalCheck.Extended
 
         /// <summary>
         /// Initializes the settings bundle object from which to retrieve the setting(s)
-        /// to be used in the verification logic, e.g. the context display code to
+        /// to be used in the verification logic, e.g. the context display code to 
         /// which the verification should be applied.
         /// </summary>
         #region Settings Bundle

@@ -56,12 +56,14 @@
     <Reference Include="Sdl.Versioning">
       <HintPath>$(MSBuildProgramFiles32)\Trados\Trados Studio\Studio17\Sdl.Versioning.dll</HintPath>
     </Reference>
+    <Reference Include="Sdl.TranslationStudioAutomation.Licensing" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LicenseHelper.cs" />
     <Compile Include="LocalProjectSettings.cs" />
     <Compile Include="ProjectHelperMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

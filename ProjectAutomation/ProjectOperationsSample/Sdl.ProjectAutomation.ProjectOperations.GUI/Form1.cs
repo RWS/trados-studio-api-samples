@@ -279,5 +279,10 @@
 				b_DeleteFiles.Enabled = true;
 			}
 		}
-	}
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            LicenseHelper.ReleaseLicense();
+        }
+    }
 }

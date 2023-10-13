@@ -61,7 +61,7 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmLookup
             try
             {
                 var tmServer = new TranslationProviderServer(GetUri(serverUri), false, userName, password);
-                foreach (ServerBasedTranslationMemory item in tmServer.GetTranslationMemories(TranslationMemoryProperties.All))
+                foreach (ServerBasedTranslationMemory item in tmServer.GetTranslationMemories())
                 {
                     //Resolve path to the TM inclusive name of the organization(s)
                     string tmPath = item.ParentResourceGroupPath == "/" ? "" : item.ParentResourceGroupPath;

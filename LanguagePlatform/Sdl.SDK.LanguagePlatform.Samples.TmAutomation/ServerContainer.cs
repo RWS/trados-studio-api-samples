@@ -6,33 +6,24 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
 {
 	public class ServerContainer
 	{
-		#region "CreateSimple"
-		public void Create(TranslationProviderServer tmServer)
-		{
-			TranslationMemoryContainer container = new TranslationMemoryContainer(tmServer);
+        #region "CreateSimple"
+        public void Create(TranslationProviderServer tmServer)
+        {
+            TranslationMemoryContainer container = new TranslationMemoryContainer(tmServer);
 
-			DatabaseServer dbServ = tmServer.GetDatabaseServer("DB01", GetDbServProperties());
-			container.DatabaseServer = dbServ;
-			container.DatabaseName = "DbName";
-			container.Name = "NiceName";
-			container.Save();
-		}
-		#endregion
+            DatabaseServer dbServ = tmServer.GetDatabaseServer("DB01");
+            container.DatabaseServer = dbServ;
+            container.DatabaseName = "DbName";
+            container.Name = "NiceName";
+            container.Save();
+        }
+        #endregion
 
-		#region "props"
-		private DatabaseServerProperties GetDbServProperties()
-		{
-			DatabaseServerProperties props = new DatabaseServerProperties();
-
-			return props;
-		}
-		#endregion
-
-		#region "CreateAdvanced"
-		public void CreateAdvanced(TranslationProviderServer tmServer, string organization, string newContainerName)
+        #region "CreateAdvanced"
+        public void CreateAdvanced(TranslationProviderServer tmServer, string organization, string newContainerName)
 		{
 			#region "count"
-			ReadOnlyCollection<DatabaseServer> dbs = tmServer.GetDatabaseServers(DatabaseServerProperties.Containers);
+			ReadOnlyCollection<DatabaseServer> dbs = tmServer.GetDatabaseServers();
 			if (dbs.Count == 0)
 			{
 				throw new Exception("No DB server registered.");
@@ -75,8 +66,8 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
 				organization += "/";
 			}
 
-			TranslationMemoryContainer container = tmServer.GetContainer(organization + containerName, ContainerProperties.None);
-			container.Delete(false);
+			TranslationMemoryContainer container = tmServer.GetContainer(organization + containerName);
+			container.Delete();
 		}
 		#endregion
 	}

@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using System.Windows.Forms;
 using Sdl.LanguagePlatform.TranslationMemory;
 using Sdl.LanguagePlatform.TranslationMemoryApi;
@@ -13,7 +14,7 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
 			#region "LoopTemplates"
 			StringBuilder templateList = new StringBuilder();
 
-			foreach (ServerBasedFieldsTemplate template in tmServer.GetFieldsTemplates(FieldsTemplateProperties.All))
+			foreach (ServerBasedFieldsTemplate template in tmServer.GetFieldsTemplates())
 			#endregion
 			{
 				#region "GeneralTemplateInfo"
@@ -38,26 +39,31 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
 
 		#region "GetTms"
 		public void GetTmsForTemplate(TranslationProviderServer tmServer, string templateName)
-		{
-			#region "GetTemplate"
-			ServerBasedFieldsTemplate template = tmServer.GetFieldsTemplate(templateName, FieldsTemplateProperties.All);
-			#endregion
+        {
+            #region "GetTemplate"
+            ServerBasedFieldsTemplate template = tmServer.GetFieldsTemplate(templateName);
+            #endregion
 
-			#region "TmLoop"
-			StringBuilder tmList = new StringBuilder();
+            #region "TmLoop"
+            StringBuilder tmList = new StringBuilder();
+            PagedTranslationMemories pagedTms = GetTmsWithTemplate(template, tmServer);
+            foreach (ServerBasedTranslationMemory tm in pagedTms.TranslationMemories)
+            {
+                tmList.AppendLine(tm.Name);
+            }
 
-			foreach (ServerBasedTranslationMemory tm in template.TranslationMemories)
-			{
-				tmList.AppendLine(tm.Name);
-			}
+            MessageBox.Show(tmList.ToString());
+            #endregion
+        }
 
-			MessageBox.Show(tmList.ToString());
-			#endregion
-		}
-		#endregion
+        private static PagedTranslationMemories GetTmsWithTemplate(ServerBasedFieldsTemplate template, TranslationProviderServer tmServer)
+        {
+            return tmServer.GetTranslationMemoriesByQuery(new TranslationMemoryQuery { FieldTemplateIds = new Guid[] { template.Id } });
+        }
+        #endregion
 
-		#region "create"
-		public void CreateTemplate(TranslationProviderServer tmServer)
+        #region "create"
+        public void CreateTemplate(TranslationProviderServer tmServer)
 		{
 			#region "CreateTemplate"
 			ServerBasedFieldsTemplate template = new ServerBasedFieldsTemplate(tmServer);

@@ -9,7 +9,7 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
 		{
 			string serverInfo = string.Empty;
 
-			foreach (DatabaseServer dbServer in tmServer.GetDatabaseServers(DatabaseServerProperties.None))
+			foreach (DatabaseServer dbServer in tmServer.GetDatabaseServers())
 			{
 				serverInfo += "Server name: " + dbServer.ServerName + "\n";
 				serverInfo += "Friendly server name: " + dbServer.Name + "\n";
