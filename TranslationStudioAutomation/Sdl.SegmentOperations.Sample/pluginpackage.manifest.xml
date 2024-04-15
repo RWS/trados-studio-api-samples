@@ -1,0 +1,8 @@
+
+<PluginPackage xmlns="http://www.sdl.com/Plugins/PluginPackage/1.0">
+  <PlugInName>Sdl.SegmentOperations.Sample</PlugInName>
+  <Version>1.0</Version>
+  <Description>Sdl.SegmentOperations.Sample</Description>
+  <Author></Author>
+  <RequiredProduct name="TradosStudio" minversion="18.0" maxversion="18.9" />
+</PluginPackage>
