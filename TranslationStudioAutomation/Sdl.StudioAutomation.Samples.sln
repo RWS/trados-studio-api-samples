@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sdl.CustomWizardSteps.Sampl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sdl.License.Sample", "Sdl.License.Sample\Sdl.License.Sample.csproj", "{89B39E8D-91CA-4357-BDCF-E61D99335772}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sdl.SegmentOperations.Sample", "Sdl.SegmentOperations.Sample\Sdl.SegmentOperations.Sample.csproj", "{E4DF8164-CB60-4A77-9DDF-454E116061EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{89B39E8D-91CA-4357-BDCF-E61D99335772}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89B39E8D-91CA-4357-BDCF-E61D99335772}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89B39E8D-91CA-4357-BDCF-E61D99335772}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4DF8164-CB60-4A77-9DDF-454E116061EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4DF8164-CB60-4A77-9DDF-454E116061EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4DF8164-CB60-4A77-9DDF-454E116061EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4DF8164-CB60-4A77-9DDF-454E116061EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
