@@ -1,71 +1,70 @@
-﻿using Microsoft.Win32;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows;
+using Microsoft.Win32;
 using Sdl.CustomWizardSteps.Sample;
 using Sdl.CustomWizardSteps.Sample.CustomPages;
 using Sdl.Desktop.IntegrationApi;
 using Sdl.Desktop.IntegrationApi.Extensions;
 using Sdl.Desktop.IntegrationApi.Interfaces;
 using Sdl.Desktop.IntegrationApi.Wizard;
-using Sdl.TranslationStudioAutomation.IntegrationApi.Actions;
 using Sdl.TranslationStudioAutomation.IntegrationApi.Events;
 using Sdl.TranslationStudioAutomation.IntegrationApi.Presentation.DefaultLocations;
-using System;
-using System.Collections.Generic;
-using System.Windows;
 
 namespace Sdl.PackagesOperations.Sample
 {
-    [Action(
-        Id = "CustomAction",
-        Name = "Custom Open Package",
-        Description = "Starts the customized open package wizard",
-        Icon = "CustomActionIcon"
-    )]
-    [ActionLayout(typeof(MySampleRibbonGroup), 10, DisplayType.Large)]
-    public class MyCustomAction : AbstractAction
-    {
-        private readonly AbstractApplication _app;
-        private readonly IStudioEventAggregator _eventAggregator;
+	[Action(
+		Id = "CustomAction",
+		Name = "Custom Open Package",
+		Description = "Starts the customized open package wizard",
+		Icon = "CustomActionIcon"
+	)]
+	[ActionLayout(typeof(MySampleRibbonGroup), 10, DisplayType.Large)]
+	public class MyCustomAction : AbstractAction
+	{
+		private readonly AbstractApplication _app;
+		private readonly IStudioEventAggregator _eventAggregator;
 
-        public MyCustomAction()
-        {
-            _app = new StudioApplication();
-            _eventAggregator = _app.GetService<IStudioEventAggregator>();
-        }
+		public MyCustomAction()
+		{
+			_app = new StudioApplication();
+			_eventAggregator = _app.GetService<IStudioEventAggregator>();
+		}
 
-        protected override void Execute()
-        {
-            try
-            {
-                var fileDialog = new OpenFileDialog { Filter = "SDL packages (*.sdlppx)|*.sdlppx|SDL return packages (*.sdlrpx)|*.sdlrpx|World Server packages (*.wsxz)|*.wsxz" };
-                if (fileDialog.ShowDialog() != true)
-                {
-                    return;
-                }
-                var filePath = fileDialog.FileName;
+		protected override void Execute()
+		{
+			try
+			{
+				var fileDialog = new OpenFileDialog { Filter = "SDL packages (*.sdlppx)|*.sdlppx|SDL return packages (*.sdlrpx)|*.sdlrpx|World Server packages (*.wsxz)|*.wsxz" };
+				if (fileDialog.ShowDialog() != true)
+				{
+					return;
+				}
+				var filePath = fileDialog.FileName;
 
-                var browser = new Browser();
+				var browser = new Browser();
 
-                var initialWizardSteps = new List<StudioWizardPage>
-                {
-                    new FirstPage(browser),
-                    new SecondPage(browser)
-                };
+				var initialWizardSteps = new List<StudioWizardPage>
+				{
+					new FirstPage(browser),
+					new SecondPage(browser)
+				};
 
-                _eventAggregator.Publish(
-                    new OpenProjectPackageEvent(
-                        packageFilePath: filePath, job: null, iconPath: null, projectOrigin: null,
-                        firstPages: initialWizardSteps, initialWizardSteps));
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.Message);
-            }
-        }
-    }
+				_eventAggregator.Publish(
+					new OpenProjectPackageEvent(
+						packageFilePath: filePath, job: null, iconPath: null, projectOrigin: null,
+						firstPages: initialWizardSteps, initialWizardSteps));
+			}
+			catch (Exception exception)
+			{
+				MessageBox.Show(exception.Message);
+			}
+		}
+	}
 
-    [RibbonGroup("MySampleRibbonGroup")]
-    [RibbonGroupLayout(LocationByType = typeof(TranslationStudioDefaultRibbonTabs.HomeRibbonTabLocation))]
-    class MySampleRibbonGroup : AbstractRibbonGroup
-    {
-    }
+	[RibbonGroup("MySampleRibbonGroup")]
+	[RibbonGroupLayout(LocationByType = typeof(TranslationStudioDefaultRibbonTabs.HomeRibbonTabLocation))]
+	internal class MySampleRibbonGroup : AbstractRibbonGroup
+	{
+	}
 }
