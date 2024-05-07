@@ -7,9 +7,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Sdl.AutoSuggest.Sample")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("SDL Limited (a part of the RWS Holdings plc group)")]
 [assembly: AssemblyProduct("Sdl.AutoSuggest.Sample")]
-[assembly: AssemblyCopyright("Copyright © 2024")]
+[assembly: AssemblyCopyright("Copyright © 2000 - 2024 RWS Holdings plc or affiliates.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

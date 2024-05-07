@@ -15,9 +15,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Sdl.SDK.LanguagePlatform.Samples.BatchExport")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("SDL Limited (a part of the RWS Holdings plc group)")]
 [assembly: AssemblyProduct("Sdl.SDK.LanguagePlatform.Samples.BatchExport")]
-[assembly: AssemblyCopyright("Copyright © 2023")]
+[assembly: AssemblyCopyright("Copyright © 2000 - 2024 RWS Holdings plc or affiliates.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

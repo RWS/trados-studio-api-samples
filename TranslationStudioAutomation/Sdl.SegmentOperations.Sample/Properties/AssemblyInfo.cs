@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
@@ -8,9 +7,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Sdl.SegmentOperations.Sample")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("SDL")]
+[assembly: AssemblyCompany("SDL Limited (a part of the RWS Holdings plc group)")]
 [assembly: AssemblyProduct("Sdl.SegmentOperations.Sample")]
-[assembly: AssemblyCopyright("Copyright © SDL 2024")]
+[assembly: AssemblyCopyright("Copyright © 2000 - 2024 RWS Holdings plc or affiliates.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
