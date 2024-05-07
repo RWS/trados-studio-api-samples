@@ -209,10 +209,10 @@
 			// get project name
 			string projectPath = null;
 			string projectName = null;
-			if (cb_ExistingProjects.SelectedItem is ComboboxItem)
+			if (cb_ExistingProjects.SelectedItem is ComboboxItem item1)
 			{
-				projectPath = ((ComboboxItem)cb_ExistingProjects.SelectedItem).Value;
-				projectName = ((ComboboxItem)cb_ExistingProjects.SelectedItem).Text;
+				projectPath = item1.Value;
+				projectName = item1.Text;
 			}
 
 			if (string.IsNullOrEmpty(projectPath))
@@ -222,9 +222,9 @@
 
 			// get file name
 			string fileName = null;
-			if (cb_ExistingProjectFiles.SelectedItem is ComboboxItem)
+			if (cb_ExistingProjectFiles.SelectedItem is ComboboxItem item)
 			{
-				fileName = ((ComboboxItem)cb_ExistingProjectFiles.SelectedItem).Value;
+				fileName = item.Value;
 			}
 
 			if (string.IsNullOrEmpty(fileName))
@@ -251,10 +251,10 @@
 		{
 			string projectPath = null;
 			string projectName = null;
-			if (cb_ExistingProjects.SelectedItem is ComboboxItem)
+			if (cb_ExistingProjects.SelectedItem is ComboboxItem item)
 			{
-				projectPath = ((ComboboxItem)cb_ExistingProjects.SelectedItem).Value;
-				projectName = ((ComboboxItem)cb_ExistingProjects.SelectedItem).Text;
+				projectPath = item.Value;
+				projectName = item.Text;
 			}
 
 			if (string.IsNullOrEmpty(projectPath))
@@ -280,9 +280,9 @@
 			}
 		}
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            LicenseHelper.ReleaseLicense();
-        }
-    }
+		private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			LicenseHelper.ReleaseLicense();
+		}
+	}
 }

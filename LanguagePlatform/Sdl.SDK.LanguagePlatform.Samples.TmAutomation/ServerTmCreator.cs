@@ -24,7 +24,7 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
 			ServerBasedTranslationMemory newTM = new ServerBasedTranslationMemory(tmServer);
 			newTM.Name = tmName;
 			newTM.Description = "Programmatically created sample TM";
-			newTM.Copyright = "(c) 2010 SDL International";
+			newTM.Copyright = "(c) 2024 SDL International";
 			#endregion
 
 			string containerPath = organizationPath;

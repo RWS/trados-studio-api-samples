@@ -1,12 +1,4 @@
-﻿// ---------------------------------
-// <copyright file="AssemblyInfo.cs" company="SDL International">
-// Copyright  2010 All Right Reserved
-// </copyright>
-// <author>Patrik Mazanek</author>
-// <email>pmazanek@sdl.com</email>
-// <date>2010-09-27</date>
-// ---------------------------------
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
@@ -15,9 +7,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Sdl.SDK.LanguagePlatform.Samples.BatchImporter")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("SDL Limited (a part of the RWS Holdings plc group)")]
 [assembly: AssemblyProduct("Sdl.SDK.LanguagePlatform.Samples.BatchImporter")]
-[assembly: AssemblyCopyright("Copyright ©  2023")]
+[assembly: AssemblyCopyright("Copyright © 2000 - 2024 RWS Holdings plc or affiliates.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -14,7 +14,6 @@ namespace Sdl.Sdk.LanguagePlatform.Samples.ListProvider
 		#region "PrivateMembers"
 		private readonly ListTranslationProvider _provider;
 		private readonly LanguagePair _languageDirection;
-		private readonly ListTranslationOptions _options;
 		private readonly ListTranslationProviderElementVisitor _visitor;
 		private readonly Dictionary<string, string> _listOfTranslations;
 		#endregion
@@ -33,19 +32,19 @@ namespace Sdl.Sdk.LanguagePlatform.Samples.ListProvider
 			#region "Instantiate"
 			_provider = provider;
 			_languageDirection = languages;
-			_options = _provider.Options;
-			_visitor = new ListTranslationProviderElementVisitor(_options);
+			var options = _provider.Options;
+			_visitor = new ListTranslationProviderElementVisitor(options);
 			_listOfTranslations = new Dictionary<string, string>();
 			#endregion
 
 			#region "CompileCollection"
 			// Load the content of the specified list file and fill it
 			// into the multiple identical sources are not allowed
-			using (StreamReader sourceFile = new StreamReader(_options.ListFileName))
+			using (StreamReader sourceFile = new StreamReader(options.ListFileName))
 			{
 				sourceFile.ReadLine(); // Skip the first line as it contains the language direction.
 
-				char fileDelimiter = Convert.ToChar(_options.Delimiter);
+				char fileDelimiter = Convert.ToChar(options.Delimiter);
 				while (!sourceFile.EndOfStream)
 				{
 					string[] currentPair = sourceFile.ReadLine().Split(fileDelimiter);
@@ -123,7 +122,7 @@ namespace Sdl.Sdk.LanguagePlatform.Samples.ListProvider
 			{
 				Segment translation = new Segment(_languageDirection.TargetCulture);
 				translation.Add(_listOfTranslations[_visitor.PlainText]);
-				results.Add(CreateSearchResult(segment, translation, _visitor.PlainText, segment.HasTags));
+				results.Add(CreateSearchResult(translation, _visitor.PlainText, segment.HasTags));
 			}
 			#endregion
 
@@ -139,7 +138,7 @@ namespace Sdl.Sdk.LanguagePlatform.Samples.ListProvider
 					{
 						Segment translation = new Segment(_languageDirection.TargetCulture);
 						translation.Add(_listOfTranslations[item]);
-						results.Add(CreateSearchResult(segment, translation, item, false));
+						results.Add(CreateSearchResult(translation, item, false));
 					}
 				}
 			}
@@ -157,7 +156,7 @@ namespace Sdl.Sdk.LanguagePlatform.Samples.ListProvider
 					{
 						Segment translation = new Segment(_languageDirection.TargetCulture);
 						translation.Add(_listOfTranslations[item]);
-						results.Add(CreateSearchResult(segment, translation, item, false));
+						results.Add(CreateSearchResult(translation, item, false));
 					}
 				}
 			}
@@ -170,16 +169,16 @@ namespace Sdl.Sdk.LanguagePlatform.Samples.ListProvider
 
 		/// <summary>
 		/// Creates the translation unit as it is later shown in the Translation Results
-		/// window of SDL Trados Studio. This member also determines the match score
+		/// window of Trados Studio. This member also determines the match score
 		/// (in our implementation always 100%, as only exact matches are supported)
 		/// as well as the confirmation level, i.e. Translated.
 		/// </summary>
-		/// <param name="searchSegment"></param>
 		/// <param name="translation"></param>
 		/// <param name="sourceSegment"></param>
+		/// <param name="formattingPenalty"></param>
 		/// <returns></returns>
 		#region "CreateSearchResult"
-		private SearchResult CreateSearchResult(Segment searchSegment, Segment translation,
+		private SearchResult CreateSearchResult(Segment translation,
 			string sourceSegment, bool formattingPenalty)
 		{
 			#region "TranslationUnit"
@@ -269,7 +268,7 @@ namespace Sdl.Sdk.LanguagePlatform.Samples.ListProvider
 
 		public SearchResults SearchText(SearchSettings settings, string segment)
 		{
-			Segment s = new Sdl.LanguagePlatform.Core.Segment(_languageDirection.SourceCulture);
+			Segment s = new Segment(_languageDirection.SourceCulture);
 			s.Add(segment);
 			return SearchSegment(settings, s);
 		}

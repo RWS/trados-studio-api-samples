@@ -4,5 +4,5 @@
   <Version>1.1</Version>
   <Description>Verifies whether segments that are not supposed to be translated have been changed during translation/editing.</Description>
   <Author></Author>
-  <RequiredProduct name="TradosStudio" minversion="17.0" maxversion="17.9" />
+  <RequiredProduct name="TradosStudio" minversion="18.0" maxversion="18.9" />
 </PluginPackage>
