@@ -32,5 +32,9 @@ namespace Sdl.Notifications.Sample
         public bool AllowsUserToDismiss { get; set; }
 
         public IStudioNotificationCommand ClearNotificationAction { get; set; }
+
+        public Guid Owner { get; set; }
+        
+        public bool IsRead { get; set; }
     }
 }
