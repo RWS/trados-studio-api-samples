@@ -6,6 +6,6 @@
   <Author></Author>
   <RequiredProduct name="TradosStudio" minversion="18.0" maxversion="18.9"/>
   <Include>
-    <!--<File>Sdl.SDK.LanguagePlatform.Samples.AICompanion.dll</File>-->
+    <File>Sdl.SDK.LanguagePlatform.Samples.AICompanion.dll</File>
   </Include>
 </PluginPackage>
