@@ -29,37 +29,37 @@
 
 			try
 			{
-				////Create new project object
+				//Create new project object
 				FileBasedProject createdProject = new FileBasedProject(
 					GetProjectInfo(
 					settings.ProjectName,
 						new Language(settings.SourceLanguage),
 						new Language[] { new Language(settings.TargetLanguage) }));
 
-				////Add files
+				//Add files
 				createdProject.AddFolderWithFiles(settings.InputFolder, true);
 
 
-				////Add TM's which will be used in the project
+				//Add TM's which will be used in the project
 				AddMasterTM(createdProject, settings.PathToMasterTM);
 
-				////Adapt some project settings
+				//Adapt some project settings
 				AdaptProjectSettings(createdProject);
 
-				////Add termbase
+				//Add termbase
 				AddTermbase(createdProject, settings.TermbasePath, settings.SourceLanguage, settings.TargetLanguage);
 
-				////Start the tasks
+				//Start the tasks
 				RunTasks(createdProject, settings);
 
-				////Create project package to be sent to translator
+				//Create project package to be sent to translator
 				CreateProjectPackage(createdProject, new Language(settings.TargetLanguage), settings.PackageOutputPath);
 
-				////missing - getting translated files.
+				//missing - getting translated files.
 				createdProject.Save();
 
 				result = createdProject;
-				////project is saved but not listed in Studio, this is by design.
+				//project is saved but not listed in Studio, this is by design.
 			}
 			catch (Exception ex)
 			{
@@ -304,7 +304,7 @@
 				string searchPath = Path.Combine(previousProjectPath, language.IsoAbbreviation);
 				foreach (ProjectFile file in translatableFiles)
 				{
-					string previousFile = string.Concat(Path.Combine(searchPath, file.Name), (file.Name.EndsWith(".sdlxliff") ? "" : ".sdlxliff"));
+					string previousFile = string.Concat(Path.Combine(searchPath, file.Name), file.Name.EndsWith(".sdlxliff") ? "" : ".sdlxliff");
 					if (File.Exists(previousFile))
 					{
 						BilingualFileMapping mapping = new BilingualFileMapping()

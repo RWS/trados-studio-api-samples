@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -9,49 +9,42 @@
     <RootNamespace>Sdl.Verification.Sdk.IdenticalCheck.Extended</RootNamespace>
     <AssemblyName>Sdl.Verification.Sdk.IdenticalCheck.Extended</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
-    <TargetFrameworkProfile />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+	<OutputPath>bin\$(Configuration)\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <Optimize>false</Optimize>    
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>    
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <Optimize>true</Optimize>   
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>    
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Sdl.Core.Settings">
-      <HintPath>$(MSBuildProgramFiles32)\Trados\Trados Studio\Studio18\Sdl.Core.Settings.dll</HintPath>
+      <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19Beta\Sdl.Core.Settings.dll</HintPath>
     </Reference>
     <Reference Include="Sdl.DesktopEditor.BasicControls">
-      <HintPath>$(MSBuildProgramFiles32)\Trados\Trados Studio\Studio18\Sdl.DesktopEditor.BasicControls.dll</HintPath>
+      <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19Beta\Sdl.DesktopEditor.BasicControls.dll</HintPath>
     </Reference>
     <Reference Include="Sdl.DesktopEditor.EditorApi">
-      <HintPath>$(MSBuildProgramFiles32)\Trados\Trados Studio\Studio18\Sdl.DesktopEditor.EditorApi.dll</HintPath>
+      <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19Beta\Sdl.DesktopEditor.EditorApi.dll</HintPath>
     </Reference>
     <Reference Include="Sdl.FileTypeSupport.Framework.Core">
-      <HintPath>$(MSBuildProgramFiles32)\Trados\Trados Studio\Studio18\Sdl.FileTypeSupport.Framework.Core.dll</HintPath>
+      <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19Beta\Sdl.FileTypeSupport.Framework.Core.dll</HintPath>
     </Reference>
     <Reference Include="Sdl.Verification.Api">
-      <HintPath>$(MSBuildProgramFiles32)\Trados\Trados Studio\Studio18\Sdl.Verification.Api.dll</HintPath>
+      <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19Beta\Sdl.Verification.Api.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
@@ -83,8 +76,6 @@
       <DependentUpon>PluginResources.resx</DependentUpon>
     </Compile>
     <Compile Include="TextGenerator.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="GUI\IdenticalVerifierUI.resx">
       <DependentUpon>IdenticalVerifierUI.cs</DependentUpon>
     </EmbeddedResource>
@@ -104,14 +95,10 @@
     <EmbeddedResource Include="PluginResources.es.resx" />
     <EmbeddedResource Include="PluginResources.fr.resx" />
     <EmbeddedResource Include="PluginResources.de.resx" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="icon.ico" />
     <Content Include="pluginpackage.manifest.xml">
       <SubType>Designer</SubType>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="key.snk" />
   </ItemGroup>
   <ItemGroup>
@@ -124,7 +111,7 @@
   </ItemGroup>
   <PropertyGroup>
     <CreatePluginPackage>true</CreatePluginPackage>
-    <PluginDeploymentPath>$(AppData)\Trados\Trados Studio\18\Plugins</PluginDeploymentPath>
+    <PluginDeploymentPath>$(AppData)\Trados\Trados Studio\19beta\Plugins</PluginDeploymentPath>
   </PropertyGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

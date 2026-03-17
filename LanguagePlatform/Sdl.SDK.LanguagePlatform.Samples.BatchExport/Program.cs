@@ -14,6 +14,12 @@
 		/// <param name="args">Contain string parameters that are passed via the command line.</param>
 		public static void Main(string[] args)
 		{
+
+			// Register the assembly resolver to be able to find Trados Studio assemblies
+			// not needed if the application is run from a folder where Studio is installed
+			// or if all the required assemblies are copied to the application folder
+			StudioAssemblyResolver.Register();
+
 			bool processSubFolders = false;
 
 			if (args.Length != 2)
@@ -45,14 +51,13 @@
 				it.ProcessDirectory(mainPath, processSubFolders);
 				Console.WriteLine();
 				Console.WriteLine("Batch export finished. Press ENTER to exit.");
-				Console.ReadLine();
 			}
 			catch (Exception ex)
 			{
 				Console.WriteLine(ex.Message);
 				Console.WriteLine("Press ENTER to exit.");
-				Console.ReadLine();
 			}
+			Console.ReadLine();
 		}
 	}
 }

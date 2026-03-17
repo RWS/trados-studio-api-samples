@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30309.148
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37027.9 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sdl.ProjectAutomation.ProjectOperations.GUI", "Sdl.ProjectAutomation.ProjectOperations.GUI\Sdl.ProjectAutomation.ProjectOperations.GUI.csproj", "{336EF396-5FAC-4000-8607-FED58BC3D141}"
 EndProject
@@ -9,18 +9,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sdl.ProjectAutomation.Proje
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{336EF396-5FAC-4000-8607-FED58BC3D141}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{336EF396-5FAC-4000-8607-FED58BC3D141}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{336EF396-5FAC-4000-8607-FED58BC3D141}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{336EF396-5FAC-4000-8607-FED58BC3D141}.Release|Any CPU.Build.0 = Release|Any CPU
-		{46F3789C-6A4A-4A75-9E1F-143635CF4CD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{46F3789C-6A4A-4A75-9E1F-143635CF4CD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{46F3789C-6A4A-4A75-9E1F-143635CF4CD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{46F3789C-6A4A-4A75-9E1F-143635CF4CD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{336EF396-5FAC-4000-8607-FED58BC3D141}.Debug|x64.ActiveCfg = Debug|x64
+		{336EF396-5FAC-4000-8607-FED58BC3D141}.Debug|x64.Build.0 = Debug|x64
+		{336EF396-5FAC-4000-8607-FED58BC3D141}.Release|x64.ActiveCfg = Release|x64
+		{336EF396-5FAC-4000-8607-FED58BC3D141}.Release|x64.Build.0 = Release|x64
+		{46F3789C-6A4A-4A75-9E1F-143635CF4CD9}.Debug|x64.ActiveCfg = Debug|x64
+		{46F3789C-6A4A-4A75-9E1F-143635CF4CD9}.Debug|x64.Build.0 = Debug|x64
+		{46F3789C-6A4A-4A75-9E1F-143635CF4CD9}.Release|x64.ActiveCfg = Release|x64
+		{46F3789C-6A4A-4A75-9E1F-143635CF4CD9}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -25,8 +25,7 @@ namespace Sdl.Sdk.LanguagePlatform.Samples.ListProvider
 		/// a Dictionary collection object.
 		/// </summary>
 		/// <param name="provider"></param>
-		/// <param name="languages"></param>
-		#region "ListTranslationProviderLanguageDirection"
+		/// <param name="languages"></param>	
 		public ListTranslationProviderLanguageDirection(ListTranslationProvider provider, LanguagePair languages)
 		{
 			#region "Instantiate"
@@ -66,8 +65,6 @@ namespace Sdl.Sdk.LanguagePlatform.Samples.ListProvider
 			}
 			#endregion
 		}
-
-		#endregion
 
 		public CultureCode SourceLanguage
 		{
@@ -166,7 +163,6 @@ namespace Sdl.Sdk.LanguagePlatform.Samples.ListProvider
 		}
 		#endregion
 
-
 		/// <summary>
 		/// Creates the translation unit as it is later shown in the Translation Results
 		/// window of Trados Studio. This member also determines the match score
@@ -223,22 +219,6 @@ namespace Sdl.Sdk.LanguagePlatform.Samples.ListProvider
 		}
 		#endregion
 
-
-		public bool CanReverseLanguageDirection
-		{
-			get { return false; }
-		}
-
-		public SearchResults[] SearchSegments(SearchSettings settings, Segment[] segments)
-		{
-			SearchResults[] results = new SearchResults[segments.Length];
-			for (int p = 0; p < segments.Length; ++p)
-			{
-				results[p] = SearchSegment(settings, segments[p]);
-			}
-			return results;
-		}
-
 		public SearchResults[] SearchSegmentsMasked(SearchSettings settings, Segment[] segments, bool[] mask)
 		{
 			if (segments == null)
@@ -273,21 +253,6 @@ namespace Sdl.Sdk.LanguagePlatform.Samples.ListProvider
 			return SearchSegment(settings, s);
 		}
 
-		public SearchResults SearchTranslationUnit(SearchSettings settings, TranslationUnit translationUnit)
-		{
-			return SearchSegment(settings, translationUnit.SourceSegment);
-		}
-
-		public SearchResults[] SearchTranslationUnits(SearchSettings settings, TranslationUnit[] translationUnits)
-		{
-			SearchResults[] results = new SearchResults[translationUnits.Length];
-			for (int p = 0; p < translationUnits.Length; ++p)
-			{
-				results[p] = SearchSegment(settings, translationUnits[p].SourceSegment);
-			}
-			return results;
-		}
-
 		public SearchResults[] SearchTranslationUnitsMasked(SearchSettings settings, TranslationUnit[] translationUnits, bool[] mask)
 		{
 			List<SearchResults> results = new List<SearchResults>();
@@ -297,7 +262,7 @@ namespace Sdl.Sdk.LanguagePlatform.Samples.ListProvider
 			{
 				if (mask == null || mask[i])
 				{
-					var result = SearchTranslationUnit(settings, tu);
+					var result = SearchSegment(settings, tu.SourceSegment);
 					results.Add(result);
 				}
 				else
@@ -326,16 +291,6 @@ namespace Sdl.Sdk.LanguagePlatform.Samples.ListProvider
 		/// <summary>
 		/// Not required for this implementation.
 		/// </summary>
-		/// <param name="translationUnit"></param>
-		/// <returns></returns>
-		public ImportResult UpdateTranslationUnit(TranslationUnit translationUnit)
-		{
-			throw new NotImplementedException();
-		}
-
-		/// <summary>
-		/// Not required for this implementation.
-		/// </summary>
 		/// <param name="translationUnits"></param>
 		/// <returns></returns>
 		public ImportResult[] UpdateTranslationUnits(TranslationUnit[] translationUnits)
@@ -355,39 +310,6 @@ namespace Sdl.Sdk.LanguagePlatform.Samples.ListProvider
 			throw new NotImplementedException();
 		}
 
-		/// <summary>
-		/// Not required for this implementation.
-		/// </summary>
-		/// <param name="translationUnit"></param>
-		/// <param name="settings"></param>
-		/// <returns></returns>
-		public ImportResult AddTranslationUnit(TranslationUnit translationUnit, ImportSettings settings)
-		{
-			throw new NotImplementedException();
-		}
-
-		/// <summary>
-		/// Not required for this implementation.
-		/// </summary>
-		/// <param name="translationUnits"></param>
-		/// <param name="settings"></param>
-		/// <returns></returns>
-		public ImportResult[] AddTranslationUnits(TranslationUnit[] translationUnits, ImportSettings settings)
-		{
-			throw new NotImplementedException();
-		}
-
-		/// <summary>
-		/// Not required for this implementation.
-		/// </summary>
-		/// <param name="translationUnits"></param>
-		/// <param name="previousTranslationHashes"></param>
-		/// <param name="settings"></param>
-		/// <returns></returns>
-		public ImportResult[] AddOrUpdateTranslationUnits(TranslationUnit[] translationUnits, int[] previousTranslationHashes, ImportSettings settings)
-		{
-			throw new NotImplementedException();
-		}
 		#endregion
 
 		#endregion

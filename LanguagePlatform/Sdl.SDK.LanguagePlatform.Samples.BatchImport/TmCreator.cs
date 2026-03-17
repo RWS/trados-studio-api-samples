@@ -12,8 +12,6 @@ namespace Sdl.SDK.LanguagePlatform.Samples.BatchImporter
 	/// </summary>
 	public class TMCreator
 	{
-		#region "createTM"
-
 		/// <summary>
 		/// Create the master TM based on the source and target locales found in the current TMX file.
 		/// </summary>
@@ -66,9 +64,6 @@ namespace Sdl.SDK.LanguagePlatform.Samples.BatchImporter
 				return null;
 			}
 		}
-		#endregion
-
-		#region "Get fuzzy indexes"
 
 		/// <summary>
 		/// Configure the fuzzy indexes, to determine, for example,
@@ -84,10 +79,6 @@ namespace Sdl.SDK.LanguagePlatform.Samples.BatchImporter
 			return FuzzyIndexes.SourceWordBased | FuzzyIndexes.TargetWordBased;
 		}
 
-		#endregion
-
-		#region "get recognizers"
-
 		/// <summary>
 		/// Configure the recognition settings for the TM.
 		/// Here, we simply activate all recognition settings 
@@ -99,8 +90,6 @@ namespace Sdl.SDK.LanguagePlatform.Samples.BatchImporter
 		{
 			return BuiltinRecognizers.RecognizeAll;
 		}
-
-		#endregion
 	}
 }
 

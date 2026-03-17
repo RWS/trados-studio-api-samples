@@ -1,20 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2035
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37027.9 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sdl.SDK.LanguagePlatform.Samples.TmLookup", "Sdl.SDK.LanguagePlatform.Samples.TmLookup.csproj", "{BD949FFE-20E8-4CAA-8481-CAA74FF9A48F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BD949FFE-20E8-4CAA-8481-CAA74FF9A48F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BD949FFE-20E8-4CAA-8481-CAA74FF9A48F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BD949FFE-20E8-4CAA-8481-CAA74FF9A48F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BD949FFE-20E8-4CAA-8481-CAA74FF9A48F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD949FFE-20E8-4CAA-8481-CAA74FF9A48F}.Debug|x64.ActiveCfg = Debug|x64
+		{BD949FFE-20E8-4CAA-8481-CAA74FF9A48F}.Debug|x64.Build.0 = Debug|x64
+		{BD949FFE-20E8-4CAA-8481-CAA74FF9A48F}.Release|x64.ActiveCfg = Release|x64
+		{BD949FFE-20E8-4CAA-8481-CAA74FF9A48F}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

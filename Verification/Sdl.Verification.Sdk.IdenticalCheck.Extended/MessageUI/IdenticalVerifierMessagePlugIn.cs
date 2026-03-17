@@ -7,28 +7,23 @@ using Sdl.Verification.Api;
 
 namespace Sdl.Verification.Sdk.IdenticalCheck.Extended.MessageUI
 {
-    [MessageControlPlugIn]
-    public class IdenticalVerifierMessagePlugIn : IMessageControlPlugIn
-    {
-        #region SupportsMessage
-        public bool SupportsMessage(MessageEventArgs messageEventArgs)
-        {
-            return messageEventArgs.ExtendedData != null &&
-                   messageEventArgs.ExtendedData is IdenticalVerifierMessageData;
-        }
-        #endregion
+	[MessageControlPlugIn]
+	public class IdenticalVerifierMessagePlugIn : IMessageControlPlugIn
+	{
+		public bool SupportsMessage(MessageEventArgs messageEventArgs)
+		{
+			return messageEventArgs.ExtendedData is IdenticalVerifierMessageData;
+		}
 
-        #region CreateMessageControl
-        public UserControl CreateMessageControl(IMessageControlContainer messageControlContainer, MessageEventArgs messageEventArgs,
-            IBilingualDocument bilingualDocument, ISegment sourceSegment, ISegment targetSegment)
-        {
-            if (!SupportsMessage(messageEventArgs))
-            {
-                throw new ArgumentException("messageEventArgs is not supported by this message control plug-in", nameof(messageEventArgs));
-            }
+		public UserControl CreateMessageControl(IMessageControlContainer messageControlContainer, MessageEventArgs messageEventArgs,
+			IBilingualDocument bilingualDocument, ISegment sourceSegment, ISegment targetSegment)
+		{
+			if (!SupportsMessage(messageEventArgs))
+			{
+				throw new ArgumentException("messageEventArgs is not supported by this message control plug-in", nameof(messageEventArgs));
+			}
 
-            return new IdenticalVerifierMessageUI(messageEventArgs, targetSegment);
-        }
-        #endregion
-    }
+			return new IdenticalVerifierMessageUI(messageEventArgs, targetSegment);
+		}
+	}
 }

@@ -8,22 +8,25 @@ namespace Sdl.SDK.LanguagePlatform.Samples.BatchImporter
 	/// </summary>
 	public class Program
 	{
-		#region "main"
-
 		/// <summary>
 		/// Main entrance point of the application.
 		/// </summary>
 		/// <param name="args">String arguments passed via command line.</param>
 		public static void Main(string[] args)
 		{
+			// Register the assembly resolver to be able to find Trados Studio assemblies
+			// not needed if the application is run from a folder where Studio is installed
+			// or if all the required assemblies are copied to the application folder
+			StudioAssemblyResolver.Register();
+
 			bool processSubFolders = false;
 
 			if (args.Length != 2)
 			{
 				Console.WriteLine("Usage:");
 				Console.WriteLine("Sdl.SDK.LanguagePlatform.Samples.BatchImport.exe source /ps");
-				Console.WriteLine("source path to input folder");
-				Console.WriteLine("/ps   should process subfolders");
+				Console.WriteLine("source  path to input folder");
+				Console.WriteLine("/ps     should process subfolders");
 				Console.WriteLine("This application uses a hard-coded recursion level of up to 10 sub-folders.");
 				Console.WriteLine("The master TMs are created in a hard-coded location, i.e.: c:\\MasterTMs");
 				return;
@@ -57,7 +60,5 @@ namespace Sdl.SDK.LanguagePlatform.Samples.BatchImporter
 				Console.ReadLine();
 			}
 		}
-
-		#endregion
 	}
 }

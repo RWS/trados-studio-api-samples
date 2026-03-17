@@ -22,7 +22,7 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
 			{
 				if (_server == null)
 				{
-					ConnectToServer();
+					_server = new TranslationProviderServer(new Uri(@"http://perftest05.development.sheffield.sdl.corp:80"), false, "sa", "sa");
 				}
 				return _server;
 			}
@@ -318,20 +318,6 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
 				_output.Text += progress;
 				_output.Refresh();
 			}
-		}
-
-		/// <summary>
-		/// Connect to a TM server
-		/// </summary>
-		private void ConnectToServer()
-		{
-			_server = new TranslationProviderServer(GetUri(), false, "sa", "sa");
-		}
-
-		private Uri GetUri()
-		{
-			string address = @"http://perftest05.development.sheffield.sdl.corp:80"; // http://SERVERNAME:PORT
-			return new Uri(address);
 		}
 	}
 }

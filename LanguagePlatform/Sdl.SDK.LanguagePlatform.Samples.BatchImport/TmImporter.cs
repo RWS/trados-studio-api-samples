@@ -10,8 +10,6 @@ namespace Sdl.SDK.LanguagePlatform.Samples.BatchImporter
 	/// </summary>
 	public class TMImporter
 	{
-		#region "ImportTmx"
-
 		/// <summary>
 		/// This function performs the actual TMX import into the appropriate master TM.
 		/// </summary>
@@ -69,9 +67,6 @@ namespace Sdl.SDK.LanguagePlatform.Samples.BatchImporter
 			importer.Import(tmxPath);
 			#endregion
 		}
-		#endregion
-
-		#region "settings"
 
 		/// <summary>
 		///  Configure the import settings.
@@ -83,6 +78,5 @@ namespace Sdl.SDK.LanguagePlatform.Samples.BatchImporter
 			importSettings.ExistingFieldsUpdateMode = ImportSettings.FieldUpdateMode.Merge;
 			importSettings.ExistingTUsUpdateMode = ImportSettings.TUUpdateMode.Overwrite;
 		}
-		#endregion
 	}
 }

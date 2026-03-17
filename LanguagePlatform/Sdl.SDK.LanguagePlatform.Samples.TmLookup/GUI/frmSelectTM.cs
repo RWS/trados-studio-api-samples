@@ -11,14 +11,11 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmLookup
 			InitializeComponent();
 		}
 
-		#region "cancel"
 		private void BtnCancel_Click(object sender, EventArgs e)
 		{
 			Close();
 		}
-		#endregion
 
-		#region "connect"
 		// By clicking the Connect button you establish a connection with the TM
 		// Server. This will fill populate the dropdown list with the names of the
 		// server TMs and enable the list, which is by default disabled.
@@ -31,9 +28,7 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmLookup
 
 			btnOK.Enabled = true;
 		}
-		#endregion
 
-		#region "ok"
 		// By clicking OK the user connects the server-based TM
 		// through the Connector class.
 		// The TM language directions are propagated into the corresponding list of the frmLookup form.
@@ -67,6 +62,5 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmLookup
 			lookupFrm.Show();
 			Close();
 		}
-		#endregion
 	}
 }

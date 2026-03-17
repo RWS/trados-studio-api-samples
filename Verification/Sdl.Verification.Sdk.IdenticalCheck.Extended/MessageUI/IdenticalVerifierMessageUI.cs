@@ -1,55 +1,55 @@
-﻿using Sdl.DesktopEditor.BasicControls;
+﻿using System;
+using System.Windows.Forms;
+using Sdl.DesktopEditor.BasicControls;
 using Sdl.FileTypeSupport.Framework.BilingualApi;
 using Sdl.FileTypeSupport.Framework.IntegrationApi;
 using Sdl.Verification.Api;
-using System;
-using System.Windows.Forms;
 
 namespace Sdl.Verification.Sdk.IdenticalCheck.Extended.MessageUI
 {
-    public partial class IdenticalVerifierMessageUI : UserControl, ISuggestionProvider
-    {
-        #region Create Edit Controls
-        /// <summary>
-        /// Source segment edit control
-        /// </summary>
-        private readonly BasicSegmentEditControl _originalSegment = new BasicSegmentEditControl();
+	public partial class IdenticalVerifierMessageUI : UserControl, ISuggestionProvider
+	{
+		#region Create Edit Controls
+		/// <summary>
+		/// Source segment edit control
+		/// </summary>
+		private readonly BasicSegmentEditControl _originalSegment = new BasicSegmentEditControl();
 
-        #endregion
+		#endregion
 
-        private Suggestion _suggestion;
+		private readonly Suggestion _suggestion;
 
-        #region Constructor
-        public IdenticalVerifierMessageUI(MessageEventArgs messageEventArgs, ISegment originalSegment)
-        {
-            InitializeComponent();
+		#region Constructor
+		public IdenticalVerifierMessageUI(MessageEventArgs messageEventArgs, ISegment originalSegment)
+		{
+			InitializeComponent();
 
-            #region Get ExtendedMessage Data
-            IdenticalVerifierMessageData messageData = (IdenticalVerifierMessageData)messageEventArgs.ExtendedData;
-            tb_ErrorDetails.Text = messageData.ErrorDetails;
-            _suggestion = new Suggestion(messageEventArgs.FromLocation, messageEventArgs.UptoLocation,
-                messageData.ReplacementSuggestion.Clone() as IAbstractMarkupData);
-            #endregion
+			#region Get ExtendedMessage Data
+			IdenticalVerifierMessageData messageData = (IdenticalVerifierMessageData)messageEventArgs.ExtendedData;
+			tb_ErrorDetails.Text = messageData.ErrorDetails;
+			_suggestion = new Suggestion(messageEventArgs.FromLocation, messageEventArgs.UptoLocation,
+				messageData.ReplacementSuggestion.Clone() as IAbstractMarkupData);
+			#endregion
 
-            _originalSegment.Dock = DockStyle.Fill;
-            _originalSegment.IsReadOnly = true;
-            _originalSegment.ReplaceDocumentSegment(originalSegment.Clone() as ISegment);
-            panel_Original.Controls.Add(_originalSegment);
-        }
-        #endregion
+			_originalSegment.Dock = DockStyle.Fill;
+			_originalSegment.IsReadOnly = true;
+			_originalSegment.ReplaceDocumentSegment(originalSegment.Clone() as ISegment);
+			panel_Original.Controls.Add(_originalSegment);
+		}
+		#endregion
 
-        #region ISuggestionProvider
-        public Suggestion GetSuggestion()
-        {
-            return _suggestion;
-        }
+		#region ISuggestionProvider
+		public Suggestion GetSuggestion()
+		{
+			return _suggestion;
+		}
 
-        public bool HasSuggestion()
-        {
-            return true;
-        }
+		public bool HasSuggestion()
+		{
+			return true;
+		}
 
-        public event EventHandler SuggestionChanged;
-        #endregion
-    }
+		public event EventHandler SuggestionChanged;
+		#endregion
+	}
 }
