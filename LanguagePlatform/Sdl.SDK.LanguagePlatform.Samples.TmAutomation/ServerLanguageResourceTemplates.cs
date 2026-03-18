@@ -28,25 +28,6 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
 		}
 		#endregion
 
-		#region "GetTmsForTemplate"
-		public void GetTmsForTemplate(TranslationProviderServer tmServer, string templateName)
-		{
-			#region "SelectTemplate"
-			ServerBasedLanguageResourcesTemplate template = tmServer.GetLanguageResourcesTemplate(templateName);
-			#endregion
-
-			#region "LoopTms"
-			string tmList = string.Empty;
-			foreach (ServerBasedTranslationMemory tm in template.TranslationMemories)
-			{
-				tmList += tm.Name + "\n";
-			}
-
-			MessageBox.Show(tmList);
-			#endregion
-		}
-		#endregion
-
 		#region "CreateTemplate"
 		public void CreateTemplate(TranslationProviderServer tmServer)
 		{
@@ -56,8 +37,8 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
 
 			// "variables"
 			LanguageResourceBundle variables = new LanguageResourceBundle(new CultureCode("en-US"));
-			variables.Variables.Add("SDL Trados Studio 2022");
-			variables.Variables.Add("SDL MultiTerm 2022");
+			variables.Variables.Add("SDL Trados Studio 2026");
+			variables.Variables.Add("SDL MultiTerm 2026");
 
 			// "abbreviations"
 			LanguageResourceBundle abbreviations = new LanguageResourceBundle(new CultureCode("en-US"));

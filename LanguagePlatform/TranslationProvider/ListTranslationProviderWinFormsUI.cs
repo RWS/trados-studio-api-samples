@@ -5,12 +5,10 @@ using Sdl.LanguagePlatform.TranslationMemoryApi;
 
 namespace Sdl.Sdk.LanguagePlatform.Samples.ListProvider
 {
-	#region "Declaration"
 	[TranslationProviderWinFormsUi(
 		Id = "ListTranslationProviderWinFormsUI",
 		Name = "ListTranslationProviderWinFormsUI",
 		Description = "ListTranslationProviderWinFormsUI")]
-	#endregion
 	public class ListTranslationProviderWinFormsUI : ITranslationProviderWinFormsUI
 	{
 		#region ITranslationProviderWinFormsUI Members

@@ -48,7 +48,7 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
 			#endregion
 
 			#region "AddTu"
-			tm.LanguageDirection.AddTranslationUnit(tu, GetImportSettings());
+			tm.LanguageDirection.AddTranslationUnitsMasked(new[] { tu }, GetImportSettings(), null);
 			tm.Save();
 			MessageBox.Show("TU has been added successfully.");
 			#endregion
@@ -76,7 +76,7 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
 			#endregion
 
 			#region "AddTuExtended"
-			tm.LanguageDirection.AddTranslationUnit(tu, GetImportSettings());
+			tm.LanguageDirection.AddTranslationUnitsMasked(new[] { tu }, GetImportSettings(), null);
 			tm.Save();
 			MessageBox.Show("TU has been added successfully.");
 			#endregion

@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyProduct("Sdl.SDK.BatchTasks.Samples.SimplePseudoTranslate")]
-[assembly: AssemblyCopyright("Copyright © 2000 - 2024 RWS Holdings plc or affiliates.")]
+[assembly: AssemblyCopyright("Copyright © 2000 - 2026 RWS Holdings plc or affiliates.")]
 [assembly: AssemblyCompany("SDL Limited (a part of the RWS Holdings plc group)")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

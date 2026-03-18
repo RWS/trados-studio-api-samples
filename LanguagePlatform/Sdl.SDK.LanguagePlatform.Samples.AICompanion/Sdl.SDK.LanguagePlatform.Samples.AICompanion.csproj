@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -9,30 +9,27 @@
     <RootNamespace>Sdl.SDK.LanguagePlatform.Samples.AICompanion</RootNamespace>
     <AssemblyName>Sdl.SDK.LanguagePlatform.Samples.AICompanion</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+	<SignAssembly>true</SignAssembly>
+	<AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
     <UseWPF>true</UseWPF>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AICompanion.cs" />
@@ -42,7 +39,11 @@
       <DependentUpon>AICompanionSettingsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="CommandHandler.cs" />
-    <Compile Include="PluginResources.Designer.cs" />
+    <Compile Include="PluginResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PluginResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\PluginProperties.cs" />
     <Compile Include="SegmentExtensions.cs" />
@@ -51,9 +52,12 @@
   <ItemGroup>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="Sdl.LanguagePlatform.TranslationMemoryApi">
-      <HintPath>$(MSBuildProgramFiles32)\Trados\Trados Studio\Studio18\Sdl.LanguagePlatform.TranslationMemoryApi.dll</HintPath>
+    <Reference Include="TradosStudio.BcmLite">
+      <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19beta\TradosStudio.BcmLite.dll</HintPath>
     </Reference>
+	<Reference Include="Sdl.LanguagePlatform.TranslationMemoryApi">
+	  <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19beta\Sdl.LanguagePlatform.TranslationMemoryApi.dll</HintPath>
+	</Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -66,14 +70,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="pluginpackage.manifest.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="PluginResources.resx" />
-  </ItemGroup>
-  <ItemGroup>
+    <EmbeddedResource Include="PluginResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PluginResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="key.snk" />
-  </ItemGroup>
-  <ItemGroup>
     <Page Include="AICompanionSettingsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -88,10 +89,8 @@
     </PackageReference>
   </ItemGroup>
   <PropertyGroup>
-    <CreatePluginPackage>true</CreatePluginPackage>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
-    <PluginDeploymentPath>$(AppData)\Trados\Trados Studio\18\Plugins</PluginDeploymentPath>
+    <CreatePluginPackage>true</CreatePluginPackage>    
+    <PluginDeploymentPath>$(AppData)\Trados\Trados Studio\19beta\Plugins</PluginDeploymentPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

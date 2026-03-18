@@ -9,7 +9,6 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmLookup
 	{
 		private readonly frmSettings settings = new frmSettings();
 
-		#region "initialize"
 		// Initialize form with default search settings.
 		public frmLookup()
 		{
@@ -17,23 +16,17 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmLookup
 			frmSettings.MaxHits = 30;
 			frmSettings.MinFuzzy = 70;
 		}
-		#endregion
 
-		#region "close"
 		private void BtnClose_Click(object sender, EventArgs e)
 		{
 			Application.Exit();
 		}
-		#endregion
 
-		#region "menu"
 		private void SearchOptionsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			settings.Show();
 		}
-		#endregion
 
-		#region "ExecuteSearch"
 		private void BtnSearch_Click(object sender, EventArgs e)
 		{
 			try
@@ -67,16 +60,12 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmLookup
 				MessageBox.Show("No TM selected." + ex.Message);
 			}
 		}
-		#endregion
 
-		#region "btnSelectTm_Click"
 		private void BtnSelectTm_Click(object sender, EventArgs e)
 		{
 			contextMenuTm.Show(btnSelectTm, new Point(0, 20));
 		}
-		#endregion
 
-		#region "SelectFileTm"
 		private void SelectFileTMToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			// Raise open file dialog.
@@ -100,14 +89,11 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmLookup
 				comboLanguagePairs.Text = srcLang.DisplayName + " -> " + trgLang.DisplayName;
 			}
 		}
-		#endregion
 
-		#region "RaiseServerTmForm"
 		private void SelectServerTMToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			frmSelectTM selectTm = new frmSelectTM();
 			selectTm.Show();
 		}
-		#endregion
 	}
 }

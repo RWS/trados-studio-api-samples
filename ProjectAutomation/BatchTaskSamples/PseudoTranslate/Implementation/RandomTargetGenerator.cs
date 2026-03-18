@@ -11,9 +11,7 @@ namespace Sdl.SDK.BatchTasks.Samples.PseudoTranslation.Implementation
 	{
 		private List<IAbstractMarkupData> nodesToDelete;
 		private readonly RevisionType revisionTypeToIgnore;
-
 		private static readonly Random random = new Random((int)DateTime.Now.Ticks);
-
 
 		public static void Generate(ISegmentPair segmentPair, IDocumentItemFactory itemFactory)
 		{
@@ -31,11 +29,6 @@ namespace Sdl.SDK.BatchTasks.Samples.PseudoTranslation.Implementation
 		public RandomTargetGenerator()
 		{
 			revisionTypeToIgnore = RevisionType.Delete;
-		}
-
-		public RandomTargetGenerator(RevisionType revisionTypeToIgnore)
-		{
-			this.revisionTypeToIgnore = revisionTypeToIgnore;
 		}
 
 		public ISegment GenerateRandomTarget(ISegment sourceSegment)

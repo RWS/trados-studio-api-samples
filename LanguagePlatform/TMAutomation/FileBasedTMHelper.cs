@@ -57,9 +57,10 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
 		public void DeleteTU(string tmPath)
 		{
 			FileBasedTranslationMemory tm = new FileBasedTranslationMemory(tmPath);
-			tm.LanguageDirection.AddTranslationUnit(
-				GetNewTU("My new TU", "Meine neue TU", tm.LanguageDirection.SourceLanguage, tm.LanguageDirection.TargetLanguage),
-				GetImportSettings());
+			tm.LanguageDirection.AddTranslationUnitsMasked(
+				new[] { GetNewTU("My new TU", "Meine neue TU", tm.LanguageDirection.SourceLanguage, tm.LanguageDirection.TargetLanguage) },
+				GetImportSettings(),
+				null);
 			WriteResult("New TU added.\r\n");
 
 			WriteResult("Started TM iteration...\r\n");
@@ -137,9 +138,10 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
 		public void AddTU(string tmPath)
 		{
 			FileBasedTranslationMemory tm = new FileBasedTranslationMemory(tmPath);
-			tm.LanguageDirection.AddTranslationUnit(
-				GetNewTU("TU to be deleted", "Eine TU fuer ...", tm.LanguageDirection.SourceLanguage, tm.LanguageDirection.TargetLanguage),
-				GetImportSettings());
+			tm.LanguageDirection.AddTranslationUnitsMasked(
+				new[] { GetNewTU("TU to be deleted", "Eine TU fuer ...", tm.LanguageDirection.SourceLanguage, tm.LanguageDirection.TargetLanguage) },
+				GetImportSettings(),
+				null);
 			WriteResult("New TU added.\r\n");
 		}
 
@@ -230,9 +232,10 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
 		{
 			FileBasedTranslationMemory tm = new FileBasedTranslationMemory(tmPath);
 
-			TranslationMemoryExporter exporter = new TranslationMemoryExporter(tm.LanguageDirection);
-
-			exporter.FilterExpression = GetExportFilter();
+			TranslationMemoryExporter exporter = new TranslationMemoryExporter(tm.LanguageDirection)
+			{
+				FilterExpression = GetExportFilter()
+			};
 
 			exporter.BatchExported += new EventHandler<BatchExportedEventArgs>(Exporter_BatchExported);
 
@@ -280,15 +283,16 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
 		public void ImportSDLXLIFFFile(string tmPath, string sdlxliffFile)
 		{
 			FileBasedTranslationMemory tm = new FileBasedTranslationMemory(tmPath);
-			TranslationMemoryImporter importer = new TranslationMemoryImporter(tm.LanguageDirection);
-			//Set up the Poco Filter Manager with default list of filters
-			importer.FileTypeManager = new PocoFilterManager(true);
+			TranslationMemoryImporter importer = new TranslationMemoryImporter(tm.LanguageDirection)
+			{
+				//Set up the Poco Filter Manager with default list of filters
+				FileTypeManager = new PocoFilterManager(true)
+			};
 			importer.BatchImported += new EventHandler<BatchImportedEventArgs>(Importer_BatchImported);
 			importer.ChunkSize = 1; //sets the import size after which the BatchImported event is launched
 			AdaptImportSettigns(importer.ImportSettings);
 			importer.Import(sdlxliffFile);
 		}
-
 
 		/// <summary>
 		/// Import event handler
@@ -340,7 +344,8 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
 				//Do work here - called on UI thread
 				_output.Text += progress;
 				_output.Refresh();
-			};
+			}
+			;
 		}
 
 
@@ -415,17 +420,21 @@ namespace Sdl.SDK.LanguagePlatform.TMAutomation
 		/// <param name="fieldDefinitionCollection"></param>
 		private void AdaptFields(FieldDefinitionCollection fieldDefinitionCollection)
 		{
-			FieldDefinition field1 = new FieldDefinition();
-			field1.Name = "Sample field";
-			field1.ValueType = FieldValueType.MultiplePicklist;
+			FieldDefinition field1 = new FieldDefinition
+			{
+				Name = "Sample field",
+				ValueType = FieldValueType.MultiplePicklist
+			};
 			field1.PicklistItems.Add("yes");
 			field1.PicklistItems.Add("no");
 
 			fieldDefinitionCollection.Add(field1);
 
-			FieldDefinition field2 = new FieldDefinition();
-			field2.Name = "Sample text field";
-			field2.ValueType = FieldValueType.MultipleString;
+			FieldDefinition field2 = new FieldDefinition
+			{
+				Name = "Sample text field",
+				ValueType = FieldValueType.MultipleString
+			};
 
 			fieldDefinitionCollection.Add(field2);
 

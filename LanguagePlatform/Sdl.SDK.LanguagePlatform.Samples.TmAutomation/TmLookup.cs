@@ -120,9 +120,9 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
 			tu.SourceSegment.Add("Configure the spelling checker as shown below:");
 			tu.TargetSegment.Add("Konfigurieren Sie die Rechtschreibprüfung wie unten gezeigt:");
 
-			SearchResults results = tm.LanguageDirection.SearchTranslationUnit(settings, tu);
+			SearchResults[] results = tm.LanguageDirection.SearchTranslationUnitsMasked(settings, new[] { tu }, null);
 
-			foreach (SearchResult result in results)
+			foreach (SearchResult result in results[0])
 			{
 				MessageBox.Show(result.TranslationProposal.TargetSegment.ToPlain());
 			}

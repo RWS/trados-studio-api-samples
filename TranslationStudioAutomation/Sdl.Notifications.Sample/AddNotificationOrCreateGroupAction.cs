@@ -28,10 +28,10 @@ namespace Sdl.Notifications.Sample
                 ClearNotificationAction = new ClearNotificationAction(NotificationGroupId, notificationId),
                 IsExpanderVisible = false,
                 IsLinkVisible = true,
-                LinkAction = new OpenLinkCommand("https://appstore.sdl.com/language/developers/sdk.html")
+                LinkAction = new OpenLinkCommand("https://developers.rws.com/studio-api-docs/index.html")
                 {
-                    CommandText = "Learn more on the Studio 2021 SDK",
-                    CommandToolTip = "Learn more on the Studio 2021 SDK"
+                    CommandText = "Learn more on the Studio 2026 SDK",
+                    CommandToolTip = "Learn more on the Studio 2026 SDK"
                 },
                 IsActionVisible = false
             };

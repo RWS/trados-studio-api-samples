@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 using System.Windows.Forms;
 using Sdl.LanguagePlatform.TranslationMemory;
 using Sdl.LanguagePlatform.TranslationMemoryApi;
@@ -37,33 +36,8 @@ namespace Sdl.SDK.LanguagePlatform.Samples.TmAutomation
 		}
 		#endregion
 
-		#region "GetTms"
-		public void GetTmsForTemplate(TranslationProviderServer tmServer, string templateName)
-        {
-            #region "GetTemplate"
-            ServerBasedFieldsTemplate template = tmServer.GetFieldsTemplate(templateName);
-            #endregion
-
-            #region "TmLoop"
-            StringBuilder tmList = new StringBuilder();
-            PagedTranslationMemories pagedTms = GetTmsWithTemplate(template, tmServer);
-            foreach (ServerBasedTranslationMemory tm in pagedTms.TranslationMemories)
-            {
-                tmList.AppendLine(tm.Name);
-            }
-
-            MessageBox.Show(tmList.ToString());
-            #endregion
-        }
-
-        private static PagedTranslationMemories GetTmsWithTemplate(ServerBasedFieldsTemplate template, TranslationProviderServer tmServer)
-        {
-            return tmServer.GetTranslationMemoriesByQuery(new TranslationMemoryQuery { FieldTemplateIds = new Guid[] { template.Id } });
-        }
-        #endregion
-
-        #region "create"
-        public void CreateTemplate(TranslationProviderServer tmServer)
+		#region "create"
+		public void CreateTemplate(TranslationProviderServer tmServer)
 		{
 			#region "CreateTemplate"
 			ServerBasedFieldsTemplate template = new ServerBasedFieldsTemplate(tmServer);
