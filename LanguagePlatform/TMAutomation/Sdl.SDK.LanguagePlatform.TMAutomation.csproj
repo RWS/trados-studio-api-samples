@@ -29,25 +29,25 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Sdl.Core.Globalization.Async">
-      <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19Beta\Sdl.Core.Globalization.Async.dll</HintPath>
+      <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19\Sdl.Core.Globalization.Async.dll</HintPath>
     </Reference>
     <Reference Include="Sdl.Core.TM.ImportExport">
-      <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19Beta\Sdl.Core.TM.ImportExport.dll</HintPath>
+      <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19\Sdl.Core.TM.ImportExport.dll</HintPath>
     </Reference>
     <Reference Include="Sdl.FileTypeSupport.Framework.Core">
-      <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19Beta\Sdl.FileTypeSupport.Framework.Core.dll</HintPath>
+      <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19\Sdl.FileTypeSupport.Framework.Core.dll</HintPath>
     </Reference>
     <Reference Include="Sdl.FileTypeSupport.Framework.Implementation">
-      <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19Beta\Sdl.FileTypeSupport.Framework.Implementation.dll</HintPath>
+      <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19\Sdl.FileTypeSupport.Framework.Implementation.dll</HintPath>
     </Reference>
     <Reference Include="Sdl.LanguagePlatform.Core">
-      <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19Beta\Sdl.LanguagePlatform.Core.dll</HintPath>
+      <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19\Sdl.LanguagePlatform.Core.dll</HintPath>
     </Reference>
     <Reference Include="Sdl.LanguagePlatform.TranslationMemory">
-      <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19Beta\Sdl.LanguagePlatform.TranslationMemory.dll</HintPath>
+      <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19\Sdl.LanguagePlatform.TranslationMemory.dll</HintPath>
     </Reference>
     <Reference Include="Sdl.LanguagePlatform.TranslationMemoryApi">
-      <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19Beta\Sdl.LanguagePlatform.TranslationMemoryApi.dll</HintPath>
+      <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19\Sdl.LanguagePlatform.TranslationMemoryApi.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
