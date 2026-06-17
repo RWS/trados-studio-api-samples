@@ -14,7 +14,7 @@ namespace Sdl.SDK.LanguagePlatform.Samples.BatchExport
 	{
 		private static readonly string StudioInstallPath =
 			Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles),
-				@"Trados\Trados Studio\Studio19Beta");
+				@"Trados\Trados Studio\Studio19");
 
 		private const int LOAD_LIBRARY_SEARCH_DEFAULT_DIRS = 0x00001000;
 
