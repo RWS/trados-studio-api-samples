@@ -9,7 +9,7 @@
     <RootNamespace>Sdl.ProjectAutomation.ProjectCreationSample.Logic</RootNamespace>
     <AssemblyName>Sdl.ProjectAutomation.ProjectCreationSample.Logic</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <OutputPath>$(ProgramFiles)\Trados\Trados Studio\Studio19Beta\</OutputPath>
+    <OutputPath>$(ProgramFiles)\Trados\Trados Studio\Studio19\</OutputPath>
 	<PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
@@ -28,22 +28,22 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Sdl.Core.Globalization">
-      <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19Beta\Sdl.Core.Globalization.dll</HintPath>
+      <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19\Sdl.Core.Globalization.dll</HintPath>
     </Reference>
     <Reference Include="Sdl.Core.Globalization.Async">
-      <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19Beta\Sdl.Core.Globalization.Async.dll</HintPath>
+      <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19\Sdl.Core.Globalization.Async.dll</HintPath>
     </Reference>
     <Reference Include="Sdl.ProjectAutomation.Core">
-      <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19Beta\Sdl.ProjectAutomation.Core.dll</HintPath>
+      <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19\Sdl.ProjectAutomation.Core.dll</HintPath>
     </Reference>
     <Reference Include="Sdl.ProjectAutomation.FileBased">
-      <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19Beta\Sdl.ProjectAutomation.FileBased.dll</HintPath>
+      <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19\Sdl.ProjectAutomation.FileBased.dll</HintPath>
     </Reference>
     <Reference Include="Sdl.ProjectAutomation.Settings">
-      <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19Beta\Sdl.ProjectAutomation.Settings.dll</HintPath>
+      <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19\Sdl.ProjectAutomation.Settings.dll</HintPath>
     </Reference>
     <Reference Include="Sdl.TranslationStudioAutomation.Licensing">
-      <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19Beta\Sdl.TranslationStudioAutomation.Licensing.dll</HintPath>
+      <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19\Sdl.TranslationStudioAutomation.Licensing.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
