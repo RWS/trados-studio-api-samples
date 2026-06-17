@@ -9,7 +9,7 @@
     <RootNamespace>Sdl.ProjectAutomation.ProjectCreationSample.GUI</RootNamespace>
     <AssemblyName>Sdl.ProjectAutomation.ProjectCreationSample.GUI</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <OutputPath>$(ProgramFiles)\Trados\Trados Studio\Studio19\</OutputPath>
+    <OutputPath>$(ProgramFiles)\Trados\Trados Studio\Studio19Beta\</OutputPath>
     <PlatformTarget>x64</PlatformTarget>
 	<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
