@@ -1,0 +1,46 @@
+{
+	"name": "Sample IT Glossary",
+	"description": "A small sample glossary used by the File Glossary terminology provider sample.",
+	"entries": [
+		{
+			"id": 1,
+			"languages": [
+				{ "lang": "en-US", "name": "English (United States)", "terms": [ "computer" ] },
+				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "Computer", "Rechner" ] },
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "ordinateur" ] }
+			]
+		},
+		{
+			"id": 2,
+			"languages": [
+				{ "lang": "en-US", "name": "English (United States)", "terms": [ "keyboard" ] },
+				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "Tastatur" ] },
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "clavier" ] }
+			]
+		},
+		{
+			"id": 3,
+			"languages": [
+				{ "lang": "en-US", "name": "English (United States)", "terms": [ "file", "document" ] },
+				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "Datei" ] },
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "fichier" ] }
+			]
+		},
+		{
+			"id": 4,
+			"languages": [
+				{ "lang": "en-US", "name": "English (United States)", "terms": [ "translation memory" ] },
+				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "Translation Memory", "Übersetzungsspeicher" ] },
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "mémoire de traduction" ] }
+			]
+		},
+		{
+			"id": 5,
+			"languages": [
+				{ "lang": "en-US", "name": "English (United States)", "terms": [ "terminology" ] },
+				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "Terminologie" ] },
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "terminologie" ] }
+			]
+		}
+	]
+}
