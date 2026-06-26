@@ -1,0 +1,15 @@
+{
+	"PluginName": "TranslationStudioAutomationPlugin",
+	"Version": "1.0.0.0",
+	"Description": "Demo plugin for Translation Studio automation",
+	"Author": "RWS",
+	"RequiredProduct": {
+		"Name": "TradosStudio",
+		"MinVersion": "19.0.0",
+		"MaxVersion": "19.9.*"
+	},
+	"EntryAssembly": "TranslationStudioAutomationPlugin.dll",
+	"Files": [
+		"TranslationStudioAutomationPlugin.dll"		
+	]
+}
