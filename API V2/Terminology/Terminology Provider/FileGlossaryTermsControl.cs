@@ -1,4 +1,4 @@
-using System.Windows;
+using System.Collections.Generic;
 using System.Windows.Controls;
 using TradosStudio.API.TranslationResources.Terminology;
 using TradosStudio.API.TranslationResources.Terminology.Entries;
@@ -7,54 +7,42 @@ namespace FileGlossaryTerminologyProvider
 {
 	/// <summary>
 	/// WPF control displayed in the Trados Studio Termbase Viewer window.
-	/// Shows the languages and terms of the currently selected <see cref="Entry"/>.
+	/// The left column always shows the source-language terms (read-only).
+	/// The right column always shows all languages; it switches between a read-only
+	/// TextBlock view and an editable TextBox view based on <see cref="IsEditing"/>.
+	/// UI is defined in <c>FileGlossaryTermsControl.xaml</c>; logic lives in
+	/// <see cref="FileGlossaryTermsViewModel"/>.
 	/// </summary>
-	public class FileGlossaryTermsControl : UserControl, ITermsView
+	public partial class FileGlossaryTermsControl : UserControl, ITermsView
 	{
-		private readonly StackPanel _stackPanel;
+		private readonly FileGlossaryTermsViewModel _viewModel;
+
+		public bool IsEditing => _viewModel.IsEditing;
+
+		/// <summary>
+		/// Replaces the flat list of source-language terms shown in the left panel.
+		/// Called by <see cref="FileGlossaryTerminologyProviderViewerWinFormsUI"/> after
+		/// any glossary mutation or on initial load.
+		/// </summary>
+		internal void SetAllSourceTerms(IEnumerable<string> terms) => _viewModel.SetAllSourceTerms(terms);
 
 		public FileGlossaryTermsControl()
 		{
-			_stackPanel = new StackPanel { Margin = new Thickness(4) };
-
-			Content = new ScrollViewer
-			{
-				Content = _stackPanel,
-				VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
-				HorizontalScrollBarVisibility = ScrollBarVisibility.Disabled
-			};
+			_viewModel = new FileGlossaryTermsViewModel();
+			InitializeComponent();
+			DataContext = _viewModel;
 		}
 
-		internal void ShowEntry(Entry entry)
-		{
-			_stackPanel.Children.Clear();
+		/// <summary>Displays <paramref name="entry"/> in read-only mode.</summary>
+		internal void ShowEntry(Entry entry) => _viewModel.ShowEntry(entry);
 
-			if (entry == null || entry.Languages == null)
-				return;
+		/// <summary>Switches the control into edit mode for <paramref name="entry"/>.</summary>
+		internal void EnterEditMode(Entry entry) => _viewModel.EnterEditMode(entry);
 
-			foreach (var lang in entry.Languages)
-			{
-				var header = string.IsNullOrEmpty(lang.Name) ? lang.LanguageIsoCode : lang.Name;
+		/// <summary>Exits edit mode and reverts to the read-only view.</summary>
+		internal void ExitEditMode() => _viewModel.ExitEditMode();
 
-				_stackPanel.Children.Add(new TextBlock
-				{
-					Text = header,
-					FontWeight = FontWeights.Bold,
-					Margin = new Thickness(0, 4, 0, 2)
-				});
-
-				if (lang.Terms != null)
-				{
-					foreach (var term in lang.Terms)
-					{
-						_stackPanel.Children.Add(new TextBlock
-						{
-							Text = term.Value,
-							Margin = new Thickness(8, 0, 0, 2)
-						});
-					}
-				}
-			}
-		}
+		/// <summary>Returns the entry with values currently shown in the edit-mode text boxes.</summary>
+		internal Entry GetEditedEntry() => _viewModel.GetEditedEntry();
 	}
 }

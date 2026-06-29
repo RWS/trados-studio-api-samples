@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using TradosStudio.API.TranslationResources.Terminology;
 using TradosStudio.API.TranslationResources.Terminology.Entries;
 
@@ -13,6 +15,11 @@ namespace FileGlossaryTerminologyProvider
 	{
 		private FileGlossaryTermsControl _control;
 		private Entry _selectedTerm;
+		private FileGlossaryTerminologyProvider _provider;
+		private string _sourceIso;
+		private string _targetIso;
+		private string _sourceLangName;
+		private string _targetLangName;
 
 		public event EventHandler TermChanged;
 		public event EventHandler<EntryEventArgs> SelectedTermChanged;
@@ -25,12 +32,24 @@ namespace FileGlossaryTerminologyProvider
 
 		public void Initialize(ITerminologyProvider terminologyProvider, string source, string target)
 		{
+			_provider = terminologyProvider as FileGlossaryTerminologyProvider;
+			_sourceIso = source;
+			_targetIso = target;
+
+			if (_provider != null)
+			{
+				var languages = _provider.GetLanguages();
+				_sourceLangName = languages.FirstOrDefault(l => string.Equals(l.LanguageIsoCode, source, StringComparison.OrdinalIgnoreCase))?.Name ?? source;
+				_targetLangName = languages.FirstOrDefault(l => string.Equals(l.LanguageIsoCode, target, StringComparison.OrdinalIgnoreCase))?.Name ?? target;
+			}
+
 			Initialized = true;
 		}
 
 		public void Release()
 		{
 			_control = null;
+			_provider = null;
 			Initialized = false;
 			_selectedTerm = null;
 		}
@@ -42,31 +61,51 @@ namespace FileGlossaryTerminologyProvider
 
 		public void AddTerm(string source, string target)
 		{
-			// The backing provider is read-only; adding is not supported.
+			_provider?.AddOrUpdateEntry(source, _sourceIso, _sourceLangName, target, _targetIso, _targetLangName);
+			RefreshSourceTerms();
+			TermChanged?.Invoke(this, EventArgs.Empty);
 		}
 
-		public bool CanAddTerm => false;
+		public bool CanAddTerm => _provider != null;
 
 		public void EditTerm(Entry term)
 		{
-			// The backing provider is read-only; editing is not supported.
+			_control?.EnterEditMode(term);
 		}
 
-		public bool IsEditing => false;
+		public bool IsEditing => _control?.IsEditing ?? false;
 
 		public void AddAndEditTerm(Entry term, string source, string target)
 		{
-			// The backing provider is read-only; editing is not supported.
+			if (_provider == null)
+			{
+				return;
+			}
+
+			_control?.EnterEditMode(BuildDraftEntry(source, target));
 		}
 
 		public void CancelTerm()
 		{
-			// Nothing to cancel.
+			_control?.ExitEditMode();
 		}
 
 		public void SaveTerm()
 		{
-			// Nothing to save.
+			if (_control == null || !_control.IsEditing)
+			{
+				return;
+			}
+
+			var edited = _control.GetEditedEntry();
+			if (edited != null)
+			{
+				_provider?.UpdateEntry(edited);
+				RefreshSourceTerms();
+				TermChanged?.Invoke(this, EventArgs.Empty);
+			}
+
+			_control.ExitEditMode();
 		}
 
 		public ITermsView Control
@@ -76,6 +115,7 @@ namespace FileGlossaryTerminologyProvider
 				if (_control == null)
 				{
 					_control = new FileGlossaryTermsControl();
+					RefreshSourceTerms();
 				}
 
 				return _control;
@@ -93,6 +133,65 @@ namespace FileGlossaryTerminologyProvider
 				_control?.ShowEntry(value);
 				SelectedTermChanged?.Invoke(this, new EntryEventArgs(value));
 			}
+		}
+
+		private void RefreshSourceTerms()
+		{
+			if (_control == null || _provider == null || string.IsNullOrEmpty(_sourceIso))
+			{
+				return;
+			}
+
+			_control.SetAllSourceTerms(_provider.GetAllSourceTerms(_sourceIso));
+		}
+
+		private Entry BuildDraftEntry(string sourceTerm, string targetTerm)
+		{
+			var entry = new Entry
+			{
+				Id = 0,
+				Fields = new List<EntryField>(),
+				Transactions = new List<EntryTransaction>(),
+				Languages = new List<EntryLanguage>()
+			};
+
+			if (!string.IsNullOrEmpty(_sourceIso))
+			{
+				var sourceLang = new EntryLanguage
+				{
+					Name = _sourceLangName,
+					LanguageIsoCode = _sourceIso,
+					ParentEntry = entry,
+					Fields = new List<EntryField>(),
+					Terms = new List<EntryTerm>()
+				};
+				if (!string.IsNullOrWhiteSpace(sourceTerm))
+				{
+					sourceLang.Terms.Add(new EntryTerm { Value = sourceTerm, ParentLanguage = sourceLang, Fields = new List<EntryField>(), Transactions = new List<EntryTransaction>() });
+				}
+
+				entry.Languages.Add(sourceLang);
+			}
+
+			if (!string.IsNullOrEmpty(_targetIso))
+			{
+				var targetLang = new EntryLanguage
+				{
+					Name = _targetLangName,
+					LanguageIsoCode = _targetIso,
+					ParentEntry = entry,
+					Fields = new List<EntryField>(),
+					Terms = new List<EntryTerm>()
+				};
+				if (!string.IsNullOrWhiteSpace(targetTerm))
+				{
+					targetLang.Terms.Add(new EntryTerm { Value = targetTerm, ParentLanguage = targetLang, Fields = new List<EntryField>(), Transactions = new List<EntryTransaction>() });
+				}
+
+				entry.Languages.Add(targetLang);
+			}
+
+			return entry;
 		}
 	}
 }

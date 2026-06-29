@@ -1,0 +1,104 @@
+<UserControl x:Class="FileGlossaryTerminologyProvider.FileGlossaryTermsControl"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<!-- Left: source language terms only, read-only, always visible -->
+			<ColumnDefinition Width="*" />
+			<!-- Right: all languages, always visible; read-only or editable based on IsEditing -->
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+
+		<!-- ═══════════════════════════════════════════════
+			 Left panel – all source-language terms from the glossary (read-only)
+			 ═══════════════════════════════════════════════ -->
+		<ScrollViewer Grid.Column="0"
+					  VerticalScrollBarVisibility="Auto"
+					  HorizontalScrollBarVisibility="Disabled">
+			<ItemsControl ItemsSource="{Binding AllSourceTerms}">
+				<ItemsControl.ItemTemplate>
+					<DataTemplate>
+						<TextBlock Text="{Binding}"
+								   Margin="8,0,0,2" />
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+			</ItemsControl>
+		</ScrollViewer>
+
+		<!-- ═══════════════════════════════════════════════
+			 Right panel – all languages, always visible.
+			 Read-only TextBlocks collapse and the editable
+			 section (TextBoxes + Add term) becomes visible
+			 when LanguageViewModel.IsEditing is true.
+			 ═══════════════════════════════════════════════ -->
+		<Border Grid.Column="1"
+				BorderThickness="1,0,0,0"
+				BorderBrush="{x:Static SystemColors.ActiveBorderBrush}">
+			<ScrollViewer VerticalScrollBarVisibility="Auto"
+						  HorizontalScrollBarVisibility="Disabled">
+				<ItemsControl ItemsSource="{Binding Languages}">
+					<ItemsControl.ItemTemplate>
+						<DataTemplate>
+							<StackPanel>
+								<TextBlock Text="{Binding Header}"
+										   FontWeight="Bold"
+										   Margin="0,4,0,2" />
+
+								<!-- Read-only terms – visible when NOT editing -->
+								<ItemsControl ItemsSource="{Binding Terms}">
+									<ItemsControl.Style>
+										<Style TargetType="ItemsControl">
+											<Setter Property="Visibility" Value="Visible" />
+											<Style.Triggers>
+												<DataTrigger Binding="{Binding IsEditing}" Value="True">
+													<Setter Property="Visibility" Value="Collapsed" />
+												</DataTrigger>
+											</Style.Triggers>
+										</Style>
+									</ItemsControl.Style>
+									<ItemsControl.ItemTemplate>
+										<DataTemplate>
+											<TextBlock Text="{Binding Value}"
+													   Margin="8,0,0,2" />
+										</DataTemplate>
+									</ItemsControl.ItemTemplate>
+								</ItemsControl>
+
+								<!-- Edit section – visible only when editing -->
+								<StackPanel>
+									<StackPanel.Style>
+										<Style TargetType="StackPanel">
+											<Setter Property="Visibility" Value="Collapsed" />
+											<Style.Triggers>
+												<DataTrigger Binding="{Binding IsEditing}" Value="True">
+													<Setter Property="Visibility" Value="Visible" />
+												</DataTrigger>
+											</Style.Triggers>
+										</Style>
+									</StackPanel.Style>
+									<ItemsControl ItemsSource="{Binding Terms}">
+										<ItemsControl.ItemTemplate>
+											<DataTemplate>
+												<TextBox Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}"
+														 Margin="8,0,0,2" />
+											</DataTemplate>
+										</ItemsControl.ItemTemplate>
+									</ItemsControl>
+									<Button Content="+ Add term"
+											HorizontalAlignment="Left"
+											Margin="8,2,0,4"
+											Padding="4,1,4,1"
+											Command="{Binding AddTermCommand}" />
+								</StackPanel>
+							</StackPanel>
+						</DataTemplate>
+					</ItemsControl.ItemTemplate>
+				</ItemsControl>
+			</ScrollViewer>
+		</Border>
+	</Grid>
+
+</UserControl>
+
+

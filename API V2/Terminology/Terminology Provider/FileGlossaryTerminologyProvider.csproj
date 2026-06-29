@@ -49,4 +49,10 @@
     <PackageReference Include="TradosStudio.Packaging" Version="0.1.77" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="FileGlossaryTermsControl.cs">
+      <DependentUpon>FileGlossaryTermsControl.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
 </Project>

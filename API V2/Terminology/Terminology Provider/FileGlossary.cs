@@ -73,14 +73,19 @@ namespace FileGlossaryTerminologyProvider
 		public GlossaryFile Content { get; }
 
 		/// <summary>UTC timestamp of the backing file when it was loaded; used to detect changes on disk.</summary>
-		public DateTime LastWriteTimeUtc { get; }
+		public DateTime LastWriteTimeUtc { get; private set; }
 
 		public static FileGlossary Load(string filePath)
 		{
 			if (string.IsNullOrEmpty(filePath))
+			{
 				throw new ArgumentNullException(nameof(filePath));
+			}
+
 			if (!File.Exists(filePath))
+			{
 				throw new FileNotFoundException("Glossary file not found.", filePath);
+			}
 
 			var serializer = new DataContractJsonSerializer(typeof(GlossaryFile));
 			GlossaryFile content;
@@ -90,9 +95,14 @@ namespace FileGlossaryTerminologyProvider
 			}
 
 			if (content == null)
+			{
 				content = new GlossaryFile();
+			}
+
 			if (content.Entries == null)
+			{
 				content.Entries = new List<GlossaryEntry>();
+			}
 
 			return new FileGlossary(filePath, content, File.GetLastWriteTimeUtc(filePath));
 		}
@@ -100,7 +110,9 @@ namespace FileGlossaryTerminologyProvider
 		public static void Save(string filePath, GlossaryFile content)
 		{
 			if (string.IsNullOrEmpty(filePath))
+			{
 				throw new ArgumentNullException(nameof(filePath));
+			}
 
 			var serializer = new DataContractJsonSerializer(typeof(GlossaryFile));
 			using (var stream = File.Create(filePath))
@@ -128,11 +140,17 @@ namespace FileGlossaryTerminologyProvider
 			foreach (var entry in Content.Entries)
 			{
 				if (entry.Languages == null)
+				{
 					continue;
+				}
+
 				foreach (var language in entry.Languages)
 				{
 					if (string.IsNullOrEmpty(language.Lang) || seen.ContainsKey(language.Lang))
+					{
 						continue;
+					}
+
 					seen[language.Lang] = language;
 				}
 			}
@@ -143,6 +161,38 @@ namespace FileGlossaryTerminologyProvider
 		public GlossaryEntry GetEntry(int id)
 		{
 			return Content.Entries.FirstOrDefault(e => e.Id == id);
+		}
+
+		/// <summary>Returns the next available entry ID (one higher than the current maximum).</summary>
+		public int NextId()
+		{
+			return Content.Entries.Count == 0 ? 1 : Content.Entries.Max(e => e.Id) + 1;
+		}
+
+		/// <summary>
+		/// Adds a new entry or replaces the existing one with the same <see cref="GlossaryEntry.Id"/>,
+		/// then persists the glossary to disk.
+		/// </summary>
+		public void AddOrUpdateEntry(GlossaryEntry entry)
+		{
+			var index = Content.Entries.FindIndex(e => e.Id == entry.Id);
+			if (index >= 0)
+			{
+				Content.Entries[index] = entry;
+			}
+			else
+			{
+				Content.Entries.Add(entry);
+			}
+
+			Save();
+		}
+
+		/// <summary>Persists the current in-memory content to disk and refreshes <see cref="LastWriteTimeUtc"/>.</summary>
+		public void Save()
+		{
+			FileGlossary.Save(FilePath, Content);
+			LastWriteTimeUtc = File.GetLastWriteTimeUtc(FilePath);
 		}
 	}
 }
