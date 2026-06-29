@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Windows.Forms;
+using System.Windows;
+using System.Windows.Interop;
+using Microsoft.Win32;
 using TradosStudio.API.TranslationResources.Terminology;
 using TradosStudio.API.TranslationResources.Terminology.Behaviours.Interfaces;
 
@@ -14,29 +16,28 @@ namespace FileGlossaryTerminologyProvider
 	/// </summary>
 	public class FileGlossaryBrowseBehaviour : IBrowseBehaviour
 	{
-		public IEnumerable<ITerminologyProvider> Browse(IntPtr ownerHandle)
+		public IEnumerable<ITerminologyProvider> Browse(IntPtr owner)
 		{
-			using (var dialog = new OpenFileDialog
+			OpenFileDialog dialog = new OpenFileDialog
 			{
 				Title = "Select one or more JSON glossary files",
 				Filter = "JSON glossary (*.json)|*.json|All files (*.*)|*.*",
 				CheckFileExists = true,
 				Multiselect = true
-			})
+			};
+
+			if (dialog.ShowDialog(NativeOwnerWindow.Create(owner)) != true)
+				return Enumerable.Empty<ITerminologyProvider>();
+
+			List<ITerminologyProvider> providers = new List<ITerminologyProvider>();
+			foreach (var fileName in dialog.FileNames)
 			{
-				if (dialog.ShowDialog(new Win32Window(ownerHandle)) != DialogResult.OK)
-					return Enumerable.Empty<ITerminologyProvider>();
-
-				var providers = new List<ITerminologyProvider>();
-				foreach (var fileName in dialog.FileNames)
-				{
-					var provider = new FileGlossaryTerminologyProvider(FileGlossaryTerminologyProvider.PathToUri(fileName));
-					provider.Initialize();
-					providers.Add(provider);
-				}
-
-				return providers;
+				FileGlossaryTerminologyProvider provider = new FileGlossaryTerminologyProvider(FileGlossaryTerminologyProvider.PathToUri(fileName));
+				provider.Initialize();
+				providers.Add(provider);
 			}
+
+			return providers;
 		}
 	}
 
@@ -47,24 +48,23 @@ namespace FileGlossaryTerminologyProvider
 	{
 		public ITerminologyProvider Create()
 		{
-			using (var dialog = new SaveFileDialog
+			SaveFileDialog dialog = new SaveFileDialog
 			{
 				Title = "Create a new JSON glossary file",
 				Filter = "JSON glossary (*.json)|*.json",
 				DefaultExt = "json",
 				AddExtension = true,
 				OverwritePrompt = true
-			})
-			{
-				if (dialog.ShowDialog() != DialogResult.OK)
-					return null;
+			};
 
-				FileGlossary.CreateEmpty(dialog.FileName, Path.GetFileNameWithoutExtension(dialog.FileName));
+			if (dialog.ShowDialog() != true)
+				return null;
 
-				var provider = new FileGlossaryTerminologyProvider(FileGlossaryTerminologyProvider.PathToUri(dialog.FileName));
-				provider.Initialize();
-				return provider;
-			}
+			FileGlossary.CreateEmpty(dialog.FileName, Path.GetFileNameWithoutExtension(dialog.FileName));
+
+			FileGlossaryTerminologyProvider provider = new FileGlossaryTerminologyProvider(FileGlossaryTerminologyProvider.PathToUri(dialog.FileName));
+			provider.Initialize();
+			return provider;
 		}
 	}
 
@@ -73,51 +73,60 @@ namespace FileGlossaryTerminologyProvider
 	/// </summary>
 	public class FileGlossaryEditBehaviour : IEditBehaviour
 	{
-		public bool Edit(IntPtr ownerHandle, ITerminologyProvider terminologyProvider)
+		public bool Edit(IntPtr owner, ITerminologyProvider terminologyProvider)
 		{
 			if (!(terminologyProvider is FileGlossaryTerminologyProvider provider))
 				return false;
 
-			using (var dialog = new OpenFileDialog
+			OpenFileDialog dialog = new OpenFileDialog
 			{
 				Title = "Select the JSON glossary file",
 				Filter = "JSON glossary (*.json)|*.json|All files (*.*)|*.*",
 				CheckFileExists = true
-			})
+			};
+
+			try
 			{
-				try
+				var currentPath = FileGlossaryTerminologyProvider.UriToPath(provider.Uri);
+				if (!string.IsNullOrEmpty(currentPath) && File.Exists(currentPath))
 				{
-					var currentPath = FileGlossaryTerminologyProvider.UriToPath(provider.Uri);
-					if (!string.IsNullOrEmpty(currentPath) && File.Exists(currentPath))
-					{
-						dialog.InitialDirectory = Path.GetDirectoryName(currentPath);
-						dialog.FileName = Path.GetFileName(currentPath);
-					}
+					dialog.InitialDirectory = Path.GetDirectoryName(currentPath);
+					dialog.FileName = Path.GetFileName(currentPath);
 				}
-				catch
-				{
-					// Ignore: fall back to the default dialog location.
-				}
-
-				if (dialog.ShowDialog(new Win32Window(ownerHandle)) != DialogResult.OK)
-					return false;
-
-				provider.SetBackingFile(dialog.FileName);
-				return true;
 			}
+			catch
+			{
+				// Ignore: fall back to the default dialog location.
+			}
+
+			if (dialog.ShowDialog(NativeOwnerWindow.Create(owner)) != true)
+				return false;
+
+			provider.SetBackingFile(dialog.FileName);
+			return true;
 		}
 	}
 
 	/// <summary>
-	/// Wraps a native window handle so WinForms dialogs can be shown modally over the Studio window.
+	/// Creates a hidden WPF <see cref="Window"/> that wraps a native window handle,
+	/// so WPF file dialogs can be shown modally over the Studio window.
 	/// </summary>
-	internal sealed class Win32Window : IWin32Window
+	internal static class NativeOwnerWindow
 	{
-		public Win32Window(IntPtr handle)
+		internal static Window Create(IntPtr handle)
 		{
-			Handle = handle;
+			Window window = new Window
+			{
+				Width = 0,
+				Height = 0,
+				WindowStyle = WindowStyle.None,
+				ShowInTaskbar = false
+			};
+			WindowInteropHelper helper = new WindowInteropHelper(window);
+			helper.EnsureHandle();
+			if (handle != IntPtr.Zero)
+				helper.Owner = handle;
+			return window;
 		}
-
-		public IntPtr Handle { get; }
 	}
 }

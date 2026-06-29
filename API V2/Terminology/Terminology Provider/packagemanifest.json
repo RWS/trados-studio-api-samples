@@ -8,8 +8,8 @@
 		"MinVersion": "19.0.0",
 		"MaxVersion": "19.9.*"
 	},
-	"EntryAssembly": "TerminologyProvider.dll",
+	"EntryAssembly": "FileGlossaryTerminologyProvider.dll",
 	"Files": [
-		"TerminologyProvider.dll"
+		"FileGlossaryTerminologyProvider.dll"
 	]
 }

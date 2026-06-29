@@ -7,7 +7,11 @@
 			"languages": [
 				{ "lang": "en-US", "name": "English (United States)", "terms": [ "computer" ] },
 				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "Computer", "Rechner" ] },
-				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "ordinateur" ] }
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "ordinateur" ] },
+				{ "lang": "es-ES", "name": "Spanish (Spain)", "terms": [ "ordenador", "computadora" ] },
+				{ "lang": "ja-JP", "name": "Japanese (Japan)", "terms": [ "コンピュータ" ] },
+				{ "lang": "pt-PT", "name": "Portuguese (Portugal)", "terms": [ "computador" ] },
+				{ "lang": "zh-CN", "name": "Chinese (China)", "terms": [ "计算机", "电脑" ] }
 			]
 		},
 		{
@@ -15,7 +19,11 @@
 			"languages": [
 				{ "lang": "en-US", "name": "English (United States)", "terms": [ "keyboard" ] },
 				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "Tastatur" ] },
-				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "clavier" ] }
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "clavier" ] },
+				{ "lang": "es-ES", "name": "Spanish (Spain)", "terms": [ "teclado" ] },
+				{ "lang": "ja-JP", "name": "Japanese (Japan)", "terms": [ "キーボード" ] },
+				{ "lang": "pt-PT", "name": "Portuguese (Portugal)", "terms": [ "teclado" ] },
+				{ "lang": "zh-CN", "name": "Chinese (China)", "terms": [ "键盘" ] }
 			]
 		},
 		{
@@ -23,7 +31,11 @@
 			"languages": [
 				{ "lang": "en-US", "name": "English (United States)", "terms": [ "file", "document" ] },
 				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "Datei" ] },
-				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "fichier" ] }
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "fichier" ] },
+				{ "lang": "es-ES", "name": "Spanish (Spain)", "terms": [ "archivo", "documento" ] },
+				{ "lang": "ja-JP", "name": "Japanese (Japan)", "terms": [ "ファイル", "ドキュメント" ] },
+				{ "lang": "pt-PT", "name": "Portuguese (Portugal)", "terms": [ "ficheiro", "documento" ] },
+				{ "lang": "zh-CN", "name": "Chinese (China)", "terms": [ "文件", "文档" ] }
 			]
 		},
 		{
@@ -31,7 +43,11 @@
 			"languages": [
 				{ "lang": "en-US", "name": "English (United States)", "terms": [ "translation memory" ] },
 				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "Translation Memory", "Übersetzungsspeicher" ] },
-				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "mémoire de traduction" ] }
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "mémoire de traduction" ] },
+				{ "lang": "es-ES", "name": "Spanish (Spain)", "terms": [ "memoria de traducción" ] },
+				{ "lang": "ja-JP", "name": "Japanese (Japan)", "terms": [ "翻訳メモリ" ] },
+				{ "lang": "pt-PT", "name": "Portuguese (Portugal)", "terms": [ "memória de tradução" ] },
+				{ "lang": "zh-CN", "name": "Chinese (China)", "terms": [ "翻译记忆库" ] }
 			]
 		},
 		{
@@ -39,7 +55,371 @@
 			"languages": [
 				{ "lang": "en-US", "name": "English (United States)", "terms": [ "terminology" ] },
 				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "Terminologie" ] },
-				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "terminologie" ] }
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "terminologie" ] },
+				{ "lang": "es-ES", "name": "Spanish (Spain)", "terms": [ "terminología" ] },
+				{ "lang": "ja-JP", "name": "Japanese (Japan)", "terms": [ "用語" ] },
+				{ "lang": "pt-PT", "name": "Portuguese (Portugal)", "terms": [ "terminologia" ] },
+				{ "lang": "zh-CN", "name": "Chinese (China)", "terms": [ "术语" ] }
+			]
+		},
+		{
+			"id": 6,
+			"languages": [
+				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "Schnittstelle" ] },
+				{ "lang": "en-US", "name": "English (United States)", "terms": [ "interface" ] },
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "interface" ] },
+				{ "lang": "es-ES", "name": "Spanish (Spain)", "terms": [ "interfaz" ] },
+				{ "lang": "ja-JP", "name": "Japanese (Japan)", "terms": [ "インターフェイス" ] },
+				{ "lang": "pt-PT", "name": "Portuguese (Portugal)", "terms": [ "interface" ] },
+				{ "lang": "zh-CN", "name": "Chinese (China)", "terms": [ "接口" ] }
+			]
+		},
+		{
+			"id": 7,
+			"languages": [
+				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "bewährte Methodik" ] },
+				{ "lang": "en-US", "name": "English (United States)", "terms": [ "proven methodology" ] },
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "méthodologie prouvée" ] },
+				{ "lang": "es-ES", "name": "Spanish (Spain)", "terms": [ "metodología probada" ] },
+				{ "lang": "ja-JP", "name": "Japanese (Japan)", "terms": [ "実証済みの方法論" ] },
+				{ "lang": "pt-PT", "name": "Portuguese (Portugal)", "terms": [ "metodologia comprovada" ] },
+				{ "lang": "zh-CN", "name": "Chinese (China)", "terms": [ "成熟的方法论" ] }
+			]
+		},
+		{
+			"id": 8,
+			"languages": [
+				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "schnell" ] },
+				{ "lang": "en-US", "name": "English (United States)", "terms": [ "quick", "fast" ] },
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "rapidement", "rapide", "vite" ] },
+				{ "lang": "es-ES", "name": "Spanish (Spain)", "terms": [ "rápido" ] },
+				{ "lang": "ja-JP", "name": "Japanese (Japan)", "terms": [ "速い" ] },
+				{ "lang": "pt-PT", "name": "Portuguese (Portugal)", "terms": [ "rápido" ] },
+				{ "lang": "zh-CN", "name": "Chinese (China)", "terms": [ "快速" ] }
+			]
+		},
+		{
+			"id": 9,
+			"languages": [
+				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "Netzkabel" ] },
+				{ "lang": "en-US", "name": "English (United States)", "terms": [ "power cord", "power cable" ] },
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "câble d'alimentation" ] },
+				{ "lang": "es-ES", "name": "Spanish (Spain)", "terms": [ "cable de corriente" ] },
+				{ "lang": "ja-JP", "name": "Japanese (Japan)", "terms": [ "電源ケーブル" ] },
+				{ "lang": "pt-PT", "name": "Portuguese (Portugal)", "terms": [ "cabo de alimentação" ] },
+				{ "lang": "zh-CN", "name": "Chinese (China)", "terms": [ "电源电缆" ] }
+			]
+		},
+		{
+			"id": 10,
+			"languages": [
+				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "Papier-LED" ] },
+				{ "lang": "en-US", "name": "English (United States)", "terms": [ "paper light", "Paper LED" ] },
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "voyant de contrôle du papier" ] },
+				{ "lang": "es-ES", "name": "Spanish (Spain)", "terms": [ "LED de papel" ] },
+				{ "lang": "ja-JP", "name": "Japanese (Japan)", "terms": [ "用紙LEDランプ" ] },
+				{ "lang": "pt-PT", "name": "Portuguese (Portugal)", "terms": [ "LED de papel" ] },
+				{ "lang": "zh-CN", "name": "Chinese (China)", "terms": [ "缺纸指示灯" ] }
+			]
+		},
+		{
+			"id": 11,
+			"languages": [
+				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "Netzkabel" ] },
+				{ "lang": "en-US", "name": "English (United States)", "terms": [ "AC power cord", "AC power cable" ] },
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "câble d'alimentation" ] },
+				{ "lang": "es-ES", "name": "Spanish (Spain)", "terms": [ "cable de alimentación de CA" ] },
+				{ "lang": "ja-JP", "name": "Japanese (Japan)", "terms": [ "AC 電源ケーブル" ] },
+				{ "lang": "pt-PT", "name": "Portuguese (Portugal)", "terms": [ "cabo de alimentação de CA" ] },
+				{ "lang": "zh-CN", "name": "Chinese (China)", "terms": [ "电源电缆" ] }
+			]
+		},
+		{
+			"id": 12,
+			"languages": [
+				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "Universal Serial Bus" ] },
+				{ "lang": "en-US", "name": "English (United States)", "terms": [ "Universal Serial Bus", "USB" ] },
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "USB" ] },
+				{ "lang": "es-ES", "name": "Spanish (Spain)", "terms": [ "USB" ] },
+				{ "lang": "ja-JP", "name": "Japanese (Japan)", "terms": [ "ユニバーサル シリアル バス" ] },
+				{ "lang": "pt-PT", "name": "Portuguese (Portugal)", "terms": [ "USB" ] },
+				{ "lang": "zh-CN", "name": "Chinese (China)", "terms": [ "通用串行总线" ] }
+			]
+		},
+		{
+			"id": 13,
+			"languages": [
+				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "Fotodrucker" ] },
+				{ "lang": "en-US", "name": "English (United States)", "terms": [ "photo printer", "photo-printer" ] },
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "imprimante photo" ] },
+				{ "lang": "es-ES", "name": "Spanish (Spain)", "terms": [ "impresora de fotos" ] },
+				{ "lang": "ja-JP", "name": "Japanese (Japan)", "terms": [ "写真プリンタ" ] },
+				{ "lang": "pt-PT", "name": "Portuguese (Portugal)", "terms": [ "impressora fotográfica" ] },
+				{ "lang": "zh-CN", "name": "Chinese (China)", "terms": [ "照片打印机" ] }
+			]
+		},
+		{
+			"id": 14,
+			"languages": [
+				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "Farbpatrone" ] },
+				{ "lang": "en-US", "name": "English (United States)", "terms": [ "color cartridge" ] },
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "cartouche couleur" ] },
+				{ "lang": "es-ES", "name": "Spanish (Spain)", "terms": [ "cartucho de color" ] },
+				{ "lang": "ja-JP", "name": "Japanese (Japan)", "terms": [ "カラー カートリッジ" ] },
+				{ "lang": "pt-PT", "name": "Portuguese (Portugal)", "terms": [ "cartucho de tinta a cores" ] },
+				{ "lang": "zh-CN", "name": "Chinese (China)", "terms": [ "彩色墨盒" ] }
+			]
+		},
+		{
+			"id": 15,
+			"languages": [
+				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "Band der Farbpatrone" ] },
+				{ "lang": "en-US", "name": "English (United States)", "terms": [ "color cartridge ribbon" ] },
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "ruban de la cartouche couleur" ] },
+				{ "lang": "es-ES", "name": "Spanish (Spain)", "terms": [ "cinta del cartucho de color" ] },
+				{ "lang": "ja-JP", "name": "Japanese (Japan)", "terms": [ "カラー カートリッジ リボン" ] },
+				{ "lang": "pt-PT", "name": "Portuguese (Portugal)", "terms": [ "fita do cartucho de cor" ] },
+				{ "lang": "zh-CN", "name": "Chinese (China)", "terms": [ "彩色墨盒色带" ] }
+			]
+		},
+		{
+			"id": 16,
+			"languages": [
+				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "Adapter" ] },
+				{ "lang": "en-US", "name": "English (United States)", "terms": [ "adapter" ] },
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "adaptateur" ] },
+				{ "lang": "es-ES", "name": "Spanish (Spain)", "terms": [ "adaptador" ] },
+				{ "lang": "ja-JP", "name": "Japanese (Japan)", "terms": [ "アダプタ" ] },
+				{ "lang": "pt-PT", "name": "Portuguese (Portugal)", "terms": [ "adaptador" ] },
+				{ "lang": "zh-CN", "name": "Chinese (China)", "terms": [ "适配器" ] }
+			]
+		},
+		{
+			"id": 17,
+			"languages": [
+				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "Wechselstrom" ] },
+				{ "lang": "en-US", "name": "English (United States)", "terms": [ "alternating current", "AC" ] },
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "courant alternatif" ] },
+				{ "lang": "es-ES", "name": "Spanish (Spain)", "terms": [ "corriente alterna", "CA" ] },
+				{ "lang": "ja-JP", "name": "Japanese (Japan)", "terms": [ "交流電流", "AC" ] },
+				{ "lang": "pt-PT", "name": "Portuguese (Portugal)", "terms": [ "corrente alternada", "CA" ] },
+				{ "lang": "zh-CN", "name": "Chinese (China)", "terms": [ "交流电", "交流" ] }
+			]
+		},
+		{
+			"id": 18,
+			"languages": [
+				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "True-Image" ] },
+				{ "lang": "en-US", "name": "English (United States)", "terms": [ "True Image", "True-Image" ] },
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "True-Image" ] },
+				{ "lang": "es-ES", "name": "Spanish (Spain)", "terms": [ "True-Image" ] },
+				{ "lang": "ja-JP", "name": "Japanese (Japan)", "terms": [ "True-Image" ] },
+				{ "lang": "pt-PT", "name": "Portuguese (Portugal)", "terms": [ "True-Image" ] },
+				{ "lang": "zh-CN", "name": "Chinese (China)", "terms": [ "True-Image" ] }
+			]
+		},
+		{
+			"id": 19,
+			"languages": [
+				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "ContraPLUS" ] },
+				{ "lang": "en-US", "name": "English (United States)", "terms": [ "ContraPLUS" ] },
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "ContraPLUS" ] },
+				{ "lang": "es-ES", "name": "Spanish (Spain)", "terms": [ "ContraPLUS" ] },
+				{ "lang": "ja-JP", "name": "Japanese (Japan)", "terms": [ "ContraPLUS" ] },
+				{ "lang": "pt-PT", "name": "Portuguese (Portugal)", "terms": [ "ContraPLUS" ] },
+				{ "lang": "zh-CN", "name": "Chinese (China)", "terms": [ "ContraPLUS" ] }
+			]
+		},
+		{
+			"id": 20,
+			"languages": [
+				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "LED", "Leuchtdiode" ] },
+				{ "lang": "en-US", "name": "English (United States)", "terms": [ "LED", "Light-emitting diode" ] },
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "LED" ] },
+				{ "lang": "es-ES", "name": "Spanish (Spain)", "terms": [ "LED", "diodo emisor de luz" ] },
+				{ "lang": "ja-JP", "name": "Japanese (Japan)", "terms": [ "LED", "発光ダイオード" ] },
+				{ "lang": "pt-PT", "name": "Portuguese (Portugal)", "terms": [ "LED", "díodo emissor de luz" ] },
+				{ "lang": "zh-CN", "name": "Chinese (China)", "terms": [ "LED", "发光二极管" ] }
+			]
+		},
+		{
+			"id": 21,
+			"languages": [
+				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "Matrix Mistjet-Drucker" ] },
+				{ "lang": "en-US", "name": "English (United States)", "terms": [ "Matrix Mistjet Printers", "matrix mistjet printers" ] },
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "Imprimantes Mistjet Matrix" ] },
+				{ "lang": "es-ES", "name": "Spanish (Spain)", "terms": [ "Impresoras Matrix Mistjet" ] },
+				{ "lang": "ja-JP", "name": "Japanese (Japan)", "terms": [ "Matrix Mistjetプリンタ" ] },
+				{ "lang": "pt-PT", "name": "Portuguese (Portugal)", "terms": [ "Impressoras Matrix Mistjet" ] },
+				{ "lang": "zh-CN", "name": "Chinese (China)", "terms": [ "Matrix Mistjet打印机" ] }
+			]
+		},
+		{
+			"id": 22,
+			"languages": [
+				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "Matrix Photolithograph MistJet Nozzle Engineering", "MPNE" ] },
+				{ "lang": "en-US", "name": "English (United States)", "terms": [ "Matrix Photolithograph MistJet Nozzle Engineering", "matrix photolithograph mistjet nozzle engineering", "MPNE" ] },
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "Matrix Photolithograph MistJet Nozzle Engineering" ] },
+				{ "lang": "es-ES", "name": "Spanish (Spain)", "terms": [ "Matrix Photolithograph MistJet Nozzle Engineering", "MPNE" ] },
+				{ "lang": "ja-JP", "name": "Japanese (Japan)", "terms": [ "Matrix Photolithograph MistJet Nozzle Engineering", "MPNE" ] },
+				{ "lang": "pt-PT", "name": "Portuguese (Portugal)", "terms": [ "Matrix Photolithograph MistJet Nozzle Engineering", "MPNE" ] },
+				{ "lang": "zh-CN", "name": "Chinese (China)", "terms": [ "Matrix Photolithograph MistJet Nozzle Engineering", "MPNE" ] }
+			]
+		},
+		{
+			"id": 23,
+			"languages": [
+				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "Matrix Precision Pixel Printer", "PPP" ] },
+				{ "lang": "en-US", "name": "English (United States)", "terms": [ "Matrix Precision Pixel Printer", "matrix precision pixel printer", "PPP" ] },
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "Technologie Precision Pixel Printer (PPP) de Matrix" ] },
+				{ "lang": "es-ES", "name": "Spanish (Spain)", "terms": [ "Matrix Precision Pixel Printer", "PPP" ] },
+				{ "lang": "ja-JP", "name": "Japanese (Japan)", "terms": [ "Matrix Precision Pixel Printer", "PPP" ] },
+				{ "lang": "pt-PT", "name": "Portuguese (Portugal)", "terms": [ "Matrix Precision Pixel Printer", "PPP" ] },
+				{ "lang": "zh-CN", "name": "Chinese (China)", "terms": [ "Matrix Precision Pixel Printer", "PPP" ] }
+			]
+		},
+		{
+			"id": 24,
+			"languages": [
+				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "Matrix VitaChrom 100" ] },
+				{ "lang": "en-US", "name": "English (United States)", "terms": [ "Matrix VitaChrom 100" ] },
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "Matrix VitaChrom 100" ] },
+				{ "lang": "es-ES", "name": "Spanish (Spain)", "terms": [ "Matrix VitaChrom 100" ] },
+				{ "lang": "ja-JP", "name": "Japanese (Japan)", "terms": [ "Matrix VitaChrom 100" ] },
+				{ "lang": "pt-PT", "name": "Portuguese (Portugal)", "terms": [ "Matrix VitaChrom 100" ] },
+				{ "lang": "zh-CN", "name": "Chinese (China)", "terms": [ "Matrix VitaChrom 100" ] }
+			]
+		},
+		{
+			"id": 25,
+			"languages": [
+				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "MistJet" ] },
+				{ "lang": "en-US", "name": "English (United States)", "terms": [ "MistJet", "Mistjet" ] },
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "MistJet" ] },
+				{ "lang": "es-ES", "name": "Spanish (Spain)", "terms": [ "MistJet" ] },
+				{ "lang": "ja-JP", "name": "Japanese (Japan)", "terms": [ "MistJet" ] },
+				{ "lang": "pt-PT", "name": "Portuguese (Portugal)", "terms": [ "MistJet" ] },
+				{ "lang": "zh-CN", "name": "Chinese (China)", "terms": [ "MistJet" ] }
+			]
+		},
+		{
+			"id": 26,
+			"languages": [
+				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "innovativ" ] },
+				{ "lang": "en-US", "name": "English (United States)", "terms": [ "next generation" ] },
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "nouvelle génération" ] },
+				{ "lang": "es-ES", "name": "Spanish (Spain)", "terms": [ "nueva generación" ] },
+				{ "lang": "ja-JP", "name": "Japanese (Japan)", "terms": [ "次世代" ] },
+				{ "lang": "pt-PT", "name": "Portuguese (Portugal)", "terms": [ "próxima geração" ] },
+				{ "lang": "zh-CN", "name": "Chinese (China)", "terms": [ "下一代" ] }
+			]
+		},
+		{
+			"id": 27,
+			"languages": [
+				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "PhotoSpan" ] },
+				{ "lang": "en-US", "name": "English (United States)", "terms": [ "PhotoSpan" ] },
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "PhotoSpan" ] },
+				{ "lang": "es-ES", "name": "Spanish (Spain)", "terms": [ "PhotoSpan" ] },
+				{ "lang": "ja-JP", "name": "Japanese (Japan)", "terms": [ "PhotoSpan" ] },
+				{ "lang": "pt-PT", "name": "Portuguese (Portugal)", "terms": [ "PhotoSpan" ] },
+				{ "lang": "zh-CN", "name": "Chinese (China)", "terms": [ "PhotoSpan" ] }
+			]
+		},
+		{
+			"id": 28,
+			"languages": [
+				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "Picture Dyes" ] },
+				{ "lang": "en-US", "name": "English (United States)", "terms": [ "Picture Dyes", "picture dyes" ] },
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "Picture Dyes" ] },
+				{ "lang": "es-ES", "name": "Spanish (Spain)", "terms": [ "Picture Dyes" ] },
+				{ "lang": "ja-JP", "name": "Japanese (Japan)", "terms": [ "Picture Dyes" ] },
+				{ "lang": "pt-PT", "name": "Portuguese (Portugal)", "terms": [ "Picture Dyes" ] },
+				{ "lang": "zh-CN", "name": "Chinese (China)", "terms": [ "Picture Dyes" ] }
+			]
+		},
+		{
+			"id": 29,
+			"languages": [
+				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "SE Copy", "Standard Exposure Copy" ] },
+				{ "lang": "en-US", "name": "English (United States)", "terms": [ "SE Copy", "Standard Exposure Copy" ] },
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "Copie SE (Standard Exposure - Exposition standard)" ] },
+				{ "lang": "es-ES", "name": "Spanish (Spain)", "terms": [ "Copia SE", "Copia de exposición estándar" ] },
+				{ "lang": "ja-JP", "name": "Japanese (Japan)", "terms": [ "SEコピー", "標準露光コピー" ] },
+				{ "lang": "pt-PT", "name": "Portuguese (Portugal)", "terms": [ "Cópia SE", "Cópia de exposição padrão" ] },
+				{ "lang": "zh-CN", "name": "Chinese (China)", "terms": [ "SE复印", "标准曝光复印" ] }
+			]
+		},
+		{
+			"id": 30,
+			"languages": [
+				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "SuperSmall Beaded-Technologie" ] },
+				{ "lang": "en-US", "name": "English (United States)", "terms": [ "SuperSmall Beaded Technology" ] },
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "Technologie SuperSmall Beaded" ] },
+				{ "lang": "es-ES", "name": "Spanish (Spain)", "terms": [ "Tecnología SuperSmall Beaded" ] },
+				{ "lang": "ja-JP", "name": "Japanese (Japan)", "terms": [ "SuperSmall Beadedテクノロジー" ] },
+				{ "lang": "pt-PT", "name": "Portuguese (Portugal)", "terms": [ "Tecnologia SuperSmall Beaded" ] },
+				{ "lang": "zh-CN", "name": "Chinese (China)", "terms": [ "SuperSmall Beaded技术" ] }
+			]
+		},
+		{
+			"id": 31,
+			"languages": [
+				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "True Image AP300 Universal-Fotodrucker" ] },
+				{ "lang": "en-US", "name": "English (United States)", "terms": [ "True Image AP 300 All-Purpose Photo Printer" ] },
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "Imprimante photo Toutes-fonctions True Image AP 300" ] },
+				{ "lang": "es-ES", "name": "Spanish (Spain)", "terms": [ "Impresora fotográfica universal True Image AP 300" ] },
+				{ "lang": "ja-JP", "name": "Japanese (Japan)", "terms": [ "True Image AP300 万能フォトプリンタ" ] },
+				{ "lang": "pt-PT", "name": "Portuguese (Portugal)", "terms": [ "Impressora de fotos polivalente True Image AP 300" ] },
+				{ "lang": "zh-CN", "name": "Chinese (China)", "terms": [ "True Image AP 300多功能照片打印机" ] }
+			]
+		},
+		{
+			"id": 32,
+			"languages": [
+				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "Betriebssystem" ] },
+				{ "lang": "en-US", "name": "English (United States)", "terms": [ "operating system", "OS", "platform" ] },
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "système d'exploitation", "OS" ] },
+				{ "lang": "es-ES", "name": "Spanish (Spain)", "terms": [ "sistema operativo", "SO" ] },
+				{ "lang": "ja-JP", "name": "Japanese (Japan)", "terms": [ "オペレーティングシステム", "OS" ] },
+				{ "lang": "pt-PT", "name": "Portuguese (Portugal)", "terms": [ "sistema operacional", "SO" ] },
+				{ "lang": "zh-CN", "name": "Chinese (China)", "terms": [ "操作系统", "OS" ] }
+			]
+		},
+		{
+			"id": 33,
+			"languages": [
+				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "USB-Kabel" ] },
+				{ "lang": "en-US", "name": "English (United States)", "terms": [ "USB cable" ] },
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "câble USB" ] },
+				{ "lang": "es-ES", "name": "Spanish (Spain)", "terms": [ "cable USB" ] },
+				{ "lang": "ja-JP", "name": "Japanese (Japan)", "terms": [ "USBケーブル" ] },
+				{ "lang": "pt-PT", "name": "Portuguese (Portugal)", "terms": [ "cabo USB" ] },
+				{ "lang": "zh-CN", "name": "Chinese (China)", "terms": [ "USB电缆" ] }
+			]
+		},
+		{
+			"id": 34,
+			"languages": [
+				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "Programmierschnittstelle", "API" ] },
+				{ "lang": "en-US", "name": "English (United States)", "terms": [ "Application Programming Interface", "API" ] },
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "interface de programmation d'application", "API" ] },
+				{ "lang": "es-ES", "name": "Spanish (Spain)", "terms": [ "interfaz de programación de aplicaciones", "API" ] },
+				{ "lang": "ja-JP", "name": "Japanese (Japan)", "terms": [ "アプリケーションプログラミングインターフェイス", "API" ] },
+				{ "lang": "pt-PT", "name": "Portuguese (Portugal)", "terms": [ "interface de programação de aplicações", "API" ] },
+				{ "lang": "zh-CN", "name": "Chinese (China)", "terms": [ "应用程序编程接口", "API" ] }
+			]
+		},
+		{
+			"id": 35,
+			"languages": [
+				{ "lang": "de-DE", "name": "German (Germany)", "terms": [ "Automated Processes, Inc.", "API Audio Products", "API" ] },
+				{ "lang": "en-US", "name": "English (United States)", "terms": [ "Automated Processes, Inc.", "API Audio Products", "API" ] },
+				{ "lang": "fr-FR", "name": "French (France)", "terms": [ "Automated Processes, Inc.", "API Audio Products", "API" ] },
+				{ "lang": "es-ES", "name": "Spanish (Spain)", "terms": [ "Automated Processes, Inc.", "API Audio Products", "API" ] },
+				{ "lang": "ja-JP", "name": "Japanese (Japan)", "terms": [ "Automated Processes, Inc.", "API Audio Products", "API" ] },
+				{ "lang": "pt-PT", "name": "Portuguese (Portugal)", "terms": [ "Automated Processes, Inc.", "API Audio Products", "API" ] },
+				{ "lang": "zh-CN", "name": "Chinese (China)", "terms": [ "Automated Processes, Inc.", "API Audio Products", "API" ] }
 			]
 		}
 	]

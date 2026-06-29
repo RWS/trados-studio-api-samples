@@ -22,8 +22,6 @@ namespace FileGlossaryTerminologyProvider
 
 		private string _filePath;
 		private FileGlossary _glossary;
-		private TermDefinition _definition;
-		private bool _initialized;
 
 		public FileGlossaryTerminologyProvider(Uri uri)
 		{
@@ -43,28 +41,28 @@ namespace FileGlossaryTerminologyProvider
 
 		public bool SearchEnabled => true;
 
-		public TermDefinition Definition => _definition;
+		public TermDefinition Definition { get; private set; }
 
 		public FilterDefinition ActiveFilter { get; set; }
 
-		public bool IsInitialized => _initialized;
+		public bool IsInitialized { get; private set; }
 
 		public bool Initialize()
 		{
-			if (_initialized)
+			if (IsInitialized)
 				return true;
 
 			_glossary = FileGlossary.Load(_filePath);
-			_definition = BuildDefinition(_glossary);
-			_initialized = true;
+			Definition = BuildDefinition(_glossary);
+			IsInitialized = true;
 			return true;
 		}
 
 		public bool Uninitialize()
 		{
 			_glossary = null;
-			_definition = null;
-			_initialized = false;
+			Definition = null;
+			IsInitialized = false;
 			return true;
 		}
 
@@ -161,7 +159,7 @@ namespace FileGlossaryTerminologyProvider
 		public IList<SearchResult> Search(string text, ILanguage source, ILanguage target, int maxResults, SearchMode mode, bool targetRequired)
 		{
 			var results = new List<SearchResult>();
-			if (!_initialized || _glossary == null || string.IsNullOrWhiteSpace(text))
+			if (!IsInitialized || _glossary == null || string.IsNullOrWhiteSpace(text))
 				return results;
 
 			var sourceIso = source?.LanguageIsoCode;
@@ -287,7 +285,7 @@ namespace FileGlossaryTerminologyProvider
 				if (longest == 0)
 					return 0;
 
-				var score = (int)((1.0 - (double)distance / longest) * 100);
+				var score = (int)((1.0 - ((double)distance / longest)) * 100);
 				return score >= 50 ? score : 0;
 			}
 
