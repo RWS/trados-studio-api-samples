@@ -1,0 +1,15 @@
+{
+	"PluginName": "FileGlossaryTerminologyProvider",
+	"Version": "1.0.0.0",
+	"Description": "Sample read-only, file-based (JSON) terminology provider for Trados Studio.",
+	"Author": "RWS",
+	"RequiredProduct": {
+		"Name": "TradosStudio",
+		"MinVersion": "19.0.0",
+		"MaxVersion": "19.9.*"
+	},
+	"EntryAssembly": "FileGlossaryTerminologyProvider.dll",
+	"Files": [
+		"FileGlossaryTerminologyProvider.dll"
+	]
+}

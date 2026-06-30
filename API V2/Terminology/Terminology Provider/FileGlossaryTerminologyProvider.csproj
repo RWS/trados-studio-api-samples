@@ -1,0 +1,70 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net481</TargetFramework>
+    <RootNamespace>FileGlossaryTerminologyProvider</RootNamespace>
+    <AssemblyName>FileGlossaryTerminologyProvider</AssemblyName>
+    <Deterministic>true</Deterministic>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+	<AssemblyOriginatorKeyFile>samples.snk</AssemblyOriginatorKeyFile>
+	<SignAssembly>true</SignAssembly>
+    <GeneratePackage>true</GeneratePackage>	 
+    <PluginDeploymentPath>$(AppData)\Trados\Trados Studio\19\Plugins\Packages</PluginDeploymentPath>
+    <UseWpf>true</UseWpf>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+	<Reference Include="Microsoft.Extensions.Logging.Abstractions">
+      <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="TradosStudio.API">
+      <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19\TradosStudio.API.dll</HintPath>
+    </Reference>
+    <Reference Include="TradosStudio.API.TranslationResources">
+      <HintPath>$(ProgramFiles)\Trados\Trados Studio\Studio19\TradosStudio.API.TranslationResources.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="packagemanifest.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="samples.snk" />
+    <None Include="sample-glossary.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="TradosStudio.Packaging" Version="0.1.77" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="FileGlossaryTermsControl.cs">
+      <DependentUpon>FileGlossaryTermsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="StringResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>StringResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="StringResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>StringResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
