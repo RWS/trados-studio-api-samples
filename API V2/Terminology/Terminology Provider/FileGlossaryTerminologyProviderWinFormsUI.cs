@@ -12,7 +12,7 @@ namespace FileGlossaryTerminologyProvider
 	/// </summary>
 	public class FileGlossaryTerminologyProviderWinFormsUI : ITerminologyProviderWinFormsUI
 	{
-		public string TypeName => "File Glossary (JSON)";
+		public string TypeName => StringResources.TypeName;
 
 		public bool SupportsTerminologyProviderUri(Uri terminologyProviderUri)
 		{
@@ -22,12 +22,14 @@ namespace FileGlossaryTerminologyProvider
 
 		public TerminologyProviderDisplayInfo GetDisplayInfo(Uri terminologyProviderUri)
 		{
-			var name = "File Glossary";
+			var name = StringResources.Name;
 			try
 			{
 				var path = FileGlossaryTerminologyProvider.UriToPath(terminologyProviderUri);
 				if (!string.IsNullOrEmpty(path))
+				{
 					name = Path.GetFileNameWithoutExtension(path);
+				}
 			}
 			catch
 			{
@@ -37,18 +39,26 @@ namespace FileGlossaryTerminologyProvider
 			return new TerminologyProviderDisplayInfo
 			{
 				Name = name,
-				TooltipText = "JSON file-based glossary terminology provider"
+				TooltipText = StringResources.TooltipText
 			};
 		}
 
 		public T GetBehaviour<T>() where T : ITerminologyProviderBehaviour
 		{
 			if (typeof(T) == typeof(IBrowseBehaviour))
+			{
 				return (T)(object)new FileGlossaryBrowseBehaviour();
+			}
+
 			if (typeof(T) == typeof(ICreateBehaviour))
+			{
 				return (T)(object)new FileGlossaryCreateBehaviour();
+			}
+
 			if (typeof(T) == typeof(IEditBehaviour))
+			{
 				return (T)(object)new FileGlossaryEditBehaviour();
+			}
 
 			return default(T);
 		}

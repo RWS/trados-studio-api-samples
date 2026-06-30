@@ -20,8 +20,8 @@ namespace FileGlossaryTerminologyProvider
 		{
 			OpenFileDialog dialog = new OpenFileDialog
 			{
-				Title = "Select one or more JSON glossary files",
-				Filter = "JSON glossary (*.json)|*.json|All files (*.*)|*.*",
+				Title = StringResources.BrowseDialogTitle,
+				Filter = StringResources.JsonGlossaryFilterWithAll,
 				CheckFileExists = true,
 				Multiselect = true
 			};
@@ -50,8 +50,8 @@ namespace FileGlossaryTerminologyProvider
 		{
 			SaveFileDialog dialog = new SaveFileDialog
 			{
-				Title = "Create a new JSON glossary file",
-				Filter = "JSON glossary (*.json)|*.json",
+				Title = StringResources.CreateDialogTitle,
+				Filter = StringResources.CreateDialogFilter,
 				DefaultExt = "json",
 				AddExtension = true,
 				OverwritePrompt = true
@@ -80,8 +80,8 @@ namespace FileGlossaryTerminologyProvider
 
 			OpenFileDialog dialog = new OpenFileDialog
 			{
-				Title = "Select the JSON glossary file",
-				Filter = "JSON glossary (*.json)|*.json|All files (*.*)|*.*",
+				Title = StringResources.EditDialogTitle,
+				Filter = StringResources.JsonGlossaryFilterWithAll,
 				CheckFileExists = true
 			};
 
